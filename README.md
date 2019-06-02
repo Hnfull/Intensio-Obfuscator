@@ -41,18 +41,18 @@
 ### Examples
 #### Python target file(s):
 -  One file basic: `python3.x intensio_obfuscator.py -f -i test/python/onefile/basic/input/input_test_file.py -c python -o test/python/onefile/basic/output/output_test_file.py -m lower -r -rm`
-    - [source file](https://github.com/Hnfull/Intensio-Obfucator/blob/master/intensio/test/python/onefile/basic/input/input_test_file.py)
-    - [output file](https://github.com/Hnfull/Intensio-Obfucator/blob/master/intensio/test/python/onefile/basic/output/output_test_file.py)
+    - [source file](https://github.com/Hnfull/Intensio-Obfuscator/blob/master/intensio/test/python/onefile/basic/input/input_test_file.py)
+    - [output file](https://github.com/Hnfull/Intensio-Obfuscator/blob/master/intensio/test/python/onefile/basic/output/output_test_file.py)
 - One file advanced: `python3.x intensio_obfuscator.py -f -i test/python/onefile/advanced/input/input_test_file.py -c python -o test/python/onefile/advanced/output/output_test_file.py -m high -r -p -rm`
-    - [source file](https://github.com/Hnfull/Intensio-Obfucator/tree/master/intensio/test/python/onefile/advanced/input/input_test_file.py)
-    - [output file](https://github.com/Hnfull/Intensio-Obfucator/blob/master/intensio/test/python/onefile/advanced/output/output_test_file.py)
+    - [source file](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/onefile/advanced/input/input_test_file.py)
+    - [output file](https://github.com/Hnfull/Intensio-Obfuscator/blob/master/intensio/test/python/onefile/advanced/output/output_test_file.py)
 
 - Multiple files basic: `python3.x intensio_obfuscator.py -d -i test/python/multiplefiles/basic/input/basicRAT -c python -o test/python/multiplefiles/basic/output/basicRAT -m lower -r -rm`
-    - [source directory](https://github.com/Hnfull/Intensio-Obfucator/tree/master/intensio/test/python/multiplefiles/basic/input/basicRAT)
-    - [output directory](https://github.com/Hnfull/Intensio-Obfucator/tree/master/intensio/test/python/multiplefiles/basic/output/basicRAT)
+    - [source directory](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/multiplefiles/basic/input/basicRAT)
+    - [output directory](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/multiplefiles/basic/output/basicRAT)
 - Multiple files advanced: `python3.x intensio_obfuscator.py -d -i test/python/multiplefiles/advanced/input/basicRAT -c python -o test/python/multiplefiles/advanced/output/basicRAT -m high -r -p -rm`
-    - [source directory](https://github.com/Hnfull/Intensio-Obfucator/tree/master/intensio/test/python/multiplefiles/advanced/input/basicRAT)
-    - [output directory](https://github.com/Hnfull/Intensio-Obfucator/tree/master/intensio/test/python/multiplefiles/advanced/output/basicRAT)
+    - [source directory](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/multiplefiles/advanced/input/basicRAT)
+    - [output directory](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/multiplefiles/advanced/output/basicRAT)
 
 ### Possible malfunctions
 - If a variable has an identical name with a text between ' ' or " " in print() function, your text will have the same value that the mixer variable
