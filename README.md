@@ -59,7 +59,8 @@
  
 ### Upcoming features 
 - Version 1.0.1-9:
-    - Code optimization 
+    - Code optimization
+    - Obfuscate files name
     - Fix bugs and problems
     - Improved features already present
     - Adding (https://github.com/nathanlopez/basicRAT) to multiple test files example
