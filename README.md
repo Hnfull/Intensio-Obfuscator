@@ -39,7 +39,7 @@
 - If you want exclude python variables - classes - functions edit `intensio/exclude_python_words.txt`
 - If you want to include python variables - classes - functions that are not taken into account, edit `intensio/include_python_words.txt`
 
-** Do not define identically your names of local variables - classes - functions to python keywords or names of functions - classes of imported python libraries !!**
+**Do not define identically your names of local variables - classes - functions to python keywords or names of functions - classes of imported python libraries !!**
 
 ## Examples
 #### Python target file(s):
