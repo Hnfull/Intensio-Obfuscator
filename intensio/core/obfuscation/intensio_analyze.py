@@ -26,7 +26,8 @@ class Analyze:
         inputFileEmptyCount = 0
         inputExt            = ""
 
-        # -- One file -- #
+        ######################################### One file only #########################################
+
         if oneFileArg == True:
             if os.path.exists(inputArg) == True:
                 if os.path.isfile(inputArg) == True:
@@ -47,7 +48,8 @@ class Analyze:
                 print("[-] '{0}' not exists.".format(inputArg))
                 return ERROR_PATH_NOT_FOUND
 
-        # -- Multiple files -- #
+        ######################################### Multiple files #########################################
+        
         else:
             if os.path.exists(inputArg) == True:
                 if os.path.isdir(inputArg) == True:     
@@ -94,10 +96,12 @@ class Analyze:
         outputExt               = ""
 
         if os.path.exists(outputArg) == True:
-            removeRequest = input("[!] output '{0}' already exists, do you want remove it ? (Y/N) : ".format(outputArg))
+            removeRequest = input("[!] Output '{0}' already exists, do you want remove it ? (Y/N) : ".format(outputArg))
             removeRequest = removeRequest.upper()
             if removeRequest == "Y":
-                # -- One file -- #
+                
+                ######################################### One file only #########################################
+
                 if oneFileArg == True:
                     try:
                         os.remove(outputArg)
@@ -124,7 +128,8 @@ class Analyze:
                         print("[-] {0}".format(e))
                         return EXIT_FAILURE
 
-                # -- Multiple files -- #
+                ######################################### Multiple files #########################################
+
                 else:
                     try:
                         shutil.rmtree(outputArg)
@@ -171,7 +176,9 @@ class Analyze:
                 print("[-] Remove '{0}' failed, the user has refused.".format(outputArg))
                 return ERROR_CANNOT_REMOVE
         else:
-            # -- One file -- #
+            
+            ######################################### One file only #########################################
+
             if oneFileArg == True:
                 try:
                     shutil.copy(inputArg, outputArg)
@@ -193,7 +200,8 @@ class Analyze:
                     print("[-] {0}".format(e))
                     return EXIT_FAILURE
 
-            # -- Multiple files -- #
+            ######################################### Multiple files #########################################
+
             else:
                 try:
                     shutil.copytree(inputArg, outputArg)

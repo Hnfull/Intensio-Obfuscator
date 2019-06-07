@@ -177,8 +177,14 @@ class Padding:
         countLineAdded      = 0
         countLine           = 0
         checkLine           = 0
+        checkPassing        = 0
 
-        # -- One file -- #
+        print("############## [ Random scripts ] ###############\n")
+
+        print("\n[+] Running adding of random scripts...\n")
+        
+        ######################################### One file only #########################################
+
         if oneFileArg:
             # -- Count the number of lines that will be checked before filling -- #
             with open(outputArg , "r") as readFile:
@@ -188,69 +194,73 @@ class Padding:
                         continue
                     countLine += 1
 
-            print("############ [ Adding scripts ] #############\n")
-
             # -- Padding scripts added -- #
             with fileinput.input(outputArg, inplace=True) as inputFile:
-                checkPassing = 0
-
                 for eachLine in inputFile:
                     print(eachLine)
                     if eachLine == "\n":
                         continue
                     else:
                         if codeArg == "python":
-                            spaces          = len(eachLine) - len(eachLine.lstrip()) # Check line indent
-                            noAddScript     = r"(^[\#]+.*)|(\@|\s+\@)|(\s+return)"
-                            ruleAddScript   = r".+\:\s+"
+                            spaces                  = len(eachLine) - len(eachLine.lstrip()) # Check line indent
+                            noAddScript             = r"(^[\#]+.*)|(\@|\s+\@)|(\s+return)|(\s+#\s{1,10}\w+)"
+                            addIndentScript         = r".*\:{1}\s"
+                            checkAddIndentScript    = r".*\:{1}\s\w+"
 
-                            # -- Check code in """ or ''' -- #
+                            # -- Check if ',' char or '\' char,in end line -- #
+                            listCheckEndLine = []
+                            
+                            for i in eachLine:
+                                listCheckEndLine.append(i)
+                            
+                            if "," in listCheckEndLine[-2] or "\\" in listCheckEndLine[-2]:
+                                continue
+
+                            # -- Check code between """ or ''' -- #
                             if "\"\"\"" in eachLine or "\'\'\'" in eachLine:
                                 checkPassing += 1
-                                continue
 
-                            if checkPassing == 1:
+                            if checkPassing == 1: # Loop until the next """ or ''' 
                                 continue
                             else:
-                                checkPassing = 0
+                                checkPassing = 0    
 
-                                if re.match(noAddScript, eachLine) is not None:
-                                    continue
-                                elif re.match(ruleAddScript, eachLine) is not None:
-                                    if spaces == 0:
-                                        print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg),"    "))
-                                        countScriptsAdded += 1
-                                    elif spaces == 4:
-                                        print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg), "        "))
-                                        countScriptsAdded += 1
-                                    elif spaces == 8:
-                                        print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg), "            "))
-                                        countScriptsAdded += 1
-                                    elif spaces == 12:
-                                        print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg), "                "))
-                                        countScriptsAdded += 1
-                                    else:
-                                        continue
-                                else:
-                                    if spaces == 0:
-                                        print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg),""))
-                                        countScriptsAdded += 1
-                                    elif spaces == 4:
-                                        print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg), "    "))
-                                        countScriptsAdded += 1
-                                    elif spaces == 8:
-                                        print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg), "        "))
-                                        countScriptsAdded += 1
-                                    elif spaces == 12:
-                                        print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg), "            "))
-                                        countScriptsAdded += 1
-                                    else:
-                                        continue                    
-                        else:
+                        if re.match(noAddScript, eachLine) is not None:
                             continue
+                        elif re.match(addIndentScript, eachLine) is not None:
+                            if re.match(checkAddIndentScript, eachLine) is not None:
+                                        continue
+                            else:
+                                if spaces == 0:
+                                    print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg),"    "))
+                                    countScriptsAdded += 1
+                                elif spaces == 4:
+                                    print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg), "        "))
+                                    countScriptsAdded += 1
+                                elif spaces == 8:
+                                    print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg), "            "))
+                                    countScriptsAdded += 1
+                                elif spaces == 12:
+                                    print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg), "                "))
+                                    countScriptsAdded += 1
+                                else:
+                                    continue
+                        else:
+                            if spaces == 0:
+                                print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg),""))
+                                countScriptsAdded += 1
+                            elif spaces == 4:
+                                print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg), "    "))
+                                countScriptsAdded += 1
+                            elif spaces == 8:
+                                print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg), "        "))
+                                countScriptsAdded += 1
+                            elif spaces == 12:
+                                print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg), "            "))
+                                countScriptsAdded += 1
+                            else:
+                                continue                    
                             
-            print("-> {0} scripts added\n".format(countScriptsAdded))
-
             # -- Check padding has added in output script -- #
             with open(outputArg , "r") as readFile:
                 readF = readFile.readlines()
@@ -261,17 +271,17 @@ class Padding:
 
             countLineAdded = checkLine - countLine
 
-            print("-> {0} lines added\n".format(countLineAdded))
-
             if checkLine > countLine:
-                if (self.remove.NewLines(oneFileArg, codeArg, outputArg) == 0):
+                print("-> {0} scripts added\n".format(countScriptsAdded))
+                print("-> {0} lines added\n".format(countLineAdded))
+                if (self.remove.LineBreaks(oneFileArg, codeArg, outputArg) == 0):
                     return EXIT_SUCCESS
                 else:
                     return EXIT_FAILURE
             else:
                 return EXIT_FAILURE
         
-        # -- Multiple files -- #
+        ######################################### Multiple files #########################################
         else:
             if codeArg == "python":
                 inputExt    = "py"
@@ -291,74 +301,77 @@ class Padding:
                                 continue
                             countLine += 1
 
-            print("############ [ Adding scripts ] #############\n")
-
             # -- Padding scripts added -- #
             for output in recursFiles:
                 if re.match(blockdirs, output):
                     continue
                 else:
                     with fileinput.input(output, inplace=True) as inputFile:
-                        checkPassing = 0
-
                         for eachLine in inputFile:
                             print(eachLine)
                             if eachLine == "\n":
                                 continue
                             else:
                                 if codeArg == "python":
-                                    spaces          = len(eachLine) - len(eachLine.lstrip()) # Check line indent
-                                    noAddScript     = r"(^[\#]+.*)|(\@|\s+\@)|(\s+return)"
-                                    ruleAddScript   = r".+\:\s+"
+                                    spaces                  = len(eachLine) - len(eachLine.lstrip()) # Check line indent
+                                    noAddScript             = r"(^[\#]+.*)|(\@|\s+\@)|(\s+return)|(\s+#\s{1,10}\w+)"
+                                    addIndentScript         = r".*\:{1}\s"
+                                    checkAddIndentScript    = r".*\:{1}\s\w+"
 
-                                    # -- Check code in """ or ''' -- #
-                                    if "\"\"\"" in eachLine or "\'\'\'" in eachLine:
-                                        checkPassing += 1
+                                    # -- Check if ',' char or '\' char,in end line -- #
+                                    listCheckEndLine = []
+                                    
+                                    for i in eachLine:
+                                        listCheckEndLine.append(i)
+                                    
+                                    if "," in listCheckEndLine[-2] or "\\" in listCheckEndLine[-2]:
                                         continue
 
-                                    if checkPassing == 1:
+                                    # -- Check code between """ or ''' -- #
+                                    if '\"\"\"' in eachLine or "\'\'\'" in eachLine:
+                                        checkPassing += 1
+                
+                                    if checkPassing == 1: # Loop until the next """ or ''' 
                                         continue
                                     else:
                                         checkPassing = 0
 
-                                        if re.match(noAddScript, eachLine) is not None:
-                                            continue
-                                        elif re.match(ruleAddScript, eachLine) is not None:
-                                            if spaces == 0:
-                                                print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg),"    "))
-                                                countScriptsAdded += 1
-                                            elif spaces == 4:
-                                                print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg), "        "))
-                                                countScriptsAdded += 1
-                                            elif spaces == 8:
-                                                print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg), "            "))
-                                                countScriptsAdded += 1
-                                            elif spaces == 12:
-                                                print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg), "                "))
-                                                countScriptsAdded += 1
-                                            else:
-                                                continue
-                                        else:
-                                            if spaces == 0:
-                                                print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg),""))
-                                                countScriptsAdded += 1
-                                            elif spaces == 4:
-                                                print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg), "    "))
-                                                countScriptsAdded += 1
-                                            elif spaces == 8:
-                                                print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg), "        "))
-                                                countScriptsAdded += 1
-                                            elif spaces == 12:
-                                                print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg), "            "))
-                                                countScriptsAdded += 1
-                                            else:
-                                                continue
-                                        
-                                else:
+                                if re.match(noAddScript, eachLine) is not None:
                                     continue
+                                elif re.match(addIndentScript, eachLine) is not None:
+                                    if re.match(checkAddIndentScript, eachLine) is not None:
+                                        continue
+                                    else:
+                                        if spaces == 0:
+                                            print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg),"    "))
+                                            countScriptsAdded += 1
+                                        elif spaces == 4:
+                                            print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg), "        "))
+                                            countScriptsAdded += 1
+                                        elif spaces == 8:
+                                            print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg), "            "))
+                                            countScriptsAdded += 1
+                                        elif spaces == 12:
+                                            print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg), "                "))
+                                            countScriptsAdded += 1
+                                        else:
+                                            continue
+                                else:
+                                    if spaces == 0:
+                                        print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg),""))
+                                        countScriptsAdded += 1
+                                    elif spaces == 4:
+                                        print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg), "    "))
+                                        countScriptsAdded += 1
+                                    elif spaces == 8:
+                                        print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg), "        "))
+                                        countScriptsAdded += 1
+                                    elif spaces == 12:
+                                        print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg), "            "))
+                                        countScriptsAdded += 1
+                                    else:
+                                        continue
                                 
-            print("-> {0} scripts added".format(countScriptsAdded))
-
             # -- Check padding has added in output script -- #
             for output in recursFiles:
                 if re.match(blockdirs, output):
@@ -373,10 +386,10 @@ class Padding:
             
             countLineAdded = checkLine - countLine
 
-            print("-> {0} lines added\n".format(countLineAdded))
-
             if checkLine > countLine:
-                if (self.remove.NewLines(oneFileArg, codeArg, outputArg) == 0):
+                print("-> {0} scripts added\n".format(countScriptsAdded))
+                print("-> {0} lines added\n".format(countLineAdded))
+                if (self.remove.LineBreaks(oneFileArg, codeArg, outputArg) == 0):
                     return EXIT_SUCCESS
                 else:
                     return EXIT_FAILURE
