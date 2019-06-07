@@ -43,10 +43,10 @@
 
 ## Examples
 #### Python target file(s):
-- Multiple files basic: `python3.x intensio_obfuscator.py -d -i test/python/multiplefiles/basic/input/basicRAT -c python -o test/python/multiplefiles/basic/output/basicRAT -m lower -r -rm`
+- Multiple files basic: `python3.x intensio/intensio_obfuscator.py -d -i intensio/test/python/multiplefiles/basic/input/basicRAT -c python -o intensio/test/python/multiplefiles/basic/output/basicRAT -m lower -r -rm`
     - [source directory of project](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/multiplefiles/basic/input/basicRAT)
     - [output directory of project](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/multiplefiles/basic/output/basicRAT)
-- Multiple files advanced: `python3.x intensio_obfuscator.py -d -i test/python/multiplefiles/advanced/input/basicRAT -c python -o test/python/multiplefiles/advanced/output/basicRAT -m high -r -p -rm`
+- Multiple files advanced: `python3.x intensio/intensio_obfuscator.py -d -i intensio/test/python/multiplefiles/advanced/input/basicRAT -c python -o intensio/test/python/multiplefiles/advanced/output/basicRAT -m high -r -p -rm`
     - [source directory](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/multiplefiles/advanced/input/basicRAT)
     - [output directory](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/multiplefiles/advanced/output/basicRAT)
 
