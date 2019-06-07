@@ -1,6 +1,6 @@
 ################### ONLY FOR TEST CODE IN EXAMPLE ###################
 
-########### variables  ###########
+########### variables ###########
 cmd
 conn
 
