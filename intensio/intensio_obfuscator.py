@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+# https://github.com/Hnfull/Intensio-Obfuscator
+
 """
 
  /$$$$$$             /$$                                   /$$                  /$$$$$$  /$$        /$$$$$$                                           /$$
@@ -23,6 +25,7 @@
 -p, --padding           -> activate the 'padding' obfuscation feature.
 -rm, --remove           -> activate the 'remove' obfuscation feature.
 -s, --secret            -> activate the 'secret' bullshit feature.
+
 
 """
 
@@ -78,7 +81,7 @@ def main():
                     else:
                         sys.exit(ERROR_INVALID_FUNCTION)
 
-                print("\n\n******************* [ Analyze process and set up environment ] *******************\n")
+                print("\n\n*********************** [ Analyze and setup environment ] ***********************\n")
                 # -- Analysis and set up of the work environment -- #
                 if args.GetArgsValue().code:
                     if re.match(r"^python$", args.GetArgsValue().code):
@@ -88,7 +91,7 @@ def main():
                             print("[+] Analyze input argument '{0}' -> Successful".format(args.GetArgsValue().input))
 
                             if (analyze.OutputAvailable(args.GetArgsValue().onefile, args.GetArgsValue().input, args.GetArgsValue().code, args.GetArgsValue().output) == EXIT_SUCCESS):
-                                print("[+] Analyze and set up environment ouput argument '{0}' -> Successful".format(args.GetArgsValue().output))
+                                print("[+] Analyze and setup output argument environment '{0}' -> Successful".format(args.GetArgsValue().output))
 
                                 if args.GetArgsValue().mixer:
                                     if re.match(r"(^lower$)|(^medium$)|(^high$)", args.GetArgsValue().mixer):
@@ -96,41 +99,38 @@ def main():
                                             print("\n[-] Need at least one argument [-r --replace] or [-p --padding] or [-rm -remove]")
                                             sys.exit(ERROR_BAD_ARGUMENTS)
                                         else:
-                                            print("\n\n************************* [ Replace Obfuscation process ] ************************\n")
-                                            # -- Replace obfuscation mode -- #
+                                            print("\n\n***************************** [ Obfuscation Replace ] ****************************\n")
                                             if args.GetArgsValue().replace:
                                                 replace = Replace()
 
                                                 if (replace.VarsDefinedByUser(args.GetArgsValue().onefile, args.GetArgsValue().code, args.GetArgsValue().output, args.GetArgsValue().mixer) == EXIT_SUCCESS):
-                                                    print("[+] Replace variables -> Successful")
+                                                    print("[+] Obfuscation Replace -> Successful")
                                                 else:
-                                                    print("[-] Replace variables -> Failed")
+                                                    print("[-] Obfuscation Replace -> Failed")
                                             else:
-                                                print("[!] Replace obfuscation mode no asked !")
+                                                print("[!] Obfuscation Replace no asked !")
 
-                                            # -- Padding obfuscation mode -- #
-                                            print("\n\n*********************** [ Padding Obfuscation process ] *************************\n")
+                                            print("\n\n***************************** [ Obfuscation Padding ] ****************************\n")
                                             if args.GetArgsValue().padding:
                                                 paddingScripts = Padding()
 
                                                 if (paddingScripts.AddScripts(args.GetArgsValue().onefile, args.GetArgsValue().code, args.GetArgsValue().output, args.GetArgsValue().mixer) == EXIT_SUCCESS):
-                                                    print("[+] Added Padding in code with many scripts -> Successful")
+                                                    print("[+] Obfuscation Padding -> Successful")
                                                 else:
-                                                    print("[-] Added Padding in code with many scripts -> Failed")
+                                                    print("[-] Obfuscation Padding -> Failed")
                                             else:
-                                                print("[!] Padding obfuscation mode no asked !")
+                                                print("[!] Obfuscation Padding no asked !")
 
-                                            # -- Remove obfuscation mode -- #
-                                            print("\n\n************************ [ Remove Obfuscation process ] **************************\n")
+                                            print("\n\n***************************** [ Obfuscation Remove ] *****************************\n")
                                             if args.GetArgsValue().remove:
                                                 removeData = Remove()
 
                                                 if (removeData.Commentaries(args.GetArgsValue().onefile, args.GetArgsValue().code, args.GetArgsValue().output) == EXIT_SUCCESS):
-                                                    print("[+] Remove commentaries -> Successful\n")
+                                                    print("[+] Obfuscation Remove -> Successful\n")
                                                 else:
-                                                    print("[-] Remove commentaries -> Failed\n")
+                                                    print("[-] Obfuscation Remove -> Failed\n")
                                             else:
-                                                print("[!] Remove obfuscation mode no asked !\n")
+                                                print("[!] Obfuscation Remove no asked !\n")
                                     else:
                                         print("[-] Incorrect level of mixer, [lower - medium - high] only supported\n")
                                         sys.exit(ERROR_INVALID_PARAMETER)

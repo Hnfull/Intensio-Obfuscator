@@ -1,2 +1,0 @@
-exampleVar1
-exampleVar2
