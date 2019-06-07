@@ -229,7 +229,7 @@ class Padding:
                             continue
                         elif re.match(addIndentScript, eachLine) is not None:
                             if re.match(checkAddIndentScript, eachLine) is not None:
-                                        continue
+                                continue
                             else:
                                 if spaces == 0:
                                     print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg),"    "))
