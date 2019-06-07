@@ -6,3 +6,18 @@
 - Repository created
 
 ----------------------------------
+
+---------- [07-06-2019] ----------
+
+- Version 1.0.1
+- Add include_python_words.txt
+- Add exclude_python_words.txt
+- Allow execute each obfuscation features separately
+- Correcting spelling errors in README and commentaries
+- Code improvement
+- Adding rules to replacement of variables - classes - functions
+- Adding rules to padding random scripts 
+- Change one file example and multiple files example (larger project)
+- README.md file improvement
+
+----------------------------------
