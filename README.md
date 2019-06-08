@@ -1,15 +1,20 @@
-# Intensio-Obfuscator (unstable version)
+# Intensio-Obfuscator (Beta)
 
 ![](https://img.shields.io/badge/Python-3.6-blue.svg)
 ![](https://img.shields.io/badge/Version-1.0.1-green.svg)
 
-- Takes a python source code and turns it into an obfuscated python code,  replace name of variables - classes - functions to random chars and defined length, removes comments, line breaks and add to each line a random script with an always differents values.
+- Takes a python source code and transform it into an obfuscated python code, replace name of variables - classes - functions to random chars and defined length, removes comments, line breaks and add to each line a random script with an always differents values.
 
 ## Requirement
 - Python >= 3.5
 
 ## Files supported
 - Files written in python 2.x and 3.x 
+
+## Installation
+`git clone https://github.com/Hnfull/Intensio-Obfuscator.git`
+
+`cd Intensio-Obfuscator/intensio/` 
 
 ## Features
 | Feature | Description |
@@ -43,12 +48,14 @@
 
 ## Examples
 #### Python target file(s):
-- Multiple files basic: `python3.x intensio/intensio_obfuscator.py -d -i intensio/test/python/multiplefiles/basic/input/basicRAT -c python -o intensio/test/python/multiplefiles/basic/output/basicRAT -m lower -r -rm`
+- Multiple files basic: `python3.x intensio_obfuscator.py -d -i test/python/multiplefiles/basic/input/basicRAT -c python -o test/python/multiplefiles/basic/output/basicRAT -m lower -r -rm`
     - [source directory of project](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/multiplefiles/basic/input/basicRAT)
     - [output directory of project](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/multiplefiles/basic/output/basicRAT)
-- Multiple files advanced: `python3.x intensio/intensio_obfuscator.py -d -i intensio/test/python/multiplefiles/advanced/input/basicRAT -c python -o intensio/test/python/multiplefiles/advanced/output/basicRAT -m high -r -p -rm`
+- Multiple files advanced: `python3.x intensio_obfuscator.py -d -i test/python/multiplefiles/advanced/input/basicRAT -c python -o test/python/multiplefiles/advanced/output/basicRAT -m high -r -p -rm`
     - [source directory of project](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/multiplefiles/advanced/input/basicRAT)
     - [output directory of project](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/multiplefiles/advanced/output/basicRAT)
+
+- If it's one file only, the command is same that for multiple file, just do not pointed a directory but a python file directly on 'source' and 'output' parameters, then change `-d` parameter into `-f` parameter 
 
 ## Possible malfunctions
 - If a variable - class - function has an identical name with a word between ' ' or " " in print() function, your text will have the same value that the mixer variables - class - function.
