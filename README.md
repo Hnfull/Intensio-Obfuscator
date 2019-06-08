@@ -58,7 +58,6 @@
 ## Todo
 - Version 1.0.1-x:
     - Code optimization
-    - Obfuscate files name
     - Fix bugs and problems
     - Improved features already present
     
