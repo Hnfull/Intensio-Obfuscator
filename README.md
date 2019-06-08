@@ -41,25 +41,25 @@
 -rm, --remove           -> activate the 'remove' obfuscation feature.
 -s, --secret            -> activate the 'secret' bullshit feature.
 ```
-- If you want exclude python variables - classes - functions edit `intensio/exclude_python_words.txt`
-- If you want to include python variables - classes - functions that are not took in the 'replace' feature, edit `intensio/include_python_words.txt`
+- If you want exclude python variables - classes - functions which will be taken by the 'replace' feature, edit `intensio/exclude_python_words.txt`
+- If you want to include python variables - classes - functions that are not included when launching the 'replace' feature, edit intensio/include_python_words.txt`
 
 **Do not define identically your names of local variables - classes - functions to python keywords or names of functions - classes of imported python libraries !!**
 
 ## Examples
 #### Python target file(s):
 - Multiple files basic: `python3.x intensio_obfuscator.py -d -i test/python/multiplefiles/basic/input/basicRAT -c python -o test/python/multiplefiles/basic/output/basicRAT -m lower -r -rm`
-    - [source directory of project](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/multiplefiles/basic/input/basicRAT)
-    - [output directory of project](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/multiplefiles/basic/output/basicRAT)
+    - [Source directory of project](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/multiplefiles/basic/input/basicRAT)
+    - [Output directory of project](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/multiplefiles/basic/output/basicRAT)
 - Multiple files advanced: `python3.x intensio_obfuscator.py -d -i test/python/multiplefiles/advanced/input/basicRAT -c python -o test/python/multiplefiles/advanced/output/basicRAT -m high -r -p -rm`
-    - [source directory of project](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/multiplefiles/advanced/input/basicRAT)
-    - [output directory of project](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/multiplefiles/advanced/output/basicRAT)
+    - [Source directory of project](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/multiplefiles/advanced/input/basicRAT)
+    - [Output directory of project](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/multiplefiles/advanced/output/basicRAT)
 
-- If it's one file only, the command is same that for multiple file, just do not pointed a directory but a python file directly on 'source' and 'output' parameters, then change `-d` parameter into `-f` parameter 
+- If it's one file only, the command is same that for multiple file, just do not pointed a directory but a python file directly for `-i` and `-o` parameters, then change `-d` parameter into `-f` parameter
 
 ## Possible malfunctions
-- If a variable - class - function has an identical name with a word between ' ' or " " in print() function, your text will have the same value that the mixer variables - class - function.
--  If a variable - class - function has an identical name with a word  in after '#' (commentary) your text will have the same value that the mixer variables - class - function, but if between """ or ''' without  a variables before, no replacing is performed.
+- If a variable - class - function has an identical name with a word between `' '` or `" "` in `print()` function, your text will have the same value that the mixer variables - class - function.
+-  If a variable - class - function has an identical name with a word  in after `#` (commentary) your text will have the same value that the mixer variables - class - function, but if between `"""` or `'''` without  a variables before, no replacing is performed.
 - If you named your variables - classes - functions in the same way as python keywords or  names of functions/class of imported python libraries, an error may appear. Edit `intensio/excluded_python_words.txt` to add the variables not to obfuscate or change your names of local variables - classes - fuctions, if your variables - classes - functions  have the same name as a keyword it, he will be obfuscated and errors will appear.
 
 ## Todo
