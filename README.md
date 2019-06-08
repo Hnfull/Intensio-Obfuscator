@@ -42,7 +42,7 @@
 -s, --secret            -> activate the 'secret' bullshit feature.
 ```
 - If you want exclude python variables - classes - functions which will be taken by the 'replace' feature, edit `intensio/exclude_python_words.txt`
-- If you want to include python variables - classes - functions that are not included when launching the 'replace' feature, edit intensio/include_python_words.txt`
+- If you want to include python variables - classes - functions that are not included when launching the 'replace' feature, edit `intensio/include_python_words.txt`
 
 **Do not define identically your names of local variables - classes - functions to python keywords or names of functions - classes of imported python libraries !!**
 
