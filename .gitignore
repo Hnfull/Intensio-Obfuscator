@@ -1,0 +1,6 @@
+intensio/lolz/__pycache__
+intensio/lolz/*.pyc
+intensio/obfuscation/__pycache__
+intensio/obfuscation/*.pyc
+intensio/utils/__pycache__
+intensio/utils/*.pyc
