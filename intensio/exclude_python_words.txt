@@ -20,7 +20,7 @@ platform
 processor
 architecture
 
-#####################################################################
+########################### DO NOT MODIFY IT #########################
 
 ##### default python keywords #####
 False
@@ -56,3 +56,5 @@ try
 while
 with
 yield
+
+############### PUT YOUR EXCLUDE VARS FUNCS CLASSES ##################
