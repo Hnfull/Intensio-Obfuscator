@@ -47,8 +47,8 @@
     - [source directory of project](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/multiplefiles/basic/input/basicRAT)
     - [output directory of project](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/multiplefiles/basic/output/basicRAT)
 - Multiple files advanced: `python3.x intensio/intensio_obfuscator.py -d -i intensio/test/python/multiplefiles/advanced/input/basicRAT -c python -o intensio/test/python/multiplefiles/advanced/output/basicRAT -m high -r -p -rm`
-    - [source directory](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/multiplefiles/advanced/input/basicRAT)
-    - [output directory](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/multiplefiles/advanced/output/basicRAT)
+    - [source directory of project](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/multiplefiles/advanced/input/basicRAT)
+    - [output directory of project](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/multiplefiles/advanced/output/basicRAT)
 
 ## Possible malfunctions
 - If a variable - class - function has an identical name with a word between ' ' or " " in print() function, your text will have the same value that the mixer variables - class - function.
