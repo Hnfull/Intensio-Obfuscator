@@ -5,3 +5,4 @@ cmd
 conn
 
 ############## PUT YOUR VARS-FUNCS-CLASSES TO EXCLUDE ################
+yourVar1
