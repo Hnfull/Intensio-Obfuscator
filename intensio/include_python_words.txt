@@ -4,5 +4,5 @@
 cmd
 conn
 
-############## PUT YOUR VARS-FUNCS-CLASSES TO EXCLUDE ################
+############## PUT YOUR VARS-FUNCS-CLASSES TO INCLUDE ################
 yourVar1
