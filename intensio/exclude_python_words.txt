@@ -58,4 +58,4 @@ with
 yield
 
 ############### PUT YOUR VARS-FUNCS-CLASSES TO EXCLUDE #################
-yourVars1
+yourVar1
