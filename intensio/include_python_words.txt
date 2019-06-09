@@ -1,7 +1,7 @@
-################### ONLY FOR TEST CODE IN EXAMPLE ###################
+################## ONLY FOR THE BASIC RAT TEST CODE ##################
 
 ########### variables ###########
 cmd
 conn
 
-############### PUT YOUR EXCLUDE VARS FUNCS CLASSES ##################
+############## PUT YOUR VARS-FUNCS-CLASSES TO EXCLUDE ################
