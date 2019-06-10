@@ -24,8 +24,6 @@
 -r, --replace           -> activate the 'replace' obfuscation feature.
 -p, --padding           -> activate the 'padding' obfuscation feature.
 -rm, --remove           -> activate the 'remove' obfuscation feature.
--s, --secret            -> activate the 'secret' bullshit feature.
-
 
 """
 
@@ -47,8 +45,7 @@ def main():
         sys.exit(0)
 
     try:
-        from core.lolz.intensio_bullshit import BestFunctionOfTheWorld
-        from core.lolz.intensio_design_skill import INTENSIO_BANNER
+        from core.utils.intensio_design import INTENSIO_BANNER
         from core.utils.intensio_utils import Utils
         from core.utils.intensio_usage import Args
         from core.utils.intensio_error import EXIT_SUCCESS, ERROR_BAD_ENVIRONMENT, ERROR_INVALID_PARAMETER, ERROR_BAD_ARGUMENTS,\
@@ -64,7 +61,7 @@ def main():
     args    = Args()
     utils   = Utils()
 
-    if len(sys.argv) > 1 and len(sys.argv) <= 14:
+    if len(sys.argv) > 1 and len(sys.argv) <= 13:
         if args.GetArgsValue().onefile == False and args.GetArgsValue().multiplefiles == False:
             print("[-] [-f --onefile] or [-d --multiple] argument unspecifed")
             sys.exit(ERROR_BAD_ARGUMENTS)
@@ -74,12 +71,6 @@ def main():
                 for line in INTENSIO_BANNER.split("\n"):
                     time.sleep(0.05)
                     print(line)
-
-                if args.GetArgsValue().secret:
-                    if (BestFunctionOfTheWorld("YES-YES-YES!!") == EXIT_SUCCESS):
-                        pass
-                    else:
-                        sys.exit(ERROR_INVALID_FUNCTION)
 
                 print("\n\n*********************** [ Analyze and setup environment ] ***********************\n")
                 # -- Analysis and set up of the work environment -- #

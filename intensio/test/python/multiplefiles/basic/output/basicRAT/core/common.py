@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
-def SVSoADWqihFxbJjTcDmCsIbhUruPAHkl(UGqPLyjDEGSuVJpmlzuSvPOVkElZldOV):
-    hscswvelsmekdrdqbSsXHYBuqgXbSmcs = 0
-    while UGqPLyjDEGSuVJpmlzuSvPOVkElZldOV:
-        hscswvelsmekdrdqbSsXHYBuqgXbSmcs = hscswvelsmekdrdqbSsXHYBuqgXbSmcs << 8
-        hscswvelsmekdrdqbSsXHYBuqgXbSmcs += ord(UGqPLyjDEGSuVJpmlzuSvPOVkElZldOV[-1])
-        UGqPLyjDEGSuVJpmlzuSvPOVkElZldOV = UGqPLyjDEGSuVJpmlzuSvPOVkElZldOV[:-1]
-    return hscswvelsmekdrdqbSsXHYBuqgXbSmcs
-def RVNCwkPSBIUdLcMWFGqkfZVSuUtdnmJK(hscswvelsmekdrdqbSsXHYBuqgXbSmcs):
-    XQscUmwsqfTaichXZIRAKxqcojkAxStt = ''
-    while hscswvelsmekdrdqbSsXHYBuqgXbSmcs:
-        XQscUmwsqfTaichXZIRAKxqcojkAxStt += chr(hscswvelsmekdrdqbSsXHYBuqgXbSmcs & 0xff)
-        hscswvelsmekdrdqbSsXHYBuqgXbSmcs = hscswvelsmekdrdqbSsXHYBuqgXbSmcs >> 8
-    return XQscUmwsqfTaichXZIRAKxqcojkAxStt
+def oAbvfNijCePrdILZuRYdErWukqlaIMDq(LKuvXToGAzppbUoDzTJdLLwDAlWqXWgK):
+    RdbcCUIsZtHxsXlDMItGlnJDYoKYZhIy = 0
+    while LKuvXToGAzppbUoDzTJdLLwDAlWqXWgK:
+        RdbcCUIsZtHxsXlDMItGlnJDYoKYZhIy = RdbcCUIsZtHxsXlDMItGlnJDYoKYZhIy << 8
+        RdbcCUIsZtHxsXlDMItGlnJDYoKYZhIy += ord(LKuvXToGAzppbUoDzTJdLLwDAlWqXWgK[-1])
+        LKuvXToGAzppbUoDzTJdLLwDAlWqXWgK = LKuvXToGAzppbUoDzTJdLLwDAlWqXWgK[:-1]
+    return RdbcCUIsZtHxsXlDMItGlnJDYoKYZhIy
+def oXvupAOtxujXjiEFXyaZWdNCaZzSAJGC(RdbcCUIsZtHxsXlDMItGlnJDYoKYZhIy):
+    VSfekysIJftZOWhcIannlXwPusthjzTe = ''
+    while RdbcCUIsZtHxsXlDMItGlnJDYoKYZhIy:
+        VSfekysIJftZOWhcIannlXwPusthjzTe += chr(RdbcCUIsZtHxsXlDMItGlnJDYoKYZhIy & 0xff)
+        RdbcCUIsZtHxsXlDMItGlnJDYoKYZhIy = RdbcCUIsZtHxsXlDMItGlnJDYoKYZhIy >> 8
+    return VSfekysIJftZOWhcIannlXwPusthjzTe

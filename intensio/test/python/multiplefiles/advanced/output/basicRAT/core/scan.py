@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
 import socket
-WgTzBwNTkKlPionvaxdFieneKFgNFqgHaWkJblPnLUtFdTGchaAxqBBNCAJxHQmhCcmEaUWXNJGlSSfQvsQNFGzIkSxwNakSTNsvlcfqunXLtxZhpPMlwNwMFvIMgPPR = [ 21, 22, 23, 25, 53, 80, 110, 111, 135, 139, 143, 179, 443, 445,
+YCjKzWkANMqdaXiSLSpFrloaGYqLeDgS = [ 21, 22, 23, 25, 53, 80, 110, 111, 135, 139, 143, 179, 443, 445,
 514, 993, 995, 1723, 3306, 3389, 5900, 8000, 8080, 8443, 8888 ]
-def hsnzfMPMxiLWuAvbRfMJsZJvoZcnNlIZuRokaxaGzJfqTrhshQzvIQuvEBvjRDvpCarzWiPImnvuFDfSVmwUXEWVWEIWRfwtMzJElftdAAblSdDrAyExuGqSZJWKtOZm(ip):
+def eAOPXLqeIRVTvCYSGAofEFfYvLiVtZNL(ip):
     try:
         socket.inet_aton(ip)
     except socket.error:
         return 'Error: Invalid IP address.'
-    vtXTSTZlvxzlOEaaJTHUVpJLUTeuioprHYhbNJepRYPkomDLPzWnDaxQxjHmGjQkYUiUIdUrjgzbifLbRSkUgoYQgYXiryHmwqeCbeITOeIEdBzWYfaiTqrgPbzlUHOQ = ''
-    for OwWrtuTZVPJaDiutNiwtGnhNrkQnsKQuSOlsOFtKhGipiodKwbLOvIqgKLOowKgFeLIsrcpZGFrMnMLIieSTiWgXIhEgpszsIcBQtqOjoflsyVBtbtcYJZlSRcSYBpMO in WgTzBwNTkKlPionvaxdFieneKFgNFqgHaWkJblPnLUtFdTGchaAxqBBNCAJxHQmhCcmEaUWXNJGlSSfQvsQNFGzIkSxwNakSTNsvlcfqunXLtxZhpPMlwNwMFvIMgPPR:
-        fogQpIsqMVLMDenSiZqmpoXxqWbwozoKohGXYURimgyJLQHZGToNWtXimCYdsMzPnWnNOrkYqmmhwtkUquUSwBXszASJbuMMvtOQhLnFumHgTMVjHwHPXnyuTmwpfIrR = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        ArMydhWHjEsfxXPsTKQMPCvgkiGKdjazzEZyuSgIVKqrNcgkdOscPNnUHzJfOKDbvbkqZpGqAJErZwnlOLCFhVbJwEqKpWbgqImxOGzpetIuFocAkgsdzTeJaYgZXscN = fogQpIsqMVLMDenSiZqmpoXxqWbwozoKohGXYURimgyJLQHZGToNWtXimCYdsMzPnWnNOrkYqmmhwtkUquUSwBXszASJbuMMvtOQhLnFumHgTMVjHwHPXnyuTmwpfIrR.connect_ex((ip, OwWrtuTZVPJaDiutNiwtGnhNrkQnsKQuSOlsOFtKhGipiodKwbLOvIqgKLOowKgFeLIsrcpZGFrMnMLIieSTiWgXIhEgpszsIcBQtqOjoflsyVBtbtcYJZlSRcSYBpMO))
+    xmEHmdwPzUStwSwmNfSpKeYWgMQDiyLb = ''
+    for wYEJqwDMunOyDEMToZxMnkddFvWYXsFD in YCjKzWkANMqdaXiSLSpFrloaGYqLeDgS:
+        KLBoUVtzkpdvINqmcTAkJDqOArHeoAwi = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        RaRAhKaXFuBUkWSffajyoUGreJvXWIJv = KLBoUVtzkpdvINqmcTAkJDqOArHeoAwi.connect_ex((ip, wYEJqwDMunOyDEMToZxMnkddFvWYXsFD))
         socket.setdefaulttimeout(0.5)
-        kxeVfooyNPuNUgpsJOAEiwbqdNkKGpbEiBqnxHiLQpEzAPGDnbpjIVOojLskGyCawTvlvQewCInAULcfzgaPivngHRwGCKnmgKpqPenzbdUSeRkDdYlNCkUpMJoRrDFz = 'open' if not ArMydhWHjEsfxXPsTKQMPCvgkiGKdjazzEZyuSgIVKqrNcgkdOscPNnUHzJfOKDbvbkqZpGqAJErZwnlOLCFhVbJwEqKpWbgqImxOGzpetIuFocAkgsdzTeJaYgZXscN else 'closed'
-        vtXTSTZlvxzlOEaaJTHUVpJLUTeuioprHYhbNJepRYPkomDLPzWnDaxQxjHmGjQkYUiUIdUrjgzbifLbRSkUgoYQgYXiryHmwqeCbeITOeIEdBzWYfaiTqrgPbzlUHOQ += '{:>5}/tcp {:>7}\n'.format(OwWrtuTZVPJaDiutNiwtGnhNrkQnsKQuSOlsOFtKhGipiodKwbLOvIqgKLOowKgFeLIsrcpZGFrMnMLIieSTiWgXIhEgpszsIcBQtqOjoflsyVBtbtcYJZlSRcSYBpMO, kxeVfooyNPuNUgpsJOAEiwbqdNkKGpbEiBqnxHiLQpEzAPGDnbpjIVOojLskGyCawTvlvQewCInAULcfzgaPivngHRwGCKnmgKpqPenzbdUSeRkDdYlNCkUpMJoRrDFz)
-    return vtXTSTZlvxzlOEaaJTHUVpJLUTeuioprHYhbNJepRYPkomDLPzWnDaxQxjHmGjQkYUiUIdUrjgzbifLbRSkUgoYQgYXiryHmwqeCbeITOeIEdBzWYfaiTqrgPbzlUHOQ.rstrip()
+        KIZpojRgKeDRYKswCRAxNqncvoLQmFhV = 'open' if not RaRAhKaXFuBUkWSffajyoUGreJvXWIJv else 'closed'
+        xmEHmdwPzUStwSwmNfSpKeYWgMQDiyLb += '{:>5}/tcp {:>7}\n'.format(wYEJqwDMunOyDEMToZxMnkddFvWYXsFD, KIZpojRgKeDRYKswCRAxNqncvoLQmFhV)
+    return xmEHmdwPzUStwSwmNfSpKeYWgMQDiyLb.rstrip()

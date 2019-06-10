@@ -60,12 +60,6 @@ class Args:
                                 default=False,
                                 help="activate the 'remove' obfuscation feature"
                                 )
-        self.parser.add_argument(
-                                "-s", "--secret",
-                                action="store_true",
-                                default=False,
-                                help="activate the 'secret' bullshit feature"
-                                )
 
     def GetArgHelp(self):
         return self.parser.print_help()
