@@ -24,44 +24,44 @@ class Padding:
 
     def ScriptsGenerator(self, codeArg, mixerLevelArg):
         if mixerLevelArg == "lower":
-            varFuckingRandom1   = self.mixer.GetStringMixer("lower")
-            varFuckingRandom2   = self.mixer.GetStringMixer("lower")
-            varFuckingRandom3   = self.mixer.GetStringMixer("lower")
-            varFuckingRandom4   = self.mixer.GetStringMixer("lower")
-            varFuckingRandom5   = self.mixer.GetStringMixer("lower")
-            varFuckingRandom6   = self.mixer.GetStringMixer("lower")
-            varFuckingRandom7   = self.mixer.GetStringMixer("lower")
-            varFuckingRandom8   = self.mixer.GetStringMixer("lower")
-            varFuckingRandom9   = self.mixer.GetStringMixer("lower")
-            varFuckingRandom10  = self.mixer.GetStringMixer("lower")
-            varFuckingRandom11  = self.mixer.GetStringMixer("lower")
-            varFuckingRandom12  = self.mixer.GetStringMixer("lower")
+            varRandom1   = self.mixer.GetStringMixer("lower")
+            varRandom2   = self.mixer.GetStringMixer("lower")
+            varRandom3   = self.mixer.GetStringMixer("lower")
+            varRandom4   = self.mixer.GetStringMixer("lower")
+            varRandom5   = self.mixer.GetStringMixer("lower")
+            varRandom6   = self.mixer.GetStringMixer("lower")
+            varRandom7   = self.mixer.GetStringMixer("lower")
+            varRandom8   = self.mixer.GetStringMixer("lower")
+            varRandom9   = self.mixer.GetStringMixer("lower")
+            varRandom10  = self.mixer.GetStringMixer("lower")
+            varRandom11  = self.mixer.GetStringMixer("lower")
+            varRandom12  = self.mixer.GetStringMixer("lower")
         elif mixerLevelArg == "medium":
-            varFuckingRandom1   = self.mixer.GetStringMixer("medium")
-            varFuckingRandom2   = self.mixer.GetStringMixer("medium")
-            varFuckingRandom3   = self.mixer.GetStringMixer("medium")
-            varFuckingRandom4   = self.mixer.GetStringMixer("medium")
-            varFuckingRandom5   = self.mixer.GetStringMixer("medium")
-            varFuckingRandom6   = self.mixer.GetStringMixer("medium")
-            varFuckingRandom7   = self.mixer.GetStringMixer("medium")
-            varFuckingRandom8   = self.mixer.GetStringMixer("medium")
-            varFuckingRandom9   = self.mixer.GetStringMixer("medium")
-            varFuckingRandom10  = self.mixer.GetStringMixer("medium")
-            varFuckingRandom11  = self.mixer.GetStringMixer("medium")
-            varFuckingRandom12  = self.mixer.GetStringMixer("medium")
+            varRandom1   = self.mixer.GetStringMixer("medium")
+            varRandom2   = self.mixer.GetStringMixer("medium")
+            varRandom3   = self.mixer.GetStringMixer("medium")
+            varRandom4   = self.mixer.GetStringMixer("medium")
+            varRandom5   = self.mixer.GetStringMixer("medium")
+            varRandom6   = self.mixer.GetStringMixer("medium")
+            varRandom7   = self.mixer.GetStringMixer("medium")
+            varRandom8   = self.mixer.GetStringMixer("medium")
+            varRandom9   = self.mixer.GetStringMixer("medium")
+            varRandom10  = self.mixer.GetStringMixer("medium")
+            varRandom11  = self.mixer.GetStringMixer("medium")
+            varRandom12  = self.mixer.GetStringMixer("medium")
         elif mixerLevelArg == "high":
-            varFuckingRandom1   = self.mixer.GetStringMixer("high")
-            varFuckingRandom2   = self.mixer.GetStringMixer("high")
-            varFuckingRandom3   = self.mixer.GetStringMixer("high")
-            varFuckingRandom4   = self.mixer.GetStringMixer("high")
-            varFuckingRandom5   = self.mixer.GetStringMixer("high")
-            varFuckingRandom6   = self.mixer.GetStringMixer("high")
-            varFuckingRandom7   = self.mixer.GetStringMixer("high")
-            varFuckingRandom8   = self.mixer.GetStringMixer("high")
-            varFuckingRandom9   = self.mixer.GetStringMixer("high")
-            varFuckingRandom10  = self.mixer.GetStringMixer("high")
-            varFuckingRandom11  = self.mixer.GetStringMixer("high")
-            varFuckingRandom12  = self.mixer.GetStringMixer("high")
+            varRandom1   = self.mixer.GetStringMixer("high")
+            varRandom2   = self.mixer.GetStringMixer("high")
+            varRandom3   = self.mixer.GetStringMixer("high")
+            varRandom4   = self.mixer.GetStringMixer("high")
+            varRandom5   = self.mixer.GetStringMixer("high")
+            varRandom6   = self.mixer.GetStringMixer("high")
+            varRandom7   = self.mixer.GetStringMixer("high")
+            varRandom8   = self.mixer.GetStringMixer("high")
+            varRandom9   = self.mixer.GetStringMixer("high")
+            varRandom10  = self.mixer.GetStringMixer("high")
+            varRandom11  = self.mixer.GetStringMixer("high")
+            varRandom12  = self.mixer.GetStringMixer("high")
 
         # ---------- Python random scripts ---------- #
         if codeArg == "python":
@@ -83,10 +83,10 @@ class Padding:
                                                         {2} = {1}
                                                         if {2} in {1}:
                                                             {1} = {4}
-                                                    """).format(varFuckingRandom1, varFuckingRandom2, varFuckingRandom3, \
-                                                        varFuckingRandom4, varFuckingRandom5, varFuckingRandom6, \
-                                                        varFuckingRandom7, varFuckingRandom8, varFuckingRandom9, \
-                                                        varFuckingRandom10)
+                                                    """).format(varRandom1, varRandom2, varRandom3, \
+                                                        varRandom4, varRandom5, varRandom6, \
+                                                        varRandom7, varRandom8, varRandom9, \
+                                                        varRandom10)
                 return scriptAssPadding1
 
             # -- script 2 -- #
@@ -98,9 +98,9 @@ class Padding:
                                                         {2} = '{6}'
                                                         {3} = '{7}'
                                                         {3} = {2}
-                                                    """).format(varFuckingRandom1, varFuckingRandom2, varFuckingRandom3, \
-                                                        varFuckingRandom4, varFuckingRandom5, varFuckingRandom6, \
-                                                        varFuckingRandom7, varFuckingRandom8)
+                                                    """).format(varRandom1, varRandom2, varRandom3, \
+                                                        varRandom4, varRandom5, varRandom6, \
+                                                        varRandom7, varRandom8)
                 return scriptAssPadding2
 
             # -- script 3 -- #
@@ -128,10 +128,10 @@ class Padding:
                                                                     {2} = {0}
                                                                 else:
                                                                     {2} = {4}
-                                                    """).format(varFuckingRandom1, varFuckingRandom2, varFuckingRandom3, \
-                                                        varFuckingRandom4, varFuckingRandom5, varFuckingRandom6, \
-                                                        varFuckingRandom7, varFuckingRandom8, varFuckingRandom9, \
-                                                        varFuckingRandom10, varFuckingRandom11, varFuckingRandom12)
+                                                    """).format(varRandom1, varRandom2, varRandom3, \
+                                                        varRandom4, varRandom5, varRandom6, \
+                                                        varRandom7, varRandom8, varRandom9, \
+                                                        varRandom10, varRandom11, varRandom12)
                 return scriptAssPadding3
 
             # -- script 4 -- #
@@ -146,9 +146,9 @@ class Padding:
                                                     else:
                                                         {2} = '{6}'
                                                         {2} = {3}
-                                                    """).format(varFuckingRandom1, varFuckingRandom2, varFuckingRandom3, \
-                                                        varFuckingRandom4, varFuckingRandom5, varFuckingRandom6, \
-                                                        varFuckingRandom7, varFuckingRandom8)
+                                                    """).format(varRandom1, varRandom2, varRandom3, \
+                                                        varRandom4, varRandom5, varRandom6, \
+                                                        varRandom7, varRandom8)
                 return scriptAssPadding4
 
             # -- script 5 -- #
@@ -166,10 +166,10 @@ class Padding:
                                                                 {4} = {0}
                                                             else:
                                                                 {3} = {1}
-                                                    """).format(varFuckingRandom1, varFuckingRandom2, varFuckingRandom3, \
-                                                        varFuckingRandom4, varFuckingRandom5, varFuckingRandom6, \
-                                                        varFuckingRandom7, varFuckingRandom8, varFuckingRandom9, \
-                                                        varFuckingRandom10, varFuckingRandom11, varFuckingRandom12)
+                                                    """).format(varRandom1, varRandom2, varRandom3, \
+                                                        varRandom4, varRandom5, varRandom6, \
+                                                        varRandom7, varRandom8, varRandom9, \
+                                                        varRandom10, varRandom11, varRandom12)
                 return scriptAssPadding5
     
     def AddScripts(self, oneFileArg, codeArg, outputArg, mixerLevelArg):
