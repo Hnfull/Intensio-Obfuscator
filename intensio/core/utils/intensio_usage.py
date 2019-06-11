@@ -30,6 +30,7 @@ class Args:
         self.parser.add_argument(
                                 "-c", "--code",
                                 choices=["python"],
+                                default="python",
                                 help="language used in source file or directory"
                                 )
         self.parser.add_argument(
