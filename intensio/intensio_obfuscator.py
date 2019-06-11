@@ -14,16 +14,16 @@
 |______/|__/  |__/   \___/   \_______/|__/  |__/|_______/ |__/ \______/        \______/ |_______/ |__/      \______/ |_______/  \_______/ \_______/   \___/   \______/ |__/
 
 
--h, --help              -> show this help message and exit.
--f, --onefile           -> if only one file.
--d, --multiplefiles     -> if multiple files (project).
--i, --input             -> source file or directory - if multiple files indicate a directory that contain all your files.
--c, --code              -> language used in source file or directory. value: [python]
--o, --output            -> output file or directory that will be obfuscated - if multiple file indicate a empty directory that will contain all your files.
--m, --mixer             -> length level of variables mix output. values: [lower, medium, high]
--r, --replace           -> activate the 'replace' obfuscation feature.
--p, --padding           -> activate the 'padding' obfuscation feature.
--rm, --remove           -> activate the 'remove' obfuscation feature.
+-h, --help              -> show this help message and exit
+-f, --onefile           -> if only one file
+-d, --multiplefiles     -> if multiple files (project)
+-i, --input             -> source file or directory - if multiple files indicate a directory that contain all your files
+-c, --code              -> language used in source file or directory, default value: [python] possible value: [python]
+-o, --output            -> output file or directory that will be obfuscated - if multiple file indicate a empty directory that will contain all your files
+-m, --mixer             -> length level of variables/classes/functions mix output, default value: medium, possible values: [lower, medium, high]
+-r, --replace           -> activate the 'replace' obfuscation feature
+-p, --padding           -> activate the 'padding' obfuscation feature
+-rm, --remove           -> activate the 'remove' obfuscation feature
 
 """
 
