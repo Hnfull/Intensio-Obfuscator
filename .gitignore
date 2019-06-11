@@ -4,5 +4,8 @@ intensio/core/obfuscation/*.pyc
 intensio/core/utils/*.pyc
 intensio/core/utils/__pycache__
 
+intensio/test/python/multiplefiles/advanced/input/basicRAT/core/*.pyc
 intensio/test/python/multiplefiles/advanced/output/basicRAT/core/*.pyc
+
+intensio/test/python/multiplefiles/basic/input/basicRAT/core/*.pyc
 intensio/test/python/multiplefiles/basic/output/basicRAT/core/*.pyc
