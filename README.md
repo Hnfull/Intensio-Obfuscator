@@ -35,7 +35,7 @@
 | -i, --input  | source file or directory - if multiple files indicate a directory that contain all your files |
 | -c, --code | language used in input file or directory, default value: [python], possible value: [python] |
 | -o, --output | output file or directory that will be obfuscated - if multiple file indicate a empty directory that will contain all your files |
-| -m, --mixer | length level of variables mix output, default value: [medium], possible values: [lower,medium,high] |
+| -m, --mixer | length levels of the number of characters  for output variables /classes/functions, default value: [medium], possible values: [lower, medium, high] |
 | -r, --replace | activate the 'replace' obfuscation feature |
 | -p, --padding | activate the 'padding' obfuscation feature |
 | -rm, --remove | activate the 'remove' obfuscation feature |
