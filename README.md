@@ -2,6 +2,7 @@
 
 ![](https://img.shields.io/badge/Python->=3.5-blue.svg)
 ![](https://img.shields.io/badge/Version-1.0.1-green.svg)
+![](https://img.shields.io/badge/Licence-MIT-red.svg)
 
 - Takes a python source code and transform it into an obfuscated python code, replace name of variables/classes/functions to random chars and defined length, removes comments, line breaks and add to each line a random script with an always differents values.
 
@@ -75,6 +76,9 @@
     
 - Version 1.2.0:
     - Support files written in C++
+
+## License
+- MIT
 
 ## Disclamer
 - Intensio-Obfuscator is for education/research purposes only. The author takes NO responsibility ay for how you choose to use any of the tools provided
