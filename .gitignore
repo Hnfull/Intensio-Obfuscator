@@ -1,11 +1,5 @@
-intensio/core/obfuscation/__pycache__
-intensio/core/obfuscation/*.pyc
+__pycache__/
+*.pyc
 
-intensio/core/utils/*.pyc
-intensio/core/utils/__pycache__
-
-intensio/test/python/multiplefiles/advanced/input/basicRAT/core/*.pyc
-intensio/test/python/multiplefiles/advanced/output/basicRAT/core/*.pyc
-
-intensio/test/python/multiplefiles/basic/input/basicRAT/core/*.pyc
-intensio/test/python/multiplefiles/basic/output/basicRAT/core/*.pyc
+intensio/test/python/basic/input/Intensio-Obfuscator/intensio/test
+intensio/test/python/advanced/input/Intensio-Obfuscator/intensio/test
