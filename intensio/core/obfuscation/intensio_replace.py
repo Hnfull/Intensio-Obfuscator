@@ -7,6 +7,7 @@ import fileinput
 import glob
 import os
 import keyword
+from tqdm import tqdm
 
 from core.obfuscation.intensio_mixer import Mixer
 from core.obfuscation.intensio_remove import Remove
@@ -21,8 +22,8 @@ class Replace:
         self.mixer              = Mixer()
         self.remove             = Remove()
         self.utils              = Utils()
-        self.pythonExcludeWords = "exclude_python_words.txt"
-        self.pythonIncludeWords = "include_python_words.txt"
+        self.pythonExcludeWords = "exclude/python/exclude_python_words.txt"
+        self.pythonIncludeWords = "include/python/include_python_words.txt"
 
     def EachLine(self, codeArg, eachLine, Dict):
         getIndexLineList    = []
@@ -161,300 +162,214 @@ class Replace:
         returnLine = "".join(returnLine)
         return returnLine[:]
     
-    def VarsDefinedByUser(self, oneFileArg, codeArg, outputArg, mixerLevelArg):
-        variablesDict       = {}
-        checkVarsMixed      = []
-        wordsExcluded       = []
-        wordsExcludedFound  = []
-        wordsInclude        = []
-        checkCountVarsMixed = 0
-        checkCountVarsValue = 0
-        checkPassing        = 0
-        numberReplaced      = 0
-        isCommentary        = 0
-        noCommentary        = 0
+    def VarsDefinedByUser(self, codeArg, outputArg, mixerLevelArg):
+        variablesDict           = {}
+        classesDict             = {}
+        functionsDict           = {}
+        includeDict             = {}
+        allDict                 = {}
+        checkWordsMixed         = []
+        wordsExcluded           = []
+        wordsExcludedFound      = []
+        wordsIncludedFound      = []
+        wordsIncludedNotFound   = []
+        checkCountWordsMixed    = 0
+        checkCountWordsValue    = 0
+        checkPassing            = 0
+        numberReplaced          = 0
+        isCommentary            = 0
+        noCommentary            = 0
+        countRecursFiles        = 0
 
         if codeArg == "python":
-            variablesDefined            = r"(^\w+|\w+)([\s|^\s]*=[\s|\w|\"|\'])"    # Classic variables
-            variablesErrorDefined       = r"except(\s+\w+\sas\s)(\w)"               # Error variables
-            variablesLoopDefined        = r"for\s([\w\s?\,?]{1,})(\sin)"            # Loop variables
-            functionsDefined            = r"def\s(\w+)"                             # Functions
-            classDefined                = r"class\s(\w+)"                           # Classes
+            variablesDefined        = r"(^\w+|\w+)([\s|^\s]*=[\s|\w|\"|\'])"    # Variables
+            variablesErrorDefined   = r"except(\s+\w+\sas\s)(\w)"               # Error variables
+            variablesLoopDefined    = r"for\s([\w\s?\,?]{1,})(\sin)"            # Loop variables
+            functionsDefined        = r"def\s(\w+)"                             # Functions
+            classDefined            = r"class\s(\w+)"                           # Classes
 
             quoteOfCommentariesOneLine  = r"[\"\']{3}.*[\"\']{3}"       # """ and ''' without before variables and if commentary is over one line, (""" commentaries """)
             noQuoteOfCommentaries       = r"\s*\w+\s*\={1}\s*[\"\']{3}" # """ and ''' with before variables
 
-        print("######## [ Variables-Classes-Functions ] ########\n")
+        if codeArg == "python":
+            inputExt    = "py"
+            blockDirs   = r"__pycache__"
 
-        ######################################### One file only #########################################
+        recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.utils.Platform(), inputExt), recursive=True)]
 
-        if oneFileArg:
-            # -- Find variables - classes - functions and mixed it -- #
-            with open(outputArg, "r") as readFile:
-                readF = readFile.readlines()
-                for eachLine in readF:
-                    
-                    # -- Classic variables -- #     
-                    search = re.search(variablesDefined, eachLine)
-                    if search != None:
-                        # -- Detect mixer -- #
-                        mixer = self.mixer.GetStringMixer(mixerLevelArg)
-                        # -- Add the mixer value of variables -- #
-                        if search.group(1) not in variablesDict:
-                            variablesDict[search.group(1)] = mixer
-                    
-                    # -- Error variables -- #
-                    search = re.search(variablesErrorDefined, eachLine)
-                    if search != None:
-                        mixer = self.mixer.GetStringMixer(mixerLevelArg)
-                        if search.group(2) not in variablesDict:
-                            variablesDict[search.group(2)] = mixer
-                    
-                    # -- Loop variables -- #
-                    search = re.search(variablesLoopDefined, eachLine)
-                    if search != None:
-                        if "," in search.group(1):
-                            varsInFor = []
-                            modifySearch = search.group(1).replace(",", " ")
-                            modifySearch = modifySearch.split()
-                            for i in modifySearch:
-                                if i not in variablesDict:
-                                    mixer = self.mixer.GetStringMixer(mixerLevelArg)
-                                    variablesDict[i] = mixer 
-                        else:
+        # -- Find variables/classes/functions and mixed it -- #
+        for output in recursFiles:
+            if re.match(blockDirs, output):
+                continue
+            else:
+                with open(output, "r") as readFile:
+                    readF = readFile.readlines()
+                    for eachLine in readF:
+                        # -- Variables -- #     
+                        search = re.search(variablesDefined, eachLine)
+                        if search != None:
+                            # -- Detect mixer -- #
+                            mixer = self.mixer.GetStringMixer(mixerLevelArg)
+                            # -- Add the mixer value of variables -- #
                             if search.group(1) not in variablesDict:
-                                mixer = self.mixer.GetStringMixer(mixerLevelArg)
                                 variablesDict[search.group(1)] = mixer
-                    
-                    # -- Functions -- #         
-                    search = re.search(functionsDefined, eachLine)
-                    if search != None:
-                        mixer = self.mixer.GetStringMixer(mixerLevelArg)
-                        if search.group(1) not in variablesDict:
-                            if codeArg == "python":
-                                if not re.match(r"(^__init__$)", search.group(1)):
+                        
+                        # -- Error variables -- #
+                        search = re.search(variablesErrorDefined, eachLine)
+                        if search != None:
+                            mixer = self.mixer.GetStringMixer(mixerLevelArg)
+                            if search.group(2) not in variablesDict:
+                                variablesDict[search.group(2)] = mixer
+                        
+                        # -- Loop variables -- #
+                        search = re.search(variablesLoopDefined, eachLine)
+                        if search != None:
+                            if "," in search.group(1):
+                                varsInFor = []
+                                modifySearch = search.group(1).replace(",", " ")
+                                modifySearch = modifySearch.split()
+                                for i in modifySearch:
+                                    if i not in variablesDict:
+                                        mixer = self.mixer.GetStringMixer(mixerLevelArg)
+                                        variablesDict[i] = mixer 
+                            else:
+                                if search.group(1) not in variablesDict:
+                                    mixer = self.mixer.GetStringMixer(mixerLevelArg)
                                     variablesDict[search.group(1)] = mixer
+                        
+                        # -- Functions -- #         
+                        search = re.search(functionsDefined, eachLine)
+                        if search != None:
+                            mixer = self.mixer.GetStringMixer(mixerLevelArg)
+                            if search.group(1) not in functionsDict:
+                                if codeArg == "python":
+                                    if not re.match(r"(^__init__$)", search.group(1)):
+                                        functionsDict[search.group(1)] = mixer
 
-                    # -- Classes -- #
-                    search = re.search(classDefined, eachLine)
-                    if search != None:
-                        mixer = self.mixer.GetStringMixer(mixerLevelArg)
-                        if search.group(1) not in variablesDict:
-                            variablesDict[search.group(1)] = mixer
+                        # -- Classes -- #
+                        search = re.search(classDefined, eachLine)
+                        if search != None:
+                            mixer = self.mixer.GetStringMixer(mixerLevelArg)
+                            if search.group(1) not in classesDict:
+                                classesDict[search.group(1)] = mixer
 
-            # -- Delete excluded variables - classes - functions from excluded_python_varaibles.txt in dict -- #
-            if os.path.exists(self.pythonExcludeWords) == True:
-                with open(self.pythonExcludeWords, "r") as readFile:
-                    for word in readFile:
-                        if "#" in word or word == "\n":
-                            continue
-                        else:
-                            word = word.rstrip()    
-                            wordsExcluded.append(word)
-            else:
-                print("[-] File '{0}' not found\n".format(self.pythonExcludeWords))
-            
-            for word in wordsExcluded:
-                if word in variablesDict.keys():
-                    wordsExcludedFound.append(word)
-                    del variablesDict[word]
-
-            # -- Include variables - classes - functions defined from include_python_words.txt in dict -- #
-            if os.path.exists(self.pythonIncludeWords) == True:
-                with open(self.pythonIncludeWords, "r") as readFile:
-                    for word in readFile:
-                        if "#" in word or word == "\n":
-                            continue
-                        else:
-                            word = word.rstrip()
-                            wordsInclude.append(word)
-            else:
-                print("[-] File '{0}' not found\n".format(self.pythonIncludeWords))
-            
-            for word in wordsInclude:
-                if word not in variablesDict.keys():
-                    mixer = self.mixer.GetStringMixer(mixerLevelArg)
-                    variablesDict[word] = mixer
-
-            print("\n[+] Variables - Classes - Functions found :\n")
-            
-            for key, value in variablesDict.items():
-                print("-> {0} : {1}".format(key, value))
-            
-            for word in wordsExcludedFound:
-                print("-> {0} : excluded".format(word))
-            
-            print("\n[+] Running replacement of Variables - Classes - Functions...\n")
-
-            # -- Change variables - classes - functions to mixed values -- #
-            with fileinput.input(outputArg, inplace=True) as inputFile:
-                for eachLine in inputFile:
-                    if not eachLine:
+        # -- Remove excluded variables/classes/functions defined from 'exclude/python/exclude_python_words.txt' in dict -- #
+        if os.path.exists(self.pythonExcludeWords) == True:
+            with open(self.pythonExcludeWords, "r") as readFile:
+                for word in readFile:
+                    if "#" in word or word == "\n":
                         continue
                     else:
-                        if codeArg == "python":
-                            # -- Check code in """ or ''' -- #
-                            if "\"\"\"" in eachLine or "\'\'\'" in eachLine:
-                                if re.match(quoteOfCommentariesOneLine, eachLine):
-                                    print(eachLine)
-                                    continue
-                                elif re.match(noQuoteOfCommentaries, eachLine):
-                                    eachLine = Replace.EachLine(self, codeArg, eachLine, variablesDict.items())
-                                    print(eachLine)
-                                    checkPassing += 1
-                                    continue
-                                else:
-                                    checkPassing += 1
-
-                            if checkPassing == 1:
-                                print(eachLine)
-                                continue
-                            else:
-                                checkPassing = 0
-                                eachLine = Replace.EachLine(self, codeArg, eachLine, variablesDict.items())
-                                print(eachLine)
-
-            # -- Check if variables - classes - functions have been mixed -- #
-            with open(outputArg, "r") as readFile:
-                readF = readFile.readlines()
-                for eachLine in readF:
-                    for value in variablesDict.values():
-                        if value in eachLine:
-                            checkVarsMixed.append(value)
-                
-                # -- Remove duplicated key -- #
-                checkListVarsMixed = list(dict.fromkeys(checkVarsMixed))
-        
-                for i in checkListVarsMixed:
-                    checkCountVarsMixed += 1
-                for i in variablesDict.values():
-                    checkCountVarsValue += 1
-
-            if checkCountVarsMixed == checkCountVarsValue:
-                print("-> {0} variables - classes - functions replaced\n".format(checkCountVarsValue))
-                if (self.remove.LineBreaks(oneFileArg, codeArg, outputArg) == 0):
-                    return EXIT_SUCCESS
-                else:
-                    return EXIT_FAILURE
-            else:
-                return EXIT_FAILURE
-
-        ######################################### Multiple files #########################################
-
+                        word = word.rstrip()    
+                        wordsExcluded.append(word)
         else:
-            if codeArg == "python":
-                inputExt    = "py"
-                blockdirs   = r"__pycache__"
+            print("[-] '{0}' file not found\n".format(self.pythonExcludeWords))
+        
+        for word in wordsExcluded:
+            if word in variablesDict.keys():
+                wordsExcludedFound.append(word)
+                del variablesDict[word]
+            if word in classesDict.keys():
+                wordsExcludedFound.append(word)
+                del classesDict[word]
+            if word in functionsDict.keys():
+                wordsExcludedFound.append(word)
+                del functionsDict[word]
 
-            recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.utils.Platform(), inputExt), recursive=True)]
+        # -- Include variables/classes/functions defined from 'include/python/include_python_words.txt' in dict -- #
+        if os.path.exists(self.pythonIncludeWords) == True:
+            with open(self.pythonIncludeWords, "r") as readFile:
+                for word in readFile:
+                    if "#" in word or word == "\n":
+                        continue
+                    else:
+                        word = word.rstrip()
+                        wordsIncludedFound.append(word)
+        else:
+            print("[-] '{0}' file not found\n".format(self.pythonIncludeWords))
+        
+        for word in wordsIncludedFound:
+            if word not in variablesDict.keys() and word not in classesDict.keys() and word not in functionsDict.keys():
+                mixer = self.mixer.GetStringMixer(mixerLevelArg)
+                includeDict[word] = mixer
+                wordsIncludedNotFound.append(word)
 
-            # -- Find variables - classes - functions and mixed it -- #
-            for output in recursFiles:
-                if re.match(blockdirs, output):
-                    continue
-                else:
-                    with open(output, "r") as readFile:
-                        readF = readFile.readlines()
-                        for eachLine in readF:
-                            # -- Classic variables -- #     
-                            search = re.search(variablesDefined, eachLine)
-                            if search != None:
-                                # -- Detect mixer -- #
-                                mixer = self.mixer.GetStringMixer(mixerLevelArg)
-                                # -- Add the mixer value of variables -- #
-                                if search.group(1) not in variablesDict:
-                                    variablesDict[search.group(1)] = mixer
-                            
-                            # -- Error variables -- #
-                            search = re.search(variablesErrorDefined, eachLine)
-                            if search != None:
-                                mixer = self.mixer.GetStringMixer(mixerLevelArg)
-                                if search.group(2) not in variablesDict:
-                                    variablesDict[search.group(2)] = mixer
-                            
-                            # -- Loop variables -- #
-                            search = re.search(variablesLoopDefined, eachLine)
-                            if search != None:
-                                if "," in search.group(1):
-                                    varsInFor = []
-                                    modifySearch = search.group(1).replace(",", " ")
-                                    modifySearch = modifySearch.split()
-                                    for i in modifySearch:
-                                        if i not in variablesDict:
-                                            mixer = self.mixer.GetStringMixer(mixerLevelArg)
-                                            variablesDict[i] = mixer 
-                                else:
-                                    if search.group(1) not in variablesDict:
-                                        mixer = self.mixer.GetStringMixer(mixerLevelArg)
-                                        variablesDict[search.group(1)] = mixer
-                            
-                            # -- Functions -- #         
-                            search = re.search(functionsDefined, eachLine)
-                            if search != None:
-                                mixer = self.mixer.GetStringMixer(mixerLevelArg)
-                                if search.group(1) not in variablesDict:
-                                    if codeArg == "python":
-                                        if not re.match(r"(^__init__$)", search.group(1)):
-                                            variablesDict[search.group(1)] = mixer
-
-                            # -- Classes -- #
-                            search = re.search(classDefined, eachLine)
-                            if search != None:
-                                mixer = self.mixer.GetStringMixer(mixerLevelArg)
-                                if search.group(1) not in variablesDict:
-                                    variablesDict[search.group(1)] = mixer
-
-            # -- Remove excluded variables - classes - functions defined from excluded_python_words.txt in dict -- #
-            if os.path.exists(self.pythonExcludeWords) == True:
-                with open(self.pythonExcludeWords, "r") as readFile:
-                    for word in readFile:
-                        if "#" in word or word == "\n":
-                            continue
-                        else:
-                            word = word.rstrip()    
-                            wordsExcluded.append(word)
+        for output in recursFiles:
+            if re.match(blockDirs, output):
+                continue
             else:
-                print("[-] File '{0}' not found\n".format(self.pythonExcludeWords))
-            
-            for word in wordsExcluded:
-                if word in variablesDict.keys():
-                    wordsExcludedFound.append(word)
-                    del variablesDict[word]
+                with open(output, "r") as readFile:
+                    readF = readFile.readlines()
+                    for eachLine in readF:        
+                        for word in wordsIncludedNotFound:
+                            if word in eachLine:
+                                wordsIncludedNotFound.remove(word)
 
-            # -- Include variables - classes - functions defined from include_python_words.txt in dict -- #
-            if os.path.exists(self.pythonIncludeWords) == True:
-                with open(self.pythonIncludeWords, "r") as readFile:
-                    for word in readFile:
-                        if "#" in word or word == "\n":
-                            continue
-                        else:
-                            word = word.rstrip()
-                            wordsInclude.append(word)
-            else:
-                print("[-] File '{0}' not found\n".format(self.pythonIncludeWords))
-            
-            for word in wordsInclude:
-                if word not in variablesDict.keys():
-                    mixer = self.mixer.GetStringMixer(mixerLevelArg)
-                    variablesDict[word] = mixer
+        for word in wordsIncludedNotFound:
+            if word in includeDict.keys():
+                del includeDict[word]
 
-            print("\n[+] Variables - Classes - Functions found :\n")
+        # -- Display variables/classes/functions found -- #
+        print("\n[+] Variables found :\n")
 
+        if variablesDict == {}:
+            print("-> No result")
+        else:
             for key, value in variablesDict.items():
                 print("-> {0} : {1}".format(key, value))
+        
+        print("\n[+] Classes found :\n")
+        
+        if classesDict == {}:
+            print("-> No result")
+        else:
+            for key, value in classesDict.items():
+                print("-> {0} : {1}".format(key, value))
+        
+        print("\n[+] Functions found :\n")
 
+        if functionsDict == {}:
+            print("-> No result")
+        else:
+            for key, value in functionsDict.items():
+                print("-> {0} : {1}".format(key, value))
+
+        print("\n[+] Include found :\n")
+
+        if includeDict == {}:
+            print("-> No result")
+        else:
+            for key, value in includeDict.items():
+                print("-> {0} : {1}".format(key, value))
+
+        print("\n[+] Exclude found :\n")
+
+        if wordsExcludedFound == []:
+            print("-> No result")
+        else:
             for word in wordsExcludedFound:
                 print("-> {0} : excluded".format(word))
-            
-            print("\n[+] Running replacement of Variables - Classes - Functions...\n")
 
-            # -- Change variables - classes - functions to mixed values -- #
+        # -- Merge all dicts -- #
+        allDict = self.utils.DictMerge(allDict, variablesDict)
+        allDict = self.utils.DictMerge(allDict, classesDict)
+        allDict = self.utils.DictMerge(allDict, functionsDict)
+        allDict = self.utils.DictMerge(allDict, includeDict)
+        
+        for number in recursFiles:
+            countRecursFiles += 1
+
+        # -- Change variables/classes/functions to mixed values -- #
+        print("\n[+] Running replacement of variables/classes/functions in {0} file(s)...\n".format(countRecursFiles))
+
+        with tqdm(total=countRecursFiles) as pbar:
             for output in recursFiles:
-                if re.match(blockdirs, output):
+                pbar.update(1)
+                if re.match(blockDirs, output):
                     continue
                 else:
                     with fileinput.input(output, inplace=True) as inputFile:
-                        for eachLine in inputFile:    
+                        for eachLine in inputFile:
                             if not eachLine:
                                 continue
                             else:
@@ -465,7 +380,7 @@ class Replace:
                                             print(eachLine)
                                             continue
                                         elif re.match(noQuoteOfCommentaries, eachLine):
-                                            eachLine = Replace.EachLine(self, codeArg, eachLine, variablesDict.items())
+                                            eachLine = Replace.EachLine(self, codeArg, eachLine, allDict.items())
                                             print(eachLine)
                                             checkPassing += 1
                                             continue
@@ -477,34 +392,34 @@ class Replace:
                                         continue
                                     else:
                                         checkPassing = 0
-                                        eachLine = Replace.EachLine(self, codeArg, eachLine, variablesDict.items())
+                                        eachLine = Replace.EachLine(self, codeArg, eachLine, allDict.items())
                                         print(eachLine)
 
-            # -- Check if variables - classes - functions have been mixed -- #
-            for output in recursFiles:
-                if re.match(blockdirs, output):
-                    continue
-                else:
-                    with open(output, "r") as readFile:
-                        readF = readFile.readlines()
-                        for eachLine in readF:
-                            for value in variablesDict.values():
-                                if value in eachLine:
-                                    checkVarsMixed.append(value)
-                
-            # -- Remove duplicated key -- #
-            checkListVarsMixed = list(dict.fromkeys(checkVarsMixed))
+        # -- Check if variables/classes/functions have been mixed -- #
+        for output in recursFiles:
+            if re.match(blockDirs, output):
+                continue
+            else:
+                with open(output, "r") as readFile:
+                    readF = readFile.readlines()
+                    for eachLine in readF:
+                        for value in allDict.values():
+                            if value in eachLine:
+                                checkWordsMixed.append(value)
             
-            for i in checkListVarsMixed:
-                checkCountVarsMixed += 1
-            for i in variablesDict.values():
-                checkCountVarsValue += 1
+        # -- Remove duplicated key -- #
+        checkListWordsMixed = list(dict.fromkeys(checkWordsMixed))
+        
+        for i in checkListWordsMixed:
+            checkCountWordsMixed += 1
+        for i in allDict.values():
+            checkCountWordsValue += 1
 
-            if checkCountVarsMixed == checkCountVarsValue:
-                print("-> {0} variables - classes - functions replaced\n".format(checkCountVarsValue))
-                if (self.remove.LineBreaks(oneFileArg, codeArg, outputArg) == 0):
-                    return EXIT_SUCCESS
-                else:
-                    return EXIT_FAILURE
+        if checkCountWordsMixed == checkCountWordsValue:
+            print("\n-> {0} variables/classes/functions replaced in {1} file(s)\n".format(checkCountWordsValue, countRecursFiles))
+            if (self.remove.LineBreaks(codeArg, outputArg) == 0):
+                return EXIT_SUCCESS
             else:
                 return EXIT_FAILURE
+        else:
+            return EXIT_FAILURE

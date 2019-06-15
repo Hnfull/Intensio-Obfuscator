@@ -7,6 +7,7 @@ import random
 import textwrap
 import re
 import glob
+from tqdm import tqdm
 
 from core.obfuscation.intensio_mixer import Mixer
 from core.obfuscation.intensio_remove import Remove
@@ -83,10 +84,8 @@ class Padding:
                                                         {2} = {1}
                                                         if {2} in {1}:
                                                             {1} = {4}
-                                                    """).format(varRandom1, varRandom2, varRandom3, \
-                                                        varRandom4, varRandom5, varRandom6, \
-                                                        varRandom7, varRandom8, varRandom9, \
-                                                        varRandom10)
+                                                    """).format(varRandom1, varRandom2, varRandom3, varRandom4, varRandom5, \
+                                                                varRandom6, varRandom7, varRandom8, varRandom9, varRandom10)
                 return scriptAssPadding1
 
             # -- script 2 -- #
@@ -98,9 +97,8 @@ class Padding:
                                                         {2} = '{6}'
                                                         {3} = '{7}'
                                                         {3} = {2}
-                                                    """).format(varRandom1, varRandom2, varRandom3, \
-                                                        varRandom4, varRandom5, varRandom6, \
-                                                        varRandom7, varRandom8)
+                                                    """).format(varRandom1, varRandom2, varRandom3, varRandom4, varRandom5, \
+                                                                varRandom6, varRandom7, varRandom8)
                 return scriptAssPadding2
 
             # -- script 3 -- #
@@ -128,10 +126,8 @@ class Padding:
                                                                     {2} = {0}
                                                                 else:
                                                                     {2} = {4}
-                                                    """).format(varRandom1, varRandom2, varRandom3, \
-                                                        varRandom4, varRandom5, varRandom6, \
-                                                        varRandom7, varRandom8, varRandom9, \
-                                                        varRandom10, varRandom11, varRandom12)
+                                                    """).format(varRandom1, varRandom2, varRandom3, varRandom4, varRandom5, varRandom6, \
+                                                                varRandom7, varRandom8, varRandom9, varRandom10, varRandom11, varRandom12)
                 return scriptAssPadding3
 
             # -- script 4 -- #
@@ -146,9 +142,8 @@ class Padding:
                                                     else:
                                                         {2} = '{6}'
                                                         {2} = {3}
-                                                    """).format(varRandom1, varRandom2, varRandom3, \
-                                                        varRandom4, varRandom5, varRandom6, \
-                                                        varRandom7, varRandom8)
+                                                    """).format(varRandom1, varRandom2, varRandom3, varRandom4, \
+                                                                varRandom5, varRandom6, varRandom7, varRandom8)
                 return scriptAssPadding4
 
             # -- script 5 -- #
@@ -172,138 +167,42 @@ class Padding:
                                                         varRandom10, varRandom11, varRandom12)
                 return scriptAssPadding5
     
-    def AddScripts(self, oneFileArg, codeArg, outputArg, mixerLevelArg):
+    def AddScripts(self, codeArg, outputArg, mixerLevelArg):
         countScriptsAdded   = 0
         countLineAdded      = 0
         countLine           = 0
         checkLine           = 0
         checkPassing        = 0
-
-        print("############## [ Random scripts ] ###############\n")
-
-        print("\n[+] Running adding of random scripts...\n")
+        countRecursFiles    = 0
         
-        ######################################### One file only #########################################
+        if codeArg == "python":
+            inputExt    = "py"
+            blockDirs   = r"__pycache__"
 
-        if oneFileArg:
-            # -- Count the number of lines that will be checked before filling -- #
-            with open(outputArg , "r") as readFile:
-                readF = readFile.readlines()
-                for eachLine in readF:
-                    if not eachLine:
-                        continue
-                    countLine += 1
+        recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.utils.Platform(), inputExt), recursive=True)]
 
-            # -- Padding scripts added -- #
-            with fileinput.input(outputArg, inplace=True) as inputFile:
-                for eachLine in inputFile:
-                    print(eachLine)
-                    if eachLine == "\n":
-                        continue
-                    else:
-                        if codeArg == "python":
-                            spaces                  = len(eachLine) - len(eachLine.lstrip()) # Check line indent
-                            noAddScript             = r"(^[\#]+.*)|(\@|\s+\@)|(\s+return)|(\s+#\s{1,10}\w+)"
-                            addIndentScript         = r".*\:{1}\s"
-                            checkAddIndentScript    = r".*\:{1}\s\w+"
-
-                            # -- Check if ',' char or '\' char,in end line -- #
-                            listCheckEndLine = []
-                            
-                            for i in eachLine:
-                                listCheckEndLine.append(i)
-                            
-                            if "," in listCheckEndLine[-2] or "\\" in listCheckEndLine[-2]:
-                                continue
-
-                            # -- Check code between """ or ''' -- #
-                            if "\"\"\"" in eachLine or "\'\'\'" in eachLine:
-                                checkPassing += 1
-
-                            if checkPassing == 1: # Loop until the next """ or ''' 
-                                continue
-                            else:
-                                checkPassing = 0    
-
-                        if re.match(noAddScript, eachLine) is not None:
-                            continue
-                        elif re.match(addIndentScript, eachLine) is not None:
-                            if re.match(checkAddIndentScript, eachLine) is not None:
-                                continue
-                            else:
-                                if spaces == 0:
-                                    print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg),"    "))
-                                    countScriptsAdded += 1
-                                elif spaces == 4:
-                                    print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg), "        "))
-                                    countScriptsAdded += 1
-                                elif spaces == 8:
-                                    print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg), "            "))
-                                    countScriptsAdded += 1
-                                elif spaces == 12:
-                                    print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg), "                "))
-                                    countScriptsAdded += 1
-                                else:
-                                    continue
-                        else:
-                            if spaces == 0:
-                                print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg),""))
-                                countScriptsAdded += 1
-                            elif spaces == 4:
-                                print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg), "    "))
-                                countScriptsAdded += 1
-                            elif spaces == 8:
-                                print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg), "        "))
-                                countScriptsAdded += 1
-                            elif spaces == 12:
-                                print(textwrap.indent(Padding.ScriptsGenerator(self, codeArg, mixerLevelArg), "            "))
-                                countScriptsAdded += 1
-                            else:
-                                continue                    
-                            
-            # -- Check padding has added in output script -- #
-            with open(outputArg , "r") as readFile:
-                readF = readFile.readlines()
-                for eachLine in readF:
-                    if not eachLine:
-                        continue
-                    checkLine += 1
-
-            countLineAdded = checkLine - countLine
-
-            if checkLine > countLine:
-                print("-> {0} scripts added\n".format(countScriptsAdded))
-                print("-> {0} lines added\n".format(countLineAdded))
-                if (self.remove.LineBreaks(oneFileArg, codeArg, outputArg) == 0):
-                    return EXIT_SUCCESS
-                else:
-                    return EXIT_FAILURE
+        # -- Count the number of lines that will be checked before filling -- #
+        for output in recursFiles:
+            if re.match(blockDirs, output):
+                continue
             else:
-                return EXIT_FAILURE
-        
-        ######################################### Multiple files #########################################
-        else:
-            if codeArg == "python":
-                inputExt    = "py"
-                blockdirs   = r"__pycache__"
+                with open(output , "r") as readFile:
+                    readF = readFile.readlines()
+                    for eachLine in readF:
+                        if not eachLine:
+                            continue
+                        countLine += 1
 
-            recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.utils.Platform(), inputExt), recursive=True)]
+        for number in recursFiles:
+            countRecursFiles += 1
 
-            # -- Count the number of lines that will be checked before filling -- #
+        print("\n[+] Running adding of random scripts in {0} file(s)...\n".format(countRecursFiles))
+
+        # -- Padding scripts added -- #
+        with tqdm(total=countRecursFiles) as pbar:
             for output in recursFiles:
-                if re.match(blockdirs, output):
-                    continue
-                else:
-                    with open(output , "r") as readFile:
-                        readF = readFile.readlines()
-                        for eachLine in readF:
-                            if not eachLine:
-                                continue
-                            countLine += 1
-
-            # -- Padding scripts added -- #
-            for output in recursFiles:
-                if re.match(blockdirs, output):
+                pbar.update(1)
+                if re.match(blockDirs, output):
                     continue
                 else:
                     with fileinput.input(output, inplace=True) as inputFile:
@@ -372,27 +271,26 @@ class Padding:
                                     else:
                                         continue
                                 
-            # -- Check padding has added in output script -- #
-            for output in recursFiles:
-                if re.match(blockdirs, output):
-                    continue
-                else:
-                    with open(output , "r") as readFile:
-                        readF = readFile.readlines()
-                        for eachLine in readF:
-                            if not eachLine:
-                                continue
-                            checkLine += 1
-            
-            countLineAdded = checkLine - countLine
+        # -- Check padding has added in output script -- #
+        for output in recursFiles:
+            if re.match(blockDirs, output):
+                continue
+            else:
+                with open(output , "r") as readFile:
+                    readF = readFile.readlines()
+                    for eachLine in readF:
+                        if not eachLine:
+                            continue    
+                        checkLine += 1
+        
+        countLineAdded = checkLine - countLine
 
-            if checkLine > countLine:
-                print("-> {0} scripts added\n".format(countScriptsAdded))
-                print("-> {0} lines added\n".format(countLineAdded))
-                if (self.remove.LineBreaks(oneFileArg, codeArg, outputArg) == 0):
-                    return EXIT_SUCCESS
-                else:
-                    return EXIT_FAILURE
+        if checkLine > countLine:
+            print("\n-> {0} scripts added in {1} file(s)\n".format(countScriptsAdded, countRecursFiles))
+            print("-> {0} lines added in {1} file(s)\n".format(countLineAdded, countRecursFiles))
+            if (self.remove.LineBreaks(codeArg, outputArg) == 0):
+                return EXIT_SUCCESS
             else:
                 return EXIT_FAILURE
-    
+        else:
+            return EXIT_FAILURE

@@ -4,9 +4,6 @@
 
 import random
 import string
-import sys
-
-from core.utils.intensio_error import ERROR_BAD_ARGUMENTS 
 
 #--------------------------------------------------- [Function(s)/Class] ----------------------------------------------------#
 
@@ -24,11 +21,8 @@ class Mixer:
             return Mixer.StringGenerator(self, self.lenLower)
         elif levelMixerArg == "medium":
             return Mixer.StringGenerator(self, self.lenMedium)
-        elif levelMixerArg == "high":
-            return Mixer.StringGenerator(self, self.lenHigh)
         else:
-            print("[-] Error of mixer value")
-            sys.exit(ERROR_BAD_ARGUMENTS)
-
+            if levelMixerArg == "high":
+                return Mixer.StringGenerator(self, self.lenHigh)
 
 
