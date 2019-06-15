@@ -12,18 +12,6 @@ class Args:
                                             prog="intensio_obfuscator.py"
                                             )
         self.parser.add_argument(
-                                "-f", "--onefile",
-                                action="store_true",
-                                default=False,
-                                help="if only one file"
-                                )
-        self.parser.add_argument(
-                                "-d", "--multiplefiles",
-                                action="store_true",
-                                default=False,
-                                help="if multiple files (directory of project)"
-                                )
-        self.parser.add_argument(
                                 "-i", "--input",
                                 help="source file or directory - if multiple files indicate a directory that contain all your files"
                                 )
