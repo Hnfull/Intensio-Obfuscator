@@ -15,12 +15,10 @@
 
 
 -h, --help              -> show this help message and exit
--f, --onefile           -> if only one file
--d, --multiplefiles     -> if multiple files (project)
--i, --input             -> source file or directory - if multiple files indicate a directory that contain all your files
--c, --code              -> language used in source file or directory, default value: [python] possible value: [python]
--o, --output            -> output file or directory that will be obfuscated - if multiple file indicate a empty directory that will contain all your files
--m, --mixer             -> length level of variables/classes/functions mix output, default value: medium, possible values: [lower, medium, high]
+-i, --input             -> source directory - indicate a directory that contain your file(s)
+-c, --code              -> language used in source directory, default value: [python] possible value: [python]
+-o, --output            -> output directory that will be obfuscated - indicate a empty directory that will contain your file(s)
+-m, --mixer             -> length level of variables/classes/functions/files mix output, default value: medium, possible values: [lower, medium, high]
 -r, --replace           -> activate the 'replace' obfuscation feature
 -p, --padding           -> activate the 'padding' obfuscation feature
 -rm, --remove           -> activate the 'remove' obfuscation feature
@@ -61,11 +59,7 @@ def main():
     args    = Args()
     utils   = Utils()
 
-    if len(sys.argv) > 1 and len(sys.argv) <= 13:
-        if args.GetArgsValue().onefile == False and args.GetArgsValue().multiplefiles == False:
-            print("[-] [-f --onefile] or [-d --multiple] argument unspecifed")
-            sys.exit(ERROR_BAD_ARGUMENTS)
-
+    if len(sys.argv) > 1 and len(sys.argv) <= 12:
         if args.GetArgsValue().input:
             if args.GetArgsValue().output:
                 for line in INTENSIO_BANNER.split("\n"):
@@ -78,11 +72,11 @@ def main():
                     if re.match(r"^python$", args.GetArgsValue().code):
                         analyze = Analyze()
 
-                        if (analyze.InputAvailable(args.GetArgsValue().onefile, args.GetArgsValue().input, args.GetArgsValue().code) == EXIT_SUCCESS):
+                        if (analyze.InputAvailable(args.GetArgsValue().input, args.GetArgsValue().code) == EXIT_SUCCESS):
                             print("[+] Analyze input argument '{0}' -> Successful".format(args.GetArgsValue().input))
 
-                            if (analyze.OutputAvailable(args.GetArgsValue().onefile, args.GetArgsValue().input, args.GetArgsValue().code, args.GetArgsValue().output) == EXIT_SUCCESS):
-                                print("[+] Analyze and setup output argument environment '{0}' -> Successful".format(args.GetArgsValue().output))
+                            if (analyze.OutputAvailable(args.GetArgsValue().input, args.GetArgsValue().code, args.GetArgsValue().output) == EXIT_SUCCESS):
+                                print("\n[+] Analyze and setup output argument environment '{0}' -> Successful".format(args.GetArgsValue().output))
 
                                 if args.GetArgsValue().mixer:
                                     if re.match(r"(^lower$)|(^medium$)|(^high$)", args.GetArgsValue().mixer):
@@ -94,7 +88,7 @@ def main():
                                             if args.GetArgsValue().replace:
                                                 replace = Replace()
 
-                                                if (replace.VarsDefinedByUser(args.GetArgsValue().onefile, args.GetArgsValue().code, args.GetArgsValue().output, args.GetArgsValue().mixer) == EXIT_SUCCESS):
+                                                if (replace.VarsDefinedByUser(args.GetArgsValue().code, args.GetArgsValue().output, args.GetArgsValue().mixer) == EXIT_SUCCESS):
                                                     print("[+] Obfuscation Replace -> Successful")
                                                 else:
                                                     print("[-] Obfuscation Replace -> Failed")
@@ -105,7 +99,7 @@ def main():
                                             if args.GetArgsValue().padding:
                                                 paddingScripts = Padding()
 
-                                                if (paddingScripts.AddScripts(args.GetArgsValue().onefile, args.GetArgsValue().code, args.GetArgsValue().output, args.GetArgsValue().mixer) == EXIT_SUCCESS):
+                                                if (paddingScripts.AddScripts(args.GetArgsValue().code, args.GetArgsValue().output, args.GetArgsValue().mixer) == EXIT_SUCCESS):
                                                     print("[+] Obfuscation Padding -> Successful")
                                                 else:
                                                     print("[-] Obfuscation Padding -> Failed")
@@ -116,7 +110,7 @@ def main():
                                             if args.GetArgsValue().remove:
                                                 removeData = Remove()
 
-                                                if (removeData.Commentaries(args.GetArgsValue().onefile, args.GetArgsValue().code, args.GetArgsValue().output) == EXIT_SUCCESS):
+                                                if (removeData.Commentaries(args.GetArgsValue().code, args.GetArgsValue().output) == EXIT_SUCCESS):
                                                     print("[+] Obfuscation Remove -> Successful\n")
                                                 else:
                                                     print("[-] Obfuscation Remove -> Failed\n")
