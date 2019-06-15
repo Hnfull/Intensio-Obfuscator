@@ -18,6 +18,7 @@ class Utils:
             return "\\"
         else:
             return "/"
-        
 
-
+    def DictMerge(self, dict1, dict2):
+    	merge = {**dict1, **dict2}
+    	return merge
