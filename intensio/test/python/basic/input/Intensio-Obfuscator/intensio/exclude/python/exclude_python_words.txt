@@ -1,0 +1,61 @@
+################# ONLY FOR THE BASIC RAT TEST CODE ###################
+
+########### variables ############
+_
+
+############ argparse ############
+argparse
+default
+description
+help
+
+########### subprocess ###########
+shell
+stderr
+stdout
+stdin
+
+############ platform ############
+platform
+processor
+architecture
+
+########################### DO NOT MODIFY IT #########################
+
+##### default python keywords #####
+False
+None
+True
+and
+as
+assert
+break
+class
+continue
+def
+del
+elif
+else
+except
+finally
+for
+from
+global
+if
+import
+in
+is
+lambda
+nonlocal
+not
+or
+pass
+raise
+return
+try
+while
+with
+yield
+
+############### PUT YOUR VARS-CLASSES-FUNCS TO EXCLUDE #################
+yourVar1
