@@ -31,6 +31,7 @@ ERROR_FILE_EMPTY    = 1
 ERROR_DIR_EMPTY     = 1
 ERROR_NOT_DIR       = 1
 ERROR_NOT_FILE      = 1
+ERROR_DIR_EMPTY 	= 1
 
 #--------------------------------------------------- [Function(s)/Class] ----------------------------------------------------#
 
