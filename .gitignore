@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+
+intensio/test/python/basic/input/Intensio-Obfuscator/intensio/test
+intensio/test/python/basic/output/Intensio-Obfuscator/intensio/test
+
+intensio/test/python/advanced/input/Intensio-Obfuscator/intensio/test
+intensio/test/python/advanced/output/Intensio-Obfuscator/intensio/test
