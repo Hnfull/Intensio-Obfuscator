@@ -52,14 +52,20 @@
     - [source directory of project](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/advanced/input/basicRAT)
     - [output directory of project](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/advanced/output/basicRAT)
 
+## Recommendations
+- If `#` (comment) after a line of code, exaemple `test = 'test' # it's a test`, the space betwen the end of code and `#` is important, otherwise the functionality 'remove' will not work
+- All comments between `"""` or `'''` on multiple lines should be exactly as in source code examples.
+
+
 ## Possible malfunctions
 - **Do not define identically your names of local variables/classes/functions to python keywords or names of functions/classes of imported python libraries !**
 
 - If a variable/class/function has an identical name with a word between `' '` or `" "` in `print()` function, your text will have the same value that the mixer variables/class/function.
 
-- If a variable/class/function has an identical name with a word  in after `#` (commentary) your text will have the same value that the mixer variables - class - function, but if between `"""` or `'''` without  a variables before, no replacing is performed.
+- If a variable/class/function has an identical name with a word  in after `#` (commentary) your text will have the same value that the mixer variables/class/function.
 
 - If you named your variables/classes/functions in the same way as python keywords or names of functions/class of imported python libraries, an error may appear. Edit `intensio/exclude/python/excluded_python_words.txt` to add the variables not to obfuscate or change your names of local variables/classes/fuctions, if your variables/classes/functions  have the same name as a keyword it, he will be obfuscated and errors will appear.
+
 
 ## Todo
 - Version 1.0.1-x:
