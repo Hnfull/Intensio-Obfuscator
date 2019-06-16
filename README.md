@@ -8,6 +8,7 @@
 
 ## Requirement
 - Python >= 3.5
+- requirement.txt
 
 ## Files supported
 - Files written in python 2.x and 3.x 
@@ -15,7 +16,11 @@
 ## Installation
 `git clone https://github.com/Hnfull/Intensio-Obfuscator.git`
 
-`cd Intensio-Obfuscator/intensio/` 
+`cd Intensio-Obfuscator/`
+
+`pip3 install -r requirement.txt`
+
+`cd intensio/`
 
 ## Features
 | Features | Descriptions |
