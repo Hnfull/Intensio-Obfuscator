@@ -16,11 +16,9 @@
 ## Installation
 `git clone https://github.com/Hnfull/Intensio-Obfuscator.git`
 
-`cd Intensio-Obfuscator/`
+`pip3 install -r Intensio-Obfuscator/requirements.txt`
 
-`pip3 install -r requirement.txt`
-
-`cd intensio/`
+`cd Intensio-Obfuscator/intensio/`
 
 ## Features
 | Features | Descriptions |
