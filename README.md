@@ -47,7 +47,7 @@
 - If you want to include python variables/classes/functions that are not included when launching the 'replace' feature, edit `intensio/include/python/include_python_words.txt`
 
 ## Examples
-- [Python target file(s)](https://github.com/Hnfull/Intensio-Obfuscator/blob/master/docs/examples/python_examples.md)
+- [Python target files](https://github.com/Hnfull/Intensio-Obfuscator/blob/master/docs/examples/python_examples.md)
 
 ## Recommendations
 - [List of recommendations](https://github.com/Hnfull/Intensio-Obfuscator/blob/master/docs/recommendations.md)
