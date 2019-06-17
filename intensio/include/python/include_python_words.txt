@@ -1,4 +1,4 @@
-################## ONLY FOR THE BASIC RAT TEST CODE ##################
+############### FOR THE PYTHON FILES RAT TEST IN REPOS ###############
 
 ########### variables ###########
 cmd
