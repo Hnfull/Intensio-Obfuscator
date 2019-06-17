@@ -46,8 +46,6 @@
 
 - If you want to include python variables/classes/functions that are not included when launching the 'replace' feature, edit `intensio/include/python/include_python_words.txt`
 
-- **Do not define identically your names of local variables/classes/functions to python keywords or names of functions/classes of imported python libraries !**
-
 ## Examples
 #### Python target file(s):
 - ` python3.x intensio_obfuscator.py -i test/python/basic/input/basicRAT -c python -o test/python/basic/output/basicRAT -m lower -r -rm`
