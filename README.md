@@ -20,6 +20,8 @@
 
 `cd Intensio-Obfuscator/intensio/`
 
+`python3.x intensio_obfuscator.py --help`
+
 ## Features
 | Features | Descriptions |
 | ------ | ------ |
