@@ -4,6 +4,7 @@
   - ` python3.x intensio_obfuscator.py -i test/python/basic/input/basicRAT -c python -o test/python/basic/output/basicRAT -m lower -r -rm`
       - [source directory of project](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/basic/input/basicRAT)
       - [output directory of project](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/basic/output/basicRAT)
+      
 - Advanced obfuscation
   - `python3.x intensio_obfuscator.py -i test/python/advanced/input/basicRAT -c python -o test/python/advanced/output/basicRAT -m high -r -p -rm`
       - [source directory of project](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/advanced/input/basicRAT)
