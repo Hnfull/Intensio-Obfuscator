@@ -44,10 +44,16 @@ class Args:
                                 help="activate the 'padding' obfuscation feature"
                                 )
         self.parser.add_argument(
-                                "-rm", "--remove",
+                                "-rc", "--rcommentaries",
                                 action="store_true",
                                 default=False,
-                                help="activate the 'remove' obfuscation feature"
+                                help="activate the 'rcommentaries' obfuscation feature"
+                                )
+        self.parser.add_argument(
+                                "-rp", "--rprint",
+                                action="store_true",
+                                default=False,
+                                help="activate the 'rprint' obfuscation feature"
                                 )
 
     def GetArgHelp(self):

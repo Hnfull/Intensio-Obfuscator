@@ -76,7 +76,6 @@ class Remove:
             quoteOfCommentariesOneLine      = r"[\"|\']{3}.*[\"|\']{3}"         # """ and ''' without before variables and if commentary is over one line, (""" commentaries """)
             noQuoteOfCommentaries           = r"\w+\s*[\=|\(]{1}\s*[\"|\']{3}"  # """ and ''' with before variables
         
-        if codeArg == "python": 
             detectFile  = "py"
             blockDirs   = r"__pycache__"
 
@@ -138,7 +137,7 @@ class Remove:
         for number in recursFiles:
             countRecursFiles += 1
 
-        print("\n[+] Running commentaries remove in {0} file(s)...\n".format(countRecursFiles))
+        print("\n[+] Running remove commentaries in {0} file(s)...\n".format(countRecursFiles))
 
         with tqdm(total=countRecursFiles) as pbar:
             for output in recursFiles:
@@ -247,11 +246,65 @@ class Remove:
                         else:
                             pass
 
-        if countLineOutput == 0:
-            print("\n-> {0} lines of commentaries removed\n".format(countLineInput))
-            if (Remove.LineBreaks(self, codeArg, outputArg) == 0):
+        if (Remove.LineBreaks(self, codeArg, outputArg) == 0):
+            if countLineOutput == 0:
+                print("\n-> {0} lines of commentaries removed\n".format(countLineInput))            
                 return EXIT_SUCCESS
             else:
                 return EXIT_FAILURE
         else:
             return EXIT_FAILURE
+
+    def PrintFunc(self, codeArg, outputArg):
+        countPrintLine      = 0
+        countCheckPrintLine = 0
+        countRecursFiles    = 0
+
+        if codeArg == "python":
+            detectPrint = r"\s{2,}print|^print"
+            detectFile  = "py"
+            blockDirs   = r"__pycache__"
+
+        recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.utils.Platform(), detectFile), recursive=True)]
+
+        for number in recursFiles:
+            countRecursFiles += 1
+
+        print("\n[+] Running remove print function in {0} file(s)...\n".format(countRecursFiles))
+
+        with tqdm(total=countRecursFiles) as pbar:
+            for output in recursFiles:
+                pbar.update(1)
+                if re.match(blockDirs, output):
+                    continue
+                else:
+                    # -- Remove all print functions -- #
+                    with fileinput.input(output, inplace=True) as inputFile:
+                        for eachLine in inputFile:
+                        
+                            if re.match(detectPrint, eachLine):
+                                countPrintLine += 1
+                                continue
+                            else:
+                                print(eachLine)
+
+        # -- Check if all print functions are removed -- #
+        for output in recursFiles:
+            if re.match(blockDirs, output):
+                continue
+            else:
+                with open(output, "r") as readFile:
+                    readF = readFile.readlines()
+                    for eachLine in readF:
+                        if re.match(detectPrint, eachLine):
+                            countCheckPrintLine += 1
+
+        if (Remove.LineBreaks(self, codeArg, outputArg) == 0):
+            if countCheckPrintLine == 0:
+                print("\n-> {0} lines of print functions removed\n".format(countPrintLine))
+                return EXIT_SUCCESS
+            else:
+                return EXIT_FAILURE
+        else:
+            return EXIT_FAILURE
+

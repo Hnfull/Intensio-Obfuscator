@@ -216,7 +216,7 @@ class Padding:
                                     noAddScript             = r"(^[\#]+.*)|(\@|\s+\@)|(\s+return)|(\s+#\s{1,10}\w+)"
                                     addIndentScript         = r".*\:{1}\s"
                                     checkAddIndentScript    = r".*\:{1}\s\w+"
-
+                                    
                                     # -- Check if ',' char or '\' char,in end line -- #
                                     listCheckEndLine = []
                                     
@@ -285,12 +285,13 @@ class Padding:
         
         countLineAdded = checkLine - countLine
 
-        if checkLine > countLine:
-            print("\n-> {0} scripts added in {1} file(s)\n".format(countScriptsAdded, countRecursFiles))
-            print("-> {0} lines added in {1} file(s)\n".format(countLineAdded, countRecursFiles))
-            if (self.remove.LineBreaks(codeArg, outputArg) == 0):
+        if (self.remove.LineBreaks(codeArg, outputArg) == 0):
+            if checkLine > countLine:    
+                print("\n-> {0} scripts added in {1} file(s)\n".format(countScriptsAdded, countRecursFiles))
+                print("-> {0} lines added in {1} file(s)\n".format(countLineAdded, countRecursFiles))
                 return EXIT_SUCCESS
+                
             else:
                 return EXIT_FAILURE
         else:
-            return EXIT_FAILURE
+            EXIT_FAILURE

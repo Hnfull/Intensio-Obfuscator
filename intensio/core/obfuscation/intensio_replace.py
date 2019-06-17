@@ -191,7 +191,6 @@ class Replace:
             quoteOfCommentariesOneLine  = r"[\"\']{3}.*[\"\']{3}"       # """ and ''' without before variables and if commentary is over one line, (""" commentaries """)
             noQuoteOfCommentaries       = r"\s*\w+\s*\={1}\s*[\"\']{3}" # """ and ''' with before variables
 
-        if codeArg == "python":
             inputExt    = "py"
             blockDirs   = r"__pycache__"
 
@@ -415,9 +414,9 @@ class Replace:
         for i in allDict.values():
             checkCountWordsValue += 1
 
-        if checkCountWordsMixed == checkCountWordsValue:
-            print("\n-> {0} variables/classes/functions replaced in {1} file(s)\n".format(checkCountWordsValue, countRecursFiles))
-            if (self.remove.LineBreaks(codeArg, outputArg) == 0):
+        if (self.remove.LineBreaks(codeArg, outputArg) == 0):
+            if checkCountWordsMixed == checkCountWordsValue:
+                print("\n-> {0} variables/classes/functions replaced in {1} file(s)\n".format(checkCountWordsValue, countRecursFiles))
                 return EXIT_SUCCESS
             else:
                 return EXIT_FAILURE
