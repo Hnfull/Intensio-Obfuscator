@@ -27,7 +27,8 @@
 | ------ | ------ |
 | Replace | Replace all names of variables/classes/functions defined and remove all line breaks |
 | Padding | Add random scripts after each line and remove all line breaks |
-| Remove | Remove all commentaries and all line breaks |
+| Rcommentaries | Remove all commentaries and all line breaks |
+| Rprint | Remove all print functions and all line breaks |
 | Mixer lower | Generate words with 32 chars that replace variables/classes/functions defined in source code and in random scripts if 'replace' or 'padding' features are specified |
 | Mixer medium | Generate words with 64 chars that replace variables/classes/functions defined in source code and in random scripts if 'replace' or 'padding' features are specified|
 | Mixer high | Generate words with 128 chars that replace variables/classes/functions defined in source code and in random scripts if 'replace' or 'padding' features are specified |
@@ -42,7 +43,8 @@
 | -m, --mixer | length levels of the number of characters  for output variables /classes/functions, default value: [medium], possible values: [lower, medium, high] |
 | -r, --replace | activate the 'replace' obfuscation feature |
 | -p, --padding | activate the 'padding' obfuscation feature |
-| -rm, --remove | activate the 'remove' obfuscation feature |
+| -rc, --rcommentaries | activate the 'rcommentaries' obfuscation feature |
+| -rp, --rprint | activate the 'rprint' obfuscation feature |
 
 - If you want exclude python variables/classes/functions which will be taken by the 'replace' feature, edit `intensio/exclude/python/exclude_python_words.txt`
 
