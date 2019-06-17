@@ -70,11 +70,11 @@ class Remove:
         countRecursFiles    = 0
 
         if codeArg == "python":
-            classicCommentariesAfterLine    = r"\s+\#.*"                # '#' after line of code 
-            classicCommentariesBeginLine    = r"^\#.*"                  # begin '#'
-            quoteOfCommentariesMultipleLine = r"^[\"\']{3}$"            # """ and ''' without before variables and if commentaries is over multiple lines
-            quoteOfCommentariesOneLine      = r"[\"\']{3}.*[\"\']{3}"   # """ and ''' without before variables and if commentary is over one line, (""" commentaries """)
-            noQuoteOfCommentaries           = r"[\=|\(]{1}\s*[\"\']{3}" # """ and ''' with before variables
+            classicCommentariesAfterLine    = r"\s+\#.*"                        # '#' after line of code 
+            classicCommentariesBeginLine    = r"^\#.*"                          # begin '#'
+            quoteOfCommentariesMultipleLine = r"^[\"\']{3}$"                    # """ and ''' without before variables and if commentaries is over multiple lines
+            quoteOfCommentariesOneLine      = r"[\"|\']{3}.*[\"|\']{3}"         # """ and ''' without before variables and if commentary is over one line, (""" commentaries """)
+            noQuoteOfCommentaries           = r"\w+\s*[\=|\(]{1}\s*[\"|\']{3}"  # """ and ''' with before variables
         
         if codeArg == "python": 
             detectFile  = "py"
