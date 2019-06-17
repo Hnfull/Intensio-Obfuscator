@@ -1,13 +1,23 @@
-################# ONLY FOR THE BASIC RAT TEST CODE ###################
+############## FOR THE PYTHON FILES RAT TEST IN REPOS #################
 
 ########### variables ############
 _
+
+############# glob ###############
+recursive
+
+########### fileinput ############
+inplace
+
+############# tqdm ###############
+total
 
 ############ argparse ############
 argparse
 default
 description
 help
+action
 
 ########### subprocess ###########
 shell
