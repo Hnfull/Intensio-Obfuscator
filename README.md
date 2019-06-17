@@ -6,9 +6,9 @@
 
 - Takes a python source code and transform it into an obfuscated python code, replace name of variables/classes/functions to random chars and defined length, removes comments, line breaks and add to each line a random script with an always differents values.
 
-## Requirement
+## Requirements
 - Python >= 3.5
-- requirement.txt
+- requirements.txt
 
 ## Files supported
 - Files written in python 2.x and 3.x 
@@ -43,11 +43,14 @@
 | -rm, --remove | activate the 'remove' obfuscation feature |
 
 - If you want exclude python variables/classes/functions which will be taken by the 'replace' feature, edit `intensio/exclude/python/exclude_python_words.txt`
+
 - If you want to include python variables/classes/functions that are not included when launching the 'replace' feature, edit `intensio/include/python/include_python_words.txt`
+
+- **Do not define identically your names of local variables/classes/functions to python keywords or names of functions/classes of imported python libraries !**
 
 ## Examples
 #### Python target file(s):
-- `python3.x intensio_obfuscator.py -i test/python/basic/input/basicRAT -c python -o test/python/basic/output/basicRAT -m lower -r -rm`
+- ` python3.x intensio_obfuscator.py -i test/python/basic/input/basicRAT -c python -o test/python/basic/output/basicRAT -m lower -r -rm`
     - [source directory of project](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/basic/input/basicRAT)
     - [output directory of project](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/basic/output/basicRAT)
 
@@ -56,19 +59,10 @@
     - [output directory of project](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/advanced/output/basicRAT)
  
 ## Recommendations
-- If `#` (comment) after a line of code, exaemple `test = 'test' # it's a test`, the space betwen the end of code and `#` is important, otherwise the functionality 'remove' will not work
-- All comments between `"""` or `'''` on multiple lines should be exactly as in source code examples.
+- [List of recommendations](https://github.com/Hnfull/Intensio-Obfuscator/blob/master/docs/recommendations.md)
 
-
-## Possible malfunctions
-- **Do not define identically your names of local variables/classes/functions to python keywords or names of functions/classes of imported python libraries !**
-
-- If a variable/class/function has an identical name with a word between `' '` or `" "` in `print()` function, your text will have the same value that the mixer variables/class/function.
-
-- If a variable/class/function has an identical name with a word  in after `#` (commentary) your text will have the same value that the mixer variables/class/function.
-
-- If you named your variables/classes/functions in the same way as python keywords or names of functions/class of imported python libraries, an error may appear. Edit `intensio/exclude/python/excluded_python_words.txt` to add the variables not to obfuscate or change your names of local variables/classes/fuctions, if your variables/classes/functions  have the same name as a keyword it, he will be obfuscated and errors will appear.
-
+## Malfunctions
+- [List of malfunctions](https://github.com/Hnfull/Intensio-Obfuscator/blob/master/docs/malfunctions.md)
 
 ## Todo
 - Version 1.0.1-x:
