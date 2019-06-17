@@ -1,5 +1,7 @@
 ######################## CHANGES.log ########################
 
+------------------------- [BEGIN] ----------------------
+
 ---------- [02-06-2019] ----------
 
 - Version 1.0.0
@@ -29,7 +31,9 @@
 - Path change from exclude_python_words.txt path to include/python/exclude_python_words.txt
 - Add a display tqdm bar progress  when  'replace', 'padding', 'remove' features are specified
 - Correcting spelling errors in 'intensio_replace.py', 'intensio_obfuscation.py', 'intensio_padding.py', 'intensio_remove.py'
-- Improvement of the code by adding a better management of the display of the analyzed inputs/outputs and the variables/classes/functions found.
-- Delete -f --onfile and -d --multiplefiles parameters, henceforth it is necessary to pointed a directory yhat containt file(s) to obfuscate
+- Improvement of the code by adding a better management of the display of the analyzed inputs/outputs and the variables/classes/functions found
+- Delete -f --onfile and -d --multiplefiles parameters, henceforth it is necessary to pointed a directory that containt files to obfuscate
 
 ----------------------------------
+
+-------------------------- [END] -----------------------
