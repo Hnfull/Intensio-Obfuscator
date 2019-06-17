@@ -59,14 +59,14 @@ def main():
     args    = Args()
     utils   = Utils()
 
-    if len(sys.argv) > 1 and len(sys.argv) <= 12:
+    if len(sys.argv) > 1 and len(sys.argv) <= 13:
         if args.GetArgsValue().input:
             if args.GetArgsValue().output:
                 for line in INTENSIO_BANNER.split("\n"):
                     time.sleep(0.05)
                     print(line)
 
-                print("\n\n*********************** [ Analyze and setup environment ] ***********************\n")
+                print("\n\n*********************** [ Analyze and setup environment ] ************************\n")
                 # -- Analysis and set up of the work environment -- #
                 if args.GetArgsValue().code:
                     if re.match(r"^python$", args.GetArgsValue().code):
@@ -80,11 +80,11 @@ def main():
 
                                 if args.GetArgsValue().mixer:
                                     if re.match(r"(^lower$)|(^medium$)|(^high$)", args.GetArgsValue().mixer):
-                                        if not args.GetArgsValue().padding and not args.GetArgsValue().replace and not args.GetArgsValue().remove:
+                                        if not args.GetArgsValue().padding and not args.GetArgsValue().replace and not args.GetArgsValue().rcommentaries and not args.GetArgsValue().rprint:
                                             print("\n[-] Need at least one argument [-r --replace] or [-p --padding] or [-rm -remove]")
                                             sys.exit(ERROR_BAD_ARGUMENTS)
                                         else:
-                                            print("\n\n***************************** [ Obfuscation Replace ] ****************************\n")
+                                            print("\n\n***************************** [ Obfuscation Replace ] *****************************\n")
                                             if args.GetArgsValue().replace:
                                                 replace = Replace()
 
@@ -95,7 +95,7 @@ def main():
                                             else:
                                                 print("[!] Obfuscation Replace no asked !")
 
-                                            print("\n\n***************************** [ Obfuscation Padding ] ****************************\n")
+                                            print("\n\n***************************** [ Obfuscation Padding ] *****************************\n")
                                             if args.GetArgsValue().padding:
                                                 paddingScripts = Padding()
 
@@ -106,16 +106,27 @@ def main():
                                             else:
                                                 print("[!] Obfuscation Padding no asked !")
 
-                                            print("\n\n***************************** [ Obfuscation Remove ] *****************************\n")
-                                            if args.GetArgsValue().remove:
+                                            print("\n\n************************** [ Obfuscation Rcommentaries ] **************************\n")
+                                            if args.GetArgsValue().rcommentaries:
                                                 removeData = Remove()
 
                                                 if (removeData.Commentaries(args.GetArgsValue().code, args.GetArgsValue().output) == EXIT_SUCCESS):
-                                                    print("[+] Obfuscation Remove -> Successful\n")
+                                                    print("[+] Obfuscation Rcommentaries -> Successful")
                                                 else:
-                                                    print("\n[-] Obfuscation Remove -> Failed\n")
+                                                    print("\n[-] Obfuscation Rcommentaries -> Failed")
                                             else:
-                                                print("[!] Obfuscation Remove no asked !\n")
+                                                print("[!] Obfuscation Rcommentaries no asked !")
+
+                                            print("\n\n****************************** [ Obfuscation Rprint ] *****************************\n")
+                                            if args.GetArgsValue().rprint:
+                                                removeData = Remove()
+
+                                                if (removeData.PrintFunc(args.GetArgsValue().code, args.GetArgsValue().output) == EXIT_SUCCESS):
+                                                    print("[+] Obfuscation Rprint -> Successful\n")
+                                                else:
+                                                    print("\n[-] Obfuscation Rprint -> Failed\n")
+                                            else:
+                                                print("[!] Obfuscation Rprint no asked !\n")
                                     else:
                                         print("[-] Incorrect level of mixer, [lower - medium - high] only supported\n")
                                         sys.exit(ERROR_INVALID_PARAMETER)
