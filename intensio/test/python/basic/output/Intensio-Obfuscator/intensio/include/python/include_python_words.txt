@@ -1,8 +1,0 @@
-################## ONLY FOR THE BASIC RAT TEST CODE ##################
-
-########### variables ###########
-cmd
-conn
-
-############## PUT YOUR VARS-CLASSES-FUNCS TO INCLUDE ################
-yourVar1
