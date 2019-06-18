@@ -1,7 +1,7 @@
 # Intensio-Obfuscator (Beta)
 
 ![](https://img.shields.io/badge/Python->=3.5-blue.svg)
-![](https://img.shields.io/badge/Version-1.0.2-green.svg)
+![](https://img.shields.io/badge/Version-1.0.3-green.svg)
 ![](https://img.shields.io/badge/Licence-MIT-red.svg)
 
 - Takes a python source code and transform it into an obfuscated python code, replace name of variables/classes/functions to random chars and defined length, removes comments, line breaks and add to each line a random script with an always differents values.
