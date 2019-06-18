@@ -21,7 +21,8 @@
 -m, --mixer             -> length level of variables/classes/functions/files mix output, default value: medium, possible values: [lower, medium, high]
 -r, --replace           -> activate the 'replace' obfuscation feature
 -p, --padding           -> activate the 'padding' obfuscation feature
--rm, --remove           -> activate the 'remove' obfuscation feature
+-rc, --rcommentaries    -> activate the 'rcommentaries' obfuscation feature
+-rp, --rprint 	         -> activate the 'rprint' obfuscation feature
 
 """
 
