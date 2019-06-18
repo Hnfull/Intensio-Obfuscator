@@ -1,8 +1,41 @@
 # Malfunctions
-- Do not define identically your names of local variables/classes/functions to python keywords or names of functions/classes of imported python libraries.
 
-- If a variable/class/function has an identical name with a word between `' '` or `" "` in `print()` function, your text will have the same value that the mixer variables/class/function.
+#### Do not define identically your names of local variables/classes/functions to python keywords or names of functions/classes of imported python libraries
 
-- If a variable/class/function has an identical name with a word  in after `#` (commentary) your text will have the same value that the mixer variables/class/function.
+- Error
+  ```
+  import argparse
+  self.parser.add_argument("-c", "--code", choices=["python"],default="python",help="language used in source file or directory")
+  choices = input("number :")
+  print(choices)
 
-- If you named your variables/classes/functions in the same way as python keywords or names of functions/class of imported python libraries, an error may appear. Edit `intensio/exclude/python/excluded_python_words.txt` to add the variables not to obfuscate or change your names of local variables/classes/fuctions, if your variables/classes/functions  have the same name as a keyword it, he will be obfuscated and errors will appear.
+  # choices variable defined is a function of argparse library :( a error will appear when execute tool
+  ```
+  
+#### If a variable/class/function has an identical name with a word between `' '` or `" "` in `print()` function, your text will have the same value that the mixer variables/class/function
+
+- input
+```
+test = "mixer"
+
+print("this is a test !")
+```
+
+- output
+```
+ChrVMVxrZASDnzCcsWSmIBrfoWgQkdKD = "mixer"
+
+print("this is a ChrVMVxrZASDnzCcsWSmIBrfoWgQkdKD !")
+```
+
+#### If a variable/class/function has an identical name with a word  in after `#` (commentary) your text will have the same value that the mixer variable/class/function.
+
+- input
+```
+testCommentary = "commentary" # this is a testCommentary !
+```
+
+- output
+```
+hGBARlTuxHnmuINAeGZyCQWesbdsZHDe = "commentary" # this is a hGBARlTuxHnmuINAeGZyCQWesbdsZHDe !
+```
