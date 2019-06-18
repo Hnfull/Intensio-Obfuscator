@@ -15,27 +15,27 @@
 #### If a variable/class/function has an identical name with a word between `' '` or `" "` in `print()` function, your text will have the same value that the mixer variables/class/function
 
 - input
-```
-test = "mixer"
+  ```
+  test = "mixer"
 
-print("this is a test !")
-```
+  print("this is a test !")
+  ```
 
 - output
-```
-ChrVMVxrZASDnzCcsWSmIBrfoWgQkdKD = "mixer"
+  ```
+  ChrVMVxrZASDnzCcsWSmIBrfoWgQkdKD = "mixer"
 
-print("this is a ChrVMVxrZASDnzCcsWSmIBrfoWgQkdKD !")
-```
+  print("this is a ChrVMVxrZASDnzCcsWSmIBrfoWgQkdKD !")
+  ```
 
 #### If a variable/class/function has an identical name with a word  in after `#` (commentary) your text will have the same value that the mixer variable/class/function.
 
 - input
-```
-testCommentary = "commentary" # this is a testCommentary !
-```
+  ```
+  testCommentary = "commentary" # this is a testCommentary !
+  ```
 
 - output
-```
-hGBARlTuxHnmuINAeGZyCQWesbdsZHDe = "commentary" # this is a hGBARlTuxHnmuINAeGZyCQWesbdsZHDe !
-```
+  ```
+  hGBARlTuxHnmuINAeGZyCQWesbdsZHDe = "commentary" # this is a hGBARlTuxHnmuINAeGZyCQWesbdsZHDe !
+  ```
