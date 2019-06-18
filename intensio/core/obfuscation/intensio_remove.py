@@ -72,7 +72,7 @@ class Remove:
         if codeArg == "python":
             classicCommentariesAfterLine    = r"\s+\#.*"                        # '#' after line of code 
             classicCommentariesBeginLine    = r"^\#.*"                          # begin '#'
-            quoteOfCommentariesMultipleLine = r"^[\"\']{3}$"                    # """ and ''' without before variables and if commentaries is over multiple lines
+            quoteOfCommentariesMultipleLine = r"^[\"|\']{3}$"                   # """ and ''' without before variables and if commentaries is over multiple lines
             quoteOfCommentariesOneLine      = r"[\"|\']{3}.*[\"|\']{3}"         # """ and ''' without before variables and if commentary is over one line, (""" commentaries """)
             noQuoteOfCommentaries           = r"\w+\s*[\=|\(]{1}\s*[\"|\']{3}"  # """ and ''' with before variables
         
@@ -101,12 +101,12 @@ class Remove:
                                 isCommentary += 1
                             else:
                                 pass
-
-                            if isCommentary == 1 and noCommentary == 0:
-                                if re.match(quoteOfCommentariesOneLine, eachLine):
-                                    isCommentary = 0
-                                    countLineInput += 1
-                                    continue
+                               
+                            if re.match(quoteOfCommentariesOneLine, eachLine):
+                                isCommentary = 0
+                                countLineInput += 1
+                                continue
+                            elif isCommentary == 1 and noCommentary == 0:
                                 countLineInput += 1
                                 continue
                             elif isCommentary == 0 and noCommentary == 1:
@@ -161,11 +161,11 @@ class Remove:
                                     isCommentary += 1
                                 else:
                                     pass
-
-                                if isCommentary == 1 and noCommentary == 0:
-                                    if re.match(quoteOfCommentariesOneLine, eachLine):
-                                        isCommentary = 0
-                                        continue
+                                
+                                if re.match(quoteOfCommentariesOneLine, eachLine):
+                                    isCommentary = 0
+                                    continue
+                                elif isCommentary == 1 and noCommentary == 0:
                                     continue
                                 elif isCommentary == 0 and noCommentary == 1:
                                     print(eachLine)
@@ -218,12 +218,12 @@ class Remove:
                                 isCommentary += 1
                             else:
                                 pass
-
-                            if isCommentary == 1 and noCommentary == 0:
-                                if re.match(quoteOfCommentariesOneLine, eachLine):
-                                    isCommentary = 0
-                                    countLineOutput += 1
-                                    continue
+                            
+                            if re.match(quoteOfCommentariesOneLine, eachLine):
+                                isCommentary = 0
+                                countLineOutput += 1
+                                continue
+                            elif isCommentary == 1 and noCommentary == 0:
                                 countLineOutput += 1
                                 continue
                             elif isCommentary == 0 and noCommentary == 1:
