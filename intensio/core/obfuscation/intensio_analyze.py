@@ -120,7 +120,7 @@ class Analyze:
 
                                 if outputFileFoundCount >= 1 and outputFileFoundCount > outputFileEmptyCount:
                                     if verboseArg:
-                                        print("\n[+] Copied output files :\n")
+                                        print("\n[+] Ouput files copy :\n")
 
                                         if outputFileFound == []:
                                             print("-> no result")
@@ -179,16 +179,17 @@ class Analyze:
                                     outputFileEmptyCount += outputFileEmptyCount + 1
 
                         if outputFileFoundCount >= 1 and outputFileFoundCount > outputFileEmptyCount:
-                            print("\n[+] File output found :\n")
+                            if verboseArg:
+                                print("\n[+] File output found :\n")
 
-                            if outputFileFound == []:
-                                print("-> no result")
-                            else:
-                                for file in outputFileFound:
-                                    print("-> {0} : copy".format(file))
-                            
-                                for file in outputFileEmpty:
-                                    print("-> {0} : copy empty".format(file))
+                                if outputFileFound == []:
+                                    print("-> no result")
+                                else:
+                                    for file in outputFileFound:
+                                        print("-> {0} : copy".format(file))
+                                
+                                    for file in outputFileEmpty:
+                                        print("-> {0} : copy empty".format(file))
                             
                             return EXIT_SUCCESS   
                         else:
