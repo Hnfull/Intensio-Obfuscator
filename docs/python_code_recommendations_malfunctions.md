@@ -32,7 +32,7 @@
     # choices variable defined is a function of argparse library :(
     ```
 
-#### 3) If `#` (commentary) after line of code, can potentially generate an error if Rcommentaries feature not recognize correctly le commentaire and remove the code of line
+#### 3) If `#` (commentary) after line of code, can potentially generate an error if Rcommentaries feature not recognize commentary correctly and remove the code of line
 **Can generate an error = yes**
 - Strongly Recommended (no error can appear):
     ```
