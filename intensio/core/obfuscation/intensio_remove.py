@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+# https://github.com/Hnfull/Intensio-Obfuscator
+
 #---------------------------------------------------------- [Lib] -----------------------------------------------------------#
 
 import re
@@ -10,7 +12,7 @@ from tqdm import tqdm
 from core.utils.intensio_error import EXIT_SUCCESS, EXIT_FAILURE
 from core.utils.intensio_utils import Utils
 
-#--------------------------------------------------- [Function(s)/Class] ----------------------------------------------------#
+#------------------------------------------------- [Function(s)/Class(es)] --------------------------------------------------#
 
 class Remove:
     def __init__(self):
@@ -19,7 +21,7 @@ class Remove:
     def LineBreaks(self, codeArg, outputArg):
         checkLine       = 0
         numberFiles     = 0
-        numberFileGood  = 0
+        numberGoodFile  = 0
         
         if codeArg == "python":
             detectFile  = "py"
@@ -28,35 +30,34 @@ class Remove:
         recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.utils.Platform(), detectFile), recursive=True)]
 
         # -- Delete line breaks -- #
-        for output in recursFiles:
-            if re.match(blockDirs, output):
+        for file in recursFiles:
+            if re.match(blockDirs, file):
                 continue
             else:
-                with fileinput.FileInput(output, inplace=True) as inputFile:
+                with fileinput.FileInput(file, inplace=True) as inputFile:
                     for line in inputFile:
                         if line.strip():
                             print(line.rstrip())
     
         # -- Check if all line breaks are deleted -- #
-        for output in recursFiles:
+        for file in recursFiles:
             checkLine = 0 # Initialize check vars for the next file 
-
-            if re.match(blockDirs, output):
+            if re.match(blockDirs, file):
                 continue
             else:
-                with open(output, "r") as readFile:
+                with open(file, "r") as readFile:
                     readF = readFile.readlines()
                     for eachLine in readF:
                         if eachLine == "\n":
                             checkLine += 1
                         if checkLine == 0:
-                            numberFileGood += 1
+                            numberGoodFile += 1
                             numberFiles += 1
                         else:
-                            numberFileGood += 0
+                            numberGoodFile += 0
                             numberFiles += 1
 
-        if numberFileGood == numberFiles:
+        if numberGoodFile == numberFiles:
             return EXIT_SUCCESS
         else:
             return EXIT_FAILURE
@@ -69,108 +70,63 @@ class Remove:
         isCommentary        = 0
         countRecursFiles    = 0
 
-        if codeArg == "python":
-            classicCommentariesAfterLine    = r"\s+\#.*"                        # '#' after line of code 
-            classicCommentariesBeginLine    = r"^\#.*"                          # begin '#'
-            quoteOfCommentariesMultipleLine = r"^[\"|\']{3}$"                   # """ and ''' without before variables and if commentaries is over multiple lines
-            quoteOfCommentariesOneLine      = r"[\"|\']{3}.*[\"|\']{3}"         # """ and ''' without before variables and if commentary is over one line, (""" commentaries """)
-            noQuoteOfCommentaries           = r"\w+\s*[\=|\(]{1}\s*[\"|\']{3}"  # """ and ''' with before variables
-        
+        if codeArg == "python": 
+            commentariesBeginLine               = r"^\#.*"                      # Begin '#'
+            quoteInRegex                        = r"\={1}\s*r[\"|\']{1}"        # If quote in regex
+            quoteOfCommentariesOneLine          = r"[\"|\']{3}.*[\"|\']{3}$"    # """ and ''' without before variables and if commentary is over one line, (""" commentaries """)
+            quoteOfCommentariesMultipleLines    = r"^\s*[\"|\']{3}$"            # """ and ''' without before variables and if commentaries is over multiple lines
+            quoteOfEndCommentariesMultipleLines = r"^\s*[\"|\']{3}\)?\.?"       # """ and ''' without before variables, if commentaries is over multiple lines and he finish by .format() funtion
+            quoteIntoVariable                   = r".*\={1}\s*\w*\.?\w*[\(|\.]{1}[\"|\']{3}|.*\={1}\s*[\"|\']{3}"   # """ and ''' with before variables
+            commentariesAfterLine               = r"\s*\#[^\"|^\'|^\.|^\?|^\*|^\!|^\]|^\[|^\\|^\)|^\(|^\{|^\}].*"   # '#' after line of code
+
             detectFile  = "py"
             blockDirs   = r"__pycache__"
 
         recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.utils.Platform(), detectFile), recursive=True)]
 
-        # -- Count commentaries will be removed -- #
-        for output in recursFiles:
-            if re.match(blockDirs, output):
-                continue
-            else:
-                with open(output, "r") as readFile:
-                    readF = readFile.readlines()
-                    for eachLine in readF:
-                        if codeArg == "python":
-                            searchClassicCommentariesAfterLine = re.search(classicCommentariesAfterLine, eachLine)
-                            searchClassicCommentariesBeginLine = re.search(classicCommentariesBeginLine, eachLine)
-                            if "coding" in eachLine or "#!" in eachLine:
-                                continue
-                            
-                            if re.match(noQuoteOfCommentaries, eachLine):
-                                noCommentary += 1
-                            elif re.match(quoteOfCommentariesMultipleLine, eachLine):
-                                isCommentary += 1
-                            else:
-                                pass
-                               
-                            if re.match(quoteOfCommentariesOneLine, eachLine):
-                                isCommentary = 0
-                                countLineInput += 1
-                                continue
-                            elif isCommentary == 1 and noCommentary == 0:
-                                countLineInput += 1
-                                continue
-                            elif isCommentary == 0 and noCommentary == 1:
-                                continue
-                            elif isCommentary == 2:
-                                isCommentary = 0
-                                countLineInput += 1
-                                continue
-                            elif isCommentary == 1 and noCommentary == 1:
-                                isCommentary = 0
-                                noCommentary = 0
-                                continue
-                            else:
-                                pass
-
-                        if searchClassicCommentariesBeginLine is not None:
-                            countLineInput += 1
-                        elif searchClassicCommentariesAfterLine is not None:
-                            countLineInput += 1
-                        else:
-                            pass
-
-        # -- Initialize vars -- #
-        isCommentary = 0
-        noCommentary = 0            
-        
-        # -- Remove commentaries -- #
+        # -- Remove commentaries and Count commentaries will be removed -- #
         for number in recursFiles:
             countRecursFiles += 1
-
+            
         print("\n[+] Running remove commentaries in {0} file(s)...\n".format(countRecursFiles))
 
         with tqdm(total=countRecursFiles) as pbar:
-            for output in recursFiles:
+            for file in recursFiles:
                 pbar.update(1)
-                if re.match(blockDirs, output):
+                if re.match(blockDirs, file):
                     continue
                 else:
                     # -- Remove commentaries -- #
-                    with fileinput.input(output, inplace=True) as inputFile:
+                    with fileinput.input(file, inplace=True) as inputFile:
                         for eachLine in inputFile:
-                            searchClassicCommentariesAfterLine = re.search(classicCommentariesAfterLine, eachLine)
-                            searchClassicCommentariesBeginLine = re.search(classicCommentariesBeginLine, eachLine)
+                            searchCommentariesAfterLine = re.search(commentariesAfterLine, eachLine)
+                            searchCommentariesBeginLine = re.search(commentariesBeginLine, eachLine)
                             if codeArg == "python":
                                 if "coding" in eachLine or "#!" in eachLine:
                                     print(eachLine)
                                     continue
                                 
-                                if re.match(noQuoteOfCommentaries, eachLine):
+                                if re.match(quoteInRegex, eachLine):
+                                    continue
+                                elif re.match(quoteIntoVariable, eachLine):
                                     noCommentary += 1
-                                elif re.match(quoteOfCommentariesMultipleLine, eachLine):
+                                elif re.match(quoteOfCommentariesMultipleLines, eachLine) or re.match(quoteOfEndCommentariesMultipleLines, eachLine):
                                     isCommentary += 1
                                 else:
                                     pass
                                 
                                 if re.match(quoteOfCommentariesOneLine, eachLine):
+                                    countLineInput += 1
                                     isCommentary = 0
                                     continue
                                 elif isCommentary == 1 and noCommentary == 0:
+                                    countLineInput += 1
                                     continue
                                 elif isCommentary == 0 and noCommentary == 1:
                                     print(eachLine)
                                     continue
                                 elif isCommentary == 2:
+                                    countLineInput += 1
                                     isCommentary = 0
                                     continue
                                 elif isCommentary == 1 and noCommentary == 1:
@@ -181,11 +137,13 @@ class Remove:
                                 else:
                                     pass
                             
-                            if searchClassicCommentariesBeginLine is not None:
-                                eachLine = eachLine.replace(searchClassicCommentariesBeginLine.group(0), "")
+                            if searchCommentariesBeginLine is not None:
+                                countLineInput += 1
+                                eachLine = eachLine.replace(searchCommentariesBeginLine.group(0), "")
                                 print(eachLine)
-                            elif searchClassicCommentariesAfterLine is not None:
-                                eachLine = eachLine.replace(searchClassicCommentariesAfterLine.group(0), "")
+                            elif searchCommentariesAfterLine is not None:
+                                eachLine = eachLine.replace(searchCommentariesAfterLine.group(0), "")
+                                countLineInput += 1
                                 print(eachLine)
                             else:
                                 print(eachLine)
@@ -195,26 +153,26 @@ class Remove:
         noCommentary = 0
 
         # -- Check if all commentaries are removed -- #
-        for output in recursFiles:
+        for file in recursFiles:
             countLineOutput = 0
-
-            if re.match(blockDirs, output):
+            if re.match(blockDirs, file):
                 continue
             else:
-                with open(output, "r") as readFile:
+                with open(file, "r") as readFile:
                     countLineOutput = 0
                     readF           = readFile.readlines()
-
                     for eachLine in readF:
-                        searchClassicCommentariesAfterLine = re.search(classicCommentariesAfterLine, eachLine)
-                        searchClassicCommentariesBeginLine = re.search(classicCommentariesBeginLine, eachLine)
+                        searchCommentariesAfterLine = re.search(commentariesAfterLine, eachLine)
+                        searchCommentariesBeginLine = re.search(commentariesBeginLine, eachLine)
                         if codeArg == "python":
                             if "coding" in eachLine or "#!" in eachLine:
                                 continue
                             
-                            if re.match(noQuoteOfCommentaries, eachLine):
+                            if re.match(quoteInRegex, eachLine):
+                                continue
+                            elif re.match(quoteIntoVariable, eachLine):
                                 noCommentary += 1
-                            elif re.match(quoteOfCommentariesMultipleLine, eachLine):
+                            elif re.match(quoteOfCommentariesMultipleLines, eachLine) or re.match(quoteOfEndCommentariesMultipleLines, eachLine):
                                 isCommentary += 1
                             else:
                                 pass
@@ -239,9 +197,9 @@ class Remove:
                             else:
                                 pass
 
-                        if searchClassicCommentariesBeginLine is not None:
+                        if searchCommentariesBeginLine is not None:
                             countLineOutput += 1
-                        elif searchClassicCommentariesAfterLine is not None:
+                        elif searchCommentariesAfterLine is not None:
                             countLineOutput += 1
                         else:
                             pass
@@ -255,13 +213,16 @@ class Remove:
         else:
             return EXIT_FAILURE
 
+
     def PrintFunc(self, codeArg, outputArg):
-        countPrintLine      = 0
-        countCheckPrintLine = 0
-        countRecursFiles    = 0
+        countPrintLine              = 0
+        countCheckPrintLine         = 0
+        countRecursFiles            = 0
+        checkPrintPy3MultipleLines  = 0
+        checkPrintPy2MultipleLines  = 0
 
         if codeArg == "python":
-            detectPrint = r"\s{2,}print|^print"
+            detectPrint = r"\s*print"
             detectFile  = "py"
             blockDirs   = r"__pycache__"
 
@@ -273,27 +234,51 @@ class Remove:
         print("\n[+] Running remove print function in {0} file(s)...\n".format(countRecursFiles))
 
         with tqdm(total=countRecursFiles) as pbar:
-            for output in recursFiles:
+            for file in recursFiles:
                 pbar.update(1)
-                if re.match(blockDirs, output):
+                if re.match(blockDirs, file):
                     continue
-                else:
+                else: 
                     # -- Remove all print functions -- #
-                    with fileinput.input(output, inplace=True) as inputFile:
+                    with fileinput.input(file, inplace=True) as inputFile:
                         for eachLine in inputFile:
-                        
                             if re.match(detectPrint, eachLine):
                                 countPrintLine += 1
-                                continue
+                                # -- If print() python 3 is multiple lines -- #
+                                if re.match(r"\s*print\s*\({1}", eachLine):
+                                    if "(" in eachLine and not ")" in eachLine:
+                                        checkPrintPy3MultipleLines += 1
+                                        continue
+                                    else:
+                                        continue
+                                # -- If print python 2 is multiple lines -- #        
+                                elif re.match(r"\s*print\s*[\"|\']{1}", eachLine):
+                                    checkPrintPy2MultipleLines += 1
+                                    continue
                             else:
-                                print(eachLine)
+                                if checkPrintPy3MultipleLines == 1:
+                                    if ")" in eachLine and not "(" in eachLine:
+                                        checkPrintPy3MultipleLines = 0
+                                        continue
+                                    else:
+                                        continue
+                                elif checkPrintPy2MultipleLines > 0:
+                                    if re.match(r"^\s+[\"\']{1}\s*\w+|^[\"\']{1}\s*\w+", eachLine):
+                                        checkPrintPy2MultipleLines += 1
+                                        continue
+                                    else:
+                                        checkPrintPy2MultipleLines = 0
+                                        print(eachLine)
+                                        continue
+                                else:
+                                    print(eachLine)
 
         # -- Check if all print functions are removed -- #
-        for output in recursFiles:
-            if re.match(blockDirs, output):
+        for file in recursFiles:
+            if re.match(blockDirs, file):
                 continue
             else:
-                with open(output, "r") as readFile:
+                with open(file, "r") as readFile:
                     readF = readFile.readlines()
                     for eachLine in readF:
                         if re.match(detectPrint, eachLine):
@@ -301,7 +286,7 @@ class Remove:
 
         if (Remove.LineBreaks(self, codeArg, outputArg) == 0):
             if countCheckPrintLine == 0:
-                print("\n-> {0} lines of print functions removed\n".format(countPrintLine))
+                print("\n-> {0} print functions removed\n".format(countPrintLine))
                 return EXIT_SUCCESS
             else:
                 return EXIT_FAILURE

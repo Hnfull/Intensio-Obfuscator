@@ -1,10 +1,12 @@
- # -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
+
+# https://github.com/Hnfull/Intensio-Obfuscator
 
 #---------------------------------------------------------- [Lib] -----------------------------------------------------------#
 
 import argparse
 
-#--------------------------------------------------- [Function(s)/Class] ----------------------------------------------------#
+#------------------------------------------------- [Function(s)/Class(es)] --------------------------------------------------#
 class Args:
 
     def __init__(self):
@@ -26,10 +28,10 @@ class Args:
                                 help="output file or directory that will be obfuscated - if multiple file indicate a empty directory that will contain all your files"
                                 )
         self.parser.add_argument(
-                                "-m", "--mixer",
+                                "-m", "--mixerlevel",
                                 choices=["lower", "medium", "high"],
                                 default="medium",
-                                help="length level of variables mix output"
+                                help="length levels of the number of characters for output variables /classes/functions"
                                 )
         self.parser.add_argument(
                                 "-r", "--replace",
@@ -46,7 +48,7 @@ class Args:
         self.parser.add_argument(
                                 "-rc", "--rcommentaries",
                                 action="store_true",
-                                default=False,
+                                default=True,
                                 help="activate the 'rcommentaries' obfuscation feature"
                                 )
         self.parser.add_argument(
@@ -55,9 +57,17 @@ class Args:
                                 default=False,
                                 help="activate the 'rprint' obfuscation feature"
                                 )
+        self.parser.add_argument(
+                                "-v", "--verbose",
+                                action="store_true",
+                                default=False,
+                                help="improve verbosity"
+                                )
+
 
     def GetArgHelp(self):
         return self.parser.print_help()
+
     
     def GetArgsValue(self):
         return self.parser.parse_args()

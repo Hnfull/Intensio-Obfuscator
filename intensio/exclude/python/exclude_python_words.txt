@@ -1,4 +1,4 @@
-############## FOR THE PYTHON FILES RAT TEST IN REPOS #################
+########### FOR THE PYTHON FILES BasicRAT TEST IN REPOS ##############
 
 ########### variables ############
 _
@@ -29,6 +29,15 @@ stdin
 platform
 processor
 architecture
+
+###### FOR THE PYTHON FILES INTENSIO-OBFUSCATOR TEST IN REPOS ########
+
+############ argparse ############
+prog
+
+############### re ###############
+search
+match
 
 ########################### DO NOT MODIFY IT #########################
 
@@ -66,6 +75,10 @@ try
 while
 with
 yield
+
+####### Other python keywords ########
+replace
+remove
 
 ############### PUT YOUR VARS-CLASSES-FUNCS TO EXCLUDE #################
 yourVar1

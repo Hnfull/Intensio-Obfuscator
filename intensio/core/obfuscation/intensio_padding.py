@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+# https://github.com/Hnfull/Intensio-Obfuscator
+
 #---------------------------------------------------------- [Lib] -----------------------------------------------------------#
 
 import fileinput
@@ -14,7 +16,7 @@ from core.obfuscation.intensio_remove import Remove
 from core.utils.intensio_utils import Utils
 from core.utils.intensio_error import EXIT_SUCCESS, EXIT_FAILURE, ERROR_BAD_ARGUMENTS
 
-#--------------------------------------------------- [Function(s)/Class] ----------------------------------------------------#
+#------------------------------------------------- [Function(s)/Class(es)] --------------------------------------------------#
 
 class Padding:
 
@@ -126,8 +128,9 @@ class Padding:
                                                                     {2} = {0}
                                                                 else:
                                                                     {2} = {4}
-                                                    """).format(varRandom1, varRandom2, varRandom3, varRandom4, varRandom5, varRandom6, \
-                                                                varRandom7, varRandom8, varRandom9, varRandom10, varRandom11, varRandom12)
+                                                    """).format(varRandom1, varRandom2, varRandom3, varRandom4, varRandom5, \
+                                                                varRandom6, varRandom7, varRandom8, varRandom9, varRandom10, \
+                                                                varRandom11, varRandom12)
                 return scriptAssPadding3
 
             # -- script 4 -- #
@@ -167,26 +170,33 @@ class Padding:
                                                         varRandom10, varRandom11, varRandom12)
                 return scriptAssPadding5
     
+    
     def AddScripts(self, codeArg, outputArg, mixerLevelArg):
-        countScriptsAdded   = 0
-        countLineAdded      = 0
-        countLine           = 0
-        checkLine           = 0
-        checkPassing        = 0
-        countRecursFiles    = 0
+        listCheckLineWhitoutSpace       = []
+        listCheckLine                   = []
+        countScriptsAdded               = 0
+        countLineAdded                  = 0
+        countLine                       = 0
+        checkLine                       = 0
+        checkQuotePassing               = 0
+        checkCharPassing                = 0
+        countRecursFiles                = 0
+        checkParenthesesCharPassing     = 0
+        checkBracketsCharPassing        = 0
+        checkBracesCharPassing          = 0
         
         if codeArg == "python":
-            inputExt    = "py"
+            detectFile  = "py"
             blockDirs   = r"__pycache__"
 
-        recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.utils.Platform(), inputExt), recursive=True)]
+        recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.utils.Platform(), detectFile), recursive=True)]
 
         # -- Count the number of lines that will be checked before filling -- #
-        for output in recursFiles:
-            if re.match(blockDirs, output):
+        for file in recursFiles:
+            if re.match(blockDirs, file):
                 continue
             else:
-                with open(output , "r") as readFile:
+                with open(file , "r") as readFile:
                     readF = readFile.readlines()
                     for eachLine in readF:
                         if not eachLine:
@@ -200,12 +210,12 @@ class Padding:
 
         # -- Padding scripts added -- #
         with tqdm(total=countRecursFiles) as pbar:
-            for output in recursFiles:
+            for file in recursFiles:
                 pbar.update(1)
-                if re.match(blockDirs, output):
+                if re.match(blockDirs, file):
                     continue
                 else:
-                    with fileinput.input(output, inplace=True) as inputFile:
+                    with fileinput.input(file, inplace=True) as inputFile:
                         for eachLine in inputFile:
                             print(eachLine)
                             if eachLine == "\n":
@@ -213,28 +223,48 @@ class Padding:
                             else:
                                 if codeArg == "python":
                                     spaces                  = len(eachLine) - len(eachLine.lstrip()) # Check line indent
-                                    noAddScript             = r"(^[\#]+.*)|(\@|\s+\@)|(\s+return)|(\s+#\s{1,10}\w+)"
+                                    noAddScript             = r"^\@|\s+\@|\s+return|\s*def\s+.+\s*\:{1}|^class\s+.+\s*\:{1}|.*[\[|\(|\{|\,|\\]$|\s+[\)|\]|\}]$"
                                     addIndentScript         = r".*\:{1}\s"
                                     checkAddIndentScript    = r".*\:{1}\s\w+"
+
+                                    quoteIntoVariable                   = r".*\={1}\s*\w*\.?\w*[\(|\.]{1}[\"|\']{3}|.*\={1}\s*[\"|\']{3}" # """ and ''' before an variables
+                                    quoteOfCommentariesMultipleLines    = r"^\s*[\"|\']{3}$"        # """ and ''' without before variables and if commentaries is over multiple lines
+                                    quoteOfEndCommentariesMultipleLines = r"^\s*[\"|\']{3}\)?\.?"   # """ and ''' without before variables, if commentaries is over multiple lines and he finish by .format() funtion
                                     
-                                    # -- Check if ',' char or '\' char,in end line -- #
-                                    listCheckEndLine = []
-                                    
+                                    listCheckLine = [] # Initialize var
+
                                     for i in eachLine:
-                                        listCheckEndLine.append(i)
-                                    
-                                    if "," in listCheckEndLine[-2] or "\\" in listCheckEndLine[-2]:
+                                        listCheckLine.append(i)
+
+                                    # -- Check if end char in line is "'" or '"' -- #
+                                    if re.match(r"\"|\'", listCheckLine[-2]):
+                                        try:
+                                            if re.match(r"\'|\"", listCheckLine[-3]) and re.match(r"\'|\"", listCheckLine[-4]):
+                                                pass
+                                            else:
+                                                continue
+                                        except IndexError:
+                                            continue
+        
+                                    # -- Check code into """ or ''' -- #
+                                    if re.match(quoteIntoVariable, eachLine):
+                                        checkQuotePassing += 1
+                                        continue
+                                    elif re.match(quoteOfCommentariesMultipleLines, eachLine) or re.match(quoteOfEndCommentariesMultipleLines, eachLine):
+                                        checkQuotePassing += 1
+                                        if checkQuotePassing == 2:
+                                            checkQuotePassing = 0
                                         continue
 
-                                    # -- Check code between """ or ''' -- #
-                                    if '\"\"\"' in eachLine or "\'\'\'" in eachLine:
-                                        checkPassing += 1
-                
-                                    if checkPassing == 1: # Loop until the next """ or ''' 
+                                    if checkQuotePassing == 1:
+                                        continue
+                                    elif checkQuotePassing == 2:
+                                        checkQuotePassing = 0
                                         continue
                                     else:
-                                        checkPassing = 0
+                                        checkQuotePassing = 0
 
+                                # -- Add scripts -- #
                                 if re.match(noAddScript, eachLine) is not None:
                                     continue
                                 elif re.match(addIndentScript, eachLine) is not None:
@@ -272,11 +302,11 @@ class Padding:
                                         continue
                                 
         # -- Check padding has added in output script -- #
-        for output in recursFiles:
-            if re.match(blockDirs, output):
+        for file in recursFiles:
+            if re.match(blockDirs, file):
                 continue
             else:
-                with open(output , "r") as readFile:
+                with open(file , "r") as readFile:
                     readF = readFile.readlines()
                     for eachLine in readF:
                         if not eachLine:
@@ -294,4 +324,4 @@ class Padding:
             else:
                 return EXIT_FAILURE
         else:
-            EXIT_FAILURE
+            return EXIT_FAILURE

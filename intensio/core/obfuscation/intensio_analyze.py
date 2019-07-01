@@ -1,5 +1,7 @@
  # -*- coding: utf-8 -*-
 
+# https://github.com/Hnfull/Intensio-Obfuscator
+
 #---------------------------------------------------------- [Lib] -----------------------------------------------------------#
 
 import shutil
@@ -9,59 +11,59 @@ import re
 
 from core.utils.intensio_utils import Utils
 from core.utils.intensio_error import EXIT_SUCCESS, ERROR_FILE_NOT_FOUND, ERROR_PATH_NOT_FOUND,ERROR_FILE_EMPTY,\
-                                ERROR_BAD_FILE_TYPE, ERROR_BAD_ARGUMENTS, ERROR_CANNOT_COPY, ERROR_CANNOT_REMOVE, \
-                                ERROR_NOT_DIR, ERROR_NOT_FILE, EXIT_FAILURE, ERROR_DIR_EMPTY
+                                        ERROR_BAD_FILE_TYPE, ERROR_BAD_ARGUMENTS, ERROR_CANNOT_COPY, ERROR_CANNOT_REMOVE, \
+                                        ERROR_NOT_DIR, ERROR_NOT_FILE, EXIT_FAILURE, ERROR_DIR_EMPTY
 
-#--------------------------------------------------- [Function(s)/Class] ----------------------------------------------------#
+#------------------------------------------------- [Function(s)/Class(es)] --------------------------------------------------#
 
 class Analyze:
 
     def __init__(self):
         self.utils = Utils()
 
-    def InputAvailable(self, inputArg, codeArg):
+    def InputAvailable(self, inputArg, codeArg, verboseArg):
         inputFileFound      = []
         inputFileEmpty      = []
         inputFileFoundCount = 0
         inputFileEmptyCount = 0
-        inputExt            = ""
 
         if os.path.exists(inputArg) == True:
             if os.path.isdir(inputArg) == True:     
                 if codeArg == "python":
-                    inputExt    = "py"
+                    detectFile  = "py"
                     blockdirs   = r"__pycache__"
 
-                recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(inputArg, self.utils.Platform(), inputExt), recursive=True)]
+                recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(inputArg, self.utils.Platform(), detectFile), recursive=True)]
                 if recursFiles == []:
                     print("[-] {0} directory empty".format(inputArg))
                     return ERROR_DIR_EMPTY
 
-                print("\n[+] Running analyze input...\n")
+                print("\n[+] Running analyze input...")
                 
-                for output in recursFiles:
-                    if re.match(blockdirs, output):
+                for file in recursFiles:
+                    if re.match(blockdirs, file):
                         continue
                     else:
-                        if os.path.getsize(output) > 0:
-                            inputFileFound.append(output)
+                        if os.path.getsize(file) > 0:
+                            inputFileFound.append(file)
                             inputFileFoundCount += inputFileFoundCount + 1
                         else:
-                            inputFileEmpty.append(output)
+                            inputFileEmpty.append(file)
                             inputFileEmptyCount += inputFileEmptyCount + 1
 
                 if inputFileFoundCount >= 1 and inputFileEmptyCount < inputFileFoundCount:
-                    print("\n[+] File input found :\n")
-
-                    if inputFileFound == []:
-                        print("-> no result")
-                    else:
-                        for file in inputFileFound:
-                            print("-> {0}".format(file))
-                
-                        for file in inputFileEmpty:
-                            print("-> {0} : empty".format(file))
-                    print("")
+                    if verboseArg:
+                        print("\n[+] File input found :\n")
+                        
+                        if inputFileFound == []:
+                            print("-> no result")
+                        else:
+                            for file in inputFileFound:
+                                print("-> {0}".format(file))
+                    
+                            for file in inputFileEmpty:
+                                print("-> {0} : empty".format(file))
+                        print("")
                     return EXIT_SUCCESS
                 
                 elif inputFileFoundCount == inputFileEmptyCount and inputFileFoundCount > 0:
@@ -77,12 +79,12 @@ class Analyze:
             print("'{0}' not exists.".format(inputArg))
             return ERROR_PATH_NOT_FOUND
     
-    def OutputAvailable(self, inputArg, codeArg, outputArg):
+    
+    def OutputAvailable(self, inputArg, codeArg, outputArg, verboseArg):
         outputFileFound         = []
         outputFileEmpty         = []
         outputFileFoundCount    = 0
         outputFileEmptyCount    = 0
-        outputExt               = ""
 
         if os.path.exists(outputArg) == True:
             removeRequest = input("[!] Output '{0}' already exists, do you want remove it ? (Y/N) : ".format(outputArg))
@@ -95,39 +97,40 @@ class Analyze:
                         if os.path.exists(outputArg) == True:
                             if os.path.isdir(outputArg) == True:
                                 if codeArg == "python":
-                                    inputExt    = "py"
+                                    detectFile  = "py"
                                     blockdirs   = r"__pycache__"
 
-                                recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(inputArg, self.utils.Platform(), inputExt), recursive=True)]
+                                recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(inputArg, self.utils.Platform(), detectFile), recursive=True)]
                                 if recursFiles == []:
                                     print("[-] {0} directory empty".format(inputArg))
                                     return ERROR_DIR_EMPTY
 
-                                print("\n[+] Running analyze output...\n")
+                                print("\n[+] Running analyze output...")
 
-                                for output in recursFiles:
-                                    if re.match(blockdirs, output):
+                                for file in recursFiles:
+                                    if re.match(blockdirs, file):
                                         continue
                                     else:
-                                        if os.path.getsize(output) > 0:
-                                            outputFileFound.append(output)
+                                        if os.path.getsize(file) > 0:
+                                            outputFileFound.append(file)
                                             outputFileFoundCount += outputFileFoundCount + 1
                                         else:
-                                            outputFileEmpty.append(output)
+                                            outputFileEmpty.append(file)
                                             outputFileEmptyCount += outputFileEmptyCount + 1
 
                                 if outputFileFoundCount >= 1 and outputFileFoundCount > outputFileEmptyCount:
-                                    print("\n[+] Copied output files :\n")
+                                    if verboseArg:
+                                        print("\n[+] Copied output files :\n")
 
-                                    if outputFileFound == []:
-                                        print("-> no result")
-                                    else:
-                                        for file in outputFileFound:
-                                            print("-> {0}".format(file))
-                                    
-                                        for file in outputFileEmpty:
-                                            print("-> {0} : empty".format(file))
-
+                                        if outputFileFound == []:
+                                            print("-> no result")
+                                        else:
+                                            for file in outputFileFound:
+                                                print("-> {0}".format(file))
+                                        
+                                            for file in outputFileEmpty:
+                                                print("-> {0} : empty".format(file))
+                                                
                                     return EXIT_SUCCESS
                                 else:
                                     print("[-] No files available in '{0}'.".format(outputArg))
@@ -154,25 +157,25 @@ class Analyze:
                 if os.path.exists(outputArg) == True:
                     if os.path.isdir(outputArg) == True:
                         if codeArg == "python":
-                            inputExt    = "py"
+                            detectFile  = "py"
                             blockdirs   = r"__pycache__"
 
-                        recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(inputArg, self.utils.Platform(), inputExt), recursive=True)]
+                        recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(inputArg, self.utils.Platform(), detectFile), recursive=True)]
                         if recursFiles == []:
                             print("[-] {0} directory empty".format(inputArg))
                             return ERROR_DIR_EMPTY
 
-                        print("\n[+] Running analyze output...\n")
+                        print("\n[+] Running analyze output...")
                         
-                        for output in recursFiles:
-                            if re.match(blockdirs, output):
+                        for file in recursFiles:
+                            if re.match(blockdirs, file):
                                 continue
                             else:
-                                if os.path.getsize(output) > 0:
-                                    outputFileFound.append(output)
+                                if os.path.getsize(file) > 0:
+                                    outputFileFound.append(file)
                                     outputFileFoundCount += outputFileFoundCount + 1
                                 else:
-                                    outputFileEmpty.append(output)
+                                    outputFileEmpty.append(file)
                                     outputFileEmptyCount += outputFileEmptyCount + 1
 
                         if outputFileFoundCount >= 1 and outputFileFoundCount > outputFileEmptyCount:

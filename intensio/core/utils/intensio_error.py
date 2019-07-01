@@ -1,4 +1,6 @@
- # -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
+
+# https://github.com/Hnfull/Intensio-Obfuscator
 
 #---------------------------------------------------------- [Lib] -----------------------------------------------------------#
 
@@ -33,7 +35,7 @@ ERROR_NOT_DIR       = 1
 ERROR_NOT_FILE      = 1
 ERROR_DIR_EMPTY     = 1
 
-#--------------------------------------------------- [Function(s)/Class] ----------------------------------------------------#
+#------------------------------------------------- [Function(s)/Class(es)] --------------------------------------------------#
 
 # -- Not raised an error, only for breaking a loop -- #
 class BreakLoop (Exception):

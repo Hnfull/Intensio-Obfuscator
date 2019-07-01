@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 
+# https://github.com/Hnfull/Intensio-Obfuscator
+
 #---------------------------------------------------------- [Lib] -----------------------------------------------------------#
 
 import re
 import fileinput
 import glob
 import os
-import keyword
+import time
 from tqdm import tqdm
 
 from core.obfuscation.intensio_mixer import Mixer
@@ -14,9 +16,9 @@ from core.obfuscation.intensio_remove import Remove
 from core.utils.intensio_error import BreakLoop, EXIT_SUCCESS, EXIT_FAILURE
 from core.utils.intensio_utils import Utils
 
-#--------------------------------------------------- [Function(s)/Class] ----------------------------------------------------#
+#------------------------------------------------- [Function(s)/Class(es)] --------------------------------------------------#
 
-class Replace:
+class ReplaceWords:
 
     def __init__(self):
         self.mixer              = Mixer()
@@ -85,12 +87,12 @@ class Replace:
                                                 getIndexLineList[indexExplore]
                                             except IndexError: 
                                                 continue
-
+                                                
                                             # -- Check the char after the word -- #
                                             if re.match(regReplace, getIndexLineList[indexExplore]):
                                                 # -- Check word finded is not into the other word -- #
-                                                indexExplore = indexLine - 1
-                                                if not re.match(r"(\w)", getIndexLineList[indexExplore]):
+                                                indexExploreBefore  = indexLine - 1
+                                                if not re.match(r"\w|\\", getIndexLineList[indexExploreBefore]):                                                
                                                     if codeArg == "python":
                                                         # -- Check if it's 'from' and 'import' word key in line to avoid replace name of file if variable is identic name to file -- #
                                                         getLine = "".join(getIndexLineList)
@@ -109,7 +111,7 @@ class Replace:
                                                         else:
                                                             checkCharAfterWord = 0
                                                 else:
-                                                    checkCharAfterWord = 1
+                                                    checkCharAfterWord = 1              
                                             else:
                                                 checkCharAfterWord = 1
 
@@ -162,7 +164,8 @@ class Replace:
         returnLine = "".join(returnLine)
         return returnLine[:]
     
-    def VarsDefinedByUser(self, codeArg, outputArg, mixerLevelArg):
+    
+    def VarsDefinedByUser(self, codeArg, outputArg, mixerLevelArg, verboseArg):
         variablesDict           = {}
         classesDict             = {}
         functionsDict           = {}
@@ -175,33 +178,33 @@ class Replace:
         wordsIncludedNotFound   = []
         checkCountWordsMixed    = 0
         checkCountWordsValue    = 0
-        checkPassing            = 0
+        checkQuotePassing       = 0
         numberReplaced          = 0
-        isCommentary            = 0
-        noCommentary            = 0
         countRecursFiles        = 0
 
         if codeArg == "python":
             variablesDefined        = r"(^\w+|\w+)([\s|^\s]*=[\s|\w|\"|\'])"    # Variables
             variablesErrorDefined   = r"except(\s+\w+\sas\s)(\w)"               # Error variables
-            variablesLoopDefined    = r"for\s([\w\s?\,?]{1,})(\sin)"            # Loop variables
+            variablesLoopDefined    = r"for\s+([\w\s\,]+)(\s+in\s+)"            # Loop variables
             functionsDefined        = r"def\s(\w+)"                             # Functions
             classDefined            = r"class\s(\w+)"                           # Classes
-
-            quoteOfCommentariesOneLine  = r"[\"\']{3}.*[\"\']{3}"       # """ and ''' without before variables and if commentary is over one line, (""" commentaries """)
-            noQuoteOfCommentaries       = r"\s*\w+\s*\={1}\s*[\"\']{3}" # """ and ''' with before variables
-
-            inputExt    = "py"
+            
+            quoteOfEndCommentariesMultipleLines = r"^\s*[\"|\']{3}\)?\.?"   # """ and ''' without before variables, if commentaries is over multiple lines and he finish by .format() funtion
+            quoteOfCommentariesMultipleLines    = r"^\s*[\"|\']{3}$"        # """ and ''' without before variables and if commentaries is over multiple lines
+            quoteInRegex                        = r"\={1}\s*r[\"|\']{1}"    # If quote in regex
+            quoteIntoVariable                   = r".*\={1}\s*\w*\.?\w*[\(|\.]{1}[\"|\']{3}|.*\={1}\s*[\"|\']{3}"   # """ and ''' with before variables
+            
+            detectFile  = "py"
             blockDirs   = r"__pycache__"
 
-        recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.utils.Platform(), inputExt), recursive=True)]
+        recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.utils.Platform(), detectFile), recursive=True)]
 
         # -- Find variables/classes/functions and mixed it -- #
-        for output in recursFiles:
-            if re.match(blockDirs, output):
+        for file in recursFiles:
+            if re.match(blockDirs, file):
                 continue
             else:
-                with open(output, "r") as readFile:
+                with open(file, "r") as readFile:
                     readF = readFile.readlines()
                     for eachLine in readF:
                         # -- Variables -- #     
@@ -224,7 +227,6 @@ class Replace:
                         search = re.search(variablesLoopDefined, eachLine)
                         if search != None:
                             if "," in search.group(1):
-                                varsInFor = []
                                 modifySearch = search.group(1).replace(",", " ")
                                 modifySearch = modifySearch.split()
                                 for i in modifySearch:
@@ -242,7 +244,7 @@ class Replace:
                             mixer = self.mixer.GetStringMixer(mixerLevelArg)
                             if search.group(1) not in functionsDict:
                                 if codeArg == "python":
-                                    if not re.match(r"(^__init__$)", search.group(1)):
+                                    if not re.match(r"__init__", search.group(1)):
                                         functionsDict[search.group(1)] = mixer
 
                         # -- Classes -- #
@@ -293,11 +295,11 @@ class Replace:
                 includeDict[word] = mixer
                 wordsIncludedNotFound.append(word)
 
-        for output in recursFiles:
-            if re.match(blockDirs, output):
+        for file in recursFiles:
+            if re.match(blockDirs, file):
                 continue
             else:
-                with open(output, "r") as readFile:
+                with open(file, "r") as readFile:
                     readF = readFile.readlines()
                     for eachLine in readF:        
                         for word in wordsIncludedNotFound:
@@ -307,47 +309,48 @@ class Replace:
         for word in wordsIncludedNotFound:
             if word in includeDict.keys():
                 del includeDict[word]
-
+        
         # -- Display variables/classes/functions found -- #
-        print("\n[+] Variables found :\n")
+        if verboseArg:
+            print("\n[+] Variables found :\n")
 
-        if variablesDict == {}:
-            print("-> No result")
-        else:
-            for key, value in variablesDict.items():
-                print("-> {0} : {1}".format(key, value))
-        
-        print("\n[+] Classes found :\n")
-        
-        if classesDict == {}:
-            print("-> No result")
-        else:
-            for key, value in classesDict.items():
-                print("-> {0} : {1}".format(key, value))
-        
-        print("\n[+] Functions found :\n")
+            if variablesDict == {}:
+                print("-> No result")
+            else:
+                for key, value in variablesDict.items():
+                    print("-> {0} : {1}".format(key, value))
+            
+            print("\n[+] Classes found :\n")
+            
+            if classesDict == {}:
+                print("-> No result")
+            else:
+                for key, value in classesDict.items():
+                    print("-> {0} : {1}".format(key, value))
+            
+            print("\n[+] Functions found :\n")
 
-        if functionsDict == {}:
-            print("-> No result")
-        else:
-            for key, value in functionsDict.items():
-                print("-> {0} : {1}".format(key, value))
+            if functionsDict == {}:
+                print("-> No result")
+            else:
+                for key, value in functionsDict.items():
+                    print("-> {0} : {1}".format(key, value))
 
-        print("\n[+] Include found :\n")
+            print("\n[+] Include found :\n")
 
-        if includeDict == {}:
-            print("-> No result")
-        else:
-            for key, value in includeDict.items():
-                print("-> {0} : {1}".format(key, value))
+            if includeDict == {}:
+                print("-> No result")
+            else:
+                for key, value in includeDict.items():
+                    print("-> {0} : {1}".format(key, value))
 
-        print("\n[+] Exclude found :\n")
+            print("\n[+] Exclude found :\n")
 
-        if wordsExcludedFound == []:
-            print("-> No result")
-        else:
-            for word in wordsExcludedFound:
-                print("-> {0} : excluded".format(word))
+            if wordsExcludedFound == []:
+                print("-> No result")
+            else:
+                for word in wordsExcludedFound:
+                    print("-> {0} : excluded".format(word))
 
         # -- Merge all dicts -- #
         allDict = self.utils.DictMerge(allDict, variablesDict)
@@ -362,44 +365,48 @@ class Replace:
         print("\n[+] Running replacement of variables/classes/functions in {0} file(s)...\n".format(countRecursFiles))
 
         with tqdm(total=countRecursFiles) as pbar:
-            for output in recursFiles:
+            for file in recursFiles:
                 pbar.update(1)
-                if re.match(blockDirs, output):
+                if re.match(blockDirs, file):
                     continue
                 else:
-                    with fileinput.input(output, inplace=True) as inputFile:
+                    with fileinput.input(file, inplace=True) as inputFile:
                         for eachLine in inputFile:
                             if not eachLine:
                                 continue
                             else:
                                 if codeArg == "python":
-                                    # -- Check code in """ or ''' -- #
-                                    if "\"\"\"" in eachLine or "\'\'\'" in eachLine:
-                                        if re.match(quoteOfCommentariesOneLine, eachLine):
-                                            print(eachLine)
-                                            continue
-                                        elif re.match(noQuoteOfCommentaries, eachLine):
-                                            eachLine = Replace.EachLine(self, codeArg, eachLine, allDict.items())
-                                            print(eachLine)
-                                            checkPassing += 1
-                                            continue
-                                        else:
-                                            checkPassing += 1
-
-                                    if checkPassing == 1:
+                                    # -- Check code into """ or ''' -- #
+                                    if re.match(quoteIntoVariable, eachLine):
+                                        checkQuotePassing += 1
+                                        eachLine = ReplaceWords.EachLine(self, codeArg, eachLine, allDict.items())
                                         print(eachLine)
                                         continue
-                                    else:
-                                        checkPassing = 0
-                                        eachLine = Replace.EachLine(self, codeArg, eachLine, allDict.items())
+                                    elif re.match(quoteOfCommentariesMultipleLines, eachLine) or re.match(quoteOfEndCommentariesMultipleLines, eachLine):
+                                        checkQuotePassing += 1
+                                        eachLine = ReplaceWords.EachLine(self, codeArg, eachLine, allDict.items())
                                         print(eachLine)
+                                        if checkQuotePassing == 2:
+                                            checkQuotePassing = 0
+                                        continue
 
+                                    if checkQuotePassing == 1:
+                                        print(eachLine)
+                                        continue
+                                    elif checkQuotePassing == 2:
+                                        checkQuotePassing = 0
+                                        continue
+                                    else:
+                                        eachLine = ReplaceWords.EachLine(self, codeArg, eachLine, allDict.items())
+                                        print(eachLine)
+                                        continue
+                            
         # -- Check if variables/classes/functions have been mixed -- #
-        for output in recursFiles:
-            if re.match(blockDirs, output):
+        for file in recursFiles:
+            if re.match(blockDirs, file):
                 continue
             else:
-                with open(output, "r") as readFile:
+                with open(file, "r") as readFile:
                     readF = readFile.readlines()
                     for eachLine in readF:
                         for value in allDict.values():

@@ -1,21 +1,21 @@
 # -*- coding: utf-8 -*-
 import socket
 import struct
-from crypto import OKSupbNTJNKeVNXuKbkkfKZkGSEpfkGZ
-from crypto import PCIXrYBHgUfcWimMNwcVTszRyHYsbXNo
-def ZtWixuDXDhaMQOEglQBRYVZQGcktUJMs(sock, ZPPOkbsCooupiQaFoXrvjbpkCzeUCtcd, key):
-    with open(ZPPOkbsCooupiQaFoXrvjbpkCzeUCtcd, 'wb') as f:
-        vAPgzCKekcbgYopsXtoRHHZDGFRVnksK = struct.unpack("!I", sock.recv(4))[0]
-        while vAPgzCKekcbgYopsXtoRHHZDGFRVnksK:
-            ffaUkAqHMlWyxurEkOziyHsJecvgNTSj = sock.recv(vAPgzCKekcbgYopsXtoRHHZDGFRVnksK)
-            f.write(PCIXrYBHgUfcWimMNwcVTszRyHYsbXNo(ffaUkAqHMlWyxurEkOziyHsJecvgNTSj, key))
-            vAPgzCKekcbgYopsXtoRHHZDGFRVnksK = struct.unpack("!I", sock.recv(4))[0]
-def WFREbbdnIuOOJMStvqQujEfaBoFJDwWU(sock, ZPPOkbsCooupiQaFoXrvjbpkCzeUCtcd, key):
-    with open(ZPPOkbsCooupiQaFoXrvjbpkCzeUCtcd, 'rb') as f:
-        ffaUkAqHMlWyxurEkOziyHsJecvgNTSj = f.read(4096)
-        while len(ffaUkAqHMlWyxurEkOziyHsJecvgNTSj):
-            JOQqjbMmireQWqOVeWtCxopobyaiIxtz = OKSupbNTJNKeVNXuKbkkfKZkGSEpfkGZ(ffaUkAqHMlWyxurEkOziyHsJecvgNTSj, key)
-            sock.send(struct.pack("!I", len(JOQqjbMmireQWqOVeWtCxopobyaiIxtz)))
-            sock.send(JOQqjbMmireQWqOVeWtCxopobyaiIxtz)
-            ffaUkAqHMlWyxurEkOziyHsJecvgNTSj = f.read(4096)
+from crypto import TKQFCDOUTVgFyFAJmsSOIosLeXgEyzvM
+from crypto import ofRSbfGSJUJdJOMAHnOdMFDQhCuQDoiv
+def FEDRkrcFQWVmxhAcLZqwmJisXuseuPOa(sock, wLLVWYAkHYMhQoGtlhOPdEoZRyLXNWmj, key):
+    with open(wLLVWYAkHYMhQoGtlhOPdEoZRyLXNWmj, 'wb') as f:
+        tEnVGsZIBBmcmLdTAEGCopYaxQyxsWvQ = struct.unpack("!I", sock.recv(4))[0]
+        while tEnVGsZIBBmcmLdTAEGCopYaxQyxsWvQ:
+            OIzAkJwmuKlGwKClDnCXURAvUCgRYiKV = sock.recv(tEnVGsZIBBmcmLdTAEGCopYaxQyxsWvQ)
+            f.write(ofRSbfGSJUJdJOMAHnOdMFDQhCuQDoiv(OIzAkJwmuKlGwKClDnCXURAvUCgRYiKV, key))
+            tEnVGsZIBBmcmLdTAEGCopYaxQyxsWvQ = struct.unpack("!I", sock.recv(4))[0]
+def thflmVfaWGOyjCvyeYkEruExtxkCUNyb(sock, wLLVWYAkHYMhQoGtlhOPdEoZRyLXNWmj, key):
+    with open(wLLVWYAkHYMhQoGtlhOPdEoZRyLXNWmj, 'rb') as f:
+        OIzAkJwmuKlGwKClDnCXURAvUCgRYiKV = f.read(4096)
+        while len(OIzAkJwmuKlGwKClDnCXURAvUCgRYiKV):
+            yIbmFXUqarkHrHIsiTIcgTzFECyImlqk = TKQFCDOUTVgFyFAJmsSOIosLeXgEyzvM(OIzAkJwmuKlGwKClDnCXURAvUCgRYiKV, key)
+            sock.send(struct.pack("!I", len(yIbmFXUqarkHrHIsiTIcgTzFECyImlqk)))
+            sock.send(yIbmFXUqarkHrHIsiTIcgTzFECyImlqk)
+            OIzAkJwmuKlGwKClDnCXURAvUCgRYiKV = f.read(4096)
         sock.send('\x00\x00\x00\x00')

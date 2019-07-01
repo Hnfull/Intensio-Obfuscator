@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
-def QMIXxMDrdPYrFspdzYjyJWmsnlXDChxB(skPZXAlscSTzoMuxPLMHeNcDldoueTxd):
-    XDvTtxydQeJRnYjckFghcOeUmYrzPBWl = 0
-    while skPZXAlscSTzoMuxPLMHeNcDldoueTxd:
-        XDvTtxydQeJRnYjckFghcOeUmYrzPBWl = XDvTtxydQeJRnYjckFghcOeUmYrzPBWl << 8
-        XDvTtxydQeJRnYjckFghcOeUmYrzPBWl += ord(skPZXAlscSTzoMuxPLMHeNcDldoueTxd[-1])
-        skPZXAlscSTzoMuxPLMHeNcDldoueTxd = skPZXAlscSTzoMuxPLMHeNcDldoueTxd[:-1]
-    return XDvTtxydQeJRnYjckFghcOeUmYrzPBWl
-def AXWwBuyAOMQCqbhUQYMcxInOQhTaHDye(XDvTtxydQeJRnYjckFghcOeUmYrzPBWl):
-    otVeesgvjJIGsNCzQXfcPlxfyvkGUCpg = ''
-    while XDvTtxydQeJRnYjckFghcOeUmYrzPBWl:
-        otVeesgvjJIGsNCzQXfcPlxfyvkGUCpg += chr(XDvTtxydQeJRnYjckFghcOeUmYrzPBWl & 0xff)
-        XDvTtxydQeJRnYjckFghcOeUmYrzPBWl = XDvTtxydQeJRnYjckFghcOeUmYrzPBWl >> 8
-    return otVeesgvjJIGsNCzQXfcPlxfyvkGUCpg
+def gHeYYFDraZaeMRPcoGgADweIrwuOaiwa(gDuHDZwlZpOrgbcjQeSdQTPOeiMpfRJS):
+    oaUVjRZSEqOiYdoDRRraRJNSStGiPkYI = 0
+    while gDuHDZwlZpOrgbcjQeSdQTPOeiMpfRJS:
+        oaUVjRZSEqOiYdoDRRraRJNSStGiPkYI = oaUVjRZSEqOiYdoDRRraRJNSStGiPkYI << 8
+        oaUVjRZSEqOiYdoDRRraRJNSStGiPkYI += ord(gDuHDZwlZpOrgbcjQeSdQTPOeiMpfRJS[-1])
+        gDuHDZwlZpOrgbcjQeSdQTPOeiMpfRJS = gDuHDZwlZpOrgbcjQeSdQTPOeiMpfRJS[:-1]
+    return oaUVjRZSEqOiYdoDRRraRJNSStGiPkYI
+def vPhGiqobzraQogPhmSNMiLGlRsTTbltg(oaUVjRZSEqOiYdoDRRraRJNSStGiPkYI):
+    fGUUwosZVXGwgRYBPvfRLfNtGOJGqVoO = ''
+    while oaUVjRZSEqOiYdoDRRraRJNSStGiPkYI:
+        fGUUwosZVXGwgRYBPvfRLfNtGOJGqVoO += chr(oaUVjRZSEqOiYdoDRRraRJNSStGiPkYI & 0xff)
+        oaUVjRZSEqOiYdoDRRraRJNSStGiPkYI = oaUVjRZSEqOiYdoDRRraRJNSStGiPkYI >> 8
+    return fGUUwosZVXGwgRYBPvfRLfNtGOJGqVoO
