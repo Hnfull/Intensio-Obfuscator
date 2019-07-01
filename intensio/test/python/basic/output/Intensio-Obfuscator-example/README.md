@@ -1,4 +1,4 @@
-# Intensio-Obfuscator (Beta)
+# Intensio-Obfuscator (Beta) FOR TEST EXAMPLE
 
 ![](https://img.shields.io/badge/Python->=3.5-blue.svg)
 ![](https://img.shields.io/badge/Version-1.0.4-green.svg)
