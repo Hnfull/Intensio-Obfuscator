@@ -57,7 +57,7 @@
 - [Python target files](https://github.com/Hnfull/Intensio-Obfuscator/blob/master/docs/examples/python_code_examples.md)
 
 ## Demo
-![Python target files demo](https://github.com/Hnfull/Intensio-Obfuscator/blob/master/docs/demo/intensio_obfuscator_python_files_demo.gif)
+![Python target files demo](https://github.com/Hnfull/Intensio-Obfuscator/blob/master/docs/demo/intensio_obfuscator_python_files.gif)
 
 ## Recommendations / Malfunctions
 - [List of python code recommendations](https://github.com/Hnfull/Intensio-Obfuscator/blob/master/docs/python_code_recommendations_malfunctions.md)
