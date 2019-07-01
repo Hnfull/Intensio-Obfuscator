@@ -34,15 +34,16 @@
 - Add `docs/malfunctions.md`  reference any known dysfunctions
 - Add `docs/examples/python_example.md` to put all examples will follow shortly
 - Code improvements
-- Spelling errors
+- Fix spelling errors
 
 ## 01-07-2019
-- Version 1.0.4
-- update `-rc --rcommentaries`, this parameter is henceforth by executed default
-- remove `docs/malfunctions.md` reference any known dysfunctions, is merged with `docs/recommendation.md`
-- add a copy of [Intensio-Obfuscator](https://github.com/Hnfull/Intensio-Obfuscator/tree/master/intensio/test/python/basic/output/Intensio-Obfuscator) project at obfuscation test, only obfuscation basic #5 issue
-- add verbose mode `-v --verbose` #9 issue
-- improvement of the handle and detect process to all features #11 issue
-- update `-m --mixer` to `-m --mixerlevel`
+- Upgrade to Version 1.0.4
+- Update `-rc --rcommentaries`, this parameter is henceforth by executed default
+- Remove `docs/malfunctions.md` reference any known dysfunctions, is merged with `docs/recommendation.md`
+- Add an copy of Intensio-Obfuscator project at test obfuscation code #5
+- Add verbose mode `-v --verbose` #9
+- Improvement of the handle and detect process to all features #11
+- Update `-m --mixer` to `-m --mixerlevel`
+- Documentation Improvement
 - Code improvements
-- Spelling errors
+- Fix spelling errors
