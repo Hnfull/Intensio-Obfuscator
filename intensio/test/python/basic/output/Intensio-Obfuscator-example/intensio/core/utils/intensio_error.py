@@ -1,24 +1,24 @@
 # -*- coding: utf-8 -*-
 import sys
-nUKxRcTMPJDesumjUAPIMORXiDvlnUVJ            = 0
-IZxoJjnCzvaNBeGxIUOQAGqgqRGXLwlG            = 1
-FLsAbzCBkUJDFpUETxBIwoaxxibeNDjI    = 1
-CkNKDsTMmUNRgLiNJMRBmhVBLSAYfMRx    = 1
-tmADAglbZzecOWrTuWUsXmLeSmQxWbdR   = 1
-ZoIfJHROIWmRhYDohMhzxVKgIejeoCMw      = 1
-CkrKUybLXPgKPAgGXEszdZnhQBGiLXpU       = 1
-eboOjdIBRSWCXkedczMueNIFtgtWvHwB        = 1
-ufgoCkdHfSJzBmaNIbUMPHQaoRnnAUdq = 1
-wVFbgaIunHsIXCIDAOqrUhAxQBwgdOUF     = 1
-qXtNqsQhoJQfTCGOYXQCULDDQDeUeAvI     = 1
-kfvWowDdScQZsletcSHdwmKnrljKUaVD       = 1
-VzUvjUEzYkfViTnoKjQlHQDrQSDBPhNd         = 1
-mehJgWGcxxaeaMZSjWGiABfyrpPHRqxE  = 1
-kfukaUXqUDoJqQsUeSktgRwwMalmTFxQ = 1
-jCcCWFzpoGtqAUNjIsObzxPEcZtpqvmF    = 1
-uZBRGkNTvPZvcwVsxhlIvgGUFeneBIGv     = 1
-jzhRwoKKRGOcYUUFEIaVeLswhrYbOuWu       = 1
-PkdxUFZOABiFKfKSwmOfHzBpsVdOqGiI      = 1
-uZBRGkNTvPZvcwVsxhlIvgGUFeneBIGv     = 1
-class sgissuXUDdShsulHpZKKwdyBJGrPHlQJ (Exception):
+QjDNQunkZJADUzlzbvvNbclhjnhqgaRU            = 0
+eXQhFHuFKGQOrjWSstGkuDOgVFjZGhCN            = 1
+ZIkcVBkuyTDfUcCQgUtzwpDVZopwTaZL    = 1
+DaEhJTSNWpJGOlthFKNsnCvoaPoljAdN    = 1
+QFQyfXrzUBwMtuRwbYJOcaBeDjBKwqKe   = 1
+qnTLoHiXYWpCXPgDEmJAlAKcoKnkxAvH      = 1
+aMqSHzUPyrzFYvLJwxQKmesJdEGTDsML       = 1
+ZHrvguMIcLZctPskraFlIEZgEKrfwcsI        = 1
+smuFJnbFkNisnWmjWCYNQvKJNklSNvel = 1
+mjAzbNSKSWCWCpvXoHXtqXeXmyBTeOwP     = 1
+gnGYywXmNVuGDYZlAyQwzBZuJIhCTFoF     = 1
+vDBrdpWsXapHqxpZIFqnEKiPjAzigVOJ       = 1
+xsYoBRshBtSTolMHxYJFMlbEehkMuMdt         = 1
+qwJFYtbHGyUdRAerlmSAuNwlkXOOgtlz  = 1
+tzvJrbLmpjsGgLSqPqSjMhjgzKxzARLv = 1
+wBmnvZpFVAhYyceyZOZliCNPjeSJwXgs    = 1
+JDdQbgMKFgRGidSHRgevLoDmNUJlWmUz     = 1
+yGWZsMrpPFvUJkrtYyTuzwMfVxaUmdIl       = 1
+ZygodNgQYPCAvCBSLxySzMNBUrIHLvNa      = 1
+JDdQbgMKFgRGidSHRgevLoDmNUJlWmUz     = 1
+class jUiietMMTkOLLCNnmuhBiVmsTeWtESMI (Exception):
     pass

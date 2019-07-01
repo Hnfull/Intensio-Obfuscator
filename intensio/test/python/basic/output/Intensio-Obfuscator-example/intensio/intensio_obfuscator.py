@@ -2,7 +2,7 @@
 import sys
 import re
 import time
-def hadvKPqWYQXIbLZoJhbRHGQiMfejiVem():
+def BBCNtndofquGaFUVWKbHSlzKUTWxsVhq():
     if sys.version_info[0] != 3:
         print("[-] Intensio-Obfuscator only support Python 3.x")
         sys.exit(0)
@@ -10,99 +10,99 @@ def hadvKPqWYQXIbLZoJhbRHGQiMfejiVem():
         print("[-] This tool support [windows - Linux] only !")
         sys.exit(0)
     try:
-        from core.utils.intensio_design import UULmuHLYhiLeMEJWDmTayCInxZhJnpal
-        from core.utils.intensio_utils import WspfsbqACjFjNKXwvSgXnHbKNlAGbWWJ
-        from core.utils.intensio_usage import sJsxQMVQpFndXdbknaeAPIfrjSUUldjo
-        from core.utils.intensio_error import nUKxRcTMPJDesumjUAPIMORXiDvlnUVJ, tmADAglbZzecOWrTuWUsXmLeSmQxWbdR, ufgoCkdHfSJzBmaNIbUMPHQaoRnnAUdq, wVFbgaIunHsIXCIDAOqrUhAxQBwgdOUF,\
-                                                mehJgWGcxxaeaMZSjWGiABfyrpPHRqxE, FLsAbzCBkUJDFpUETxBIwoaxxibeNDjI
-        from core.obfuscation.intensio_replace import qKoggecQbpYprdbonZoYWVSQCyJsOXDW
-        from core.obfuscation.intensio_padding import FDQinuFpXjEtQNRFfMyIdWXOXElNKhlk
-        from core.obfuscation.intensio_analyze import IBzDcAMqCpkTbJFkjqggZwOwuyWDlWLY
-        from core.obfuscation.intensio_remove import fGaAEhoBtKsjlWzGRTOnzHeqjUChGWEb
-    except ImportError as GoNNPRuTAoQPAsyqaTAseGAFtxJgPtty:
-        print("[-] {0}\n".format(GoNNPRuTAoQPAsyqaTAseGAFtxJgPtty))
+        from core.utils.intensio_design import GnACbkhJDtksYGKoMDHgKOXdoHEkPSRU
+        from core.utils.intensio_utils import WcITwKqxWwGGboRFRdIfgIfIzbIrqKUe
+        from core.utils.intensio_usage import kELxtlFQarZwsCcVdpHHCgDyYTSEeUWT
+        from core.utils.intensio_error import QjDNQunkZJADUzlzbvvNbclhjnhqgaRU, QFQyfXrzUBwMtuRwbYJOcaBeDjBKwqKe, smuFJnbFkNisnWmjWCYNQvKJNklSNvel, mjAzbNSKSWCWCpvXoHXtqXeXmyBTeOwP,\
+                                                qwJFYtbHGyUdRAerlmSAuNwlkXOOgtlz, ZIkcVBkuyTDfUcCQgUtzwpDVZopwTaZL
+        from core.obfuscation.intensio_replace import hHLojxSdEtYxIkmvimrxUaSDEunVCFix
+        from core.obfuscation.intensio_padding import eZhHVgGpxzWiAfmyibaLqkQDKWztXfdZ
+        from core.obfuscation.intensio_analyze import PoLNsFGdmFkjiLIIUBlBzFkIIyFmKrHZ
+        from core.obfuscation.intensio_remove import ZCrPDbxSSuPVcqZjkkcyZEUFJaXegPGs
+    except ImportError as QCrUqNsyvICLTTYhSodAKLfvWgqmADAm:
+        print("[-] {0}\n".format(QCrUqNsyvICLTTYhSodAKLfvWgqmADAm))
         sys.exit(0)
-    CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk    = sJsxQMVQpFndXdbknaeAPIfrjSUUldjo()
-    SGmfKJIYPdAiXpRFRIYwVAVshNVvUjKN   = WspfsbqACjFjNKXwvSgXnHbKNlAGbWWJ()
+    bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl    = kELxtlFQarZwsCcVdpHHCgDyYTSEeUWT()
+    vGJEoZkcLPlcLzvtnAYvjdThCbVgYHSx   = WcITwKqxWwGGboRFRdIfgIfIzbIrqKUe()
     if len(sys.argv) > 1 and len(sys.argv) <= 14:
         pass
     else:
-        print("[-] Incorrect MTSBaDHSzncitwOAvGrlUKOvMfziQwGX of arguments\n")
-        CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.XoxOfLKOUFfgpipyznAXOPnOUzZscuOn()
-        sys.exit(wVFbgaIunHsIXCIDAOqrUhAxQBwgdOUF)
-    if CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().input:
-        if CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().output:
-            if CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().code:
-                if re.match(r"^python$", CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().code):
-                    if CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().mixerlevel:
-                        if re.match(r"^lower$|^medium$|^high$", CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().mixerlevel):
-                            if not CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().padding and not CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().replace \
-                                and not CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().rcommentaries and not CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().rprint:
+        print("[-] Incorrect REqGysXhkGjocOcsRNbVsTmlWMnWgdba of arguments\n")
+        bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.HlvxeMOHszbvuGeuEjkIuFOocZadxhXb()
+        sys.exit(mjAzbNSKSWCWCpvXoHXtqXeXmyBTeOwP)
+    if bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().input:
+        if bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().output:
+            if bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().code:
+                if re.match(r"^python$", bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().code):
+                    if bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().mixerlevel:
+                        if re.match(r"^lower$|^medium$|^high$", bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().mixerlevel):
+                            if not bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().padding and not bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().replace \
+                                and not bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().rcommentaries and not bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().rprint:
                                 print("\n[-] Need at least one argument [-r --replace] or [-p --padding] or [-rc --rcommentaries] or [-rp --rprint]")
-                                sys.exit(wVFbgaIunHsIXCIDAOqrUhAxQBwgdOUF)
+                                sys.exit(mjAzbNSKSWCWCpvXoHXtqXeXmyBTeOwP)
                         else:
                             print("[-] Incorrect level of mixerlevel, [lower - medium - high] only supported\n")
-                            sys.exit(ufgoCkdHfSJzBmaNIbUMPHQaoRnnAUdq)
+                            sys.exit(smuFJnbFkNisnWmjWCYNQvKJNklSNvel)
                     else:
                         print("[-] Mixerlevel [-m --mixerlevel] argument missing\n")
-                        sys.exit(wVFbgaIunHsIXCIDAOqrUhAxQBwgdOUF)
+                        sys.exit(mjAzbNSKSWCWCpvXoHXtqXeXmyBTeOwP)
                 else:
-                    print("[-] '{0}' Incorrect code argument, [python] only supported\n".format(CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().Code))
-                    sys.exit(ufgoCkdHfSJzBmaNIbUMPHQaoRnnAUdq)
+                    print("[-] '{0}' Incorrect code argument, [python] only supported\n".format(bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().Code))
+                    sys.exit(smuFJnbFkNisnWmjWCYNQvKJNklSNvel)
             else:
                 print("[-] Code [-c --code] argument missing\n")
-                sys.exit(wVFbgaIunHsIXCIDAOqrUhAxQBwgdOUF)
+                sys.exit(mjAzbNSKSWCWCpvXoHXtqXeXmyBTeOwP)
         else:
             print("[-] Output [-o --output] argument missing\n")
-            sys.exit(wVFbgaIunHsIXCIDAOqrUhAxQBwgdOUF)
+            sys.exit(mjAzbNSKSWCWCpvXoHXtqXeXmyBTeOwP)
     else:
-        print("[-] Input [-nEMKpMPLjxKLIvguXWHJZRHfwetlpDxb --input] argument missing\n")
-        sys.exit(wVFbgaIunHsIXCIDAOqrUhAxQBwgdOUF)
-    for qWTfuqshczFrWrfpEGoHPDXVFTNPlcza in UULmuHLYhiLeMEJWDmTayCInxZhJnpal.split("\n"):
+        print("[-] Input [-oxJhggBjWmPmRJXLBjMEpPcaEMoNmLbg --input] argument missing\n")
+        sys.exit(mjAzbNSKSWCWCpvXoHXtqXeXmyBTeOwP)
+    for CznIVPOvIZYawZeTxsCdYKWrjFtwFIQt in GnACbkhJDtksYGKoMDHgKOXdoHEkPSRU.split("\n"):
         time.sleep(0.05)
-        print(qWTfuqshczFrWrfpEGoHPDXVFTNPlcza)
-    print("\n\n*********************** [ IBzDcAMqCpkTbJFkjqggZwOwuyWDlWLY and setup environment ] ************************\n")
-    NtqTHzLSYqRHmLKITLiggEwdKGXuyGgG = IBzDcAMqCpkTbJFkjqggZwOwuyWDlWLY()
-    if (NtqTHzLSYqRHmLKITLiggEwdKGXuyGgG.REpvpvdtdqKkMQFnEPRDHwrBQywgauxV(CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().input, CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().code, CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().verbose) == nUKxRcTMPJDesumjUAPIMORXiDvlnUVJ):
-        print("\n[+] IBzDcAMqCpkTbJFkjqggZwOwuyWDlWLY input argument '{0}' -> Successful".format(CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().input))
+        print(CznIVPOvIZYawZeTxsCdYKWrjFtwFIQt)
+    print("\n\n*********************** [ PoLNsFGdmFkjiLIIUBlBzFkIIyFmKrHZ and setup environment ] ************************\n")
+    zmmdqpVvnvRKhLwIKMKndVklNNJVHcBn = PoLNsFGdmFkjiLIIUBlBzFkIIyFmKrHZ()
+    if (zmmdqpVvnvRKhLwIKMKndVklNNJVHcBn.tEJwyHuhdMNRuyAzdQmiobZdtiwSaYjw(bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().input, bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().code, bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().verbose) == QjDNQunkZJADUzlzbvvNbclhjnhqgaRU):
+        print("\n[+] PoLNsFGdmFkjiLIIUBlBzFkIIyFmKrHZ input argument '{0}' -> Successful".format(bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().input))
     else:
-        print("[-] IBzDcAMqCpkTbJFkjqggZwOwuyWDlWLY input '{0}' failed\n".format(CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().input))
-        sys.exit(mehJgWGcxxaeaMZSjWGiABfyrpPHRqxE)
-    if (NtqTHzLSYqRHmLKITLiggEwdKGXuyGgG.tkGwoiajHQCCNVEcjPojGGAUJFpiKprQ(CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().input, CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().code, CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().output, CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().verbose) == nUKxRcTMPJDesumjUAPIMORXiDvlnUVJ):
-        print("\n[+] IBzDcAMqCpkTbJFkjqggZwOwuyWDlWLY and setup output argument environment '{0}' -> Successful".format(CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().output))
+        print("[-] PoLNsFGdmFkjiLIIUBlBzFkIIyFmKrHZ input '{0}' failed\n".format(bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().input))
+        sys.exit(qwJFYtbHGyUdRAerlmSAuNwlkXOOgtlz)
+    if (zmmdqpVvnvRKhLwIKMKndVklNNJVHcBn.qREZraLISiUbPzYZZdgaFuwblkfElVKt(bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().input, bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().code, bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().output, bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().verbose) == QjDNQunkZJADUzlzbvvNbclhjnhqgaRU):
+        print("\n[+] PoLNsFGdmFkjiLIIUBlBzFkIIyFmKrHZ and setup output argument environment '{0}' -> Successful".format(bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().output))
     else:
-        print("[-] IBzDcAMqCpkTbJFkjqggZwOwuyWDlWLY output '{0}' failed\n".format(CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().output))
-        sys.exit(mehJgWGcxxaeaMZSjWGiABfyrpPHRqxE)
+        print("[-] PoLNsFGdmFkjiLIIUBlBzFkIIyFmKrHZ output '{0}' failed\n".format(bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().output))
+        sys.exit(qwJFYtbHGyUdRAerlmSAuNwlkXOOgtlz)
     print("\n\n************************** [ Obfuscation Rcommentaries ] **************************\n")
-    if CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().rcommentaries:
-        giSZyMPZbhTsAQJJCvJragaweRsNsGgd = fGaAEhoBtKsjlWzGRTOnzHeqjUChGWEb()
-        if (giSZyMPZbhTsAQJJCvJragaweRsNsGgd.BdkkLUuAkhjOFkTBZSSOHbPsKmzfYhvE(CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().code, CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().output) == nUKxRcTMPJDesumjUAPIMORXiDvlnUVJ):
+    if bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().rcommentaries:
+        tCYVyfjWtAqsHceUYwlDDIsPROHaciXL = ZCrPDbxSSuPVcqZjkkcyZEUFJaXegPGs()
+        if (tCYVyfjWtAqsHceUYwlDDIsPROHaciXL.XWnAliWekqMHqUWUwlqEHPlieJakvZHH(bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().code, bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().output) == QjDNQunkZJADUzlzbvvNbclhjnhqgaRU):
             print("[+] Obfuscation Rcommentaries -> Successful")
         else:
             print("\n[-] Obfuscation Rcommentaries -> Failed")
     else:
         print("[!] Obfuscation Rcommentaries no asked !")
     print("\n\n***************************** [ Obfuscation Replace ] *****************************\n")
-    if CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().replace:
-        OjLWxAnPfWqkkgRasqTmntGGNKeYAPRW = qKoggecQbpYprdbonZoYWVSQCyJsOXDW()
-        if (OjLWxAnPfWqkkgRasqTmntGGNKeYAPRW.YlOleodOSvBypmhZjfoYcufDNhAoKFla(CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().code, CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().output, CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().mixerlevel, CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().verbose) == nUKxRcTMPJDesumjUAPIMORXiDvlnUVJ):
+    if bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().replace:
+        gYgVzBIhPJVkgCWQuOioPxAWwhhXNrRS = hHLojxSdEtYxIkmvimrxUaSDEunVCFix()
+        if (gYgVzBIhPJVkgCWQuOioPxAWwhhXNrRS.RCuuTlIFfFxkyNxAqjcHDLowxFHfGEyj(bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().code, bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().output, bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().mixerlevel, bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().verbose) == QjDNQunkZJADUzlzbvvNbclhjnhqgaRU):
             print("[+] Obfuscation Replace -> Successful")
         else:
             print("\n[-] Obfuscation Replace -> Failed")
     else:
         print("[!] Obfuscation Replace no asked !")
-    print("\n\n***************************** [ Obfuscation FDQinuFpXjEtQNRFfMyIdWXOXElNKhlk ] *****************************\n")
-    if CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().padding:
-        BxyYsIYYoHnBegUuBuHPgzvfywVTGweu = FDQinuFpXjEtQNRFfMyIdWXOXElNKhlk()
-        if (BxyYsIYYoHnBegUuBuHPgzvfywVTGweu.VugPUbauHRHkkJITYZfnJmYThstFgSzP(CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().code, CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().output, CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().mixerlevel) == nUKxRcTMPJDesumjUAPIMORXiDvlnUVJ):
-            print("[+] Obfuscation FDQinuFpXjEtQNRFfMyIdWXOXElNKhlk -> Successful")
+    print("\n\n***************************** [ Obfuscation eZhHVgGpxzWiAfmyibaLqkQDKWztXfdZ ] *****************************\n")
+    if bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().padding:
+        GQsOAKGGEgcGWPYtMNWdCUBvQSJLdCHG = eZhHVgGpxzWiAfmyibaLqkQDKWztXfdZ()
+        if (GQsOAKGGEgcGWPYtMNWdCUBvQSJLdCHG.RpsWTGGuYBHbfRrDVOInuHRtWzBMLwrg(bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().code, bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().output, bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().mixerlevel) == QjDNQunkZJADUzlzbvvNbclhjnhqgaRU):
+            print("[+] Obfuscation eZhHVgGpxzWiAfmyibaLqkQDKWztXfdZ -> Successful")
         else:
-            print("\n[-] Obfuscation FDQinuFpXjEtQNRFfMyIdWXOXElNKhlk -> Failed")
+            print("\n[-] Obfuscation eZhHVgGpxzWiAfmyibaLqkQDKWztXfdZ -> Failed")
     else:
-        print("[!] Obfuscation FDQinuFpXjEtQNRFfMyIdWXOXElNKhlk no asked !")
+        print("[!] Obfuscation eZhHVgGpxzWiAfmyibaLqkQDKWztXfdZ no asked !")
     print("\n\n****************************** [ Obfuscation Rprint ] *****************************\n")
-    if CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().rprint:
-        if (giSZyMPZbhTsAQJJCvJragaweRsNsGgd.bodsoWJeIBctoDflVdcJHeFSNfDggYEk(CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().code, CsmMNJqwQsTtqdmRBJEdkvTAWXlGBOsk.svKmnjVrfHHPQJYFOBksvrHoleHIngmz().output) == nUKxRcTMPJDesumjUAPIMORXiDvlnUVJ):
+    if bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().rprint:
+        if (tCYVyfjWtAqsHceUYwlDDIsPROHaciXL.cViujpNVjgNqGaZXcayMZHXlVanwzYVC(bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().code, bYYHucfGzSfHlOqCNlbPvpYJrqWflfUl.JlcHOOrzvAlBCzxwBlEDgkEQnqeVIllF().output) == QjDNQunkZJADUzlzbvvNbclhjnhqgaRU):
             print("[+] Obfuscation Rprint -> Successful\n")
         else:
             print("\n[-] Obfuscation Rprint -> Failed\n")
@@ -110,6 +110,6 @@ def hadvKPqWYQXIbLZoJhbRHGQiMfejiVem():
         print("[!] Obfuscation Rprint no asked !\n")
 if __name__ == '__main__':
     try:
-        hadvKPqWYQXIbLZoJhbRHGQiMfejiVem()
+        BBCNtndofquGaFUVWKbHSlzKUTWxsVhq()
     except KeyboardInterrupt:
         print("\n[!] Exit program\n")

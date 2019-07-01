@@ -3,241 +3,241 @@ import re
 import fileinput
 import glob
 from tqdm import tqdm
-from core.utils.intensio_error import nUKxRcTMPJDesumjUAPIMORXiDvlnUVJ, IZxoJjnCzvaNBeGxIUOQAGqgqRGXLwlG
-from core.utils.intensio_utils import WspfsbqACjFjNKXwvSgXnHbKNlAGbWWJ
-class fGaAEhoBtKsjlWzGRTOnzHeqjUChGWEb:
+from core.utils.intensio_error import QjDNQunkZJADUzlzbvvNbclhjnhqgaRU, eXQhFHuFKGQOrjWSstGkuDOgVFjZGhCN
+from core.utils.intensio_utils import WcITwKqxWwGGboRFRdIfgIfIzbIrqKUe
+class ZCrPDbxSSuPVcqZjkkcyZEUFJaXegPGs:
     def __init__(self):
-        self.SGmfKJIYPdAiXpRFRIYwVAVshNVvUjKN = WspfsbqACjFjNKXwvSgXnHbKNlAGbWWJ()
-    def mfZkOZLuWJEVMClZlQvMPoireraUJIKy(self, codeArg, outputArg):
-        ngJQlKQuFTTVQtBwXHnVqDcnSvTiBQTK       = 0
-        QLZYBxpsZCkWkSLkMRMndCdNBleaXjaG     = 0
-        moQMyhWNxXcuVgrVUNOIFrMhprCbPkeD  = 0
+        self.vGJEoZkcLPlcLzvtnAYvjdThCbVgYHSx = WcITwKqxWwGGboRFRdIfgIfIzbIrqKUe()
+    def GadSFqCibBxqCSbGAnPnPxqqmOXZBkyn(self, codeArg, outputArg):
+        LsRzXlOrKAuTxKlmxXtmTutbmBdXLDED       = 0
+        oUswwfdXwoUGDXCMCGYbMGQAdDPxfMhI     = 0
+        fsSMGkxhTFuCVtzLrSCkajadIkyiKaQT  = 0
         if codeArg == "python":
-            HElMLRODGzcUKJspthDIppqXbeiaBYrc  = "py"
-            KZMnIKVborfggnkNSlyUhxObwRqVmiQC   = r"__pycache__"
-        uTWbEuJHoQKKukuwUKwlPkJbhOBZLpjb = [XpFYQbySEDlOOUZqcIJsabBgEtshBdff for XpFYQbySEDlOOUZqcIJsabBgEtshBdff in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.SGmfKJIYPdAiXpRFRIYwVAVshNVvUjKN.ghmlWbnPwSwsukFQEkGbUHGEAvsuOsFV(), HElMLRODGzcUKJspthDIppqXbeiaBYrc), recursive=True)]
-        for KnxSmCrKKXfIvfuMBuBUnWesjUiLQKjY in uTWbEuJHoQKKukuwUKwlPkJbhOBZLpjb:
-            if re.match(KZMnIKVborfggnkNSlyUhxObwRqVmiQC, KnxSmCrKKXfIvfuMBuBUnWesjUiLQKjY):
+            EwzRXZbupYYUpNHDqfzHzmFjRHIVHGfX  = "py"
+            AYtSbCraHpGtqFAjHAAJmzLUiQtXtYDg   = r"__pycache__"
+        OLPXLJjTjHbKpYgnyclxvgLIGhCpocKc = [zBToaJnWPwRMIJYneYfagoDJTPcHgwDa for zBToaJnWPwRMIJYneYfagoDJTPcHgwDa in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.vGJEoZkcLPlcLzvtnAYvjdThCbVgYHSx.dCeYfzipTqbrJmJaijrODObAJKfbeHLu(), EwzRXZbupYYUpNHDqfzHzmFjRHIVHGfX), recursive=True)]
+        for NFHcSbQkteQPxqhirjubTMkOWDROIhiS in OLPXLJjTjHbKpYgnyclxvgLIGhCpocKc:
+            if re.match(AYtSbCraHpGtqFAjHAAJmzLUiQtXtYDg, NFHcSbQkteQPxqhirjubTMkOWDROIhiS):
                 continue
             else:
-                with fileinput.FileInput(KnxSmCrKKXfIvfuMBuBUnWesjUiLQKjY, inplace=True) as inputFile:
-                    for qWTfuqshczFrWrfpEGoHPDXVFTNPlcza in inputFile:
-                        if qWTfuqshczFrWrfpEGoHPDXVFTNPlcza.strip():
-                            print(qWTfuqshczFrWrfpEGoHPDXVFTNPlcza.rstrip())
-        for KnxSmCrKKXfIvfuMBuBUnWesjUiLQKjY in uTWbEuJHoQKKukuwUKwlPkJbhOBZLpjb:
-            ngJQlKQuFTTVQtBwXHnVqDcnSvTiBQTK = 0
-            if re.match(KZMnIKVborfggnkNSlyUhxObwRqVmiQC, KnxSmCrKKXfIvfuMBuBUnWesjUiLQKjY):
+                with fileinput.FileInput(NFHcSbQkteQPxqhirjubTMkOWDROIhiS, inplace=True) as inputFile:
+                    for CznIVPOvIZYawZeTxsCdYKWrjFtwFIQt in inputFile:
+                        if CznIVPOvIZYawZeTxsCdYKWrjFtwFIQt.strip():
+                            print(CznIVPOvIZYawZeTxsCdYKWrjFtwFIQt.rstrip())
+        for NFHcSbQkteQPxqhirjubTMkOWDROIhiS in OLPXLJjTjHbKpYgnyclxvgLIGhCpocKc:
+            LsRzXlOrKAuTxKlmxXtmTutbmBdXLDED = 0
+            if re.match(AYtSbCraHpGtqFAjHAAJmzLUiQtXtYDg, NFHcSbQkteQPxqhirjubTMkOWDROIhiS):
                 continue
             else:
-                with open(KnxSmCrKKXfIvfuMBuBUnWesjUiLQKjY, "r") as readFile:
-                    iDEXUobMjNBqrNlqWoUHoYrsUXidHHKU = readFile.readlines()
-                    for tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm in iDEXUobMjNBqrNlqWoUHoYrsUXidHHKU:
-                        if tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm == "\n":
-                            ngJQlKQuFTTVQtBwXHnVqDcnSvTiBQTK += 1
-                        if ngJQlKQuFTTVQtBwXHnVqDcnSvTiBQTK == 0:
-                            moQMyhWNxXcuVgrVUNOIFrMhprCbPkeD += 1
-                            QLZYBxpsZCkWkSLkMRMndCdNBleaXjaG += 1
+                with open(NFHcSbQkteQPxqhirjubTMkOWDROIhiS, "r") as readFile:
+                    gOjJbBNMdzvuHgCeZUYHmaxRSWsFCpYe = readFile.readlines()
+                    for LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj in gOjJbBNMdzvuHgCeZUYHmaxRSWsFCpYe:
+                        if LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj == "\n":
+                            LsRzXlOrKAuTxKlmxXtmTutbmBdXLDED += 1
+                        if LsRzXlOrKAuTxKlmxXtmTutbmBdXLDED == 0:
+                            fsSMGkxhTFuCVtzLrSCkajadIkyiKaQT += 1
+                            oUswwfdXwoUGDXCMCGYbMGQAdDPxfMhI += 1
                         else:
-                            moQMyhWNxXcuVgrVUNOIFrMhprCbPkeD += 0
-                            QLZYBxpsZCkWkSLkMRMndCdNBleaXjaG += 1
-        if moQMyhWNxXcuVgrVUNOIFrMhprCbPkeD == QLZYBxpsZCkWkSLkMRMndCdNBleaXjaG:
-            return nUKxRcTMPJDesumjUAPIMORXiDvlnUVJ
+                            fsSMGkxhTFuCVtzLrSCkajadIkyiKaQT += 0
+                            oUswwfdXwoUGDXCMCGYbMGQAdDPxfMhI += 1
+        if fsSMGkxhTFuCVtzLrSCkajadIkyiKaQT == oUswwfdXwoUGDXCMCGYbMGQAdDPxfMhI:
+            return QjDNQunkZJADUzlzbvvNbclhjnhqgaRU
         else:
-            return IZxoJjnCzvaNBeGxIUOQAGqgqRGXLwlG
-    def BdkkLUuAkhjOFkTBZSSOHbPsKmzfYhvE(self, codeArg, outputArg):
-        bjBAnnRTSHHqTghXpTiBerZzUCAUixVn     = 0
-        yJULBCuEpZDZOyaWqYXWrxGrGqxgLJQP      = 0
-        qUFBuUDAhulkPLEwnUQODBOmGAsjmUWI        = 0
-        zlanKAzCAwPSLqQcHViiyGjzjqGApZWR        = 0
-        EVpvPsyVTtcJxqekeNdCKdxNsmXmBuks    = 0
+            return eXQhFHuFKGQOrjWSstGkuDOgVFjZGhCN
+    def XWnAliWekqMHqUWUwlqEHPlieJakvZHH(self, codeArg, outputArg):
+        xaoOYHNAnAgAWcXEINEtGDXXFSmfxGWi     = 0
+        XZcKhSvhBnHIBwJwFNbEzsgIwmQlWWJR      = 0
+        QRgluMdDfDNtlitwNSjEICVVIBEdlysF        = 0
+        kfPzpJgNEwKtCIeGYYsZhPgjrKPfWHbM        = 0
+        dGAyTLoOIgoKfvrIbJgMuxWYkRwstIEh    = 0
         if codeArg == "python":
-            VyYrBUnurpwIvzbtiZwtQagcSAIGqbHG               = r"^\#.*"
-            DIVgsidYXxvyCwfomlfYPjfHAhTyNAKc                        = r"\={1}\s*r[\"|\']{1}"
-            sFcqgUmfWhUwNVJfaOInHabARGGkfait          = r"[\"|\']{3}.*[\"|\']{3}$"
-            DZTFcVafmsPACJAeBMWaYXxPeFKLOOfn    = r"^\s*[\"|\']{3}$"
-            UQuScuDxHZsFyIUUGhofDHfYpNuVepbO = r"^\s*[\"|\']{3}\)?\.?"
-            eKlvjzpvBEmHFHqzvgHyWBqpxEOvJBLo                   = r".*\={1}\s*\w*\.?\w*[\(|\.]{1}[\"|\']{3}|.*\={1}\s*[\"|\']{3}"
-            RihTNsQbfhYcfmBQzCJlExgIBcFjVuUe               = r"\s*\#[^\"|^\'|^\.|^\?|^\*|^\!|^\]|^\[|^\\|^\)|^\(|^\{|^\}].*"
-            HElMLRODGzcUKJspthDIppqXbeiaBYrc  = "py"
-            KZMnIKVborfggnkNSlyUhxObwRqVmiQC   = r"__pycache__"
-        uTWbEuJHoQKKukuwUKwlPkJbhOBZLpjb = [XpFYQbySEDlOOUZqcIJsabBgEtshBdff for XpFYQbySEDlOOUZqcIJsabBgEtshBdff in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.SGmfKJIYPdAiXpRFRIYwVAVshNVvUjKN.ghmlWbnPwSwsukFQEkGbUHGEAvsuOsFV(), HElMLRODGzcUKJspthDIppqXbeiaBYrc), recursive=True)]
-        for MTSBaDHSzncitwOAvGrlUKOvMfziQwGX in uTWbEuJHoQKKukuwUKwlPkJbhOBZLpjb:
-            EVpvPsyVTtcJxqekeNdCKdxNsmXmBuks += 1
-        print("\n[+] Running remove commentaries in {0} KnxSmCrKKXfIvfuMBuBUnWesjUiLQKjY(s)...\n".format(EVpvPsyVTtcJxqekeNdCKdxNsmXmBuks))
-        with tqdm(total=EVpvPsyVTtcJxqekeNdCKdxNsmXmBuks) as pbar:
-            for KnxSmCrKKXfIvfuMBuBUnWesjUiLQKjY in uTWbEuJHoQKKukuwUKwlPkJbhOBZLpjb:
+            uDCbRaFCYeYGAgPpoTHqrXfLuzYwwbpx               = r"^\#.*"
+            brqpxirpwwUiMgxTEChSFodHAGAcljfe                        = r"\={1}\s*r[\"|\']{1}"
+            fhjQCYThAbOskjYDmYNaHhWiZOyEJNIa          = r"[\"|\']{3}.*[\"|\']{3}$"
+            KqORXLsBrtifTrtrBkfjXAlKZIsZAQJU    = r"^\s*[\"|\']{3}$"
+            kmJszsvEpliBjfSaWchmRofhnOXiuizk = r"^\s*[\"|\']{3}\)?\.?"
+            WJAVHEsEUkoVzPWwlDzxrYaQgjrfLaFx                   = r".*\={1}\s*\w*\.?\w*[\(|\.]{1}[\"|\']{3}|.*\={1}\s*[\"|\']{3}"
+            krhdmRnADLSTIaItrQEkZYIYtjHoacZP               = r"\s*\#[^\"|^\'|^\.|^\?|^\*|^\!|^\]|^\[|^\\|^\)|^\(|^\{|^\}].*"
+            EwzRXZbupYYUpNHDqfzHzmFjRHIVHGfX  = "py"
+            AYtSbCraHpGtqFAjHAAJmzLUiQtXtYDg   = r"__pycache__"
+        OLPXLJjTjHbKpYgnyclxvgLIGhCpocKc = [zBToaJnWPwRMIJYneYfagoDJTPcHgwDa for zBToaJnWPwRMIJYneYfagoDJTPcHgwDa in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.vGJEoZkcLPlcLzvtnAYvjdThCbVgYHSx.dCeYfzipTqbrJmJaijrODObAJKfbeHLu(), EwzRXZbupYYUpNHDqfzHzmFjRHIVHGfX), recursive=True)]
+        for REqGysXhkGjocOcsRNbVsTmlWMnWgdba in OLPXLJjTjHbKpYgnyclxvgLIGhCpocKc:
+            dGAyTLoOIgoKfvrIbJgMuxWYkRwstIEh += 1
+        print("\n[+] Running remove commentaries in {0} NFHcSbQkteQPxqhirjubTMkOWDROIhiS(s)...\n".format(dGAyTLoOIgoKfvrIbJgMuxWYkRwstIEh))
+        with tqdm(total=dGAyTLoOIgoKfvrIbJgMuxWYkRwstIEh) as pbar:
+            for NFHcSbQkteQPxqhirjubTMkOWDROIhiS in OLPXLJjTjHbKpYgnyclxvgLIGhCpocKc:
                 pbar.update(1)
-                if re.match(KZMnIKVborfggnkNSlyUhxObwRqVmiQC, KnxSmCrKKXfIvfuMBuBUnWesjUiLQKjY):
+                if re.match(AYtSbCraHpGtqFAjHAAJmzLUiQtXtYDg, NFHcSbQkteQPxqhirjubTMkOWDROIhiS):
                     continue
                 else:
-                    with fileinput.input(KnxSmCrKKXfIvfuMBuBUnWesjUiLQKjY, inplace=True) as inputFile:
-                        for tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm in inputFile:
-                            YkmINZHwEvQoibsCxbdYGkQYlaXOUEvI = re.search(RihTNsQbfhYcfmBQzCJlExgIBcFjVuUe, tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm)
-                            qNTmckziBcMncXFKHZppkdYVOohEzlhs = re.search(VyYrBUnurpwIvzbtiZwtQagcSAIGqbHG, tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm)
+                    with fileinput.input(NFHcSbQkteQPxqhirjubTMkOWDROIhiS, inplace=True) as inputFile:
+                        for LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj in inputFile:
+                            YNEFCSffsxRWrXTgXldOcJjqtOlCYhNe = re.search(krhdmRnADLSTIaItrQEkZYIYtjHoacZP, LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj)
+                            SVsTqOajvjajJHtalBkDcXQUnUaEiORn = re.search(uDCbRaFCYeYGAgPpoTHqrXfLuzYwwbpx, LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj)
                             if codeArg == "python":
-                                if "coding" in tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm or "#!" in tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm:
-                                    print(tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm)
+                                if "coding" in LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj or "#!" in LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj:
+                                    print(LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj)
                                     continue
-                                if re.match(DIVgsidYXxvyCwfomlfYPjfHAhTyNAKc, tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm):
+                                if re.match(brqpxirpwwUiMgxTEChSFodHAGAcljfe, LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj):
                                     continue
-                                elif re.match(eKlvjzpvBEmHFHqzvgHyWBqpxEOvJBLo, tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm):
-                                    qUFBuUDAhulkPLEwnUQODBOmGAsjmUWI += 1
-                                elif re.match(DZTFcVafmsPACJAeBMWaYXxPeFKLOOfn, tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm) or re.match(UQuScuDxHZsFyIUUGhofDHfYpNuVepbO, tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm):
-                                    zlanKAzCAwPSLqQcHViiyGjzjqGApZWR += 1
+                                elif re.match(WJAVHEsEUkoVzPWwlDzxrYaQgjrfLaFx, LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj):
+                                    QRgluMdDfDNtlitwNSjEICVVIBEdlysF += 1
+                                elif re.match(KqORXLsBrtifTrtrBkfjXAlKZIsZAQJU, LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj) or re.match(kmJszsvEpliBjfSaWchmRofhnOXiuizk, LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj):
+                                    kfPzpJgNEwKtCIeGYYsZhPgjrKPfWHbM += 1
                                 else:
                                     pass
-                                if re.match(sFcqgUmfWhUwNVJfaOInHabARGGkfait, tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm):
-                                    yJULBCuEpZDZOyaWqYXWrxGrGqxgLJQP += 1
-                                    zlanKAzCAwPSLqQcHViiyGjzjqGApZWR = 0
+                                if re.match(fhjQCYThAbOskjYDmYNaHhWiZOyEJNIa, LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj):
+                                    XZcKhSvhBnHIBwJwFNbEzsgIwmQlWWJR += 1
+                                    kfPzpJgNEwKtCIeGYYsZhPgjrKPfWHbM = 0
                                     continue
-                                elif zlanKAzCAwPSLqQcHViiyGjzjqGApZWR == 1 and qUFBuUDAhulkPLEwnUQODBOmGAsjmUWI == 0:
-                                    yJULBCuEpZDZOyaWqYXWrxGrGqxgLJQP += 1
+                                elif kfPzpJgNEwKtCIeGYYsZhPgjrKPfWHbM == 1 and QRgluMdDfDNtlitwNSjEICVVIBEdlysF == 0:
+                                    XZcKhSvhBnHIBwJwFNbEzsgIwmQlWWJR += 1
                                     continue
-                                elif zlanKAzCAwPSLqQcHViiyGjzjqGApZWR == 0 and qUFBuUDAhulkPLEwnUQODBOmGAsjmUWI == 1:
-                                    print(tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm)
+                                elif kfPzpJgNEwKtCIeGYYsZhPgjrKPfWHbM == 0 and QRgluMdDfDNtlitwNSjEICVVIBEdlysF == 1:
+                                    print(LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj)
                                     continue
-                                elif zlanKAzCAwPSLqQcHViiyGjzjqGApZWR == 2:
-                                    yJULBCuEpZDZOyaWqYXWrxGrGqxgLJQP += 1
-                                    zlanKAzCAwPSLqQcHViiyGjzjqGApZWR = 0
+                                elif kfPzpJgNEwKtCIeGYYsZhPgjrKPfWHbM == 2:
+                                    XZcKhSvhBnHIBwJwFNbEzsgIwmQlWWJR += 1
+                                    kfPzpJgNEwKtCIeGYYsZhPgjrKPfWHbM = 0
                                     continue
-                                elif zlanKAzCAwPSLqQcHViiyGjzjqGApZWR == 1 and qUFBuUDAhulkPLEwnUQODBOmGAsjmUWI == 1:
-                                    zlanKAzCAwPSLqQcHViiyGjzjqGApZWR = 0
-                                    qUFBuUDAhulkPLEwnUQODBOmGAsjmUWI = 0
-                                    print(tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm)
+                                elif kfPzpJgNEwKtCIeGYYsZhPgjrKPfWHbM == 1 and QRgluMdDfDNtlitwNSjEICVVIBEdlysF == 1:
+                                    kfPzpJgNEwKtCIeGYYsZhPgjrKPfWHbM = 0
+                                    QRgluMdDfDNtlitwNSjEICVVIBEdlysF = 0
+                                    print(LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj)
                                     continue
                                 else:
                                     pass
-                            if qNTmckziBcMncXFKHZppkdYVOohEzlhs is not None:
-                                yJULBCuEpZDZOyaWqYXWrxGrGqxgLJQP += 1
-                                tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm = tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm.replace(qNTmckziBcMncXFKHZppkdYVOohEzlhs.group(0), "")
-                                print(tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm)
-                            elif YkmINZHwEvQoibsCxbdYGkQYlaXOUEvI is not None:
-                                tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm = tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm.replace(YkmINZHwEvQoibsCxbdYGkQYlaXOUEvI.group(0), "")
-                                yJULBCuEpZDZOyaWqYXWrxGrGqxgLJQP += 1
-                                print(tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm)
+                            if SVsTqOajvjajJHtalBkDcXQUnUaEiORn is not None:
+                                XZcKhSvhBnHIBwJwFNbEzsgIwmQlWWJR += 1
+                                LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj = LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj.replace(SVsTqOajvjajJHtalBkDcXQUnUaEiORn.group(0), "")
+                                print(LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj)
+                            elif YNEFCSffsxRWrXTgXldOcJjqtOlCYhNe is not None:
+                                LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj = LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj.replace(YNEFCSffsxRWrXTgXldOcJjqtOlCYhNe.group(0), "")
+                                XZcKhSvhBnHIBwJwFNbEzsgIwmQlWWJR += 1
+                                print(LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj)
                             else:
-                                print(tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm)
-        zlanKAzCAwPSLqQcHViiyGjzjqGApZWR = 0
-        qUFBuUDAhulkPLEwnUQODBOmGAsjmUWI = 0
-        for KnxSmCrKKXfIvfuMBuBUnWesjUiLQKjY in uTWbEuJHoQKKukuwUKwlPkJbhOBZLpjb:
-            bjBAnnRTSHHqTghXpTiBerZzUCAUixVn = 0
-            if re.match(KZMnIKVborfggnkNSlyUhxObwRqVmiQC, KnxSmCrKKXfIvfuMBuBUnWesjUiLQKjY):
+                                print(LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj)
+        kfPzpJgNEwKtCIeGYYsZhPgjrKPfWHbM = 0
+        QRgluMdDfDNtlitwNSjEICVVIBEdlysF = 0
+        for NFHcSbQkteQPxqhirjubTMkOWDROIhiS in OLPXLJjTjHbKpYgnyclxvgLIGhCpocKc:
+            xaoOYHNAnAgAWcXEINEtGDXXFSmfxGWi = 0
+            if re.match(AYtSbCraHpGtqFAjHAAJmzLUiQtXtYDg, NFHcSbQkteQPxqhirjubTMkOWDROIhiS):
                 continue
             else:
-                with open(KnxSmCrKKXfIvfuMBuBUnWesjUiLQKjY, "r") as readFile:
-                    bjBAnnRTSHHqTghXpTiBerZzUCAUixVn = 0
-                    iDEXUobMjNBqrNlqWoUHoYrsUXidHHKU           = readFile.readlines()
-                    for tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm in iDEXUobMjNBqrNlqWoUHoYrsUXidHHKU:
-                        YkmINZHwEvQoibsCxbdYGkQYlaXOUEvI = re.search(RihTNsQbfhYcfmBQzCJlExgIBcFjVuUe, tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm)
-                        qNTmckziBcMncXFKHZppkdYVOohEzlhs = re.search(VyYrBUnurpwIvzbtiZwtQagcSAIGqbHG, tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm)
+                with open(NFHcSbQkteQPxqhirjubTMkOWDROIhiS, "r") as readFile:
+                    xaoOYHNAnAgAWcXEINEtGDXXFSmfxGWi = 0
+                    gOjJbBNMdzvuHgCeZUYHmaxRSWsFCpYe           = readFile.readlines()
+                    for LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj in gOjJbBNMdzvuHgCeZUYHmaxRSWsFCpYe:
+                        YNEFCSffsxRWrXTgXldOcJjqtOlCYhNe = re.search(krhdmRnADLSTIaItrQEkZYIYtjHoacZP, LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj)
+                        SVsTqOajvjajJHtalBkDcXQUnUaEiORn = re.search(uDCbRaFCYeYGAgPpoTHqrXfLuzYwwbpx, LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj)
                         if codeArg == "python":
-                            if "coding" in tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm or "#!" in tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm:
+                            if "coding" in LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj or "#!" in LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj:
                                 continue
-                            if re.match(DIVgsidYXxvyCwfomlfYPjfHAhTyNAKc, tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm):
+                            if re.match(brqpxirpwwUiMgxTEChSFodHAGAcljfe, LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj):
                                 continue
-                            elif re.match(eKlvjzpvBEmHFHqzvgHyWBqpxEOvJBLo, tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm):
-                                qUFBuUDAhulkPLEwnUQODBOmGAsjmUWI += 1
-                            elif re.match(DZTFcVafmsPACJAeBMWaYXxPeFKLOOfn, tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm) or re.match(UQuScuDxHZsFyIUUGhofDHfYpNuVepbO, tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm):
-                                zlanKAzCAwPSLqQcHViiyGjzjqGApZWR += 1
+                            elif re.match(WJAVHEsEUkoVzPWwlDzxrYaQgjrfLaFx, LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj):
+                                QRgluMdDfDNtlitwNSjEICVVIBEdlysF += 1
+                            elif re.match(KqORXLsBrtifTrtrBkfjXAlKZIsZAQJU, LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj) or re.match(kmJszsvEpliBjfSaWchmRofhnOXiuizk, LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj):
+                                kfPzpJgNEwKtCIeGYYsZhPgjrKPfWHbM += 1
                             else:
                                 pass
-                            if re.match(sFcqgUmfWhUwNVJfaOInHabARGGkfait, tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm):
-                                zlanKAzCAwPSLqQcHViiyGjzjqGApZWR = 0
-                                bjBAnnRTSHHqTghXpTiBerZzUCAUixVn += 1
+                            if re.match(fhjQCYThAbOskjYDmYNaHhWiZOyEJNIa, LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj):
+                                kfPzpJgNEwKtCIeGYYsZhPgjrKPfWHbM = 0
+                                xaoOYHNAnAgAWcXEINEtGDXXFSmfxGWi += 1
                                 continue
-                            elif zlanKAzCAwPSLqQcHViiyGjzjqGApZWR == 1 and qUFBuUDAhulkPLEwnUQODBOmGAsjmUWI == 0:
-                                bjBAnnRTSHHqTghXpTiBerZzUCAUixVn += 1
+                            elif kfPzpJgNEwKtCIeGYYsZhPgjrKPfWHbM == 1 and QRgluMdDfDNtlitwNSjEICVVIBEdlysF == 0:
+                                xaoOYHNAnAgAWcXEINEtGDXXFSmfxGWi += 1
                                 continue
-                            elif zlanKAzCAwPSLqQcHViiyGjzjqGApZWR == 0 and qUFBuUDAhulkPLEwnUQODBOmGAsjmUWI == 1:
+                            elif kfPzpJgNEwKtCIeGYYsZhPgjrKPfWHbM == 0 and QRgluMdDfDNtlitwNSjEICVVIBEdlysF == 1:
                                 continue
-                            elif zlanKAzCAwPSLqQcHViiyGjzjqGApZWR == 2:
-                                zlanKAzCAwPSLqQcHViiyGjzjqGApZWR = 0
-                                bjBAnnRTSHHqTghXpTiBerZzUCAUixVn += 1
+                            elif kfPzpJgNEwKtCIeGYYsZhPgjrKPfWHbM == 2:
+                                kfPzpJgNEwKtCIeGYYsZhPgjrKPfWHbM = 0
+                                xaoOYHNAnAgAWcXEINEtGDXXFSmfxGWi += 1
                                 continue
-                            elif zlanKAzCAwPSLqQcHViiyGjzjqGApZWR == 1 and qUFBuUDAhulkPLEwnUQODBOmGAsjmUWI == 1:
-                                zlanKAzCAwPSLqQcHViiyGjzjqGApZWR = 0
-                                qUFBuUDAhulkPLEwnUQODBOmGAsjmUWI = 0
+                            elif kfPzpJgNEwKtCIeGYYsZhPgjrKPfWHbM == 1 and QRgluMdDfDNtlitwNSjEICVVIBEdlysF == 1:
+                                kfPzpJgNEwKtCIeGYYsZhPgjrKPfWHbM = 0
+                                QRgluMdDfDNtlitwNSjEICVVIBEdlysF = 0
                                 continue
                             else:
                                 pass
-                        if qNTmckziBcMncXFKHZppkdYVOohEzlhs is not None:
-                            bjBAnnRTSHHqTghXpTiBerZzUCAUixVn += 1
-                        elif YkmINZHwEvQoibsCxbdYGkQYlaXOUEvI is not None:
-                            bjBAnnRTSHHqTghXpTiBerZzUCAUixVn += 1
+                        if SVsTqOajvjajJHtalBkDcXQUnUaEiORn is not None:
+                            xaoOYHNAnAgAWcXEINEtGDXXFSmfxGWi += 1
+                        elif YNEFCSffsxRWrXTgXldOcJjqtOlCYhNe is not None:
+                            xaoOYHNAnAgAWcXEINEtGDXXFSmfxGWi += 1
                         else:
                             pass
-        if (fGaAEhoBtKsjlWzGRTOnzHeqjUChGWEb.mfZkOZLuWJEVMClZlQvMPoireraUJIKy(self, codeArg, outputArg) == 0):
-            if bjBAnnRTSHHqTghXpTiBerZzUCAUixVn == 0:
-                print("\n-> {0} lines of commentaries removed\n".format(yJULBCuEpZDZOyaWqYXWrxGrGqxgLJQP))
-                return nUKxRcTMPJDesumjUAPIMORXiDvlnUVJ
+        if (ZCrPDbxSSuPVcqZjkkcyZEUFJaXegPGs.GadSFqCibBxqCSbGAnPnPxqqmOXZBkyn(self, codeArg, outputArg) == 0):
+            if xaoOYHNAnAgAWcXEINEtGDXXFSmfxGWi == 0:
+                print("\n-> {0} lines of commentaries removed\n".format(XZcKhSvhBnHIBwJwFNbEzsgIwmQlWWJR))
+                return QjDNQunkZJADUzlzbvvNbclhjnhqgaRU
             else:
-                return IZxoJjnCzvaNBeGxIUOQAGqgqRGXLwlG
+                return eXQhFHuFKGQOrjWSstGkuDOgVFjZGhCN
         else:
-            return IZxoJjnCzvaNBeGxIUOQAGqgqRGXLwlG
-    def bodsoWJeIBctoDflVdcJHeFSNfDggYEk(self, codeArg, outputArg):
-        ishVfVvkXltyWbUrcWQJDOPNPVoHYYBK              = 0
-        gedfyKwrpfOJfHpkBUzxEOCXNKYqOXEf         = 0
-        EVpvPsyVTtcJxqekeNdCKdxNsmXmBuks            = 0
-        BJCozjTgrWbRiDJzbwWAiEJuzrhYsjTx  = 0
-        CfRpMUnSlIkvLkVGqcBaTHUuUhUBItpl  = 0
+            return eXQhFHuFKGQOrjWSstGkuDOgVFjZGhCN
+    def cViujpNVjgNqGaZXcayMZHXlVanwzYVC(self, codeArg, outputArg):
+        TpFMUSAJwLFIIxLcSVjsYzylcuQckhJE              = 0
+        ZZSjnGeOVTKBTnGqGqZQakprLyElEgmS         = 0
+        dGAyTLoOIgoKfvrIbJgMuxWYkRwstIEh            = 0
+        LceSaDJrUShBwSjqtxXNwoxVcmLarOts  = 0
+        mBgLMKKHwPESvCrkNjBkNjCdQIBEnNcW  = 0
         if codeArg == "python":
-            AQfnEjSSwMPmCmzhgyQEmeMWifwakeGs = r"\s*print"
-            HElMLRODGzcUKJspthDIppqXbeiaBYrc  = "py"
-            KZMnIKVborfggnkNSlyUhxObwRqVmiQC   = r"__pycache__"
-        uTWbEuJHoQKKukuwUKwlPkJbhOBZLpjb = [XpFYQbySEDlOOUZqcIJsabBgEtshBdff for XpFYQbySEDlOOUZqcIJsabBgEtshBdff in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.SGmfKJIYPdAiXpRFRIYwVAVshNVvUjKN.ghmlWbnPwSwsukFQEkGbUHGEAvsuOsFV(), HElMLRODGzcUKJspthDIppqXbeiaBYrc), recursive=True)]
-        for MTSBaDHSzncitwOAvGrlUKOvMfziQwGX in uTWbEuJHoQKKukuwUKwlPkJbhOBZLpjb:
-            EVpvPsyVTtcJxqekeNdCKdxNsmXmBuks += 1
-        print("\n[+] Running remove print function in {0} KnxSmCrKKXfIvfuMBuBUnWesjUiLQKjY(s)...\n".format(EVpvPsyVTtcJxqekeNdCKdxNsmXmBuks))
-        with tqdm(total=EVpvPsyVTtcJxqekeNdCKdxNsmXmBuks) as pbar:
-            for KnxSmCrKKXfIvfuMBuBUnWesjUiLQKjY in uTWbEuJHoQKKukuwUKwlPkJbhOBZLpjb:
+            ROjGnkxnJLzIjVKduuNvbDYJcThFfFXh = r"\s*print"
+            EwzRXZbupYYUpNHDqfzHzmFjRHIVHGfX  = "py"
+            AYtSbCraHpGtqFAjHAAJmzLUiQtXtYDg   = r"__pycache__"
+        OLPXLJjTjHbKpYgnyclxvgLIGhCpocKc = [zBToaJnWPwRMIJYneYfagoDJTPcHgwDa for zBToaJnWPwRMIJYneYfagoDJTPcHgwDa in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.vGJEoZkcLPlcLzvtnAYvjdThCbVgYHSx.dCeYfzipTqbrJmJaijrODObAJKfbeHLu(), EwzRXZbupYYUpNHDqfzHzmFjRHIVHGfX), recursive=True)]
+        for REqGysXhkGjocOcsRNbVsTmlWMnWgdba in OLPXLJjTjHbKpYgnyclxvgLIGhCpocKc:
+            dGAyTLoOIgoKfvrIbJgMuxWYkRwstIEh += 1
+        print("\n[+] Running remove print function in {0} NFHcSbQkteQPxqhirjubTMkOWDROIhiS(s)...\n".format(dGAyTLoOIgoKfvrIbJgMuxWYkRwstIEh))
+        with tqdm(total=dGAyTLoOIgoKfvrIbJgMuxWYkRwstIEh) as pbar:
+            for NFHcSbQkteQPxqhirjubTMkOWDROIhiS in OLPXLJjTjHbKpYgnyclxvgLIGhCpocKc:
                 pbar.update(1)
-                if re.match(KZMnIKVborfggnkNSlyUhxObwRqVmiQC, KnxSmCrKKXfIvfuMBuBUnWesjUiLQKjY):
+                if re.match(AYtSbCraHpGtqFAjHAAJmzLUiQtXtYDg, NFHcSbQkteQPxqhirjubTMkOWDROIhiS):
                     continue
                 else:
-                    with fileinput.input(KnxSmCrKKXfIvfuMBuBUnWesjUiLQKjY, inplace=True) as inputFile:
-                        for tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm in inputFile:
-                            if re.match(AQfnEjSSwMPmCmzhgyQEmeMWifwakeGs, tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm):
-                                ishVfVvkXltyWbUrcWQJDOPNPVoHYYBK += 1
-                                if re.match(r"\s*print\s*\({1}", tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm):
-                                    if "(" in tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm and not ")" in tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm:
-                                        BJCozjTgrWbRiDJzbwWAiEJuzrhYsjTx += 1
+                    with fileinput.input(NFHcSbQkteQPxqhirjubTMkOWDROIhiS, inplace=True) as inputFile:
+                        for LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj in inputFile:
+                            if re.match(ROjGnkxnJLzIjVKduuNvbDYJcThFfFXh, LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj):
+                                TpFMUSAJwLFIIxLcSVjsYzylcuQckhJE += 1
+                                if re.match(r"\s*print\s*\({1}", LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj):
+                                    if "(" in LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj and not ")" in LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj:
+                                        LceSaDJrUShBwSjqtxXNwoxVcmLarOts += 1
                                         continue
                                     else:
                                         continue
-                                elif re.match(r"\s*print\s*[\"|\']{1}", tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm):
-                                    CfRpMUnSlIkvLkVGqcBaTHUuUhUBItpl += 1
+                                elif re.match(r"\s*print\s*[\"|\']{1}", LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj):
+                                    mBgLMKKHwPESvCrkNjBkNjCdQIBEnNcW += 1
                                     continue
                             else:
-                                if BJCozjTgrWbRiDJzbwWAiEJuzrhYsjTx == 1:
-                                    if ")" in tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm and not "(" in tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm:
-                                        BJCozjTgrWbRiDJzbwWAiEJuzrhYsjTx = 0
+                                if LceSaDJrUShBwSjqtxXNwoxVcmLarOts == 1:
+                                    if ")" in LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj and not "(" in LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj:
+                                        LceSaDJrUShBwSjqtxXNwoxVcmLarOts = 0
                                         continue
                                     else:
                                         continue
-                                elif CfRpMUnSlIkvLkVGqcBaTHUuUhUBItpl > 0:
-                                    if re.match(r"^\s+[\"\']{1}\s*\w+|^[\"\']{1}\s*\w+", tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm):
-                                        CfRpMUnSlIkvLkVGqcBaTHUuUhUBItpl += 1
+                                elif mBgLMKKHwPESvCrkNjBkNjCdQIBEnNcW > 0:
+                                    if re.match(r"^\s+[\"\']{1}\s*\w+|^[\"\']{1}\s*\w+", LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj):
+                                        mBgLMKKHwPESvCrkNjBkNjCdQIBEnNcW += 1
                                         continue
                                     else:
-                                        CfRpMUnSlIkvLkVGqcBaTHUuUhUBItpl = 0
-                                        print(tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm)
+                                        mBgLMKKHwPESvCrkNjBkNjCdQIBEnNcW = 0
+                                        print(LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj)
                                         continue
                                 else:
-                                    print(tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm)
-        for KnxSmCrKKXfIvfuMBuBUnWesjUiLQKjY in uTWbEuJHoQKKukuwUKwlPkJbhOBZLpjb:
-            if re.match(KZMnIKVborfggnkNSlyUhxObwRqVmiQC, KnxSmCrKKXfIvfuMBuBUnWesjUiLQKjY):
+                                    print(LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj)
+        for NFHcSbQkteQPxqhirjubTMkOWDROIhiS in OLPXLJjTjHbKpYgnyclxvgLIGhCpocKc:
+            if re.match(AYtSbCraHpGtqFAjHAAJmzLUiQtXtYDg, NFHcSbQkteQPxqhirjubTMkOWDROIhiS):
                 continue
             else:
-                with open(KnxSmCrKKXfIvfuMBuBUnWesjUiLQKjY, "r") as readFile:
-                    iDEXUobMjNBqrNlqWoUHoYrsUXidHHKU = readFile.readlines()
-                    for tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm in iDEXUobMjNBqrNlqWoUHoYrsUXidHHKU:
-                        if re.match(AQfnEjSSwMPmCmzhgyQEmeMWifwakeGs, tswOsnHvEBcXUpNHApCkrgMsnXiSlXdm):
-                            gedfyKwrpfOJfHpkBUzxEOCXNKYqOXEf += 1
-        if (fGaAEhoBtKsjlWzGRTOnzHeqjUChGWEb.mfZkOZLuWJEVMClZlQvMPoireraUJIKy(self, codeArg, outputArg) == 0):
-            if gedfyKwrpfOJfHpkBUzxEOCXNKYqOXEf == 0:
-                print("\n-> {0} print functions removed\n".format(ishVfVvkXltyWbUrcWQJDOPNPVoHYYBK))
-                return nUKxRcTMPJDesumjUAPIMORXiDvlnUVJ
+                with open(NFHcSbQkteQPxqhirjubTMkOWDROIhiS, "r") as readFile:
+                    gOjJbBNMdzvuHgCeZUYHmaxRSWsFCpYe = readFile.readlines()
+                    for LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj in gOjJbBNMdzvuHgCeZUYHmaxRSWsFCpYe:
+                        if re.match(ROjGnkxnJLzIjVKduuNvbDYJcThFfFXh, LtmKeeQLTgjYKZQXIGqvevOwVlZvjxkj):
+                            ZZSjnGeOVTKBTnGqGqZQakprLyElEgmS += 1
+        if (ZCrPDbxSSuPVcqZjkkcyZEUFJaXegPGs.GadSFqCibBxqCSbGAnPnPxqqmOXZBkyn(self, codeArg, outputArg) == 0):
+            if ZZSjnGeOVTKBTnGqGqZQakprLyElEgmS == 0:
+                print("\n-> {0} print functions removed\n".format(TpFMUSAJwLFIIxLcSVjsYzylcuQckhJE))
+                return QjDNQunkZJADUzlzbvvNbclhjnhqgaRU
             else:
-                return IZxoJjnCzvaNBeGxIUOQAGqgqRGXLwlG
+                return eXQhFHuFKGQOrjWSstGkuDOgVFjZGhCN
         else:
-            return IZxoJjnCzvaNBeGxIUOQAGqgqRGXLwlG
+            return eXQhFHuFKGQOrjWSstGkuDOgVFjZGhCN

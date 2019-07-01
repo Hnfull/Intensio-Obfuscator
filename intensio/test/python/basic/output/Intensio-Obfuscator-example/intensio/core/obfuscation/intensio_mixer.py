@@ -1,18 +1,18 @@
  # -*- coding: utf-8 -*-
 import random
 import string
-class tXlcpsYnWCKZOUUomHEaTRbjYSURDHzP:
+class maWlCmjdFUobvhcWBlqVVfHRcBdAqchK:
     def __init__(self):
-        self.wVfdNzXgtjcijUWJBFyICfBOYHPfQgrc   = 32
-        self.CAZbkBompIuJJJSOaOvDRumzemyEVWaP  = 64
-        self.XHlXCSKxeFejnUADuAlhtYPCqFWNvSEo    = 128
-    def fRCFHqyfWPvvKiNCuPxDAzBDrlrWfMcF(self, stringLenght):
-        return "".join(random.choice(string.ascii_letters) for nEMKpMPLjxKLIvguXWHJZRHfwetlpDxb in range(stringLenght))
-    def AdAUhCIqeyaUsHmojCVHgjpblkHITkRl(self, levelMixerArg):
+        self.SrMPcsjuYmKxaldrKExXWrslGdvGIVbU   = 32
+        self.QNitTioBTaJLwnIAYWCeLfwPjzJJJPTQ  = 64
+        self.VCTYnvtCAHixzAlLhUYlxWvwpbrvMJzk    = 128
+    def yhotwXuHwcAqmIyKZRuNIUxaAdDNCODA(self, stringLenght):
+        return "".join(random.choice(string.ascii_letters) for oxJhggBjWmPmRJXLBjMEpPcaEMoNmLbg in range(stringLenght))
+    def dYHRunpgPARTomkoGyGuPWsAxcboxvng(self, levelMixerArg):
         if levelMixerArg == "lower":
-            return tXlcpsYnWCKZOUUomHEaTRbjYSURDHzP.fRCFHqyfWPvvKiNCuPxDAzBDrlrWfMcF(self, self.wVfdNzXgtjcijUWJBFyICfBOYHPfQgrc)
+            return maWlCmjdFUobvhcWBlqVVfHRcBdAqchK.yhotwXuHwcAqmIyKZRuNIUxaAdDNCODA(self, self.SrMPcsjuYmKxaldrKExXWrslGdvGIVbU)
         elif levelMixerArg == "medium":
-            return tXlcpsYnWCKZOUUomHEaTRbjYSURDHzP.fRCFHqyfWPvvKiNCuPxDAzBDrlrWfMcF(self, self.CAZbkBompIuJJJSOaOvDRumzemyEVWaP)
+            return maWlCmjdFUobvhcWBlqVVfHRcBdAqchK.yhotwXuHwcAqmIyKZRuNIUxaAdDNCODA(self, self.QNitTioBTaJLwnIAYWCeLfwPjzJJJPTQ)
         else:
             if levelMixerArg == "high":
-                return tXlcpsYnWCKZOUUomHEaTRbjYSURDHzP.fRCFHqyfWPvvKiNCuPxDAzBDrlrWfMcF(self, self.XHlXCSKxeFejnUADuAlhtYPCqFWNvSEo)
+                return maWlCmjdFUobvhcWBlqVVfHRcBdAqchK.yhotwXuHwcAqmIyKZRuNIUxaAdDNCODA(self, self.VCTYnvtCAHixzAlLhUYlxWvwpbrvMJzk)

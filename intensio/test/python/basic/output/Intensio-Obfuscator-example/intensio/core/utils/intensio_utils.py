@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 import sys
-class WspfsbqACjFjNKXwvSgXnHbKNlAGbWWJ:
+class WcITwKqxWwGGboRFRdIfgIfIzbIrqKUe:
     def __init__(self):
         self.platform = sys.platform
-    def ghmlWbnPwSwsukFQEkGbUHGEAvsuOsFV(self):
+    def dCeYfzipTqbrJmJaijrODObAJKfbeHLu(self):
         if self.platform == "win32":
             return "\\"
         else:
             return "/"
-    def fkPgqNItwgXNioozbTNuDVqAbWfKwWuK(self, dict1, dict2):
-    	OPFpYdBcPGOWcaxzdQQZcTWwTquTrbZF = {**dict1, **dict2}
-    	return OPFpYdBcPGOWcaxzdQQZcTWwTquTrbZF
+    def sWjDzsFbfkXTWdOqhbmzHIZUGsurTLex(self, dict1, dict2):
+    	GWonrUgrQPcSPxuMqsVdrlfLVPTAQBeX = {**dict1, **dict2}
+    	return GWonrUgrQPcSPxuMqsVdrlfLVPTAQBeX

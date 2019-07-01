@@ -1,10 +1,11 @@
-# Intensio-Obfuscator (Beta) FOR TEST EXAMPLE
+# Intensio-Obfuscator-example for test (Beta)
 
 ![](https://img.shields.io/badge/Python->=3.5-blue.svg)
 ![](https://img.shields.io/badge/Version-1.0.4-green.svg)
 ![](https://img.shields.io/badge/Licence-MIT-red.svg)
 
-- Takes a python source code and transform it into an obfuscated python code, replace name of variables/classes/functions to random chars and defined length, removes commentaries, all line breaks, remove all print functions and add to each line a random script with an always differents values.
+## What is this ?
+- Intensio-Obfsucator tool takes a python source code and transform it into an obfuscated python code, replace name of variables/classes/functions to random chars and defined length, removes commentaries, all line breaks, remove all print functions and add to each line a random script with an always differents values
 
 ## Requirements
 - Python >= 3.5
@@ -57,11 +58,12 @@
 - [Python target files](https://github.com/Hnfull/Intensio-Obfuscator/blob/master/docs/examples/python_code_examples.md)
 
 ## Demo
-![Python target files demo](https://github.com/Hnfull/Intensio-Obfuscator/blob/master/docs/demo/intensio_obfuscator_python_files_demo.gif)
+![Python target files demo](https://github.com/Hnfull/Intensio-Obfuscator/blob/master/docs/demo/intensio_obfuscator_python_files.gif)
 
 ## Recommendations / Malfunctions
-- [List of python code recommendations](https://github.com/Hnfull/Intensio-Obfuscator/blob/master/docs/python_code_recommendations_malfunctions.md)
-
+**Read all recommendations if you have an error**
+- [List of python code recommendations / malfunctions](https://github.com/Hnfull/Intensio-Obfuscator/blob/master/docs/python_code_recommendations_malfunctions.md)
+ 
 ## Todo
 - Version 1.0.1-x:
     - Code optimization

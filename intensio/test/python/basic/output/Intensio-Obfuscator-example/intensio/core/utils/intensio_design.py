@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import textwrap
-UULmuHLYhiLeMEJWDmTayCInxZhJnpal = textwrap.indent('''
+GnACbkhJDtksYGKoMDHgKOXdoHEkPSRU = textwrap.indent('''
        /$$$$$$             /$$                                   /$$
       |_  $$_/            | $$                                  |__/
         | $$   /$$$$$$$  /$$$$$$    /$$$$$$  /$$$$$$$   /$$$$$$$ /$$  /$$$$$$

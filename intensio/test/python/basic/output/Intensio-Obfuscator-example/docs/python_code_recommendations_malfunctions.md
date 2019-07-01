@@ -2,6 +2,8 @@
 
 ## Recommendations
 
+**Read all recommendations if you have an error** 
+
 #### 1) The `-rc --rcommentaries` parameter should not be disabled, otherwise the other features can generate errors
 **Can generate an error = yes**
 - Recommended:
@@ -32,7 +34,7 @@
     # choices variable defined is a function of argparse library :(
     ```
 
-#### 3) If `#` (commentary) after line of code, can potentially generate an error if Rcommentaries feature not recognize correctly le commentaire and remove the code of line
+#### 3) If `#` commentary after line of code, can potentially generate an error if Rcommentaries feature not recognize commentary correctly and remove the code of line
 **Can generate an error = yes**
 - Strongly Recommended (no error can appear):
     ```
@@ -47,7 +49,7 @@
     # after 'test' a space is not present :(
     ```
 
-#### 4) All commentaries between `"""` or `'''` on multiple lines should be exactly as in source code examples.
+#### 4) All commentaries between `"""` or `'''` on multiple lines should be exactly as in source code examples
 **Can generate an error = yes**
 - Recommended:
     ```
@@ -67,7 +69,7 @@
     see the the placement of quotes :(
     ```
 
-#### 5) If a variable containt text between `"""` or `'''` on multiple lines should be exactly as in source code examples.
+#### 5) If a variable containt text between `"""` or `'''` on multiple lines should be exactly as in source code examples
 **Can generate an error = yes**
 - Recommended:
     ```
@@ -86,6 +88,37 @@
     name : test """
 
     see the the placement of quotes :(
+    ```
+#### 6) If your value is between `[]` or `()` or `{}` in your source code, the `padding` feature may react differently depending on the code written
+**Can generate an error = no**
+- Recommended
+    ```
+    padding here
+    padding here
+    a = ["a", "b", "c"]
+    padding here
+    b = ("d", "e", "f")
+    padding here
+    padding here
+    ```
+
+- Less recommended
+    ```
+    padding here
+    padding here
+    a = [
+        "a", 
+        "b", 
+        "c"
+        ]
+    b = (
+        "d", 
+        "e", 
+        "f"
+        )
+    
+    padding here
+    padding here
     ```
 
 # Malfunctions

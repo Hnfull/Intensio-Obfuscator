@@ -1,1 +1,1 @@
-# Demonstration with the different examples of the project
+# Demonstration of different examples of the project
