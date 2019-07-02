@@ -40,7 +40,7 @@
 | -h, --help | show this help message and exit |
 | -i, --input  | source directory - indicate a directory that contain your file(s) |
 | -c, --code | language used in input directory, default value: [python], possible value: [python] |
-| -o, --output | output directory that will be obfuscated - indicate a **empty directory** that will contain your file(s) |
+| -o, --output | output directory that will be obfuscated - indicate a empty directory that will contain your file(s) |
 | -m, --mixerlevel | length levels of the number of characters for output variables /classes/functions, default value: [medium], possible values: [lower, medium, high] |
 | -r, --replace | activate the 'replace' obfuscation feature |
 | -p, --padding | activate the 'padding' obfuscation feature |
@@ -61,7 +61,7 @@
 ![Python target files demo](https://github.com/Hnfull/Intensio-Obfuscator/blob/master/docs/demo/intensio_obfuscator_python_files.gif)
 
 ## Recommendations / Malfunctions
-**Read all recommendations if you have an error**
+- **Read all recommendations if you have an error**
 - [List of python code recommendations / malfunctions](https://github.com/Hnfull/Intensio-Obfuscator/blob/master/docs/python_code_recommendations_malfunctions.md)
  
 ## Todo
