@@ -5,7 +5,10 @@
 ![](https://img.shields.io/badge/Licence-MIT-red.svg)
 
 ## What is this ?
-- Intensio-Obfsucator tool takes a python source code and transform it into an obfuscated python code, replace name of variables/classes/functions to random chars and defined length, removes commentaries, all line breaks, remove all print functions and add to each line a random script with an always differents values
+- Intensio-Obfsucator tool takes a python source code and transform it into an obfuscated python code
+  - **Replace** name of variables/classes/functions to random chars and defined length
+  - **Remove** commentaries, all lines breaks, all print functions
+  - **Add** to each line a random script with an always differents values
 
 ## Requirements
 - Python >= 3.5
