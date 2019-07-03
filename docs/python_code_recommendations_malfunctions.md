@@ -12,7 +12,7 @@
 - Not recommended:
     - Desactivate of the default execution of this feature
 
-#### 2) Do not define identically your names of local variables/classes/functions to python keywords or names of functions/classes of imported python libraries !
+#### 2) Do not define your names of local variables/classes/functions of your program identically to keywords python of functions/classes of imported libraries
 **Can generate an error = yes**
 - Recommended:
     ```
