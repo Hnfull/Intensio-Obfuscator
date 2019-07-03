@@ -1,6 +1,6 @@
 # Malfunctions
 
-#### 1) If a `variable/class/function` has an identical name with a word between `' '` or `" "` in `print()` function, your text will have the same value that the mixer `variables/class/function`
+### 1) If a `variable/class/function` has an identical name with a word between `' '` or `" "` in `print()` function, your text will have the same value that the mixer `variables/class/function`
 **Can generate an error = no**
 - input:
   ```python
@@ -16,7 +16,7 @@
   print("this is a ChrVMVxrZASDnzCcsWSmIBrfoWgQkdKD !")
   ```
 
-#### 2) If a `variable/class/function` has an identical name with a word in after `#` (commentary) your text will have the same value that the mixer `variable/class/function`.
+### 2) If a `variable/class/function` has an identical name with a word in after `#` (commentary) your text will have the same value that the mixer `variable/class/function`.
 **Can generate an error = no**
 - input:
   ```python
