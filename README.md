@@ -55,7 +55,7 @@
 
 - `Replace`, `Padding`, `Rprint` features can be executed separatly
 
-If you want exclude python keywords (classes/functions) of libraries or your local variables/classes/functions of your program which will be taken by the 'Replace' feature, edit `intensio/exclude/python/exclude_python_words.txt`
+- If you want exclude python keywords (classes/functions) of libraries or your local variables/classes/functions of your program which will be taken by the 'Replace' feature, edit `intensio/exclude/python/exclude_python_words.txt`
 
 - If you want to include local variables/classes/functions of your program that are not included when launching the 'Replace' feature, edit `intensio/include/python/include_python_words.txt`
 
