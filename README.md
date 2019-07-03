@@ -37,6 +37,8 @@
 | Mixerlevel medium | Generate words with 64 chars that replace variables/classes/functions defined in source code and in random scripts if 'replace' or 'padding' features are specified|
 | Mixerlevel high | Generate words with 128 chars that replace variables/classes/functions defined in source code and in random scripts if 'replace' or 'padding' features are specified |
 
+- `Replace`, `Padding`, `Rprint` features can be executed separatly
+
 ## Usages
 | Parameters | Descriptions |
 | ------ | ------ |
@@ -51,13 +53,10 @@
 | -rp, --rprint | activate the 'rprint' obfuscation feature |
 | -v, --verbose | improve verbosity |
 
-- **Do not define your names of local variables/classes/functions of your program identically to keywords python of functions/classes of imported libraries !** 
-
-- `Replace`, `Padding`, `Rprint` features can be executed separatly
-
-- If you want exclude python keywords (classes/functions) of libraries or your local variables/classes/functions of your program which will be taken by the 'Replace' feature, edit `intensio/exclude/python/exclude_python_words.txt`
-
-- If you want to include local variables/classes/functions of your program that are not included when launching the 'Replace' feature, edit `intensio/include/python/include_python_words.txt`
+- **Read these Documentations before to use Intensio-Obfuscator tool**
+    - [Steps of usage](https://github.com/Hnfull/Intensio-Obfuscator/blob/master/docs/steps_usage/python_steps_usage.md)
+    - [Recommendations](https://github.com/Hnfull/Intensio-Obfuscator/blob/master/docs/recommendations/python_code_recommendations.md)
+    - [Malfunctions](https://github.com/Hnfull/Intensio-Obfuscator/blob/master/docs/malfunctions/python_code_malfunctions.md)
 
 ## Examples
 - [Python target files](https://github.com/Hnfull/Intensio-Obfuscator/blob/master/docs/examples/python_code_examples.md)
@@ -65,10 +64,6 @@
 ## Demo
 ![Python target files demo](https://github.com/Hnfull/Intensio-Obfuscator/blob/master/docs/demo/intensio_obfuscator_python_files.gif)
 
-## Recommendations / Malfunctions
-- **Read all recommendations if you have an error**
-- [List of python code recommendations / malfunctions](https://github.com/Hnfull/Intensio-Obfuscator/blob/master/docs/python_code_recommendations_malfunctions.md)
- 
 ## Todo
 - Version 1.0.1-x:
     - Code optimization
