@@ -1,15 +1,15 @@
 # Recommendations
 
-### 1) The `-rc --rcommentaries` (parameter by default) should not be disabled, otherwise the other features can generate errors
-**Can generate an error = yes**
+#### 1) The `-rc --rcommentaries` (parameter by default) should not be disabled, otherwise the other features can generate errors
+- Can generate an error = yes
 - Recommended:
     - Not modify the default execution of this feature
 
 - Not recommended:
     - Desactivate the default execution of this feature
 
-### 2) Do not define your names of local `variables/classes/functions` of your program identically to keywords python of `functions/classes` of imported libraries
-**Can generate an error = yes**
+#### 2) Do not define your names of local `variables/classes/functions` of your program identically to keywords python of `functions/classes` of imported libraries
+- Can generate an error = yes
 - Recommended:
     ```python
     import argparse
@@ -30,8 +30,8 @@
     # add_argument variable defined is already an function of argparse library :(
     ```
 
-### 3) You ought exclude python keywords of libraries of your program which will be taken by the 'Replace' feature 
-**Can generate an error = yes**
+#### 3) You ought exclude python keywords of libraries of your program which will be taken by the 'Replace' feature 
+- Can generate an error = yes
 - Required:
     ```python
     import argparse
@@ -42,14 +42,14 @@
     - Edit `intensio/exclude/python/exclude_python_words.txt` and add keywords `choices`, `default` and `help` of argparse library, because the Replace feature take all variables, with this rule `variables=`
 
 
-### 4) If a variables/classes/functions are not takin by Replace feature (optionnal)
-**Can generate an error = no**
+#### 4) If a variables/classes/functions are not takin by Replace feature (optionnal)
+- Can generate an error = no**
 - Required:
     - Edit `intensio/include/python/include_python_words.txt` and add your variables/classes/functions name
 
 
-### 5) If `#` commentary after line of code, can potentially generate an error if `Rcommentaries` feature not recognize commentary correctly and remove the code of line
-**Can generate an error = yes**
+#### 5) If `#` commentary after line of code, can potentially generate an error if `Rcommentaries` feature not recognize commentary correctly and remove the code of line
+- Can generate an error = yes
 - Strongly Recommended (no error can appear):
     ```python
     # commentary
@@ -61,8 +61,8 @@
     test = 'test'# it's a test
     ```
 
-### 6) All commentaries between `"""` or `'''` on multiple lines should be exactly as in source code examples
-**Can generate an error = yes**
+#### 6) All commentaries between `"""` or `'''` on multiple lines should be exactly as in source code examples
+- Can generate an error = yes
 - Recommended:
     ```python
     """
@@ -81,8 +81,8 @@
     see the the placement of quotes :(
     ```
 
-### 7) If a variable containt text between `"""` or `'''` on multiple lines should be exactly as in source code examples
-**Can generate an error = yes**
+#### 7) If a variable containt text between `"""` or `'''` on multiple lines should be exactly as in source code examples
+- Can generate an error = yes
 - Recommended:
     ```python
     test = """
@@ -102,8 +102,8 @@
     see the the placement of quotes :(
     ```
     
-### 8) If your value is between `[]` or `()` or `{}` in your source code, the `padding` feature may react differently depending on the code written
-**Can generate an error = no**
+#### 8) If your value is between `[]` or `()` or `{}` in your source code, the `padding` feature may react differently depending on the code written
+- Can generate an error = no
 - Recommended
     ```python
     # padding here
