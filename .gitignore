@@ -1,2 +1,7 @@
 __pycache__/
 *.pyc
+
+intensio/test/python/basic/input/dev
+intensio/test/python/basic/output/dev
+intensio/test/python/advanced/input/dev
+intensio/test/python/advanced/output/dev
