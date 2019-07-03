@@ -51,11 +51,13 @@
 | -rp, --rprint | activate the 'rprint' obfuscation feature |
 | -v, --verbose | improve verbosity |
 
+- **Do not define your names of local variables/classes/functions of your program identically to keywords python of functions/classes of imported libraries !** 
+
 - `Replace`, `Padding`, `Rprint` features can be executed separatly
 
-- If you want exclude python variables/classes/functions which will be taken by the 'Replace' feature, edit `intensio/exclude/python/exclude_python_words.txt`
+If you want exclude python keywords (classes/functions) of libraries or your local variables/classes/functions of your program which will be taken by the 'Replace' feature, edit `intensio/exclude/python/exclude_python_words.txt`
 
-- If you want to include python variables/classes/functions that are not included when launching the 'Replace' feature, edit `intensio/include/python/include_python_words.txt`
+- If you want to include local variables/classes/functions of your program that are not included when launching the 'Replace' feature, edit `intensio/include/python/include_python_words.txt`
 
 ## Examples
 - [Python target files](https://github.com/Hnfull/Intensio-Obfuscator/blob/master/docs/examples/python_code_examples.md)
