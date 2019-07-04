@@ -9,7 +9,7 @@ import random
 import textwrap
 import re
 import glob
-from tqdm import tqdm
+import tqdm
 
 from core.obfuscation.intensio_mixer import Mixer
 from core.obfuscation.intensio_remove import Remove
@@ -210,7 +210,7 @@ class Padding:
         print("\n[+] Running adding of random scripts in {0} file(s)...\n".format(countRecursFiles))
 
         # -- Padding scripts added -- #
-        with tqdm(total=countRecursFiles) as pbar:
+        with tqdm.tqdm(total=countRecursFiles) as pbar:
             for file in recursFiles:
                 pbar.update(1)
                 if re.match(blockDirs, file):

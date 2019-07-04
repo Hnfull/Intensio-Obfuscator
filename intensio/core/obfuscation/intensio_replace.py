@@ -9,12 +9,19 @@ import fileinput
 import glob
 import os
 import time
-from tqdm import tqdm
+import colorama
+import tqdm
 
 from core.obfuscation.intensio_mixer import Mixer
 from core.obfuscation.intensio_remove import Remove
 from core.utils.intensio_error import BreakLoop, EXIT_SUCCESS, EXIT_FAILURE
 from core.utils.intensio_utils import Utils
+
+#--------------------------------------------------------- [Global] ---------------------------------------------------------#
+
+colorama.init(autoreset=True) # Reset colours
+
+ERROR_COLOUR = colorama.Back.RED 
 
 #------------------------------------------------- [Function(s)/Class(es)] --------------------------------------------------#
 
@@ -264,7 +271,7 @@ class ReplaceWords:
                         word = word.rstrip()    
                         wordsExcluded.append(word)
         else:
-            print("[-] '{0}' file not found\n".format(self.pythonExcludeWords))
+            print(ERROR_COLOUR + "[-] '{0}' file not found\n".format(self.pythonExcludeWords))
         
         for word in wordsExcluded:
             if word in variablesDict.keys():
@@ -287,7 +294,7 @@ class ReplaceWords:
                         word = word.rstrip()
                         wordsIncludedFound.append(word)
         else:
-            print("[-] '{0}' file not found\n".format(self.pythonIncludeWords))
+            print(ERROR_COLOUR + "[-] '{0}' file not found\n".format(self.pythonIncludeWords))
         
         for word in wordsIncludedFound:
             if word not in variablesDict.keys() and word not in classesDict.keys() and word not in functionsDict.keys():
@@ -364,7 +371,7 @@ class ReplaceWords:
         # -- Change variables/classes/functions to mixed values -- #
         print("\n[+] Running replacement of variables/classes/functions in {0} file(s)...\n".format(countRecursFiles))
 
-        with tqdm(total=countRecursFiles) as pbar:
+        with tqdm.tqdm(total=countRecursFiles) as pbar:
             for file in recursFiles:
                 pbar.update(1)
                 if re.match(blockDirs, file):

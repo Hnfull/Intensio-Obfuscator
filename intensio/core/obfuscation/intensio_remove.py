@@ -7,7 +7,7 @@
 import re
 import fileinput
 import glob
-from tqdm import tqdm
+import tqdm
 
 from core.utils.intensio_error import EXIT_SUCCESS, EXIT_FAILURE
 from core.utils.intensio_utils import Utils
@@ -90,7 +90,7 @@ class Remove:
             
         print("\n[+] Running remove commentaries in {0} file(s)...\n".format(countRecursFiles))
 
-        with tqdm(total=countRecursFiles) as pbar:
+        with tqdm.tqdm(total=countRecursFiles) as pbar:
             for file in recursFiles:
                 pbar.update(1)
                 if re.match(blockDirs, file):
@@ -233,7 +233,7 @@ class Remove:
 
         print("\n[+] Running remove print function in {0} file(s)...\n".format(countRecursFiles))
 
-        with tqdm(total=countRecursFiles) as pbar:
+        with tqdm.tqdm(total=countRecursFiles) as pbar:
             for file in recursFiles:
                 pbar.update(1)
                 if re.match(blockDirs, file):

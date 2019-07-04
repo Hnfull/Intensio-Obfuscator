@@ -1,4 +1,4 @@
- # -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 # https://github.com/Hnfull/Intensio-Obfuscator
 
@@ -25,8 +25,7 @@ class Mixer:
             return Mixer.StringGenerator(self, self.lenLower)
         elif levelMixerArg == "medium":
             return Mixer.StringGenerator(self, self.lenMedium)
-        else:
-            if levelMixerArg == "high":
-                return Mixer.StringGenerator(self, self.lenHigh)
+        elif levelMixerArg == "high":
+            return Mixer.StringGenerator(self, self.lenHigh)
 
 

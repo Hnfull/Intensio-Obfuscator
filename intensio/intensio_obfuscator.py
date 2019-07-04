@@ -34,7 +34,7 @@
 -r, --replace           ->  activate the 'replace' obfuscation feature
 -p, --padding           ->  activate the 'padding' obfuscation feature
 -rc, --rcommentaries    ->  activate the 'rcommentaries' obfuscation feature
--rp, --rprint 	        ->  activate the 'rprint' obfuscation feature
+-rp, --rprint           ->  activate the 'rprint' obfuscation feature
 -v, --verbose           ->  improve verbosity
 
 """
@@ -44,16 +44,25 @@
 import sys
 import re
 import time
+import colorama
+
+#--------------------------------------------------------- [Global] ---------------------------------------------------------#
+
+colorama.init(autoreset=True) # Reset colours
+
+ERROR_COLOUR    = colorama.Back.RED      
+BANNER_COLOUR   = colorama.Fore.GREEN   
+SECTION_COLOUR  = colorama.Style.BRIGHT
 
 #---------------------------------------------------------- [Main] ----------------------------------------------------------#
 
 def main():
     if sys.version_info[0] != 3:
-        print("[-] Intensio-Obfuscator only support Python 3.x")
+        print(ERROR_COLOUR + "[-] Intensio-Obfuscator only support Python 3.x")
         sys.exit(0)
 
     if sys.platform != "win32" and sys.platform != "linux":
-        print("[-] This tool support [windows - Linux] only !")
+        print(ERROR_COLOUR + "[-] This tool support [windows - Linux] only !")
         sys.exit(0)
 
     try:
@@ -67,7 +76,7 @@ def main():
         from core.obfuscation.intensio_analyze import Analyze
         from core.obfuscation.intensio_remove import Remove
     except ImportError as e:
-        print("[-] {0}\n".format(e))
+        print(ERROR_COLOUR + "[-] {0}\n".format(e))
         sys.exit(0)
 
     args    = Args()
@@ -76,7 +85,7 @@ def main():
     if len(sys.argv) > 1 and len(sys.argv) <= 14:
         pass
     else:
-        print("[-] Incorrect number of arguments\n")
+        print(ERROR_COLOUR + "[-] Incorrect number of arguments\n")
         args.GetArgHelp()
         sys.exit(ERROR_BAD_ARGUMENTS)
     
@@ -88,88 +97,88 @@ def main():
                         if re.match(r"^lower$|^medium$|^high$", args.GetArgsValue().mixerlevel):
                             if not args.GetArgsValue().padding and not args.GetArgsValue().replace \
                                 and not args.GetArgsValue().rcommentaries and not args.GetArgsValue().rprint:
-                                print("\n[-] Need at least one argument [-r --replace] or [-p --padding] or [-rc --rcommentaries] or [-rp --rprint]")
+                                print(ERROR_COLOUR + "\n[-] Need at least one argument [-r --replace] or [-p --padding] or [-rc --rcommentaries] or [-rp --rprint]")
                                 sys.exit(ERROR_BAD_ARGUMENTS)
                         else:
-                            print("[-] Incorrect level of mixerlevel, [lower - medium - high] only supported\n")
+                            print(ERROR_COLOUR + "[-] Incorrect level of mixerlevel, [lower - medium - high] only supported\n")
                             sys.exit(ERROR_INVALID_PARAMETER)
                     else:
-                        print("[-] Mixerlevel [-m --mixerlevel] argument missing\n")
+                        print(ERROR_COLOUR + "[-] Mixerlevel [-m --mixerlevel] argument missing\n")
                         sys.exit(ERROR_BAD_ARGUMENTS)
                 else:
-                    print("[-] '{0}' Incorrect code argument, [python] only supported\n".format(args.GetArgsValue().Code))
+                    print(ERROR_COLOUR + "[-] '{0}' Incorrect code argument, [python] only supported\n".format(args.GetArgsValue().Code))
                     sys.exit(ERROR_INVALID_PARAMETER)
             else:
-                print("[-] Code [-c --code] argument missing\n")
+                print(ERROR_COLOUR + "[-] Code [-c --code] argument missing\n")
                 sys.exit(ERROR_BAD_ARGUMENTS)
         else:
-            print("[-] Output [-o --output] argument missing\n")
+            print(ERROR_COLOUR + "[-] Output [-o --output] argument missing\n")
             sys.exit(ERROR_BAD_ARGUMENTS)
     else:
-        print("[-] Input [-i --input] argument missing\n")
+        print(ERROR_COLOUR + "[-] Input [-i --input] argument missing\n")
         sys.exit(ERROR_BAD_ARGUMENTS)
 
     for line in INTENSIO_BANNER.split("\n"):
         time.sleep(0.05)
-        print(line)
+        print(BANNER_COLOUR + line)
 
     # -- Analysis and set up of the work environment -- #
-    print("\n\n*********************** [ Analyze and setup environment ] ************************\n")
+    print(SECTION_COLOUR + "\n\n*********************** [ Analyze and setup environment ] ************************\n")
     analyze = Analyze()
 
     if (analyze.InputAvailable(args.GetArgsValue().input, args.GetArgsValue().code, args.GetArgsValue().verbose) == EXIT_SUCCESS):
         print("\n[+] Analyze input argument '{0}' -> Successful".format(args.GetArgsValue().input))
     else:
-        print("[-] Analyze input '{0}' failed\n".format(args.GetArgsValue().input))
+        print(ERROR_COLOUR + "[-] Analyze input '{0}' failed\n".format(args.GetArgsValue().input))
         sys.exit(ERROR_INVALID_FUNCTION)
 
     if (analyze.OutputAvailable(args.GetArgsValue().input, args.GetArgsValue().code, args.GetArgsValue().output, args.GetArgsValue().verbose) == EXIT_SUCCESS):
         print("\n[+] Analyze and setup output argument environment '{0}' -> Successful".format(args.GetArgsValue().output))
     else:
-        print("[-] Analyze output '{0}' failed\n".format(args.GetArgsValue().output))
+        print(ERROR_COLOUR + "[-] Analyze output '{0}' failed\n".format(args.GetArgsValue().output))
         sys.exit(ERROR_INVALID_FUNCTION)
     
     # -- Obfuscation process -- #
-    print("\n\n************************** [ Obfuscation Rcommentaries ] **************************\n")
+    print(SECTION_COLOUR + "\n\n************************** [ Obfuscation Rcommentaries ] **************************\n")
     if args.GetArgsValue().rcommentaries:
         removeData = Remove()
         
         if (removeData.Commentaries(args.GetArgsValue().code, args.GetArgsValue().output) == EXIT_SUCCESS):
             print("[+] Obfuscation Rcommentaries -> Successful")
         else:
-            print("\n[-] Obfuscation Rcommentaries -> Failed")
+            print(ERROR_COLOUR + "\n[-] Obfuscation Rcommentaries -> Failed")
     else:
         print("[!] Obfuscation Rcommentaries no asked !")
 
-    print("\n\n***************************** [ Obfuscation Replace ] *****************************\n")
+    print(SECTION_COLOUR + "\n\n***************************** [ Obfuscation Replace ] *****************************\n")
     if args.GetArgsValue().replace:
         replaceWords = ReplaceWords()
 
         if (replaceWords.VarsDefinedByUser(args.GetArgsValue().code, args.GetArgsValue().output, args.GetArgsValue().mixerlevel, args.GetArgsValue().verbose) == EXIT_SUCCESS):
             print("[+] Obfuscation Replace -> Successful")
         else:
-            print("\n[-] Obfuscation Replace -> Failed")
+            print(ERROR_COLOUR + "\n[-] Obfuscation Replace -> Failed")
     else:
         print("[!] Obfuscation Replace no asked !")
     
-    print("\n\n***************************** [ Obfuscation Padding ] *****************************\n")
+    print(SECTION_COLOUR + "\n\n***************************** [ Obfuscation Padding ] *****************************\n")
     if args.GetArgsValue().padding:
         paddingScripts = Padding()
 
         if (paddingScripts.AddScripts(args.GetArgsValue().code, args.GetArgsValue().output, args.GetArgsValue().mixerlevel) == EXIT_SUCCESS):
             print("[+] Obfuscation Padding -> Successful")
         else:
-            print("\n[-] Obfuscation Padding -> Failed")
+            print(ERROR_COLOUR + "\n[-] Obfuscation Padding -> Failed")
     else:
         print("[!] Obfuscation Padding no asked !")
 
-    print("\n\n****************************** [ Obfuscation Rprint ] *****************************\n")
+    print(SECTION_COLOUR + "\n\n****************************** [ Obfuscation Rprint ] *****************************\n")
     if args.GetArgsValue().rprint:
 
         if (removeData.PrintFunc(args.GetArgsValue().code, args.GetArgsValue().output) == EXIT_SUCCESS):
             print("[+] Obfuscation Rprint -> Successful\n")
         else:
-            print("\n[-] Obfuscation Rprint -> Failed\n")
+            print(ERROR_COLOUR + "\n[-] Obfuscation Rprint -> Failed\n")
     else:
         print("[!] Obfuscation Rprint no asked !\n")
         
@@ -181,4 +190,4 @@ if __name__ == '__main__':
     try:
         main()
     except KeyboardInterrupt:
-        print("\n[!] Exit program\n")
+        print(ERROR_COLOUR + "\n[!] Exit program\n")
