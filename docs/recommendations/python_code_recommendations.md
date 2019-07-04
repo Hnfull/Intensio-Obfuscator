@@ -41,14 +41,7 @@
     ```
     - Edit `intensio/exclude/python/exclude_python_words.txt` and add keywords `choices`, `default` and `help` of argparse library, because the Replace feature take all variables, with this rule `variables=`
 
-
-#### 4) If a variables/classes/functions are not takin by Replace feature (optionnal)
-- Can generate an error = no**
-- Required:
-    - Edit `intensio/include/python/include_python_words.txt` and add your variables/classes/functions name
-
-
-#### 5) If `#` commentary after line of code, can potentially generate an error if `Rcommentaries` feature not recognize commentary correctly and remove the code of line
+#### 4) If `#` commentary after line of code, can potentially generate an error if `Rcommentaries` feature not recognize commentary correctly and remove the code of line
 - Can generate an error = yes
 - Strongly Recommended (no error can appear):
     ```python
@@ -61,7 +54,7 @@
     test = 'test'# it's a test
     ```
 
-#### 6) All commentaries between `"""` or `'''` on multiple lines should be exactly as in source code examples
+#### 5) All commentaries between `"""` or `'''` on multiple lines should be exactly as in source code examples
 - Can generate an error = yes
 - Recommended:
     ```python
@@ -81,7 +74,7 @@
     see the the placement of quotes :(
     ```
 
-#### 7) If a variable containt text between `"""` or `'''` on multiple lines should be exactly as in source code examples
+#### 6) If a variable containt text between `"""` or `'''` on multiple lines should be exactly as in source code examples
 - Can generate an error = yes
 - Recommended:
     ```python
@@ -102,22 +95,19 @@
     see the the placement of quotes :(
     ```
     
-#### 8) If your value is between `[]` or `()` or `{}` in your source code, the `padding` feature may react differently depending on the code written
+#### 7) If your value is between `[]` or `()` or `{}` in your source code, the `padding` feature may react differently depending on the code written
 - Can generate an error = no
 - Recommended
     ```python
-    # padding here
     # padding here
     a = ["a", "b", "c"]
     # padding here
     b = ("d", "e", "f")
     # padding here
-    # padding here
     ```
 
 - Less recommended
     ```python
-    # padding here
     # padding here
     a = [
         "a", 
@@ -129,7 +119,11 @@
         "e", 
         "f"
         )
+    # padding here
+    ```
     
-    # padding here
-    # padding here
+#### 8) If a variables/classes/functions are not takin by Replace feature (optionnal)
+- Can generate an error = no**
+- Required:
+    - Edit `intensio/include/python/include_python_words.txt` and add your variables/classes/functions name
     ```
