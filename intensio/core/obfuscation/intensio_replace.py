@@ -19,9 +19,7 @@ from core.utils.intensio_utils import Utils
 
 #--------------------------------------------------------- [Global] ---------------------------------------------------------#
 
-colorama.init(autoreset=True) # Reset colours
-
-ERROR_COLOUR = colorama.Back.RED 
+ERROR_COLOUR = colorama.Fore.RED + colorama.Style.BRIGHT
 
 #------------------------------------------------- [Function(s)/Class(es)] --------------------------------------------------#
 
