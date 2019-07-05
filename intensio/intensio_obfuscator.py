@@ -128,15 +128,15 @@ def main():
     analyze = Analyze()
 
     if (analyze.InputAvailable(args.GetArgsValue().input, args.GetArgsValue().code, args.GetArgsValue().verbose) == EXIT_SUCCESS):
-        print(SUCESS_COLOUR + "\n[+] Analyze input argument '{0}' -> Successful".format(args.GetArgsValue().input))
+        print("\n[+] Analyze input argument '{0}' -> ".format(args.GetArgsValue().input) + SUCESS_COLOUR + "Successful")
     else:
-        print(ERROR_COLOUR + "[-] Analyze input '{0}' failed\n".format(args.GetArgsValue().input))
+        print("[-] Analyze input '{0}' -> ".format(args.GetArgsValue().input) + ERROR_COLOUR + "failed\n")
         sys.exit(ERROR_INVALID_FUNCTION)
 
     if (analyze.OutputAvailable(args.GetArgsValue().input, args.GetArgsValue().code, args.GetArgsValue().output, args.GetArgsValue().verbose) == EXIT_SUCCESS):
-        print(SUCESS_COLOUR + "\n[+] Analyze and setup output argument environment '{0}' -> Successful".format(args.GetArgsValue().output))
+        print("\n[+] Analyze and setup output argument environment '{0}' -> ".format(args.GetArgsValue().output) + SUCESS_COLOUR + "Successful")
     else:
-        print(ERROR_COLOUR + "[-] Analyze output '{0}' failed\n".format(args.GetArgsValue().output))
+        print("[-] Analyze output '{0}' -> ".format(args.GetArgsValue().output) + ERROR_COLOUR + "failed\n")
         sys.exit(ERROR_INVALID_FUNCTION)
     
     # -- Obfuscation process -- #
@@ -145,9 +145,9 @@ def main():
         removeData = Remove()
         
         if (removeData.Commentaries(args.GetArgsValue().code, args.GetArgsValue().output) == EXIT_SUCCESS):
-            print(SUCESS_COLOUR + "[+] Obfuscation Rcommentaries -> Successful")
+            print("[+] Obfuscation Rcommentaries -> " + SUCESS_COLOUR + "Successful")
         else:
-            print(ERROR_COLOUR + "\n[-] Obfuscation Rcommentaries -> Failed")
+            print("\n[-] Obfuscation Rcommentaries -> " + ERROR_COLOUR  + "Failed")
     else:
         print("[!] Obfuscation Rcommentaries no asked !")
 
@@ -156,9 +156,9 @@ def main():
         replaceWords = ReplaceWords()
 
         if (replaceWords.VarsDefinedByUser(args.GetArgsValue().code, args.GetArgsValue().output, args.GetArgsValue().mixerlevel, args.GetArgsValue().verbose) == EXIT_SUCCESS):
-            print(SUCESS_COLOUR + "[+] Obfuscation Replace -> Successful")
+            print("[+] Obfuscation Replace -> " + SUCESS_COLOUR + "Successful")
         else:
-            print(ERROR_COLOUR + "\n[-] Obfuscation Replace -> Failed")
+            print("\n[-] Obfuscation Replace -> " + ERROR_COLOUR +  "Failed")
     else:
         print("[!] Obfuscation Replace no asked !")
     
@@ -167,9 +167,9 @@ def main():
         paddingScripts = Padding()
 
         if (paddingScripts.AddScripts(args.GetArgsValue().code, args.GetArgsValue().output, args.GetArgsValue().mixerlevel) == EXIT_SUCCESS):
-            print(SUCESS_COLOUR + "[+] Obfuscation Padding -> Successful")
+            print("[+] Obfuscation Padding -> " + SUCESS_COLOUR + "Successful")
         else:
-            print(ERROR_COLOUR + "\n[-] Obfuscation Padding -> Failed")
+            print("\n[-] Obfuscation Padding -> " + ERROR_COLOUR + "Failed")
     else:
         print("[!] Obfuscation Padding no asked !")
 
@@ -177,9 +177,9 @@ def main():
     if args.GetArgsValue().rprint:
 
         if (removeData.PrintFunc(args.GetArgsValue().code, args.GetArgsValue().output) == EXIT_SUCCESS):
-            print(SUCESS_COLOUR + "[+] Obfuscation Rprint -> Successful\n")
+            print("[+] Obfuscation Rprint -> " + SUCESS_COLOUR + "Successful\n")
         else:
-            print(ERROR_COLOUR + "\n[-] Obfuscation Rprint -> Failed\n")
+            print("\n[-] Obfuscation Rprint -> " + ERROR_COLOUR + "Failed\n")
     else:
         print("[!] Obfuscation Rprint no asked !\n")
         
