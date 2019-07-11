@@ -17,7 +17,7 @@ from core.utils.intensio_error import EXIT_SUCCESS, ERROR_FILE_NOT_FOUND, ERROR_
 
 #--------------------------------------------------------- [Global] ---------------------------------------------------------#
 
-ERROR_COLOUR    = colorama.Fore.RED + colorama.Style.BRIGHT
+ERROR_COLOUR = colorama.Back.RED + colorama.Style.BRIGHT
 
 #------------------------------------------------- [Function(s)/Class(es)] --------------------------------------------------#
 
@@ -40,7 +40,7 @@ class Analyze:
 
                 recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(inputArg, self.utils.Platform(), detectFile), recursive=True)]
                 if recursFiles == []:
-                    print(ERROR_COLOUR + "[-] {0} directory empty".format(inputArg))
+                    print(ERROR_COLOUR + "[-] {0} directory empty or python file not found".format(inputArg))
                     return ERROR_DIR_EMPTY
 
                 print("\n[+] Running analyze input...")
@@ -107,7 +107,7 @@ class Analyze:
 
                                 recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(inputArg, self.utils.Platform(), detectFile), recursive=True)]
                                 if recursFiles == []:
-                                    print(ERROR_COLOUR + "[-] {0} directory empty".format(inputArg))
+                                    print(ERROR_COLOUR + "[-] {0} directory empty, no copied file".format(inputArg))
                                     return ERROR_DIR_EMPTY
 
                                 print("\n[+] Running analyze output...")
@@ -167,7 +167,7 @@ class Analyze:
 
                         recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(inputArg, self.utils.Platform(), detectFile), recursive=True)]
                         if recursFiles == []:
-                            print(ERROR_COLOUR + "[-] {0} directory empty".format(inputArg))
+                            print(ERROR_COLOUR + "[-] {0} directory empty, no copied file".format(inputArg))
                             return ERROR_DIR_EMPTY
 
                         print("\n[+] Running analyze output...")

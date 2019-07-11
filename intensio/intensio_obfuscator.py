@@ -51,7 +51,8 @@ import colorama
 colorama.init(autoreset=True) # Reset colours
 
 SUCESS_COLOUR   = colorama.Fore.GREEN + colorama.Style.BRIGHT
-ERROR_COLOUR    = colorama.Fore.RED + colorama.Style.BRIGHT      
+FAILED_COLOUR   = colorama.Fore.RED + colorama.Style.BRIGHT
+ERROR_COLOUR    = colorama.Back.RED + colorama.Style.BRIGHT      
 BANNER_COLOUR   = colorama.Fore.WHITE + colorama.Style.BRIGHT  
 SECTION_COLOUR  = colorama.Fore.YELLOW + colorama.Style.BRIGHT
 
@@ -130,13 +131,13 @@ def main():
     if (analyze.InputAvailable(args.GetArgsValue().input, args.GetArgsValue().code, args.GetArgsValue().verbose) == EXIT_SUCCESS):
         print("\n[+] Analyze input argument '{0}' -> ".format(args.GetArgsValue().input) + SUCESS_COLOUR + "Successful")
     else:
-        print("[-] Analyze input '{0}' -> ".format(args.GetArgsValue().input) + ERROR_COLOUR + "failed\n")
+        print("[-] Analyze input '{0}' -> ".format(args.GetArgsValue().input) + FAILED_COLOUR + "failed\n")
         sys.exit(ERROR_INVALID_FUNCTION)
 
     if (analyze.OutputAvailable(args.GetArgsValue().input, args.GetArgsValue().code, args.GetArgsValue().output, args.GetArgsValue().verbose) == EXIT_SUCCESS):
         print("\n[+] Analyze and setup output argument environment '{0}' -> ".format(args.GetArgsValue().output) + SUCESS_COLOUR + "Successful")
     else:
-        print("[-] Analyze output '{0}' -> ".format(args.GetArgsValue().output) + ERROR_COLOUR + "failed\n")
+        print("[-] Analyze output '{0}' -> ".format(args.GetArgsValue().output) + FAILED_COLOUR + "failed\n")
         sys.exit(ERROR_INVALID_FUNCTION)
     
     # -- Obfuscation process -- #
@@ -147,7 +148,7 @@ def main():
         if (removeData.Commentaries(args.GetArgsValue().code, args.GetArgsValue().output) == EXIT_SUCCESS):
             print("[+] Obfuscation Rcommentaries -> " + SUCESS_COLOUR + "Successful")
         else:
-            print("\n[-] Obfuscation Rcommentaries -> " + ERROR_COLOUR  + "Failed")
+            print("\n[-] Obfuscation Rcommentaries -> " + FAILED_COLOUR  + "Failed")
     else:
         print("[!] Obfuscation Rcommentaries no asked !")
 
@@ -158,7 +159,7 @@ def main():
         if (replaceWords.VarsDefinedByUser(args.GetArgsValue().code, args.GetArgsValue().output, args.GetArgsValue().mixerlevel, args.GetArgsValue().verbose) == EXIT_SUCCESS):
             print("[+] Obfuscation Replace -> " + SUCESS_COLOUR + "Successful")
         else:
-            print("\n[-] Obfuscation Replace -> " + ERROR_COLOUR +  "Failed")
+            print("\n[-] Obfuscation Replace -> " + FAILED_COLOUR +  "Failed")
     else:
         print("[!] Obfuscation Replace no asked !")
     
@@ -169,7 +170,7 @@ def main():
         if (paddingScripts.AddScripts(args.GetArgsValue().code, args.GetArgsValue().output, args.GetArgsValue().mixerlevel) == EXIT_SUCCESS):
             print("[+] Obfuscation Padding -> " + SUCESS_COLOUR + "Successful")
         else:
-            print("\n[-] Obfuscation Padding -> " + ERROR_COLOUR + "Failed")
+            print("\n[-] Obfuscation Padding -> " + FAILED_COLOUR + "Failed")
     else:
         print("[!] Obfuscation Padding no asked !")
 
@@ -179,7 +180,7 @@ def main():
         if (removeData.PrintFunc(args.GetArgsValue().code, args.GetArgsValue().output) == EXIT_SUCCESS):
             print("[+] Obfuscation Rprint -> " + SUCESS_COLOUR + "Successful\n")
         else:
-            print("\n[-] Obfuscation Rprint -> " + ERROR_COLOUR + "Failed\n")
+            print("\n[-] Obfuscation Rprint -> " + FAILED_COLOUR + "Failed\n")
     else:
         print("[!] Obfuscation Rprint no asked !\n")
         
