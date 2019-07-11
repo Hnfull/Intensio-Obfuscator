@@ -54,15 +54,15 @@
 | -v, --verbose | improve verbosity |
 
 - **Read these Documentations before to use Intensio-Obfuscator tool**
-    - [Steps of usage](https://github.com/Hnfull/Intensio-Obfuscator/blob/master/docs/steps_usage/python_steps_usage.md)
-    - [Recommendations](https://github.com/Hnfull/Intensio-Obfuscator/blob/master/docs/recommendations/python_code_recommendations.md)
-    - [Malfunctions](https://github.com/Hnfull/Intensio-Obfuscator/blob/master/docs/malfunctions/python_code_malfunctions.md)
+    - [Steps of usage](docs/steps_usage/python_steps_usage.md)
+    - [Recommendations](docs/recommendations/python_code_recommendations.md)
+    - [Malfunctions](docs/malfunctions/python_code_malfunctions.md)
 
 ## Examples
-- [Python target files](https://github.com/Hnfull/Intensio-Obfuscator/blob/master/docs/examples/python_code_examples.md)
+- [Python target files](docs/examples/python_code_examples.md)
 
 ## Demo
-![Python target files demo](https://github.com/Hnfull/Intensio-Obfuscator/blob/master/docs/demo/intensio_obfuscator_python_files_demo.gif)
+![Python target files demo](docs/demo/intensio_obfuscator_python_files_demo.gif)
 
 ## Todo
 - Version 1.0.1-x:
