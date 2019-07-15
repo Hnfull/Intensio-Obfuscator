@@ -125,5 +125,5 @@
 #### 8) If a variables/classes/functions are not takin by Replace feature (optionnal)
 - Can generate an error = no**
 - Required:
-    - Edit `[words inclusion](../../intensio/include/python/include_python_words.txt) and add your variables/classes/functions name
+    - Edit [words inclusion](../../intensio/include/python/include_python_words.txt) and add your variables/classes/functions name
     ```
