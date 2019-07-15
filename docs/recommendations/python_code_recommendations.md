@@ -39,7 +39,7 @@
     yourChoices = input("number :")
     print(yourChoices)
     ```
-    - Edit `intensio/exclude/python/exclude_python_words.txt` and add keywords `choices`, `default` and `help` of argparse library, because the Replace feature take all variables, with this rule `variables=`
+    - Edit [words exclusion](../../intensio/exclude/python/exclude_python_words.txt) and add keywords `choices`, `default` and `help` of argparse library, because the Replace feature take all variables, with this rule `variables=`
 
 #### 4) If `#` commentary after line of code, can potentially generate an error if `Rcommentaries` feature not recognize commentary correctly and remove the code of line
 - Can generate an error = yes
@@ -125,5 +125,5 @@
 #### 8) If a variables/classes/functions are not takin by Replace feature (optionnal)
 - Can generate an error = no**
 - Required:
-    - Edit `intensio/include/python/include_python_words.txt` and add your variables/classes/functions name
+    - Edit `[words inclusion](../../intensio/include/python/include_python_words.txt) and add your variables/classes/functions name
     ```
