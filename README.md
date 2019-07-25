@@ -1,7 +1,7 @@
 # Intensio-Obfuscator (Beta)
 
 ![](https://img.shields.io/badge/Python->=3.5-blue.svg)
-![](https://img.shields.io/badge/Version-1.0.4-green.svg)
+![](https://img.shields.io/badge/Version-1.0.5-green.svg)
 ![](https://img.shields.io/badge/Licence-MIT-red.svg)
 
 ## What is this ?
@@ -62,7 +62,7 @@
 - [Python target files](docs/examples/python_code_examples.md)
 
 ## Demo
-![Python target files demo](docs/demo/intensio_obfuscator_python_files_demo.gif)
+![Python target files demo](docs/demo/intensio_obfuscator_demo_python_files.gif)
 
 ## Todo
 - Version 1.0.1-x:
