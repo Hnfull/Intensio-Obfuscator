@@ -1,4 +1,5 @@
-# Recommendations
+# Mandatory Recommendations
+
 
 #### 1) The `-rc --rcommentaries` (parameter by default) should not be disabled, otherwise the other features can generate errors
 - Can generate an error = yes
@@ -7,6 +8,7 @@
 
 - Not recommended:
     - Desactivate the default execution of this feature
+
 
 #### 2) Do not define your names of local `variables/classes/functions` of your program identically to keywords python of `functions/classes` of imported libraries
 - Can generate an error = yes
@@ -30,7 +32,7 @@
     # add_argument variable defined is already an function of argparse library :(
     ```
 
-#### 3) You ought exclude python keywords of libraries of your program which will be taken by the 'Replace' feature 
+#### 3) You ought exclude python keywords of libraries of your program which will be taken by the '--replace' feature 
 - Can generate an error = yes
 - Required:
     ```python
@@ -43,7 +45,7 @@
 
 #### 4) If `#` commentary after line of code, can potentially generate an error if `Rcommentaries` feature not recognize commentary correctly and remove the code of line
 - Can generate an error = yes
-- Strongly Recommended (no error can appear):
+- Strongly Recommended:
     ```python
     # commentary
     test = 'test'
@@ -121,9 +123,19 @@
         )
     # padding here
     ```
-    
-#### 8) If a variables/classes/functions are not takin by Replace feature (optionnal)
-- Can generate an error = no**
+
+#### 8) If multiple variables follow on a line, the `--replace` feature does not recognize a particular case
+- Can generate an error = no
+- Code example
+    ```python
+    prompt = input(">>")
+    cmd, action = prompt.partition(' ')
+    ```
+- Recommended
+    - This tool not recognize this case, you should edit [words inclusion](../../intensio/include/python/include_python_words.txt) and add your `cmd` variable, only `action` variable is replaced automaticaly
+
+
+#### 9) If a variables/classes/functions are not takin by Replace feature (optionnal)
+- Can generate an error = no
 - Required:
     - Edit [words inclusion](../../intensio/include/python/include_python_words.txt) and add your variables/classes/functions name
-    ```
