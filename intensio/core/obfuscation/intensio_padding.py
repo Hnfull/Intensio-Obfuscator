@@ -165,9 +165,9 @@ class Padding:
                                                             else:
                                                                 {3} = {1}
                                                     """).format(varRandom1, varRandom2, varRandom3, \
-                                                        varRandom4, varRandom5, varRandom6, \
-                                                        varRandom7, varRandom8, varRandom9, \
-                                                        varRandom10, varRandom11, varRandom12)
+                                                                varRandom4, varRandom5, varRandom6, \
+                                                                varRandom7, varRandom8, varRandom9, \
+                                                                varRandom10, varRandom11, varRandom12)
                 return scriptAssPadding5
     
     
@@ -226,12 +226,13 @@ class Padding:
                                     listCheckLine                       = [] # Initialize var
                                     spaces                              = len(eachLine) - len(eachLine.lstrip()) # Check line indent
 
-                                    detectStringVar                     = r".*\w+\s*\={1}\s*r+[\"|\']{1}"
-                                    noAddScript                         = r"^\@|\s+\@|\s+return|\s*def\s+.+\s*\:{1}|^class\s+.+\s*\:{1}|.*[\[|\(|\{|\,|\\]$|\s+[\)|\]|\}]$"
                                     addIndentScript                     = r".*\:{1}\s"
-                                    quoteIntoVariable                   = r".*\={1}\s*\w*\.?\w*[\(|\.]{1}[\"|\']{3}|.*\={1}\s*[\"|\']{3}" # """ and ''' before an variables
                                     quoteOfCommentariesMultipleLines    = r"^\s*[\"|\']{3}$"        # """ and ''' without before variables and if commentaries is over multiple lines
                                     quoteOfEndCommentariesMultipleLines = r"^\s*[\"|\']{3}\)?\.?"   # """ and ''' without before variables, if commentaries is over multiple lines and he finish by .format() funtion
+                                    detectNumberOnVar                   = r".*\w+\s*\={1}\s*[0-9]$"         # Check if it's varible with number value
+                                    detectStringRegOnVar                = r".*\w+\s*\={1}\s*r+[\"|\']{1}"   # Check if it's variable with regex strings value
+                                    quoteIntoVariable                   = r".*\={1}\s*\w*\.?\w*[\(|\.]{1}[\"|\']{3}|.*\={1}\s*[\"|\']{3}" # """ and ''' before an variables
+                                    noAddScript                         = r"^\@|\s+\@|\s+return|\s*def\s+.+\s*\:{1}|^class\s+.+\s*\:{1}|.*[\[|\(|\{|\,|\\|\)|\]|\}]$|\s+[\)|\]|\}]$"
                                     
                                     for i in eachLine:
                                         listCheckLine.append(i)
@@ -244,19 +245,27 @@ class Padding:
                                             countBackSlash = 0
                                             continue
 
-                                    # -- Check if end char in line is " or ' -- #
-                                    if re.match(r"\"|\'", listCheckLine[-2]):
-                                        try:
+                                    try:
+                                        # -- Check if there char in end line when " or ' chars appear -- #
+                                        if re.match(r"\"|\'", listCheckLine[-2]):        
+                                            # -- Check if he three " or ' char " -- #
                                             if re.match(r"\'|\"", listCheckLine[-3]) and re.match(r"\'|\"", listCheckLine[-4]):
                                                 pass
                                             else:
-                                                if re.match(detectStringVar, eachLine):
+                                                if re.match(detectStringRegOnVar, eachLine):
                                                     pass
                                                 else:
                                                     continue
-                                        except IndexError:
-                                            continue
-        
+                                
+                                        # -- Check if there a number in end line -- #
+                                        elif re.match(r"[0-9]$", listCheckLine[-2]):
+                                            if re.match(detectNumberOnVar, eachLine):
+                                                pass
+                                            else:
+                                                continue
+                                    except IndexError:
+                                        continue
+
                                     # -- Check code into """ or ''' -- #
                                     if re.match(quoteIntoVariable, eachLine):
                                         checkQuotePassing += 1

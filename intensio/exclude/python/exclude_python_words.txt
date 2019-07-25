@@ -1,6 +1,8 @@
-########## FOR THE PYTHON FILES BASIC RAT TEST IN REPOS #############
+################ START SECTION ONLY FOR TEST PROGRAM IN PROJECT ########################
 
-########### variables ############
+########### BASIC RAT TEST IN REPOS #############
+
+######## local variables #########
 _
 
 ############# glob ###############
@@ -30,7 +32,7 @@ platform
 processor
 architecture
 
-###### FOR THE PYTHON FILES INTENSIO-OBFUSCATOR TEST IN REPOS ########
+###### INTENSIO-OBFUSCATOR TEST IN REPOS ########
 
 ############ argparse ############
 prog
@@ -39,7 +41,13 @@ prog
 search
 match
 
-########################### DO NOT MODIFY IT #########################
+############## os ################
+remove
+
+################# END SECTION ONLY FOR TEST PROGRAM IN PROJECT ########################
+
+
+############################# START DO NOT MODIFY IT ##################################
 
 ##### default python keywords #####
 False
@@ -76,9 +84,11 @@ while
 with
 yield
 
-####### Other python keywords ########
+####### Other python keywords #######
 replace
-remove
 
-############### PUT YOUR VARS-CLASSES-FUNCS TO EXCLUDE #################
+############################# START DO NOT MODIFY IT ##################################
+
+
+##################### PUT YOUR VARS-CLASSES-FUNCS TO EXCLUDE ##########################
 yourVar1

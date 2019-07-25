@@ -82,10 +82,9 @@ class ReplaceWords:
                                 for letterValue in value:
                                     # -- Check if letter of word is equal to letter of key -- #
                                     if letterKey == letterLine:
-                                        # -- Begin process to check  -- #
+                                        # -- Begin process to check -- #s
                                         if indexKey == 0:
-                                            # -- Place index position after the word -- #
-                                            indexExplore = indexLine + len(key)
+                                            indexExplore = indexLine + len(key) # Place index position after the word
 
                                             # -- If indexError return to next loop -- #
                                             try:
@@ -93,30 +92,38 @@ class ReplaceWords:
                                             except IndexError: 
                                                 continue
                                                 
-                                            # -- Check the char after the word -- #
+                                            # -- Check the char after and before the word -- #
                                             if re.match(regReplace, getIndexLineList[indexExplore]):
-                                                # -- Check word finded is not into the other word -- #
-                                                indexExploreBefore  = indexLine - 1
-                                                if not re.match(r"\w|\\", getIndexLineList[indexExploreBefore]):                                                
-                                                    if codeArg == "python":
-                                                        # -- Check if it's 'from' and 'import' word key in line to avoid replace name of file if variable is identic name to file -- #
-                                                        getLine = "".join(getIndexLineList)
-                                                        if "import" in getLine:
-                                                            if "from" in getLine:
-                                                                # -- Cut the line from the current index and check if it is not there is the keyword "import" in the line -- #
-                                                                breakLine = getIndexLineList[:indexLine]
-                                                                breakLine = "".join(breakLine)
-                                                                if not "import" in breakLine:
-                                                                    # -- It's file because only 'from'key word -- #
-                                                                    checkCharAfterWord = 1
+                                                indexExploreBefore  = indexLine - 1 # Index check if word finded is not into the other word
+                                                indexExploreAfter   = indexLine + 2 # Index check char after the the char finded with regReplace regex
+                                                
+                                                if codeArg == "python":
+                                                    try:
+                                                        if not re.match(r"\w|\\", getIndexLineList[indexExploreBefore]):
+                                                            # -- Check if it's 'from' and 'import' word key in line to avoid replace name of file if variable is identic name to file -- #
+                                                            getLine = "".join(getIndexLineList)
+                                                            if "import" in getLine:
+                                                                if "from" in getLine:
+                                                                    # -- Cut the line from the current index and check if it is not there is the keyword "import" in the line -- #
+                                                                    breakLine = getIndexLineList[:indexLine]
+                                                                    breakLine = "".join(breakLine)
+                                                                    if not "import" in breakLine:
+                                                                        # -- It's file because only 'from'key word -- #
+                                                                        checkCharAfterWord = 1
+                                                                    else:
+                                                                        checkCharAfterWord = 0
                                                                 else:
                                                                     checkCharAfterWord = 0
+                                                            # -- Check if after char find by 'regReplace' variable there no is ' or " -- #
+                                                            elif re.match(r"\"|\'", getIndexLineList[indexExploreAfter]):
+                                                                checkCharAfterWord = 1
                                                             else:
                                                                 checkCharAfterWord = 0
                                                         else:
-                                                            checkCharAfterWord = 0
-                                                else:
-                                                    checkCharAfterWord = 1              
+                                                            checkCharAfterWord = 1
+                                                    except IndexError:
+                                                        checkCharAfterWord = 0
+                                                        pass
                                             else:
                                                 checkCharAfterWord = 1
 
@@ -188,16 +195,16 @@ class ReplaceWords:
         countRecursFiles        = 0
 
         if codeArg == "python":
-            variablesDefined        = r"(^\w+|\w+)([\s|^\s]*=[\s|\w|\"|\'])"    # Variables
-            variablesErrorDefined   = r"except(\s+\w+\sas\s)(\w)"               # Error variables
-            variablesLoopDefined    = r"for\s+([\w\s\,]+)(\s+in\s+)"            # Loop variables
             functionsDefined        = r"def\s(\w+)"                             # Functions
             classDefined            = r"class\s(\w+)"                           # Classes
+            variablesErrorDefined   = r"except(\s+\w+\sas\s)(\w)"               # Error variables
+            variablesLoopDefined    = r"for\s+([\w\s\,]+)(\s+in\s+)"            # Loop variables
+            variablesDefined        = r"(^\w+|\w+)([\s|^\s]*=[\s|\w|\"|\'])"    # Variables
             
-            quoteOfEndCommentariesMultipleLines = r"^\s*[\"|\']{3}\)?\.?"   # """ and ''' without before variables, if commentaries is over multiple lines and he finish by .format() funtion
             quoteOfCommentariesMultipleLines    = r"^\s*[\"|\']{3}$"        # """ and ''' without before variables and if commentaries is over multiple lines
             quoteInRegex                        = r"\={1}\s*r[\"|\']{1}"    # If quote in regex
-            quoteIntoVariable                   = r".*\={1}\s*\w*\.?\w*[\(|\.]{1}[\"|\']{3}|.*\={1}\s*[\"|\']{3}"   # """ and ''' with before variables
+            quoteOfEndCommentariesMultipleLines = r"^\s*[\"|\']{3}\)?\.?"   # """ and ''' without before variables, if commentaries is over multiple lines and he finish by .format() funtion
+            quoteIntoVariable                   = r".*\={1}\s*\w*\.?\w*[\(|\.]{1}[\"|\']{3}|.*\={1}\s*[\"|\']{3}" # """ and ''' with before variables
             
             detectFile  = "py"
             blockDirs   = r"__pycache__"

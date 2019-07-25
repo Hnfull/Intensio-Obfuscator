@@ -72,10 +72,10 @@ class Remove:
 
         if codeArg == "python": 
             commentariesBeginLine               = r"^\#.*"                      # Begin '#'
-            quoteInRegex                        = r"\={1}\s*r[\"|\']{1}"        # If quote in regex
-            quoteOfCommentariesOneLine          = r"[\"|\']{3}.*[\"|\']{3}$"    # """ and ''' without before variables and if commentary is over one line, (""" commentaries """)
             quoteOfCommentariesMultipleLines    = r"^\s*[\"|\']{3}$"            # """ and ''' without before variables and if commentaries is over multiple lines
+            quoteInRegex                        = r"\={1}\s*r[\"|\']{1}"        # If quote in regex
             quoteOfEndCommentariesMultipleLines = r"^\s*[\"|\']{3}\)?\.?"       # """ and ''' without before variables, if commentaries is over multiple lines and he finish by .format() funtion
+            quoteOfCommentariesOneLine          = r"[\"|\']{3}.*[\"|\']{3}$"    # """ and ''' without before variables and if commentary is over one line, (""" commentaries """)
             quoteIntoVariable                   = r".*\={1}\s*\w*\.?\w*[\(|\.]{1}[\"|\']{3}|.*\={1}\s*[\"|\']{3}"   # """ and ''' with before variables
             commentariesAfterLine               = r"\s*\#[^\"|^\'|^\.|^\?|^\*|^\!|^\]|^\[|^\\|^\)|^\(|^\{|^\}].*"   # '#' after line of code
 

@@ -1,11 +1,13 @@
-############ FOR THE PYTHON FILES BasicRAT TEST IN REPOS #############
+################ START SECTION ONLY FOR TEST PROGRAM IN PROJECT ########################
 
-########### variables ###########
+########### BASIC RAT TEST IN REPOS #############
+
+######## local variables #########
 cmd
 conn
 
-###### FOR THE PYTHON FILES INTENSIO-OBFUSCATOR TEST IN REPOS ########
+################# END SECTION ONLY FOR TEST PROGRAM IN PROJECT ########################
 
 
-############## PUT YOUR VARS-CLASSES-FUNCS TO INCLUDE ################
+#################### PUT YOUR VARS-CLASSES-FUNCS TO INCLUDE ###########################
 yourVar1

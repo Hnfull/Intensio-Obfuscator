@@ -50,11 +50,11 @@ import colorama
 
 colorama.init(autoreset=True) # Reset colours
 
-SUCESS_COLOUR   = colorama.Fore.GREEN + colorama.Style.BRIGHT
-FAILED_COLOUR   = colorama.Fore.RED + colorama.Style.BRIGHT
-ERROR_COLOUR    = colorama.Back.RED + colorama.Style.BRIGHT      
-BANNER_COLOUR   = colorama.Fore.WHITE + colorama.Style.BRIGHT  
-SECTION_COLOUR  = colorama.Fore.YELLOW + colorama.Style.BRIGHT
+SUCESS_COLOUR   = colorama.Fore.GREEN   + colorama.Style.BRIGHT
+FAILED_COLOUR   = colorama.Fore.RED     + colorama.Style.BRIGHT
+ERROR_COLOUR    = colorama.Back.RED     + colorama.Style.BRIGHT      
+BANNER_COLOUR   = colorama.Fore.WHITE   + colorama.Style.BRIGHT  
+SECTION_COLOUR  = colorama.Fore.YELLOW  + colorama.Style.BRIGHT
 
 #---------------------------------------------------------- [Main] ----------------------------------------------------------#
 

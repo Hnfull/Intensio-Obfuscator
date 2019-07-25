@@ -61,8 +61,10 @@ ______           _     ______  ___ _____   _            _
 '''
 
 
-COMMANDS = [ 'download', 'help', 'persistence', 'quit', 'rekey', 'run',
-             'scan', 'survey', 'unzip', 'upload', 'wget' ]
+COMMANDS = [ 
+            'download', 'help', 'persistence', 'quit', 'rekey', 
+            'run', 'scan', 'survey', 'unzip', 'upload', 'wget' 
+]
 
 #--------------------------------------------------- [Function(s)/Class] ----------------------------------------------------#
 
