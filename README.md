@@ -47,7 +47,7 @@
 | -i, --input  | source directory - indicate a directory that contain your file(s) |
 | -c, --code | language used in input directory, default value: [python], possible value: [python] |
 | -o, --output | output directory that will be obfuscated - indicate a empty directory that will contain your file(s) |
-| -m, --mixerlevel |generate random strings of [lower:32|medium:64|high:128] chars when `replacetostr` and `paddingscripts` and `replacetohex` features are specified, default value: [medium], possible values: [lower, medium, high]|
+| -m, --mixerlevel | generate random strings of [lower:32 - medium:64 - high:128] chars when `replacetostr` and `paddingscripts` and `replacetohex` features are specified, default value: [medium], possible values: [lower - medium - high]|
 | -rts, --replacetostr | activate the `replace strings to strings mixed` obfuscation feature |
 | -ps, --paddingscripts | activate the `padding scripts` obfuscation feature |
 | -rc, --removecommentaries | activate the `remove commentaries` obfuscation feature (this feature is executed by default) |
