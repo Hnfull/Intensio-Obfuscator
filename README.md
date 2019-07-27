@@ -6,7 +6,7 @@
 
 ## What is this ?
 - Intensio-Obfsucator tool takes a python source code and transform it into an obfuscated python code
-  - **Replace** name of variables/classes/functions to random chars and defined length
+  - **Replace** name of variables/classes/functions to random chars and defined length & all chars to their hexadecimal value
   - **Remove** commentaries, all lines breaks, all print functions
   - **Add** to each line a random script with an always differents values
 
@@ -33,6 +33,7 @@
 | Padding | Add random scripts after each line and remove all line breaks |
 | Rcommentaries | Remove all commentaries and all line breaks (this feature is executed by default) |
 | Rprint | Remove all print functions and all line breaks |
+| Hexadecimal | Replace all chars to their hexadecimal values | |
 | Mixerlevel lower | Generate words with 32 chars that replace variables/classes/functions defined in source code and in random scripts if 'replace' or 'padding' features are specified |
 | Mixerlevel medium | Generate words with 64 chars that replace variables/classes/functions defined in source code and in random scripts if 'replace' or 'padding' features are specified|
 | Mixerlevel high | Generate words with 128 chars that replace variables/classes/functions defined in source code and in random scripts if 'replace' or 'padding' features are specified |
@@ -51,6 +52,7 @@
 | -p, --padding | activate the 'padding' obfuscation feature |
 | -rc, --rcommentaries | activate the 'rcommentaries' obfuscation feature (this feature is executed by default) |
 | -rp, --rprint | activate the 'rprint' obfuscation feature |
+| -h, --hexadecimal | activate the 'hexadecimal' obfuscation feature |
 | -v, --verbose | improve verbosity |
 
 - **Read these Documentations before to use Intensio-Obfuscator tool**
@@ -62,21 +64,17 @@
 - [Python target files](docs/examples/python_code_examples.md)
 
 ## Demo
-![Python target files demo](docs/demo/intensio_obfuscator_demo_python_files.gif)
+![Python target files demo](docs/demo/intensio_obfuscator_python_files_demo.gif)
 
 ## Todo
 - Version 1.0.1-x:
     - Code optimization
     - Fix bugs and problems
     - Improved features already present
-
-- Version 1.1.x
-    - Stable version for files written in python 2.x and 3.x
-    - Supported files written in C
-
-- Version 1.1.x
-    - Stable version for file written in C
-    - Supported files written in C++
+    - See the enchancement in the section issue
+    
+- Version 1.1.0
+    - Stable version
 
 ## License
 - MIT
