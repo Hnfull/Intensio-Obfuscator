@@ -48,11 +48,12 @@
 - [Update] Code improvements
 - [Fix] spelling errors
 
-## 25-07-2019
+## 27-07-2019
 - [Upgrade] to Version 1.0.5
 - [Fix] issue #17
 - [Fix] issue #18
 - [Fix] issue #19
 - [Update] Documentation Improvement 
 - [Update] color when tool Failed and Successful
-- 
+- [Add] new feature `-hex, --hexadecimal`, see README.md for more informations
+- [Add] new part of obfuscation `intermediate` in examples
