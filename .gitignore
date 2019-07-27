@@ -7,3 +7,6 @@ intensio/test/python/intermediate/input/dev
 intensio/test/python/intermediate/output/dev
 intensio/test/python/advanced/input/dev
 intensio/test/python/advanced/output/dev
+
+intensio/include/python/dev
+intensio/exclude/python/dev

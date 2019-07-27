@@ -32,18 +32,6 @@ platform
 processor
 architecture
 
-###### INTENSIO-OBFUSCATOR TEST IN REPOS ########
-
-############ argparse ############
-prog
-
-############### re ###############
-search
-match
-
-############## os ################
-remove
-
 ################# END SECTION ONLY FOR TEST PROGRAM IN PROJECT ########################
 
 
@@ -87,7 +75,7 @@ yield
 ####### Other python keywords #######
 replace
 
-############################# START DO NOT MODIFY IT ##################################
+############################## END DO NOT MODIFY IT ###################################
 
 
 ##################### PUT YOUR VARS-CLASSES-FUNCS TO EXCLUDE ##########################
