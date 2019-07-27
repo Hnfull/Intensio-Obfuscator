@@ -35,6 +35,7 @@
 -p, --padding           ->  activate the 'padding' obfuscation feature
 -rc, --rcommentaries    ->  activate the 'rcommentaries' obfuscation feature
 -rp, --rprint           ->  activate the 'rprint' obfuscation feature
+-h, --hexadecimal       ->  activate the 'hexadecimal' obfuscation feature
 -v, --verbose           ->  improve verbosity
 
 """
@@ -69,14 +70,15 @@ def main():
 
     try:
         from core.utils.intensio_design import INTENSIO_BANNER
-        from core.utils.intensio_utils import Utils
-        from core.utils.intensio_usage import Args
-        from core.utils.intensio_error import EXIT_SUCCESS, ERROR_BAD_ENVIRONMENT, ERROR_INVALID_PARAMETER, ERROR_BAD_ARGUMENTS,\
+        from core.utils.intensio_utils  import Utils
+        from core.utils.intensio_usage  import Args
+        from core.utils.intensio_error  import EXIT_SUCCESS, ERROR_BAD_ENVIRONMENT, ERROR_INVALID_PARAMETER, ERROR_BAD_ARGUMENTS,\
                                                 ERROR_INVALID_FUNCTION, ERROR_FILE_NOT_FOUND
-        from core.obfuscation.intensio_replace import ReplaceWords
-        from core.obfuscation.intensio_padding import Padding
-        from core.obfuscation.intensio_analyze import Analyze
-        from core.obfuscation.intensio_remove import Remove
+        from core.obfuscation.intensio_replace  import ReplaceWords
+        from core.obfuscation.intensio_padding  import Padding
+        from core.obfuscation.intensio_analyze  import Analyze
+        from core.obfuscation.intensio_remove   import Remove
+        from core.obfuscation.intensio_str_to_hex import StringsToHex
     except ImportError as e:
         print(ERROR_COLOUR + "[-] {0}\n".format(e))
         sys.exit(0)
@@ -84,7 +86,7 @@ def main():
     args    = Args()
     utils   = Utils()
 
-    if len(sys.argv) > 1 and len(sys.argv) <= 14:
+    if len(sys.argv) > 1 and len(sys.argv) <= 15:
         pass
     else:
         print(ERROR_COLOUR + "[-] Incorrect number of arguments\n")
@@ -94,12 +96,13 @@ def main():
     if args.GetArgsValue().input:
         if args.GetArgsValue().output:
             if args.GetArgsValue().code:
-                if re.match(r"^python$", args.GetArgsValue().code):
+                if args.GetArgsValue().code == "python":
                     if args.GetArgsValue().mixerlevel:
                         if re.match(r"^lower$|^medium$|^high$", args.GetArgsValue().mixerlevel):
                             if not args.GetArgsValue().padding and not args.GetArgsValue().replace \
-                                and not args.GetArgsValue().rcommentaries and not args.GetArgsValue().rprint:
-                                print(ERROR_COLOUR + "\n[-] Need at least one argument [-r --replace] or [-p --padding] or [-rc --rcommentaries] or [-rp --rprint]")
+                                and not args.GetArgsValue().rcommentaries and not args.GetArgsValue().rprint \
+                                and not args.GetArgsValue().hex:
+                                print(ERROR_COLOUR + "\n[-] Need at least one argument [-r --replace] or [-p --padding] or [-rc --rcommentaries] or [-rp --rprint] or [-h --hex]")
                                 sys.exit(ERROR_BAD_ARGUMENTS)
                         else:
                             print(ERROR_COLOUR + "[-] Incorrect level of mixerlevel, [lower - medium - high] only supported\n")
@@ -174,6 +177,7 @@ def main():
     else:
         print("[!] Obfuscation Padding no asked !")
 
+
     print(SECTION_COLOUR + "\n\n****************************** [ Obfuscation Rprint ] *****************************\n")
     if args.GetArgsValue().rprint:
 
@@ -182,7 +186,17 @@ def main():
         else:
             print("\n[-] Obfuscation Rprint -> " + FAILED_COLOUR + "Failed\n")
     else:
-        print("[!] Obfuscation Rprint no asked !\n")
+        print("[!] Obfuscation Rprint no asked !")
+
+    print(SECTION_COLOUR + "\n\n******************************** [ Obfuscation Hex ] ******************************\n")
+    if args.GetArgsValue().hexadecimal:
+
+        if (StringsToHex(args.GetArgsValue().code, args.GetArgsValue().output, args.GetArgsValue().mixerlevel) == EXIT_SUCCESS):
+            print("\n[+] Obfuscation hexadecimal -> " + SUCESS_COLOUR + "Successful\n")
+        else:
+            print("\n[-] Obfuscation hexadecimal -> " + FAILED_COLOUR + "Failed\n")
+    else:
+        print("[!] Obfuscation hexadecimal no asked !\n")
         
 #----------------------------------------------------------------------------------------------------------------------------#
 
