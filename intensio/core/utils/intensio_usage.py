@@ -58,6 +58,12 @@ class Args:
                                 help="activate the 'rprint' obfuscation feature"
                                 )
         self.parser.add_argument(
+                                "-hex", "--hexadecimal",
+                                action="store_true",
+                                default=False,
+                                help="activate the 'hexadecimal' obfuscation feature"
+                                )
+        self.parser.add_argument(
                                 "-v", "--verbose",
                                 action="store_true",
                                 default=False,

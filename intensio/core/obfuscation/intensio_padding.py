@@ -21,9 +21,9 @@ from core.utils.intensio_error import EXIT_SUCCESS, EXIT_FAILURE, ERROR_BAD_ARGU
 class Padding:
 
     def __init__(self):
-        self.mixer  = Mixer()
-        self.remove = Remove()
-        self.utils  = Utils()
+        self.mixer              = Mixer()
+        self.remove             = Remove()
+        self.utils              = Utils()
 
     def ScriptsGenerator(self, codeArg, mixerLevelArg):
         if mixerLevelArg == "lower":
@@ -188,13 +188,13 @@ class Padding:
         
         if codeArg == "python":
             detectFile  = "py"
-            blockDirs   = r"__pycache__"
+            blockDirs   = "__pycache__"
 
         recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.utils.Platform(), detectFile), recursive=True)]
 
         # -- Count the number of lines that will be checked before filling -- #
         for file in recursFiles:
-            if re.match(blockDirs, file):
+            if blockDirs in file:
                 continue
             else:
                 with open(file , "r") as readFile:
@@ -213,7 +213,7 @@ class Padding:
         with tqdm.tqdm(total=countRecursFiles) as pbar:
             for file in recursFiles:
                 pbar.update(1)
-                if re.match(blockDirs, file):
+                if blockDirs in file:
                     continue
                 else:
                     with fileinput.input(file, inplace=True) as inputFile:
@@ -392,7 +392,7 @@ class Padding:
                                 
         # -- Check padding has added in output script -- #
         for file in recursFiles:
-            if re.match(blockDirs, file):
+            if blockDirs in file:
                 continue
             else:
                 with open(file , "r") as readFile:
@@ -404,7 +404,7 @@ class Padding:
         
         countLineAdded = checkLine - countLine
 
-        if (self.remove.LineBreaks(codeArg, outputArg) == 0):
+        if (self.remove.Backslashes(codeArg, outputArg) == 0):
             if checkLine > countLine:    
                 print("\n-> {0} scripts added in {1} file(s)\n".format(countScriptsAdded, countRecursFiles))
                 print("-> {0} lines added in {1} file(s)\n".format(countLineAdded, countRecursFiles))

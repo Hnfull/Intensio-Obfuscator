@@ -20,12 +20,11 @@ class Mixer:
         return "".join(random.choice(string.ascii_letters) for i in range(stringLenght))
     
 
-    def GetStringMixer(self, levelMixerArg):
-        if levelMixerArg == "lower":
+    def GetStringMixer(self, mixerLevelArg):
+        if mixerLevelArg == "lower":
             return Mixer.StringGenerator(self, self.lenLower)
-        elif levelMixerArg == "medium":
+        elif mixerLevelArg == "medium":
             return Mixer.StringGenerator(self, self.lenMedium)
-        elif levelMixerArg == "high":
+        elif mixerLevelArg == "high":
             return Mixer.StringGenerator(self, self.lenHigh)
-
 

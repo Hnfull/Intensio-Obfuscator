@@ -18,20 +18,20 @@ class Remove:
     def __init__(self):
         self.utils = Utils()
 
-    def LineBreaks(self, codeArg, outputArg):
+    def Backslashes(self, codeArg, outputArg):
         checkLine       = 0
         numberFiles     = 0
         numberGoodFile  = 0
         
         if codeArg == "python":
             detectFile  = "py"
-            blockDirs   = r"__pycache__"
+            blockDirs   = "__pycache__"
 
         recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.utils.Platform(), detectFile), recursive=True)]
 
         # -- Delete line breaks -- #
         for file in recursFiles:
-            if re.match(blockDirs, file):
+            if blockDirs in file:
                 continue
             else:
                 with fileinput.FileInput(file, inplace=True) as inputFile:
@@ -42,7 +42,7 @@ class Remove:
         # -- Check if all line breaks are deleted -- #
         for file in recursFiles:
             checkLine = 0 # Initialize check vars for the next file 
-            if re.match(blockDirs, file):
+            if blockDirs in file:
                 continue
             else:
                 with open(file, "r") as readFile:
@@ -80,7 +80,7 @@ class Remove:
             commentariesAfterLine               = r"\s*\#[^\"|^\'|^\.|^\?|^\*|^\!|^\]|^\[|^\\|^\)|^\(|^\{|^\}].*"   # '#' after line of code
 
             detectFile  = "py"
-            blockDirs   = r"__pycache__"
+            blockDirs   = "__pycache__"
 
         recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.utils.Platform(), detectFile), recursive=True)]
 
@@ -93,7 +93,7 @@ class Remove:
         with tqdm.tqdm(total=countRecursFiles) as pbar:
             for file in recursFiles:
                 pbar.update(1)
-                if re.match(blockDirs, file):
+                if blockDirs in file:
                     continue
                 else:
                     # -- Remove commentaries -- #
@@ -155,7 +155,7 @@ class Remove:
         # -- Check if all commentaries are removed -- #
         for file in recursFiles:
             countLineOutput = 0
-            if re.match(blockDirs, file):
+            if blockDirs in file:
                 continue
             else:
                 with open(file, "r") as readFile:
@@ -204,7 +204,7 @@ class Remove:
                         else:
                             pass
 
-        if (Remove.LineBreaks(self, codeArg, outputArg) == 0):
+        if (Remove.Backslashes(self, codeArg, outputArg) == 0):
             if countLineOutput == 0:
                 print("\n-> {0} lines of commentaries removed\n".format(countLineInput))            
                 return EXIT_SUCCESS
@@ -224,7 +224,7 @@ class Remove:
         if codeArg == "python":
             detectPrint = r"\s*print"
             detectFile  = "py"
-            blockDirs   = r"__pycache__"
+            blockDirs   = "__pycache__"
 
         recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.utils.Platform(), detectFile), recursive=True)]
 
@@ -236,7 +236,7 @@ class Remove:
         with tqdm.tqdm(total=countRecursFiles) as pbar:
             for file in recursFiles:
                 pbar.update(1)
-                if re.match(blockDirs, file):
+                if blockDirs in file:
                     continue
                 else: 
                     # -- Remove all print functions -- #
@@ -275,7 +275,7 @@ class Remove:
 
         # -- Check if all print functions are removed -- #
         for file in recursFiles:
-            if re.match(blockDirs, file):
+            if blockDirs in file:
                 continue
             else:
                 with open(file, "r") as readFile:
@@ -284,7 +284,7 @@ class Remove:
                         if re.match(detectPrint, eachLine):
                             countCheckPrintLine += 1
 
-        if (Remove.LineBreaks(self, codeArg, outputArg) == 0):
+        if (Remove.Backslashes(self, codeArg, outputArg) == 0):
             if countCheckPrintLine == 0:
                 print("\n-> {0} print functions removed\n".format(countPrintLine))
                 return EXIT_SUCCESS

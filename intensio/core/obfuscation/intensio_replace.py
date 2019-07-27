@@ -44,7 +44,7 @@ class ReplaceWords:
         breakLine           = ""
 
         if codeArg == "python":
-            regReplace = r"(\.)|(:)|(\))|(\()|(=)|(\[)|(\])|({)|(})|(,)|(\+)|(\s)|(\*)|(\+)|(\-)"
+            regReplace = r"\.|\:|\)|\(|\=|\[|\]|\{|\}|\,|\+|\s|\*|\-"
 
         # -- Get list of all letters in line -- #
         for indexLine, letterLine in enumerate(eachLine):
@@ -207,13 +207,13 @@ class ReplaceWords:
             quoteIntoVariable                   = r".*\={1}\s*\w*\.?\w*[\(|\.]{1}[\"|\']{3}|.*\={1}\s*[\"|\']{3}" # """ and ''' with before variables
             
             detectFile  = "py"
-            blockDirs   = r"__pycache__"
+            blockDirs   = "__pycache__"
 
         recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.utils.Platform(), detectFile), recursive=True)]
 
         # -- Find variables/classes/functions and mixed it -- #
         for file in recursFiles:
-            if re.match(blockDirs, file):
+            if blockDirs in file:
                 continue
             else:
                 with open(file, "r") as readFile:
@@ -308,7 +308,7 @@ class ReplaceWords:
                 wordsIncludedNotFound.append(word)
 
         for file in recursFiles:
-            if re.match(blockDirs, file):
+            if blockDirs in file:
                 continue
             else:
                 with open(file, "r") as readFile:
@@ -379,7 +379,7 @@ class ReplaceWords:
         with tqdm.tqdm(total=countRecursFiles) as pbar:
             for file in recursFiles:
                 pbar.update(1)
-                if re.match(blockDirs, file):
+                if blockDirs in file:
                     continue
                 else:
                     with fileinput.input(file, inplace=True) as inputFile:
@@ -415,7 +415,7 @@ class ReplaceWords:
                             
         # -- Check if variables/classes/functions have been mixed -- #
         for file in recursFiles:
-            if re.match(blockDirs, file):
+            if blockDirs in file:
                 continue
             else:
                 with open(file, "r") as readFile:
@@ -433,7 +433,7 @@ class ReplaceWords:
         for i in allDict.values():
             checkCountWordsValue += 1
 
-        if (self.remove.LineBreaks(codeArg, outputArg) == 0):
+        if (self.remove.Backslashes(codeArg, outputArg) == 0):
             if checkCountWordsMixed == checkCountWordsValue:
                 print("\n-> {0} variables/classes/functions replaced in {1} file(s)\n".format(checkCountWordsValue, countRecursFiles))
                 return EXIT_SUCCESS

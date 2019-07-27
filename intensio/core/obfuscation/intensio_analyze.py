@@ -36,7 +36,7 @@ class Analyze:
             if os.path.isdir(inputArg) == True:     
                 if codeArg == "python":
                     detectFile  = "py"
-                    blockdirs   = r"__pycache__"
+                    blockdirs   = "__pycache__"
 
                 recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(inputArg, self.utils.Platform(), detectFile), recursive=True)]
                 if recursFiles == []:
@@ -46,7 +46,7 @@ class Analyze:
                 print("\n[+] Running analyze input...")
                 
                 for file in recursFiles:
-                    if re.match(blockdirs, file):
+                    if blockdirs in file:
                         continue
                     else:
                         if os.path.getsize(file) > 0:
@@ -103,7 +103,7 @@ class Analyze:
                             if os.path.isdir(outputArg) == True:
                                 if codeArg == "python":
                                     detectFile  = "py"
-                                    blockdirs   = r"__pycache__"
+                                    blockdirs   = "__pycache__"
 
                                 recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(inputArg, self.utils.Platform(), detectFile), recursive=True)]
                                 if recursFiles == []:
@@ -113,7 +113,7 @@ class Analyze:
                                 print("\n[+] Running analyze output...")
 
                                 for file in recursFiles:
-                                    if re.match(blockdirs, file):
+                                    if blockdirs in file:
                                         continue
                                     else:
                                         if os.path.getsize(file) > 0:
@@ -163,7 +163,7 @@ class Analyze:
                     if os.path.isdir(outputArg) == True:
                         if codeArg == "python":
                             detectFile  = "py"
-                            blockdirs   = r"__pycache__"
+                            blockdirs   = "__pycache__"
 
                         recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(inputArg, self.utils.Platform(), detectFile), recursive=True)]
                         if recursFiles == []:
@@ -173,7 +173,7 @@ class Analyze:
                         print("\n[+] Running analyze output...")
                         
                         for file in recursFiles:
-                            if re.match(blockdirs, file):
+                            if blockdirs in file:
                                 continue
                             else:
                                 if os.path.getsize(file) > 0:
