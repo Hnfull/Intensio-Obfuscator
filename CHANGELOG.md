@@ -55,5 +55,6 @@
 - [Fix] issue #19
 - [Update] Documentation Improvement 
 - [Update] color when tool Failed and Successful
-- [Add] new feature `-hex, --hexadecimal`, see README.md for more informations
+- [Add] new feature `-rth, --replacetohex`, see README.md for more informations
 - [Add] new part of obfuscation `intermediate` in examples
+- [update] renaming all parameters and functions

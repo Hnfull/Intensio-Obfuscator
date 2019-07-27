@@ -6,7 +6,7 @@
 
 ## What is this ?
 - Intensio-Obfsucator tool takes a python source code and transform it into an obfuscated python code
-  - **Replace** name of variables/classes/functions to random chars and defined length & all chars to their hexadecimal value
+  - **Replace** name of variables/classes/functions to random strings and defined length and all chars to their hexadecimal value
   - **Remove** commentaries, all lines breaks, all print functions
   - **Add** to each line a random script with an always differents values
 
@@ -29,16 +29,16 @@
 ## Features
 | Features | Descriptions |
 | ------ | ------ |
-| Replace | Replace all names of variables/classes/functions defined and remove all line breaks |
-| Padding | Add random scripts after each line and remove all line breaks |
-| Rcommentaries | Remove all commentaries and all line breaks (this feature is executed by default) |
-| Rprint | Remove all print functions and all line breaks |
-| Hexadecimal | Replace all chars to their hexadecimal value |
-| Mixerlevel lower | Generate strings of 32 chars that replace variables/classes/functions defined in source code and in random scripts if 'replace' or 'padding' features are specified |
-| Mixerlevel medium | Generate strings of 64 chars that replace variables/classes/functions defined in source code and in random scripts if 'replace' or 'padding' features are specified|
-| Mixerlevel high | Generate strings of 128 chars that replace variables/classes/functions defined in source code and in random scripts if 'replace' or 'padding' features are specified |
+| Replace strings to strings mixed | Replace all names of variables/classes/functions defined and remove all line breaks |
+| Paddings scripts | Add random scripts after each line and remove all line breaks |
+| Remove commentaries | Remove all commentaries and all line breaks (this feature is executed by default) |
+| Remove print | Remove all print functions and all line breaks |
+| Replace strings to hex | Replace all chars to their hexadecimal value |
+| Mixerlevel lower | Generate random strings of 32 chars when `replacetostr` and `paddingscripts` and `replacetohex` features are specified |
+| Mixerlevel medium | Generate random strings of 64 chars when `replacetostr` and `paddingscripts` and `replacetohex` features are specified|
+| Mixerlevel high | Generate random strings of 128 chars when `replacetostr`, `paddingscripts` and `replacetohex` features are specified |
 
-- `Replace`, `Padding`, `Rprint`, `Hexadecimal` features can be executed separatly
+- `Replace strings to strings mixed`, `Padding scripts`, `Remove print` and `Replace strings to hex` features can be executed separatly
 
 ## Usages
 | Parameters | Descriptions |
@@ -47,12 +47,12 @@
 | -i, --input  | source directory - indicate a directory that contain your file(s) |
 | -c, --code | language used in input directory, default value: [python], possible value: [python] |
 | -o, --output | output directory that will be obfuscated - indicate a empty directory that will contain your file(s) |
-| -m, --mixerlevel | length levels of the number of characters for output variables /classes/functions, default value: [medium], possible values: [lower, medium, high] |
-| -r, --replace | activate the 'replace' obfuscation feature |
-| -p, --padding | activate the 'padding' obfuscation feature |
-| -rc, --rcommentaries | activate the 'rcommentaries' obfuscation feature (this feature is executed by default) |
-| -rp, --rprint | activate the 'rprint' obfuscation feature |
-| -h, --hexadecimal | activate the 'hexadecimal' obfuscation feature |
+| -m, --mixerlevel |generate random strings of [lower:32|medium:64|high:128] chars when `replacetostr` and `paddingscripts` and `replacetohex` features are specified, default value: [medium], possible values: [lower, medium, high]|
+| -rts, --replacetostr | activate the `replace strings to strings mixed` obfuscation feature |
+| -ps, --paddingscripts | activate the `padding scripts` obfuscation feature |
+| -rc, --removecommentaries | activate the `remove commentaries` obfuscation feature (this feature is executed by default) |
+| -rp, --removeprint | activate the `remove print` obfuscation feature |
+| -rth, --replacetohex | activate the `replace strings to hex` obfuscation feature |
 | -v, --verbose | improve verbosity |
 
 - **Read these Documentations before to use Intensio-Obfuscator tool**

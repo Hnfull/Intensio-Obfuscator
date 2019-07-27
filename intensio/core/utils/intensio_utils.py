@@ -13,11 +13,13 @@ class Utils:
     def __init__(self):
         self.platform = sys.platform
 
+
     def Platform(self):
         if self.platform == "win32":
             return "\\"
         else:
             return "/"
+
 
     def DictMerge(self, dict1, dict2):
     	merge = {**dict1, **dict2}

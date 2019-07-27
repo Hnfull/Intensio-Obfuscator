@@ -15,8 +15,10 @@ from core.utils.intensio_utils import Utils
 #------------------------------------------------- [Function(s)/Class(es)] --------------------------------------------------#
 
 class Remove:
+
     def __init__(self):
         self.utils = Utils()
+
 
     def Backslashes(self, codeArg, outputArg):
         checkLine       = 0
@@ -214,7 +216,7 @@ class Remove:
             return EXIT_FAILURE
 
 
-    def PrintFunc(self, codeArg, outputArg):
+    def PrintFunctions(self, codeArg, outputArg):
         countPrintLine              = 0
         countCheckPrintLine         = 0
         countRecursFiles            = 0

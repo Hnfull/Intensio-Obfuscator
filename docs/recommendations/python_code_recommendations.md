@@ -1,7 +1,7 @@
 # Mandatory Recommendations
 
 
-#### 1) The `-rc --rcommentaries` (parameter by default) should not be disabled, otherwise the other features can generate errors
+#### 1) The `-rc --removecommentaries` (parameter by default) should not be disabled, otherwise the other features can generate errors
 - Can generate an error = yes
 - Recommended:
     - Not modify the default execution of this feature
@@ -10,7 +10,7 @@
     - Desactivate the default execution of this feature
 
 
-#### 2) Do not define your names of local `variables/classes/functions` of your program identically to keywords python of `functions/classes` of imported libraries
+#### 2) Do not define your names of local `variables/classes/functions` of your program identically to keywords python of `functions/classes` (keywords) of imported libraries
 - Can generate an error = yes
 - Recommended:
     ```python
@@ -32,7 +32,7 @@
     # add_argument variable defined is already an function of argparse library :(
     ```
 
-#### 3) You ought exclude python keywords of libraries of your program which will be taken by the '--replace' feature 
+#### 3) You ought exclude python keywords of libraries of your program which will be taken by the `-rts, --replacetostr` feature 
 - Can generate an error = yes
 - Required:
     ```python
@@ -43,7 +43,8 @@
     ```
     - Edit [words exclusion](../../intensio/exclude/python/exclude_python_words.txt) and add keywords `choices`, `default` and `help` of argparse library, because the Replace feature take all variables, with this rule `variables=`
 
-#### 4) If `#` commentary after line of code, can potentially generate an error if `Rcommentaries` feature not recognize commentary correctly and remove the code of line
+
+#### 4) If `#` commentary after line of code, can potentially generate an error if `-rc, --removecommentaries` feature not recognize commentary correctly and remove the code of line
 - Can generate an error = yes
 - Strongly Recommended:
     ```python
@@ -97,20 +98,20 @@
     see the the placement of quotes :(
     ```
     
-#### 7) If your value is between `[]` or `()` or `{}` in your source code, the `padding` feature may react differently depending on the code written
+#### 7) If your value is between `[]` or `()` or `{}` in your source code, the `-ps, --paddingscripts` feature may react differently depending on the code written
 - Can generate an error = no
 - Recommended
     ```python
-    # padding here
+    # padding script here
     a = ["a", "b", "c"]
-    # padding here
+    # padding script here
     b = ("d", "e", "f")
-    # padding here
+    # padding script here
     ```
 
 - Less recommended
     ```python
-    # padding here
+    # padding script here
     a = [
         "a", 
         "b", 
@@ -121,10 +122,10 @@
         "e", 
         "f"
         )
-    # padding here
+    # padding script here
     ```
 
-#### 8) If multiple variables follow on a line, the `--replace` feature does not recognize a particular case
+#### 8) If multiple variables follow on a line, the `-rts, --replacetostr` feature does not recognize a particular case
 - Can generate an error = no
 - Code example
     ```python
@@ -135,7 +136,7 @@
     - This tool not recognize this case, you should edit [words inclusion](../../intensio/include/python/include_python_words.txt) and add your `cmd` variable, only `action` variable is replaced automaticaly
 
 
-#### 9) If a variables/classes/functions are not takin by Replace feature (optionnal)
+#### 9) If a variables/classes/functions are not takin by `-rts, --Replacetostr` feature (optionnal)
 - Can generate an error = no
 - Required:
     - Edit [words inclusion](../../intensio/include/python/include_python_words.txt) and add your variables/classes/functions name

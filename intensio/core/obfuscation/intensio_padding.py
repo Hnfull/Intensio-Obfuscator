@@ -25,6 +25,7 @@ class Padding:
         self.remove             = Remove()
         self.utils              = Utils()
 
+
     def ScriptsGenerator(self, codeArg, mixerLevelArg):
         if mixerLevelArg == "lower":
             varRandom1   = self.mixer.GetStringMixer("lower")
@@ -171,7 +172,7 @@ class Padding:
                 return scriptAssPadding5
     
     
-    def AddScripts(self, codeArg, outputArg, mixerLevelArg):
+    def AddRandomScripts(self, codeArg, outputArg, mixerLevelArg):
         listCheckLineWhitoutSpace       = []
         listCheckLine                   = []
         countBackSlash                  = 0
@@ -207,7 +208,7 @@ class Padding:
         for number in recursFiles:
             countRecursFiles += 1
 
-        print("\n[+] Running adding of random scripts in {0} file(s)...\n".format(countRecursFiles))
+        print("\n[+] Running add of random scripts in {0} file(s)...\n".format(countRecursFiles))
 
         # -- Padding scripts added -- #
         with tqdm.tqdm(total=countRecursFiles) as pbar:

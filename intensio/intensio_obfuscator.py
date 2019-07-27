@@ -25,18 +25,18 @@
  \______/ |_______/ |__/      \______/ |_______/  \_______/ \_______/   \___/   \______/ |__/      
                                                                                                    
 
--h, --help              ->  show this help message and exit
--i, --input             ->  source directory - indicate a directory that contain your file(s)
--c, --code              ->  language used in source directory, default value: [python] possible value: [python]
--o, --output            ->  output directory that will be obfuscated - indicate a empty directory that will contain your file(s)
--m, --mixerlevel        ->  length level of variables/classes/functions/files mix output, default  value: medium, 
-                            possible values: [lower, medium, high]
--r, --replace           ->  activate the 'replace' obfuscation feature
--p, --padding           ->  activate the 'padding' obfuscation feature
--rc, --rcommentaries    ->  activate the 'rcommentaries' obfuscation feature
--rp, --rprint           ->  activate the 'rprint' obfuscation feature
--h, --hexadecimal       ->  activate the 'hexadecimal' obfuscation feature
--v, --verbose           ->  improve verbosity
+-h, --help                  ->  show this help message and exit
+-i, --input                 ->  source directory - indicate a directory that contain your file(s)
+-c, --code                  ->  language used in source directory, default value: [python] possible value: [python]
+-o, --output                ->  output directory that will be obfuscated - indicate a empty directory that will contain your file(s)
+-m, --mixerlevel            ->  generate random strings of [lower:32 | medium:64 | high:128] chars when 'replacetostr' and 'paddingscripts' and 'replacetohex'\
+                                features are specified, default value: [medium], possible values: [lower, medium, high]
+-rts, --replacetostr        ->  activate the 'replace strings to strings mixed' obfuscation feature
+-ps, --paddingscripts       ->  activate the 'padding scripts' obfuscation feature
+-rc, --removecommentaries   ->  activate the 'remove commentaries' obfuscation feature
+-rp, --removeprint          ->  activate the 'remove print' obfuscation feature
+-rth, --replacetohex        ->  activate the 'replace strings to hex' obfuscation feature
+-v, --verbose               ->  improve verbosity
 
 """
 
@@ -72,13 +72,12 @@ def main():
         from core.utils.intensio_design import INTENSIO_BANNER
         from core.utils.intensio_utils  import Utils
         from core.utils.intensio_usage  import Args
-        from core.utils.intensio_error  import EXIT_SUCCESS, ERROR_BAD_ENVIRONMENT, ERROR_INVALID_PARAMETER, ERROR_BAD_ARGUMENTS,\
-                                                ERROR_INVALID_FUNCTION, ERROR_FILE_NOT_FOUND
-        from core.obfuscation.intensio_replace  import ReplaceWords
+        from core.utils.intensio_error  import EXIT_SUCCESS, ERROR_BAD_ENVIRONMENT, ERROR_INVALID_PARAMETER, \
+                                                ERROR_BAD_ARGUMENTS, ERROR_INVALID_FUNCTION, ERROR_FILE_NOT_FOUND
+        from core.obfuscation.intensio_replace  import Replace
         from core.obfuscation.intensio_padding  import Padding
         from core.obfuscation.intensio_analyze  import Analyze
         from core.obfuscation.intensio_remove   import Remove
-        from core.obfuscation.intensio_str_to_hex import StringsToHex
     except ImportError as e:
         print(ERROR_COLOUR + "[-] {0}\n".format(e))
         sys.exit(0)
@@ -99,10 +98,10 @@ def main():
                 if args.GetArgsValue().code == "python":
                     if args.GetArgsValue().mixerlevel:
                         if re.match(r"^lower$|^medium$|^high$", args.GetArgsValue().mixerlevel):
-                            if not args.GetArgsValue().padding and not args.GetArgsValue().replace \
-                                and not args.GetArgsValue().rcommentaries and not args.GetArgsValue().rprint \
-                                and not args.GetArgsValue().hex:
-                                print(ERROR_COLOUR + "\n[-] Need at least one argument [-r --replace] or [-p --padding] or [-rc --rcommentaries] or [-rp --rprint] or [-h --hex]")
+                            if not args.GetArgsValue().paddingscripts and not args.GetArgsValue().replacetostr \
+                                and not args.GetArgsValue().removecommentaries and not args.GetArgsValue().removeprint \
+                                and not args.GetArgsValue().replacetohex:
+                                print(ERROR_COLOUR + "\n[-] Need at least one argument [-rts --replacetostr] or [-ps --paddingscripts] or [-rc --removecommentaries] or [-rp --removeprint] or [-rth --replacetohex]")
                                 sys.exit(ERROR_BAD_ARGUMENTS)
                         else:
                             print(ERROR_COLOUR + "[-] Incorrect level of mixerlevel, [lower - medium - high] only supported\n")
@@ -129,74 +128,78 @@ def main():
 
     # -- Analysis and set up of the work environment -- #
     print(SECTION_COLOUR + "\n\n*********************** [ Analyze and setup environment ] ************************\n")
-    analyze = Analyze()
+    analyzeData = Analyze()
 
-    if (analyze.InputAvailable(args.GetArgsValue().input, args.GetArgsValue().code, args.GetArgsValue().verbose) == EXIT_SUCCESS):
+    if (analyzeData.InputAvailable(args.GetArgsValue().input, args.GetArgsValue().code, args.GetArgsValue().verbose) == EXIT_SUCCESS):
         print("\n[+] Analyze input argument '{0}' -> ".format(args.GetArgsValue().input) + SUCESS_COLOUR + "Successful")
     else:
         print("[-] Analyze input '{0}' -> ".format(args.GetArgsValue().input) + FAILED_COLOUR + "failed\n")
         sys.exit(ERROR_INVALID_FUNCTION)
 
-    if (analyze.OutputAvailable(args.GetArgsValue().input, args.GetArgsValue().code, args.GetArgsValue().output, args.GetArgsValue().verbose) == EXIT_SUCCESS):
+    if (analyzeData.OutputAvailable(args.GetArgsValue().input, args.GetArgsValue().code, args.GetArgsValue().output, args.GetArgsValue().verbose) == EXIT_SUCCESS):
         print("\n[+] Analyze and setup output argument environment '{0}' -> ".format(args.GetArgsValue().output) + SUCESS_COLOUR + "Successful")
     else:
         print("[-] Analyze output '{0}' -> ".format(args.GetArgsValue().output) + FAILED_COLOUR + "failed\n")
         sys.exit(ERROR_INVALID_FUNCTION)
     
     # -- Obfuscation process -- #
-    print(SECTION_COLOUR + "\n\n************************** [ Obfuscation Rcommentaries ] **************************\n")
-    if args.GetArgsValue().rcommentaries:
+    print(SECTION_COLOUR + "\n\n********************** [ Obfuscation remove commentaries ] **********************\n")
+    if args.GetArgsValue().removecommentaries:
         removeData = Remove()
         
         if (removeData.Commentaries(args.GetArgsValue().code, args.GetArgsValue().output) == EXIT_SUCCESS):
-            print("[+] Obfuscation Rcommentaries -> " + SUCESS_COLOUR + "Successful")
+            print("[+] Obfuscation remove commentaries -> " + SUCESS_COLOUR + "Successful")
         else:
-            print("\n[-] Obfuscation Rcommentaries -> " + FAILED_COLOUR  + "Failed")
+            print("\n[-] Obfuscation remove commentaries -> " + FAILED_COLOUR  + "Failed")
     else:
-        print("[!] Obfuscation Rcommentaries no asked !")
+        print("[!] Obfuscation remove commentaries no asked !")
 
-    print(SECTION_COLOUR + "\n\n***************************** [ Obfuscation Replace ] *****************************\n")
-    if args.GetArgsValue().replace:
-        replaceWords = ReplaceWords()
+    print(SECTION_COLOUR + "\n\n*************** [ Obfuscation replace strings to strings mixed ] ****************\n")
+    if args.GetArgsValue().replacetostr:
+        replaceData = Replace()
 
-        if (replaceWords.VarsDefinedByUser(args.GetArgsValue().code, args.GetArgsValue().output, args.GetArgsValue().mixerlevel, args.GetArgsValue().verbose) == EXIT_SUCCESS):
-            print("[+] Obfuscation Replace -> " + SUCESS_COLOUR + "Successful")
+        if (replaceData.StringsToStrings(args.GetArgsValue().code, args.GetArgsValue().output, args.GetArgsValue().mixerlevel, args.GetArgsValue().verbose) == EXIT_SUCCESS):
+            print("[+] Obfuscation replace strings to strings mixed -> " + SUCESS_COLOUR + "Successful")
         else:
-            print("\n[-] Obfuscation Replace -> " + FAILED_COLOUR +  "Failed")
+            print("\n[-] Obfuscation replace strings to strings mixed-> " + FAILED_COLOUR +  "Failed")
     else:
-        print("[!] Obfuscation Replace no asked !")
+        print("[!] Obfuscation replace strings to strings mixed no asked !")
     
-    print(SECTION_COLOUR + "\n\n***************************** [ Obfuscation Padding ] *****************************\n")
-    if args.GetArgsValue().padding:
-        paddingScripts = Padding()
+    print(SECTION_COLOUR + "\n\n************************ [ Obfuscation padding scripts ] ************************\n")
+    if args.GetArgsValue().paddingscripts:
+        paddingData = Padding()
 
-        if (paddingScripts.AddScripts(args.GetArgsValue().code, args.GetArgsValue().output, args.GetArgsValue().mixerlevel) == EXIT_SUCCESS):
-            print("[+] Obfuscation Padding -> " + SUCESS_COLOUR + "Successful")
+        if (paddingData.AddRandomScripts(args.GetArgsValue().code, args.GetArgsValue().output, args.GetArgsValue().mixerlevel) == EXIT_SUCCESS):
+            print("[+] Obfuscation padding random scripts -> " + SUCESS_COLOUR + "Successful")
         else:
-            print("\n[-] Obfuscation Padding -> " + FAILED_COLOUR + "Failed")
+            print("\n[-] Obfuscation padding random scripts -> " + FAILED_COLOUR + "Failed")
     else:
-        print("[!] Obfuscation Padding no asked !")
+        print("[!] Obfuscation add random scripts no asked !")
 
 
-    print(SECTION_COLOUR + "\n\n****************************** [ Obfuscation Rprint ] *****************************\n")
-    if args.GetArgsValue().rprint:
+    print(SECTION_COLOUR + "\n\n************************* [ Obfuscation remove print ] **************************\n")
+    if args.GetArgsValue().removeprint:
 
-        if (removeData.PrintFunc(args.GetArgsValue().code, args.GetArgsValue().output) == EXIT_SUCCESS):
-            print("[+] Obfuscation Rprint -> " + SUCESS_COLOUR + "Successful\n")
+        if (removeData.PrintFunctions(args.GetArgsValue().code, args.GetArgsValue().output) == EXIT_SUCCESS):
+            print("[+] Obfuscation remove print functions -> " + SUCESS_COLOUR + "Successful")
         else:
-            print("\n[-] Obfuscation Rprint -> " + FAILED_COLOUR + "Failed\n")
+            print("\n[-] Obfuscation remove print functions -> " + FAILED_COLOUR + "Failed")
     else:
-        print("[!] Obfuscation Rprint no asked !")
+        print("[!] Obfuscation remove print functions no asked !")
 
-    print(SECTION_COLOUR + "\n\n******************************** [ Obfuscation Hex ] ******************************\n")
-    if args.GetArgsValue().hexadecimal:
-
-        if (StringsToHex(args.GetArgsValue().code, args.GetArgsValue().output, args.GetArgsValue().mixerlevel) == EXIT_SUCCESS):
-            print("\n[+] Obfuscation hexadecimal -> " + SUCESS_COLOUR + "Successful\n")
+    print(SECTION_COLOUR + "\n\n******************** [ Obfuscation replace strings to hex ] *********************\n")
+    if args.GetArgsValue().replacetohex:
+        if args.GetArgsValue().replacetostr:
+            pass
         else:
-            print("\n[-] Obfuscation hexadecimal -> " + FAILED_COLOUR + "Failed\n")
+            replaceData = Replace()
+
+        if (replaceData.StringsToHex(args.GetArgsValue().code, args.GetArgsValue().output, args.GetArgsValue().mixerlevel) == EXIT_SUCCESS):
+            print("\n[+] Obfuscation Replace strings to hex -> " + SUCESS_COLOUR + "Successful\n")
+        else:
+            print("\n[-] Obfuscation replace strings to hex -> " + FAILED_COLOUR + "Failed\n")
     else:
-        print("[!] Obfuscation hexadecimal no asked !\n")
+        print("[!] Obfuscation replace strings to hex no asked !\n")
         
 #----------------------------------------------------------------------------------------------------------------------------#
 

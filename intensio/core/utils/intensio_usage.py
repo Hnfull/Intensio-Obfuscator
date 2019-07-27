@@ -31,37 +31,38 @@ class Args:
                                 "-m", "--mixerlevel",
                                 choices=["lower", "medium", "high"],
                                 default="medium",
-                                help="length levels of the number of characters for output variables /classes/functions"
+                                help="generate random strings of [lower:32 | medium:64 | high:128] chars when 'replacetostr' and 'paddingscripts' and 'replacetohex'\
+                                    features are specified, default value: [medium], possible values: [lower, medium, high]"
                                 )
         self.parser.add_argument(
-                                "-r", "--replace",
+                                "-rts", "--replacetostr",
                                 action="store_true",
                                 default=False,
-                                help="activate the 'replace' obfuscation feature"
+                                help="activate the 'replace strings to strings mixed' obfuscation feature"
                                 )
         self.parser.add_argument(
-                                "-p", "--padding",
+                                "-ps", "--paddingscripts",
                                 action="store_true",
                                 default=False,
-                                help="activate the 'padding' obfuscation feature"
+                                help="activate the 'padding scripts' obfuscation feature"
                                 )
         self.parser.add_argument(
-                                "-rc", "--rcommentaries",
+                                "-rc", "--removecommentaries",
                                 action="store_true",
                                 default=True,
-                                help="activate the 'rcommentaries' obfuscation feature"
+                                help="activate the 'remove commentaries' obfuscation feature"
                                 )
         self.parser.add_argument(
-                                "-rp", "--rprint",
+                                "-rp", "--removeprint",
                                 action="store_true",
                                 default=False,
-                                help="activate the 'rprint' obfuscation feature"
+                                help="activate the 'remove print' obfuscation feature"
                                 )
         self.parser.add_argument(
-                                "-hex", "--hexadecimal",
+                                "-rth", "--replacetohex",
                                 action="store_true",
                                 default=False,
-                                help="activate the 'hexadecimal' obfuscation feature"
+                                help="activate the 'replace strings to hex' obfuscation feature"
                                 )
         self.parser.add_argument(
                                 "-v", "--verbose",
