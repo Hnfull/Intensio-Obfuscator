@@ -34,9 +34,9 @@
 | Rcommentaries | Remove all commentaries and all line breaks (this feature is executed by default) |
 | Rprint | Remove all print functions and all line breaks |
 | Hexadecimal | Replace all chars to their hexadecimal value |
-| Mixerlevel lower | Generate words with 32 chars that replace variables/classes/functions defined in source code and in random scripts if 'replace' or 'padding' features are specified |
-| Mixerlevel medium | Generate words with 64 chars that replace variables/classes/functions defined in source code and in random scripts if 'replace' or 'padding' features are specified|
-| Mixerlevel high | Generate words with 128 chars that replace variables/classes/functions defined in source code and in random scripts if 'replace' or 'padding' features are specified |
+| Mixerlevel lower | Generate strings of 32 chars that replace variables/classes/functions defined in source code and in random scripts if 'replace' or 'padding' features are specified |
+| Mixerlevel medium | Generate strings of 64 chars that replace variables/classes/functions defined in source code and in random scripts if 'replace' or 'padding' features are specified|
+| Mixerlevel high | Generate strings of 128 chars that replace variables/classes/functions defined in source code and in random scripts if 'replace' or 'padding' features are specified |
 
 - `Replace`, `Padding`, `Rprint`, `Hexadecimal` features can be executed separatly
 
