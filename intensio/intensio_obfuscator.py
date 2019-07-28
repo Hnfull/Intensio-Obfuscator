@@ -36,6 +36,7 @@
 -rc, --removecommentaries   ->  activate the 'remove commentaries' obfuscation feature
 -rp, --removeprint          ->  activate the 'remove print' obfuscation feature
 -rth, --replacetohex        ->  activate the 'replace strings to hex' obfuscation feature
+-rfn, --replacefilesname    ->  activate the 'replace files name' obfuscation feature
 -v, --verbose               ->  improve verbosity
 
 """
@@ -85,7 +86,7 @@ def main():
     args    = Args()
     utils   = Utils()
 
-    if len(sys.argv) > 1 and len(sys.argv) <= 15:
+    if len(sys.argv) > 1 and len(sys.argv) <= 16:
         pass
     else:
         print(ERROR_COLOUR + "[-] Incorrect number of arguments\n")
@@ -100,8 +101,9 @@ def main():
                         if re.match(r"^lower$|^medium$|^high$", args.GetArgsValue().mixerlevel):
                             if not args.GetArgsValue().paddingscripts and not args.GetArgsValue().replacetostr \
                                 and not args.GetArgsValue().removecommentaries and not args.GetArgsValue().removeprint \
-                                and not args.GetArgsValue().replacetohex:
-                                print(ERROR_COLOUR + "\n[-] Need at least one argument [-rts --replacetostr] or [-ps --paddingscripts] or [-rc --removecommentaries] or [-rp --removeprint] or [-rth --replacetohex]")
+                                and not args.GetArgsValue().replacetohex and not args.GetArgsValue().replacefilesname:
+                                print(ERROR_COLOUR + "\n[-] Need at least one argument [-rts --replacetostr] or [-ps --paddingscripts] \
+                                    or [-rc --removecommentaries] or [-rp --removeprint] or [-rth --replacetohex] or [-rfn, --replacefilesname]")
                                 sys.exit(ERROR_BAD_ARGUMENTS)
                         else:
                             print(ERROR_COLOUR + "[-] Incorrect level of mixerlevel, [lower - medium - high] only supported\n")
@@ -187,6 +189,20 @@ def main():
     else:
         print("[!] Obfuscation remove print functions no asked !")
 
+    print(SECTION_COLOUR + "\n\n********************** [ Obfuscation replace files name ] ***********************\n")
+    if args.GetArgsValue().replacefilesname:
+        if args.GetArgsValue().replacetostr or args.GetArgsValue().replacetohex:
+            pass
+        else:
+            replaceData = Replace()
+
+        if (replaceData.FilesName(args.GetArgsValue().code, args.GetArgsValue().output, args.GetArgsValue().mixerlevel, args.GetArgsValue().verbose) == EXIT_SUCCESS):
+            print("\n[+] Obfuscation replace files name  -> " + SUCESS_COLOUR + "Successful")
+        else:
+            print("\n[-] Obfuscation replace files name -> " + FAILED_COLOUR + "Failed")
+    else:
+        print("[!] Obfuscation replace files name no asked !")
+        
     print(SECTION_COLOUR + "\n\n******************** [ Obfuscation replace strings to hex ] *********************\n")
     if args.GetArgsValue().replacetohex:
         if args.GetArgsValue().replacetostr:
@@ -195,12 +211,21 @@ def main():
             replaceData = Replace()
 
         if (replaceData.StringsToHex(args.GetArgsValue().code, args.GetArgsValue().output, args.GetArgsValue().mixerlevel) == EXIT_SUCCESS):
-            print("\n[+] Obfuscation Replace strings to hex -> " + SUCESS_COLOUR + "Successful\n")
+            print("\n[+] Obfuscation replace strings to hex -> " + SUCESS_COLOUR + "Successful")
         else:
-            print("\n[-] Obfuscation replace strings to hex -> " + FAILED_COLOUR + "Failed\n")
+            print("\n[-] Obfuscation replace strings to hex -> " + FAILED_COLOUR + "Failed")
     else:
-        print("[!] Obfuscation replace strings to hex no asked !\n")
-        
+        print("[!] Obfuscation replace strings to hex no asked !")
+
+    # -- Remove trash files in output directory -- #
+    print(SECTION_COLOUR + "\n\n************************* [ Remove trash python files ] *************************\n")
+    if (removeData.TrashFiles(args.GetArgsValue().code, args.GetArgsValue().output) > 0):
+        print("\n[+] Remove .pyc files in output directory -> " + SUCESS_COLOUR + "Successful\n")
+    elif (removeData.TrashFiles(args.GetArgsValue().code, args.GetArgsValue().output) == 0):
+        print("\n[!] No .pyc files in output directory\n")
+    else:
+        print("\n[-] Remove .pyc files in output directory -> " + FAILED_COLOUR + "Failed\n")
+
 #----------------------------------------------------------------------------------------------------------------------------#
 
 #----------------------------------------------------------------------------------------------------------------------------#

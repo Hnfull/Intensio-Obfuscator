@@ -72,7 +72,7 @@ while
 with
 yield
 
-####### Other python keywords #######
+######### Other keywords ##########
 replace
 
 ############################## END DO NOT MODIFY IT ###################################

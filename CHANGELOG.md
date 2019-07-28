@@ -25,7 +25,6 @@
 - [Update] Improvement of the code by adding a better management of the display of the analyzed inputs/outputs and the variables/classes/functions found
 - [Remove] `-f --onfile` and `-d --multiplefiles` parameters, henceforth it is necessary to pointed a directory that containt files to obfuscate
 
-
 ## 17-06-2019
 - [Ugrade] Version 1.0.3
 - [Add] new feature `-rp --rprint` this parameter remove all print functions
@@ -58,3 +57,5 @@
 - [Add] new feature `-rth, --replacetohex`, see README.md for more informations
 - [Add] new part of obfuscation `intermediate` in examples
 - [update] renaming all parameters and functions
+- [add] new feature `-rfn, --replacefilesname` see README.md for more informations
+- [add] new feature to trash all pyc files

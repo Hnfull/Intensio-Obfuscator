@@ -188,14 +188,14 @@ class Padding:
         checkBracesCharPassing          = 0
         
         if codeArg == "python":
-            detectFile  = "py"
-            blockDirs   = "__pycache__"
+            detectFiles = "py"
+            blockDir    = "__pycache__"
 
-        recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.utils.Platform(), detectFile), recursive=True)]
+        recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.utils.Platform(), detectFiles), recursive=True)]
 
         # -- Count the number of lines that will be checked before filling -- #
         for file in recursFiles:
-            if blockDirs in file:
+            if blockDir in file:
                 continue
             else:
                 with open(file , "r") as readFile:
@@ -214,7 +214,7 @@ class Padding:
         with tqdm.tqdm(total=countRecursFiles) as pbar:
             for file in recursFiles:
                 pbar.update(1)
-                if blockDirs in file:
+                if blockDir in file:
                     continue
                 else:
                     with fileinput.input(file, inplace=True) as inputFile:
@@ -393,7 +393,7 @@ class Padding:
                                 
         # -- Check padding has added in output script -- #
         for file in recursFiles:
-            if blockDirs in file:
+            if blockDir in file:
                 continue
             else:
                 with open(file , "r") as readFile:

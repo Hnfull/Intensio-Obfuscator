@@ -65,6 +65,12 @@ class Args:
                                 help="activate the 'replace strings to hex' obfuscation feature"
                                 )
         self.parser.add_argument(
+                                "-rfn", "--replacefilesname",
+                                action="store_true",
+                                default=False,
+                                help="activate the 'replace files name' obfuscation feature"
+                                )
+        self.parser.add_argument(
                                 "-v", "--verbose",
                                 action="store_true",
                                 default=False,

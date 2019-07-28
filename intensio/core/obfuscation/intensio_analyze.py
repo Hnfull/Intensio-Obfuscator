@@ -35,10 +35,10 @@ class Analyze:
         if os.path.exists(inputArg) == True:
             if os.path.isdir(inputArg) == True:     
                 if codeArg == "python":
-                    detectFile  = "py"
-                    blockdirs   = "__pycache__"
+                    detectFiles = "py"
+                    blockdir    = "__pycache__"
 
-                recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(inputArg, self.utils.Platform(), detectFile), recursive=True)]
+                recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(inputArg, self.utils.Platform(), detectFiles), recursive=True)]
                 if recursFiles == []:
                     print(ERROR_COLOUR + "[-] {0} directory empty or python file not found".format(inputArg))
                     return ERROR_DIR_EMPTY
@@ -46,7 +46,7 @@ class Analyze:
                 print("\n[+] Running analyze input...")
                 
                 for file in recursFiles:
-                    if blockdirs in file:
+                    if blockdir in file:
                         continue
                     else:
                         if os.path.getsize(file) > 0:
@@ -102,10 +102,11 @@ class Analyze:
                         if os.path.exists(outputArg) == True:
                             if os.path.isdir(outputArg) == True:
                                 if codeArg == "python":
-                                    detectFile  = "py"
-                                    blockdirs   = "__pycache__"
+                                    detectFiles = "py"
+                                    blockdir    = "__pycache__"
 
-                                recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(inputArg, self.utils.Platform(), detectFile), recursive=True)]
+                                recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.utils.Platform(), detectFiles), recursive=True)]
+                                
                                 if recursFiles == []:
                                     print(ERROR_COLOUR + "[-] {0} directory empty, no copied file".format(inputArg))
                                     return ERROR_DIR_EMPTY
@@ -113,7 +114,7 @@ class Analyze:
                                 print("\n[+] Running analyze output...")
 
                                 for file in recursFiles:
-                                    if blockdirs in file:
+                                    if blockdir in file:
                                         continue
                                     else:
                                         if os.path.getsize(file) > 0:
@@ -162,10 +163,11 @@ class Analyze:
                 if os.path.exists(outputArg) == True:
                     if os.path.isdir(outputArg) == True:
                         if codeArg == "python":
-                            detectFile  = "py"
-                            blockdirs   = "__pycache__"
+                            detectFiles = "py"
+                            blockdir    = "__pycache__"
 
-                        recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(inputArg, self.utils.Platform(), detectFile), recursive=True)]
+                        recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.utils.Platform(), detectFiles), recursive=True)]
+                        
                         if recursFiles == []:
                             print(ERROR_COLOUR + "[-] {0} directory empty, no copied file".format(inputArg))
                             return ERROR_DIR_EMPTY
@@ -173,7 +175,7 @@ class Analyze:
                         print("\n[+] Running analyze output...")
                         
                         for file in recursFiles:
-                            if blockdirs in file:
+                            if blockdir in file:
                                 continue
                             else:
                                 if os.path.getsize(file) > 0:

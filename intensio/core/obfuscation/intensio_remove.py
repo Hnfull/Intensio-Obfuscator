@@ -8,9 +8,15 @@ import re
 import fileinput
 import glob
 import tqdm
+import colorama
+import os
 
 from core.utils.intensio_error import EXIT_SUCCESS, EXIT_FAILURE
 from core.utils.intensio_utils import Utils
+
+#--------------------------------------------------------- [Global] ---------------------------------------------------------#
+
+ERROR_COLOUR = colorama.Fore.RED + colorama.Style.BRIGHT
 
 #------------------------------------------------- [Function(s)/Class(es)] --------------------------------------------------#
 
@@ -26,14 +32,14 @@ class Remove:
         numberGoodFile  = 0
         
         if codeArg == "python":
-            detectFile  = "py"
-            blockDirs   = "__pycache__"
+            detectFiles = "py"
+            blockDir    = "__pycache__"
 
-        recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.utils.Platform(), detectFile), recursive=True)]
+        recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.utils.Platform(), detectFiles), recursive=True)]
 
         # -- Delete line breaks -- #
         for file in recursFiles:
-            if blockDirs in file:
+            if blockDir in file:
                 continue
             else:
                 with fileinput.FileInput(file, inplace=True) as inputFile:
@@ -44,7 +50,7 @@ class Remove:
         # -- Check if all line breaks are deleted -- #
         for file in recursFiles:
             checkLine = 0 # Initialize check vars for the next file 
-            if blockDirs in file:
+            if blockDir in file:
                 continue
             else:
                 with open(file, "r") as readFile:
@@ -73,6 +79,9 @@ class Remove:
         countRecursFiles    = 0
 
         if codeArg == "python": 
+            detectFiles = "py"
+            blockDir    = "__pycache__"
+            
             commentariesBeginLine               = r"^\#.*"                      # Begin '#'
             quoteOfCommentariesMultipleLines    = r"^\s*[\"|\']{3}$"            # """ and ''' without before variables and if commentaries is over multiple lines
             quoteInRegex                        = r"\={1}\s*r[\"|\']{1}"        # If quote in regex
@@ -81,10 +90,7 @@ class Remove:
             quoteIntoVariable                   = r".*\={1}\s*\w*\.?\w*[\(|\.]{1}[\"|\']{3}|.*\={1}\s*[\"|\']{3}"   # """ and ''' with before variables
             commentariesAfterLine               = r"\s*\#[^\"|^\'|^\.|^\?|^\*|^\!|^\]|^\[|^\\|^\)|^\(|^\{|^\}].*"   # '#' after line of code
 
-            detectFile  = "py"
-            blockDirs   = "__pycache__"
-
-        recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.utils.Platform(), detectFile), recursive=True)]
+        recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.utils.Platform(), detectFiles), recursive=True)]
 
         # -- Remove commentaries and Count commentaries will be removed -- #
         for number in recursFiles:
@@ -95,7 +101,7 @@ class Remove:
         with tqdm.tqdm(total=countRecursFiles) as pbar:
             for file in recursFiles:
                 pbar.update(1)
-                if blockDirs in file:
+                if blockDir in file:
                     continue
                 else:
                     # -- Remove commentaries -- #
@@ -157,7 +163,7 @@ class Remove:
         # -- Check if all commentaries are removed -- #
         for file in recursFiles:
             countLineOutput = 0
-            if blockDirs in file:
+            if blockDir in file:
                 continue
             else:
                 with open(file, "r") as readFile:
@@ -224,11 +230,12 @@ class Remove:
         checkPrintPy2MultipleLines  = 0
 
         if codeArg == "python":
-            detectPrint = r"\s*print"
-            detectFile  = "py"
-            blockDirs   = "__pycache__"
+            detectFiles = "py"
+            blockDir    = "__pycache__"
 
-        recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.utils.Platform(), detectFile), recursive=True)]
+            detectPrint = r"\s*print"
+
+        recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.utils.Platform(), detectFiles), recursive=True)]
 
         for number in recursFiles:
             countRecursFiles += 1
@@ -238,7 +245,7 @@ class Remove:
         with tqdm.tqdm(total=countRecursFiles) as pbar:
             for file in recursFiles:
                 pbar.update(1)
-                if blockDirs in file:
+                if blockDir in file:
                     continue
                 else: 
                     # -- Remove all print functions -- #
@@ -277,7 +284,7 @@ class Remove:
 
         # -- Check if all print functions are removed -- #
         for file in recursFiles:
-            if blockDirs in file:
+            if blockDir in file:
                 continue
             else:
                 with open(file, "r") as readFile:
@@ -293,5 +300,24 @@ class Remove:
             else:
                 return EXIT_FAILURE
         else:
+            return EXIT_FAILURE
+
+
+    def TrashFiles(self, codeArg, outputArg):
+        removeFiles = 0
+
+        if codeArg == "python":
+            detectFiles = "pyc"
+            blockDir    = "__pycache__"
+
+        recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.utils.Platform(), detectFiles), recursive=True)]
+        
+        try:
+            for file in recursFiles:    
+                os.remove(file)
+                removeFiles += removeFiles + 1
+            return removeFiles
+        except Exception as e:
+            print(ERROR_COLOUR + "[-] {0}".format(e))
             return EXIT_FAILURE
 

@@ -1,0 +1,3 @@
+TcbMoYIWpCeSIdaGVCenlGGCzCXqYajG="""
+"""
+exec(TcbMoYIWpCeSIdaGVCenlGGCzCXqYajG)
