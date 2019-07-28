@@ -1,0 +1,167 @@
+# -*- coding: utf-8 -*-
+import os
+tkYVpQShpofTVXYTFlmafKMhQGnFxOuifpkHPWkilnAZpxJKPbNkCtiCSDixncrN = 'RKIrAkwrFzoSZwfQyXvbtaglWMFPqGlozFYrUpQJcLZJYGtjmtaxKqteAOTRgWgf'
+XoTiBHrOzfxpgJkPstdUpMKsdilKJabHqDYlPufyZFllUqQLeDOORafPljsPfnYX = 'UAupYwcjwUKjJXrerQJAoswpMeOrxYitCCBKinWSoBvIJXIAzBoVxJKGDwZBvjDX'
+JdRUssOSvfxGprcoPIkBMzAtftjWJTDSDIfIAqffcZBuYLYzwJWGFiHicQQujVrs = 'WFRyFHdWuSSVlYkLIplcsJXLrubXwqYSCQTzbxVaAXSGhWfhVcFBlPnotGuUKOWI'
+XwxKakSczyXkIKPRJHcqhzjHKylTYEUYJvyhWwUVDcfCOEUbwZpezAerYlIsVXwM = 'lbSaktwcqaCQoDuAjggXQhxDuNGqLkiGjTRHZxINHqJWeNrCrxeBuilOKoCvTpSe'
+HEHYYqmhrgcfzRiQlWhvyzLYajxbGjHtSdahqYRzcSOAdPSohFTJxxDUSCDOxexJ = 'ugAxzTsiztyCodHJdvTdhvxHwabNfSpiMQABjrogHnaKlEEXsIFiMOYYfkXBycAZ'
+if tkYVpQShpofTVXYTFlmafKMhQGnFxOuifpkHPWkilnAZpxJKPbNkCtiCSDixncrN in XoTiBHrOzfxpgJkPstdUpMKsdilKJabHqDYlPufyZFllUqQLeDOORafPljsPfnYX:
+    tkYVpQShpofTVXYTFlmafKMhQGnFxOuifpkHPWkilnAZpxJKPbNkCtiCSDixncrN = HEHYYqmhrgcfzRiQlWhvyzLYajxbGjHtSdahqYRzcSOAdPSohFTJxxDUSCDOxexJ
+    if XoTiBHrOzfxpgJkPstdUpMKsdilKJabHqDYlPufyZFllUqQLeDOORafPljsPfnYX in JdRUssOSvfxGprcoPIkBMzAtftjWJTDSDIfIAqffcZBuYLYzwJWGFiHicQQujVrs:
+        XoTiBHrOzfxpgJkPstdUpMKsdilKJabHqDYlPufyZFllUqQLeDOORafPljsPfnYX = XwxKakSczyXkIKPRJHcqhzjHKylTYEUYJvyhWwUVDcfCOEUbwZpezAerYlIsVXwM
+elif XoTiBHrOzfxpgJkPstdUpMKsdilKJabHqDYlPufyZFllUqQLeDOORafPljsPfnYX in tkYVpQShpofTVXYTFlmafKMhQGnFxOuifpkHPWkilnAZpxJKPbNkCtiCSDixncrN:
+    JdRUssOSvfxGprcoPIkBMzAtftjWJTDSDIfIAqffcZBuYLYzwJWGFiHicQQujVrs = XoTiBHrOzfxpgJkPstdUpMKsdilKJabHqDYlPufyZFllUqQLeDOORafPljsPfnYX
+    if JdRUssOSvfxGprcoPIkBMzAtftjWJTDSDIfIAqffcZBuYLYzwJWGFiHicQQujVrs in XoTiBHrOzfxpgJkPstdUpMKsdilKJabHqDYlPufyZFllUqQLeDOORafPljsPfnYX:
+        XoTiBHrOzfxpgJkPstdUpMKsdilKJabHqDYlPufyZFllUqQLeDOORafPljsPfnYX = HEHYYqmhrgcfzRiQlWhvyzLYajxbGjHtSdahqYRzcSOAdPSohFTJxxDUSCDOxexJ
+from Crypto import Random
+ezWtNffXnjxRWgFOVHgBbhGdigGeyeRbcqmWgWQYVbkGoSZcBCYifYGHwKfbRPKY = 'WtOhflojRmCdQHjdBzlcJUmctjTuBHLUOYfWQmVxrKdCXUhiiZsVNtsVtYtDhKfA'
+hmTHdbhnSNxNOuhDrFuloHltuQAbXAWIizTlBZNsLYgAOrAbPomsfMmFjdSJYYMs = 'hWCLfwjfBQatDCBkvcgGHQutCfSFRHLKQCYTbliiluhupqFlnNuyYgTjJplDmBAm'
+rhuHodvVTHXxjXJlKuKGMEcXupNgBdFuFBhjLyDBnbfqpnwhhMuAHIpDxnWcIYjZ = 'trQznsXFpGgGpRrxMnZmbvsRAYrZkbiYMXnZBBWdvGmRTmvzplgQxUMgFJnIBJOC'
+if ezWtNffXnjxRWgFOVHgBbhGdigGeyeRbcqmWgWQYVbkGoSZcBCYifYGHwKfbRPKY == hmTHdbhnSNxNOuhDrFuloHltuQAbXAWIizTlBZNsLYgAOrAbPomsfMmFjdSJYYMs:
+    wEOWdTwmCdWoNuOeFwrIgJgqUWIQfSYPCXVUyIKFMKgDtyfaAyXcTybqfsOdQhfI = 'MQYHHWdErKUXPfcxMPcjjvIQPoPvvpTSuorxTQtCrffWObmynodpIdRgdEfjBhaw'
+    wEOWdTwmCdWoNuOeFwrIgJgqUWIQfSYPCXVUyIKFMKgDtyfaAyXcTybqfsOdQhfI = ezWtNffXnjxRWgFOVHgBbhGdigGeyeRbcqmWgWQYVbkGoSZcBCYifYGHwKfbRPKY
+else:
+    wEOWdTwmCdWoNuOeFwrIgJgqUWIQfSYPCXVUyIKFMKgDtyfaAyXcTybqfsOdQhfI = 'MQYHHWdErKUXPfcxMPcjjvIQPoPvvpTSuorxTQtCrffWObmynodpIdRgdEfjBhaw'
+    wEOWdTwmCdWoNuOeFwrIgJgqUWIQfSYPCXVUyIKFMKgDtyfaAyXcTybqfsOdQhfI = rhuHodvVTHXxjXJlKuKGMEcXupNgBdFuFBhjLyDBnbfqpnwhhMuAHIpDxnWcIYjZ
+from Crypto.Cipher import AES
+zHaLuVcdgUJkUhPPJmAoTWAyQWkBqLtOjPgeXtcAwoXoRavXUWFtPrRHuIqQBHSu = 'TURTeGisHWYopYHIYFZDfFuWBAnPAHKITVSpVuGBhCEgZGLXginphpztdYxDmKYK'
+TttCiMAxRaLViRgDBmyUgIQuAGakhcAECZwSkjLgmCbfRtmskVykEtasSfSMBfUL = 'atxwxvYxbBbEEEmpkCDdAXJWRwJzAGbhtERzCrPLgxPYtblhQIvPLkjtgqunERaG'
+WKOGPkfJXrvSnEtdryWxLEmVZePVAFeXJwCDloLibITQEKBTAmPMUaWvjsFUPKJL = 'uRvfhdBVevcfxPwVTfUFBwlIDnJduRRaZGVhLfahcMvsSTqCtqqMDprDsaghKBtk'
+if zHaLuVcdgUJkUhPPJmAoTWAyQWkBqLtOjPgeXtcAwoXoRavXUWFtPrRHuIqQBHSu == TttCiMAxRaLViRgDBmyUgIQuAGakhcAECZwSkjLgmCbfRtmskVykEtasSfSMBfUL:
+    lSSfSJgAiGmhHKsigdzHvbxRizbCZVReHiQKntrEteXIYaUSxCvLilFDLoTbHWrB = 'hEGSWyWXjsqKmOLKdMEEwALDCAcsbOEKWyVLnNRmZQRlcVxUMMRSvKYVVStWGAWC'
+    lSSfSJgAiGmhHKsigdzHvbxRizbCZVReHiQKntrEteXIYaUSxCvLilFDLoTbHWrB = zHaLuVcdgUJkUhPPJmAoTWAyQWkBqLtOjPgeXtcAwoXoRavXUWFtPrRHuIqQBHSu
+else:
+    lSSfSJgAiGmhHKsigdzHvbxRizbCZVReHiQKntrEteXIYaUSxCvLilFDLoTbHWrB = 'hEGSWyWXjsqKmOLKdMEEwALDCAcsbOEKWyVLnNRmZQRlcVxUMMRSvKYVVStWGAWC'
+    lSSfSJgAiGmhHKsigdzHvbxRizbCZVReHiQKntrEteXIYaUSxCvLilFDLoTbHWrB = WKOGPkfJXrvSnEtdryWxLEmVZePVAFeXJwCDloLibITQEKBTAmPMUaWvjsFUPKJL
+from Crypto.Hash import SHA256
+from DjufAAmXtNKZMZscQhUwsZriCjtSrxIJdMQyOjHPdBDTbBtrOCiyEQNaGvwUruct import VzzgfTETnqDqnDkwVBuHwdNpscAWWNXYkNmIDZfqIHbstkwgXsIkvNjZJQhINwEp, DyLKUhMSRmMHdxtZaTZEJqgMiHuZNMRfmECPOZcZitWcFbSEkMIVtOgEsYTSxezo
+finFdsoifkOFmRbjAAyoAMEURMypomCDEUwlfoGBMrwDCYVucspAolwGNFcYfykC = 'rgyWisxoDhhmPjtPCVxCDkYqrQbmixqgBGDHISkgfDSIGryFkFagHbMEPgsNdolv'
+bWDRkqZFpsipxxUvkiWyypECSVuHZvXXtMnWVBCJQwSzJyyRQZTBGjQaEPVkZhXr = 'CdgklhrjVFloGOndOERdyoxIRDsyMEduDYDAjGixjPxynjMhCBomRzZgRgDmhxHz'
+iICfGDpTgrNZYFddOuNJNqbRbcErIetCNaHUcKmbBUJUtuzQezenwtwdNZWEwwIS = 'PGrBNZIFquMWQgkGttdLHtqadXIbazjSAFFrUCrpvqxloxwlkPmDQUACCmvNYHYu'
+ZMSYhFIaKounhFGxqCkRSHnXfWPqUHBSpTlxMiDpgksasTpsMyppHKnNSxJrkyMg = 'MOYCPbWwvSzRTpMRroqFeIKtlyojtGROZhJvHOAjhPpUKlsBHJHIDkwRqECejqpr'
+wnlxUbwdJOZFTSUYJQiksVCSLigtFxqWJMPDyBdtDmZEKsAAoPfOgPytfObycjBE = 'LmUBCVkeOXlUjUKJwdELpTLrAwFWXkLluPYIRQmGYESwAkfXtEMqQMJmVCAbyTzG'
+RQrFzofxDImhLUHQqBrgHxoBaOzzGBfluLSVhVxYaGLvHlThJalYpqgHSutisHew = 'GlbrhwFqJdoANOazTLdijHivcbxazoOwtDDaLtgduKCPYzomVROkEdozlDRSeKuh'
+if iICfGDpTgrNZYFddOuNJNqbRbcErIetCNaHUcKmbBUJUtuzQezenwtwdNZWEwwIS == ZMSYhFIaKounhFGxqCkRSHnXfWPqUHBSpTlxMiDpgksasTpsMyppHKnNSxJrkyMg:
+    for RQrFzofxDImhLUHQqBrgHxoBaOzzGBfluLSVhVxYaGLvHlThJalYpqgHSutisHew in wnlxUbwdJOZFTSUYJQiksVCSLigtFxqWJMPDyBdtDmZEKsAAoPfOgPytfObycjBE:
+        if RQrFzofxDImhLUHQqBrgHxoBaOzzGBfluLSVhVxYaGLvHlThJalYpqgHSutisHew == ZMSYhFIaKounhFGxqCkRSHnXfWPqUHBSpTlxMiDpgksasTpsMyppHKnNSxJrkyMg:
+            wnlxUbwdJOZFTSUYJQiksVCSLigtFxqWJMPDyBdtDmZEKsAAoPfOgPytfObycjBE = finFdsoifkOFmRbjAAyoAMEURMypomCDEUwlfoGBMrwDCYVucspAolwGNFcYfykC
+        else:
+            ZMSYhFIaKounhFGxqCkRSHnXfWPqUHBSpTlxMiDpgksasTpsMyppHKnNSxJrkyMg = bWDRkqZFpsipxxUvkiWyypECSVuHZvXXtMnWVBCJQwSzJyyRQZTBGjQaEPVkZhXr
+MFRuVqernURCWVzKKeBRouIqzzaqCdYXNZLZhpgxNHAfPuFoqCALDYHIivMjFGIX = 'b14ce95fa4c33ac2803782d18341869f'
+class mYkytITTWrYYnHDUMQrbdffrKiOIniRQCiJwLkAkeQoAfZRxMSnuFhmOhJvztUkw(Exception):
+    pass
+    ghBhfaDmuJBfLCwbOkjbsjlOZldwKdMNbfHNaYgzNVONtTsGdyZDocPhWYvGHNSG = 'BqpsdiOUzrcawFHGbTGtDjeNbujIIWZQirpbErnBwIMfamZkIfNzmCkPWPjfulEy'
+    hqQVzfMwqYSZrVyBMXkFkcqireMJVjKONiRFjiEQgDhwCpnIRxDrNIVrdYanZswE = 'WByJRYcWECRBqCsYXaBlyxFuMpIclKrlJBFLlaPGpDwxRtVyfEWIAtKJLskzzaqn'
+    EvCIwBfbFtKgkGSRvStZxUMkkXwVaeowrzcDmuFFdXMGSxMXiBeUWivplkMUsGwV = 'SlWPWVRVdZDLijOGdWFlxWKUKjrcQeISeIODVzOWlTOukYZdDCgAFxwJjgCHkBxk'
+    if ghBhfaDmuJBfLCwbOkjbsjlOZldwKdMNbfHNaYgzNVONtTsGdyZDocPhWYvGHNSG == hqQVzfMwqYSZrVyBMXkFkcqireMJVjKONiRFjiEQgDhwCpnIRxDrNIVrdYanZswE:
+        VStnynTruWefSLpLiIyhEcHtTEkDBqTgHcrbxImrKrpZHLcjjLoHyWQTGBAMIXQA = 'fLudapFiSuQmdNKyWavMadzvjfPRYTJfZztWDVQputMkOGrsXFUEzereAcZwTRpg'
+        VStnynTruWefSLpLiIyhEcHtTEkDBqTgHcrbxImrKrpZHLcjjLoHyWQTGBAMIXQA = ghBhfaDmuJBfLCwbOkjbsjlOZldwKdMNbfHNaYgzNVONtTsGdyZDocPhWYvGHNSG
+    else:
+        VStnynTruWefSLpLiIyhEcHtTEkDBqTgHcrbxImrKrpZHLcjjLoHyWQTGBAMIXQA = 'fLudapFiSuQmdNKyWavMadzvjfPRYTJfZztWDVQputMkOGrsXFUEzereAcZwTRpg'
+        VStnynTruWefSLpLiIyhEcHtTEkDBqTgHcrbxImrKrpZHLcjjLoHyWQTGBAMIXQA = EvCIwBfbFtKgkGSRvStZxUMkkXwVaeowrzcDmuFFdXMGSxMXiBeUWivplkMUsGwV
+def ciAauDxPKpiuIrwJOkVOHDRiyzfyGtWyrIWwcbXSLmYfWVbBSjarmhLBTPkLtlAM(AxlkcPzPdMmgkNbizTAFiMuFhhRypAoxvrQVNLKmIqdHkWbzfdMIXmYmFFnjdinW, duNIsgeneitolfqHSUaVwzBQTXITvIspSYNhMRfmEOONAaJwulBfcFhGeVuNMVWR=AES.block_size):
+    gbmTWTdiXtIeWXKoczPyVtTTHymECNedwWptAPimDnEzzjjFpUNKjNAubLPtdKqv = (duNIsgeneitolfqHSUaVwzBQTXITvIspSYNhMRfmEOONAaJwulBfcFhGeVuNMVWR - (len(AxlkcPzPdMmgkNbizTAFiMuFhhRypAoxvrQVNLKmIqdHkWbzfdMIXmYmFFnjdinW) % duNIsgeneitolfqHSUaVwzBQTXITvIspSYNhMRfmEOONAaJwulBfcFhGeVuNMVWR))
+    return AxlkcPzPdMmgkNbizTAFiMuFhhRypAoxvrQVNLKmIqdHkWbzfdMIXmYmFFnjdinW + (chr(gbmTWTdiXtIeWXKoczPyVtTTHymECNedwWptAPimDnEzzjjFpUNKjNAubLPtdKqv)*gbmTWTdiXtIeWXKoczPyVtTTHymECNedwWptAPimDnEzzjjFpUNKjNAubLPtdKqv)
+def BodAoierTToGfVSQozgBfsroKQNCziIpUZREeysKXGdxIZFSWKfqxZWKepaWnjEV(AxlkcPzPdMmgkNbizTAFiMuFhhRypAoxvrQVNLKmIqdHkWbzfdMIXmYmFFnjdinW):
+    gbmTWTdiXtIeWXKoczPyVtTTHymECNedwWptAPimDnEzzjjFpUNKjNAubLPtdKqv = AxlkcPzPdMmgkNbizTAFiMuFhhRypAoxvrQVNLKmIqdHkWbzfdMIXmYmFFnjdinW[-1]
+    if AxlkcPzPdMmgkNbizTAFiMuFhhRypAoxvrQVNLKmIqdHkWbzfdMIXmYmFFnjdinW.endswith(gbmTWTdiXtIeWXKoczPyVtTTHymECNedwWptAPimDnEzzjjFpUNKjNAubLPtdKqv*ord(gbmTWTdiXtIeWXKoczPyVtTTHymECNedwWptAPimDnEzzjjFpUNKjNAubLPtdKqv)):
+        ocRlQqWLfpOzEMwFoXKJDfITNxnwqBPZxZRozqJwSmMSWkQlsQSDSQhhGUMNPFoE = 'KorXRzFkkckhrfhEvmiZmpCKfPwCNzBFGtkkvcPtrTeZlTDllrBNQJwWWUrkZuAk'
+        yRBijSIeNTazGBnlCIzRQehzZTCYuAciudnZCqYnvtPCmQgkRBJaHkqsJBuulEDh = 'WjQLEnwIPztaEcnbIbajoDQcLdZGcgUpYvdgCgcNaJMOEOkWUjArXWdPEUBDDvLt'
+        jCpzchvYUcpoRSFONjOHiZeWjuenxvzsWSzHDSNGUgYqduYXVzmZckUujPxjEKKP = 'EIVoMYxJEhIUTtuSrcsoAcGoaXeGiCIwjnNRmcJhmmjuyLLIKTlsjtUzYVbIiFCL'
+        SpWJcyzkvWunREKPiZPCKdJFvwgIhuuCUfgzjrBTZPEMpcGwboCWFIhqbzrbJOSx = 'MOJOdWasqchyTmYlsNYGfXVdZiZZKoDcqJtUErLBPyNUnqRoQlUFvaOjDtnticra'
+        ZkVRYpjvLIgPDXHBIqOxxmcDesUaoHSqLITVbEYZhnONxVvySJWZrTrTwOWhAiwl = 'scjlNBfhIpEHxZbZlJvIDKllzXnSRtJFizkWRuIKsixKVuhYkZbliqmgJgzOmPCI'
+        kecckwdhWwASQzUQLthHpkbXWABCvLSgJYzNhDcUtlUaCuQVRhYMDSFxKSJpgHri = 'kBmBzNzbhhyTlwHLYxWMjeESOJACSgYMBKuUAJESZWgJYzECDVptOXRdyafWaqFm'
+        if ocRlQqWLfpOzEMwFoXKJDfITNxnwqBPZxZRozqJwSmMSWkQlsQSDSQhhGUMNPFoE != SpWJcyzkvWunREKPiZPCKdJFvwgIhuuCUfgzjrBTZPEMpcGwboCWFIhqbzrbJOSx:
+            yRBijSIeNTazGBnlCIzRQehzZTCYuAciudnZCqYnvtPCmQgkRBJaHkqsJBuulEDh = jCpzchvYUcpoRSFONjOHiZeWjuenxvzsWSzHDSNGUgYqduYXVzmZckUujPxjEKKP
+            for kecckwdhWwASQzUQLthHpkbXWABCvLSgJYzNhDcUtlUaCuQVRhYMDSFxKSJpgHri in SpWJcyzkvWunREKPiZPCKdJFvwgIhuuCUfgzjrBTZPEMpcGwboCWFIhqbzrbJOSx:
+                if kecckwdhWwASQzUQLthHpkbXWABCvLSgJYzNhDcUtlUaCuQVRhYMDSFxKSJpgHri != jCpzchvYUcpoRSFONjOHiZeWjuenxvzsWSzHDSNGUgYqduYXVzmZckUujPxjEKKP:
+                    yRBijSIeNTazGBnlCIzRQehzZTCYuAciudnZCqYnvtPCmQgkRBJaHkqsJBuulEDh = yRBijSIeNTazGBnlCIzRQehzZTCYuAciudnZCqYnvtPCmQgkRBJaHkqsJBuulEDh
+                else:
+                    ZkVRYpjvLIgPDXHBIqOxxmcDesUaoHSqLITVbEYZhnONxVvySJWZrTrTwOWhAiwl = ocRlQqWLfpOzEMwFoXKJDfITNxnwqBPZxZRozqJwSmMSWkQlsQSDSQhhGUMNPFoE
+        else:
+            jCpzchvYUcpoRSFONjOHiZeWjuenxvzsWSzHDSNGUgYqduYXVzmZckUujPxjEKKP = ocRlQqWLfpOzEMwFoXKJDfITNxnwqBPZxZRozqJwSmMSWkQlsQSDSQhhGUMNPFoE
+            ocRlQqWLfpOzEMwFoXKJDfITNxnwqBPZxZRozqJwSmMSWkQlsQSDSQhhGUMNPFoE = ZkVRYpjvLIgPDXHBIqOxxmcDesUaoHSqLITVbEYZhnONxVvySJWZrTrTwOWhAiwl
+            if jCpzchvYUcpoRSFONjOHiZeWjuenxvzsWSzHDSNGUgYqduYXVzmZckUujPxjEKKP == ocRlQqWLfpOzEMwFoXKJDfITNxnwqBPZxZRozqJwSmMSWkQlsQSDSQhhGUMNPFoE:
+                for kecckwdhWwASQzUQLthHpkbXWABCvLSgJYzNhDcUtlUaCuQVRhYMDSFxKSJpgHri in ocRlQqWLfpOzEMwFoXKJDfITNxnwqBPZxZRozqJwSmMSWkQlsQSDSQhhGUMNPFoE:
+                    if kecckwdhWwASQzUQLthHpkbXWABCvLSgJYzNhDcUtlUaCuQVRhYMDSFxKSJpgHri == jCpzchvYUcpoRSFONjOHiZeWjuenxvzsWSzHDSNGUgYqduYXVzmZckUujPxjEKKP:
+                        jCpzchvYUcpoRSFONjOHiZeWjuenxvzsWSzHDSNGUgYqduYXVzmZckUujPxjEKKP = ocRlQqWLfpOzEMwFoXKJDfITNxnwqBPZxZRozqJwSmMSWkQlsQSDSQhhGUMNPFoE
+                    else:
+                        jCpzchvYUcpoRSFONjOHiZeWjuenxvzsWSzHDSNGUgYqduYXVzmZckUujPxjEKKP = ZkVRYpjvLIgPDXHBIqOxxmcDesUaoHSqLITVbEYZhnONxVvySJWZrTrTwOWhAiwl
+        return AxlkcPzPdMmgkNbizTAFiMuFhhRypAoxvrQVNLKmIqdHkWbzfdMIXmYmFFnjdinW[:-ord(gbmTWTdiXtIeWXKoczPyVtTTHymECNedwWptAPimDnEzzjjFpUNKjNAubLPtdKqv)]
+    raise mYkytITTWrYYnHDUMQrbdffrKiOIniRQCiJwLkAkeQoAfZRxMSnuFhmOhJvztUkw("PKCS7 improper padding {}".format(repr(AxlkcPzPdMmgkNbizTAFiMuFhhRypAoxvrQVNLKmIqdHkWbzfdMIXmYmFFnjdinW[-32:])))
+def ZnSlsMtPHuxZiZtdggZNNZbzlZGOKaVkpkTQLVelCtNuiCQWxtNSxMyhJZsAWbwr(sock, xajyzlziGIBbeDZrDFPxZyRlmXKlrFomInKMTMtEtxtAtMXpyMdrQRsnnxAXXLLz=True, bits=2048):
+    QwhefYfzxMIybSgwntqveYhkBuCIaSZTXFzYlDfoqbGWXgJrTFGdPtcvEcvswsuP = 0xFFFFFFFFFFFFFFFFC90FDAA22168C234C4C6628B80DC1CD129024E088A67CC74020BBEA63B139B22514A08798E3404DDEF9519B3CD3A431B302B0A6DF25F14374FE1356D6D51C245E485B576625E7EC6F44C42E9A637ED6B0BFF5CB6F406B7EDEE386BFB5A899FA5AE9F24117C4B1FE649286651ECE45B3DC2007CB8A163BF0598DA48361C55D39A69163FA8FD24CF5F83655D23DCA3AD961C62F356208552BB9ED529077096966D670C354E4ABC9804F1746C08CA18217C32905E462E36CE3BE39E772C180E86039B2783A2EC07A28FB5C55DF06F4C52C9DE2BCBF6955817183995497CEA956AE515D2261898FA051015728E5A8AACAA68FFFFFFFFFFFFFFFF;
+    HhkHDZwfyTWqOBtCVAPAESOpKepLFKvwwliklmwmvgdmafOiXwsDDHybuWJLxwol = 'kxNmVKLVOdCSQHWGQnxyGVcUNoFLETxBGkpPZaMbEaXebmLvMuNFvMsOoIWyvQWe'
+    mEpwweTvfoJcXSZvIqUogMYlTPbAzbPeJhXOLHbwyGdHRHJOmVVoLuVAcjAexSyy = 'joVgPyKvHJvvvixgrYGWWtbNKIxUVTjgcPpPcEBKgTaYjtVJgrmARzEmDJGwAYAU'
+    zeaHecJNlSTYCPFsMBwzBoyydttWLgGelbUVoLhsfkKLafJMYJBgoAPazCXHcsKn = 'ZOQoaNEoOEBgJcqYasnhGvOsTslipiXtywhJjghseydjFgEPBYaCCMYFwGioDRmW'
+    if HhkHDZwfyTWqOBtCVAPAESOpKepLFKvwwliklmwmvgdmafOiXwsDDHybuWJLxwol == mEpwweTvfoJcXSZvIqUogMYlTPbAzbPeJhXOLHbwyGdHRHJOmVVoLuVAcjAexSyy:
+        EmMBCWRQHNxkFVufELofEeqjuvvFNKOgPRkiOgdbDwGaBNzWHSWXFKAFjoUWIGno = 'hpXsfqCErcLQcaLdXqKOqyoZXILWzsNtAFzMUJeBRHCyyUyCxPlFgItaFiNgEuQs'
+        EmMBCWRQHNxkFVufELofEeqjuvvFNKOgPRkiOgdbDwGaBNzWHSWXFKAFjoUWIGno = HhkHDZwfyTWqOBtCVAPAESOpKepLFKvwwliklmwmvgdmafOiXwsDDHybuWJLxwol
+    else:
+        EmMBCWRQHNxkFVufELofEeqjuvvFNKOgPRkiOgdbDwGaBNzWHSWXFKAFjoUWIGno = 'hpXsfqCErcLQcaLdXqKOqyoZXILWzsNtAFzMUJeBRHCyyUyCxPlFgItaFiNgEuQs'
+        EmMBCWRQHNxkFVufELofEeqjuvvFNKOgPRkiOgdbDwGaBNzWHSWXFKAFjoUWIGno = zeaHecJNlSTYCPFsMBwzBoyydttWLgGelbUVoLhsfkKLafJMYJBgoAPazCXHcsKn
+    haAncVjsAPCkhSgfleFVDEZFmUgBFgUiysDgulVnbzzxCZsGeHYeOlgBwmQbnLYb = 2
+    XVEitcOmCVsTUOilcWQpYLbPouGYOdUEhCwxktamGaDszXimZticZsSXvfUrtjXO = 'xRHMJJLBepfJmenhpyFiWHYbzeUUQFLXPFrGyFFjVyzkObUTqQlTbfsepjXMzmzo'
+    UtPcBefSnZbRkKvwXSmeciOHOKrPtrYWtetssBWKFucsPsjwUrIAXaBWUSYpIzKM = 'YAXLJCerDCVgfToJvBHGgDVbujQvNmVlWfdIbuAFdzASEuUogJvKbYvxMbwjCDOl'
+    SQkNUXiIhmGISUYjfmttROGQnfisRnzLRdsqPHonKbfBCJfAHxcEFZLSdzeoHyxN = 'cqySqCUPcnuOxvUfTpOGHHssIDSsJHAbVosyeqzulnimbaszezmemEXAMVAfEnEb'
+    if XVEitcOmCVsTUOilcWQpYLbPouGYOdUEhCwxktamGaDszXimZticZsSXvfUrtjXO == UtPcBefSnZbRkKvwXSmeciOHOKrPtrYWtetssBWKFucsPsjwUrIAXaBWUSYpIzKM:
+        NxGdEWUGFfdZkNznLjQftJmoJVAaGtRjKIlLuIcZAFSDsXXwbmErcgXFOwcwbdPh = 'hybKvXjaIkdYsuOCbrGGDjKDwQgdzciFUHlxVHrLUcZzbmSPfSVMFEgDPsXppCHt'
+        NxGdEWUGFfdZkNznLjQftJmoJVAaGtRjKIlLuIcZAFSDsXXwbmErcgXFOwcwbdPh = XVEitcOmCVsTUOilcWQpYLbPouGYOdUEhCwxktamGaDszXimZticZsSXvfUrtjXO
+    else:
+        NxGdEWUGFfdZkNznLjQftJmoJVAaGtRjKIlLuIcZAFSDsXXwbmErcgXFOwcwbdPh = 'hybKvXjaIkdYsuOCbrGGDjKDwQgdzciFUHlxVHrLUcZzbmSPfSVMFEgDPsXppCHt'
+        NxGdEWUGFfdZkNznLjQftJmoJVAaGtRjKIlLuIcZAFSDsXXwbmErcgXFOwcwbdPh = SQkNUXiIhmGISUYjfmttROGQnfisRnzLRdsqPHonKbfBCJfAHxcEFZLSdzeoHyxN
+    GXVRLyGZkSMGZhyQAwRDCnGvGLRtbOwJaQaMgLRrToBdVHzfCidEaRrtYtcMguFz = DyLKUhMSRmMHdxtZaTZEJqgMiHuZNMRfmECPOZcZitWcFbSEkMIVtOgEsYTSxezo(os.urandom(32))
+    rmOJRXDZacHlaUdQFJGKVCBEhnjukEQJAwfCPkAKioRjPAvNmDzHmLROxmIEsIpV = pow(haAncVjsAPCkhSgfleFVDEZFmUgBFgUiysDgulVnbzzxCZsGeHYeOlgBwmQbnLYb, GXVRLyGZkSMGZhyQAwRDCnGvGLRtbOwJaQaMgLRrToBdVHzfCidEaRrtYtcMguFz, QwhefYfzxMIybSgwntqveYhkBuCIaSZTXFzYlDfoqbGWXgJrTFGdPtcvEcvswsuP)
+    if xajyzlziGIBbeDZrDFPxZyRlmXKlrFomInKMTMtEtxtAtMXpyMdrQRsnnxAXXLLz:
+        ewkcGORtNckcrqkcZdssyaWwtCViYftNYZATYOzHZGqglkHBssaeoWNWtdLqpmpF = 'DBlWFnxGLKdLdzWHzcTXzhfJQNvcxGjREZzllXUPwFhLizeLtHLaGzouhEjFqXeG'
+        OFSrbxFdLNpkncdfwUlJpQMtCJIQKJWSlKbKLAlepTBQKkJFFWvHPutXDdSQPCFi = 'pxHXyGmSxUUYXajjbOmoWtkwrJViVmnFKpOBTDhKTTWQhgjMMWGZNdZOJoTnjtxC'
+        oFkDiKmSXYjZkzYmFQbgPaMbClOHhLbxwlJQBwtlEEpbMzMvwUuHsMHREzuFcgJA = 'GnnNPoIbqQKIvseNRXEGBbrHkfuNuUfAFkrtybozXNmSVrdpuLLeKOtTfGBYvUpD'
+        TPsScEMcQHCNZsYDlsAWuDAqhfUtYGuNguKzoxdphjELEJGKePQLbmYZUAafwICc = 'OdzZpqXCVEWgVqDpYcxlIIECYRNTdEvnUqymuParIkzabcGVIABJwVljkTNaDFyJ'
+        OXETdyEhdDQBIuSOKZxVZyGZUwdzPvbPARMbNPmuvcEIQFvlEmlrlVXHzOCtPJzd = 'jAvcalkNFgvOVYVeBWYZPHQpKBYSXaFJactBETAASTtCSMpDRThQZirPxXSrHBSG'
+        VrNPlQwnIDbNeufqtnogeVdKjVTXImrhgCMiPChJcnnKdSmFIGSwUtqFQeBJKtcG = 'tnIEVWOrdkGIicUteBGLzIbXLAamfhGoGmJLKeYljZqEnStQLaQxLScnBbyGjGGr'
+        if ewkcGORtNckcrqkcZdssyaWwtCViYftNYZATYOzHZGqglkHBssaeoWNWtdLqpmpF != TPsScEMcQHCNZsYDlsAWuDAqhfUtYGuNguKzoxdphjELEJGKePQLbmYZUAafwICc:
+            OFSrbxFdLNpkncdfwUlJpQMtCJIQKJWSlKbKLAlepTBQKkJFFWvHPutXDdSQPCFi = oFkDiKmSXYjZkzYmFQbgPaMbClOHhLbxwlJQBwtlEEpbMzMvwUuHsMHREzuFcgJA
+            for VrNPlQwnIDbNeufqtnogeVdKjVTXImrhgCMiPChJcnnKdSmFIGSwUtqFQeBJKtcG in TPsScEMcQHCNZsYDlsAWuDAqhfUtYGuNguKzoxdphjELEJGKePQLbmYZUAafwICc:
+                if VrNPlQwnIDbNeufqtnogeVdKjVTXImrhgCMiPChJcnnKdSmFIGSwUtqFQeBJKtcG != oFkDiKmSXYjZkzYmFQbgPaMbClOHhLbxwlJQBwtlEEpbMzMvwUuHsMHREzuFcgJA:
+                    OFSrbxFdLNpkncdfwUlJpQMtCJIQKJWSlKbKLAlepTBQKkJFFWvHPutXDdSQPCFi = OFSrbxFdLNpkncdfwUlJpQMtCJIQKJWSlKbKLAlepTBQKkJFFWvHPutXDdSQPCFi
+                else:
+                    OXETdyEhdDQBIuSOKZxVZyGZUwdzPvbPARMbNPmuvcEIQFvlEmlrlVXHzOCtPJzd = ewkcGORtNckcrqkcZdssyaWwtCViYftNYZATYOzHZGqglkHBssaeoWNWtdLqpmpF
+        else:
+            oFkDiKmSXYjZkzYmFQbgPaMbClOHhLbxwlJQBwtlEEpbMzMvwUuHsMHREzuFcgJA = ewkcGORtNckcrqkcZdssyaWwtCViYftNYZATYOzHZGqglkHBssaeoWNWtdLqpmpF
+            ewkcGORtNckcrqkcZdssyaWwtCViYftNYZATYOzHZGqglkHBssaeoWNWtdLqpmpF = OXETdyEhdDQBIuSOKZxVZyGZUwdzPvbPARMbNPmuvcEIQFvlEmlrlVXHzOCtPJzd
+            if oFkDiKmSXYjZkzYmFQbgPaMbClOHhLbxwlJQBwtlEEpbMzMvwUuHsMHREzuFcgJA == ewkcGORtNckcrqkcZdssyaWwtCViYftNYZATYOzHZGqglkHBssaeoWNWtdLqpmpF:
+                for VrNPlQwnIDbNeufqtnogeVdKjVTXImrhgCMiPChJcnnKdSmFIGSwUtqFQeBJKtcG in ewkcGORtNckcrqkcZdssyaWwtCViYftNYZATYOzHZGqglkHBssaeoWNWtdLqpmpF:
+                    if VrNPlQwnIDbNeufqtnogeVdKjVTXImrhgCMiPChJcnnKdSmFIGSwUtqFQeBJKtcG == oFkDiKmSXYjZkzYmFQbgPaMbClOHhLbxwlJQBwtlEEpbMzMvwUuHsMHREzuFcgJA:
+                        oFkDiKmSXYjZkzYmFQbgPaMbClOHhLbxwlJQBwtlEEpbMzMvwUuHsMHREzuFcgJA = ewkcGORtNckcrqkcZdssyaWwtCViYftNYZATYOzHZGqglkHBssaeoWNWtdLqpmpF
+                    else:
+                        oFkDiKmSXYjZkzYmFQbgPaMbClOHhLbxwlJQBwtlEEpbMzMvwUuHsMHREzuFcgJA = OXETdyEhdDQBIuSOKZxVZyGZUwdzPvbPARMbNPmuvcEIQFvlEmlrlVXHzOCtPJzd
+        sock.send(VzzgfTETnqDqnDkwVBuHwdNpscAWWNXYkNmIDZfqIHbstkwgXsIkvNjZJQhINwEp(rmOJRXDZacHlaUdQFJGKVCBEhnjukEQJAwfCPkAKioRjPAvNmDzHmLROxmIEsIpV))
+        FpGVApwxPfyDzMJEWnVihlQiUIvGaQEpfCIptkfqeNqthYQMHVpSCmSlSBjKTsSx = DyLKUhMSRmMHdxtZaTZEJqgMiHuZNMRfmECPOZcZitWcFbSEkMIVtOgEsYTSxezo(sock.recv(4096))
+    else:
+        nsYbWAtKSXXzHbuiLeKCQOLrNElDAJmzjILDXvdjwZsrUcamIPRLclkEsBglBLCy = 'fciwDQDDeBMyOqIHqKCSIfzRUYXTfGQvhOJeTrufJmbqReamtIFgGRFaFSAVkzUQ'
+        rhhEIcJYqKnIUgMrBAYcgcmkBJaPkrPtVBdcboJMMbGDRxVpZAUINSKOWpWMiywo = 'dRvjzQiaHFqYMylgKvZqyaTfMSLBOuvVXNhIViqtscesXcMzaKcxylyDOMBjKhAK'
+        tGNlKcRzUmwMKEKNkDUXtciGeCbjnYRehElcWKbIMsRIgwsckhveTIHWPqIIRgTX = 'lFSpkFbScbvfrNFNxeQcdejNEwarrqtvwmDMAKcdkhLazpPgONiUHzYTlWAPjEGZ'
+        wUyOfBNyTjvUNDeIPqwDdSTikRpZsbYVPalgvTbhwKLeoUHVdXnlQHWzpypGleeu = 'GPKBJKAKVBPvyYlsjrLqbTkjqBNorgYJDhAByrmxRitCSpJCyqxxFmMcHtDMIjqy'
+        kpVkjXERcrIcQJANWwfySCOTstbROaoSElvlxRTepERcmFwjRBUVwwdDrIaxYjty = 'OterKdetgxhWOorSmxRIuFzctwntQbZqlMKLRMYtiBgArUEVIwndUJxpgFzMUvGr'
+        if nsYbWAtKSXXzHbuiLeKCQOLrNElDAJmzjILDXvdjwZsrUcamIPRLclkEsBglBLCy in rhhEIcJYqKnIUgMrBAYcgcmkBJaPkrPtVBdcboJMMbGDRxVpZAUINSKOWpWMiywo:
+            nsYbWAtKSXXzHbuiLeKCQOLrNElDAJmzjILDXvdjwZsrUcamIPRLclkEsBglBLCy = kpVkjXERcrIcQJANWwfySCOTstbROaoSElvlxRTepERcmFwjRBUVwwdDrIaxYjty
+            if rhhEIcJYqKnIUgMrBAYcgcmkBJaPkrPtVBdcboJMMbGDRxVpZAUINSKOWpWMiywo in tGNlKcRzUmwMKEKNkDUXtciGeCbjnYRehElcWKbIMsRIgwsckhveTIHWPqIIRgTX:
+                rhhEIcJYqKnIUgMrBAYcgcmkBJaPkrPtVBdcboJMMbGDRxVpZAUINSKOWpWMiywo = wUyOfBNyTjvUNDeIPqwDdSTikRpZsbYVPalgvTbhwKLeoUHVdXnlQHWzpypGleeu
+        elif rhhEIcJYqKnIUgMrBAYcgcmkBJaPkrPtVBdcboJMMbGDRxVpZAUINSKOWpWMiywo in nsYbWAtKSXXzHbuiLeKCQOLrNElDAJmzjILDXvdjwZsrUcamIPRLclkEsBglBLCy:
+            tGNlKcRzUmwMKEKNkDUXtciGeCbjnYRehElcWKbIMsRIgwsckhveTIHWPqIIRgTX = rhhEIcJYqKnIUgMrBAYcgcmkBJaPkrPtVBdcboJMMbGDRxVpZAUINSKOWpWMiywo
+            if tGNlKcRzUmwMKEKNkDUXtciGeCbjnYRehElcWKbIMsRIgwsckhveTIHWPqIIRgTX in rhhEIcJYqKnIUgMrBAYcgcmkBJaPkrPtVBdcboJMMbGDRxVpZAUINSKOWpWMiywo:
+                rhhEIcJYqKnIUgMrBAYcgcmkBJaPkrPtVBdcboJMMbGDRxVpZAUINSKOWpWMiywo = kpVkjXERcrIcQJANWwfySCOTstbROaoSElvlxRTepERcmFwjRBUVwwdDrIaxYjty
+        FpGVApwxPfyDzMJEWnVihlQiUIvGaQEpfCIptkfqeNqthYQMHVpSCmSlSBjKTsSx = DyLKUhMSRmMHdxtZaTZEJqgMiHuZNMRfmECPOZcZitWcFbSEkMIVtOgEsYTSxezo(sock.recv(4096))
+        sock.send(VzzgfTETnqDqnDkwVBuHwdNpscAWWNXYkNmIDZfqIHbstkwgXsIkvNjZJQhINwEp(rmOJRXDZacHlaUdQFJGKVCBEhnjukEQJAwfCPkAKioRjPAvNmDzHmLROxmIEsIpV))
+    AxlkcPzPdMmgkNbizTAFiMuFhhRypAoxvrQVNLKmIqdHkWbzfdMIXmYmFFnjdinW = pow(FpGVApwxPfyDzMJEWnVihlQiUIvGaQEpfCIptkfqeNqthYQMHVpSCmSlSBjKTsSx, GXVRLyGZkSMGZhyQAwRDCnGvGLRtbOwJaQaMgLRrToBdVHzfCidEaRrtYtcMguFz, QwhefYfzxMIybSgwntqveYhkBuCIaSZTXFzYlDfoqbGWXgJrTFGdPtcvEcvswsuP)
+    return SHA256.new(VzzgfTETnqDqnDkwVBuHwdNpscAWWNXYkNmIDZfqIHbstkwgXsIkvNjZJQhINwEp(AxlkcPzPdMmgkNbizTAFiMuFhhRypAoxvrQVNLKmIqdHkWbzfdMIXmYmFFnjdinW)).digest()
+def aRmegvZNDGuhCtVQAlakKtZRoZafnQqupvFkrdupYnNDQMdYpuVagixWOykbEOkE(LzCkijqYFmwpuPdtoOUOBEZKFDOsYzjTbJYXSLPPDFtEnfmyaPVxBOywQtdsxaAY, KEY):
+    LzCkijqYFmwpuPdtoOUOBEZKFDOsYzjTbJYXSLPPDFtEnfmyaPVxBOywQtdsxaAY = ciAauDxPKpiuIrwJOkVOHDRiyzfyGtWyrIWwcbXSLmYfWVbBSjarmhLBTPkLtlAM(LzCkijqYFmwpuPdtoOUOBEZKFDOsYzjTbJYXSLPPDFtEnfmyaPVxBOywQtdsxaAY)
+    pomqRkLaazDlWHNckmjavyDBpFpnRrRIpykliSDFDGZTlZDtLQkmKrXkWRhPKHKB = Random.new().read(AES.block_size)
+    JgNpEzsSeifOTWRsdGzRqGUnnCpGfLTRPdbKZiDhTJcxyhnBDtzZUdfMJnvghzOZ = AES.new(KEY, AES.MODE_CBC, pomqRkLaazDlWHNckmjavyDBpFpnRrRIpykliSDFDGZTlZDtLQkmKrXkWRhPKHKB)
+    return pomqRkLaazDlWHNckmjavyDBpFpnRrRIpykliSDFDGZTlZDtLQkmKrXkWRhPKHKB + JgNpEzsSeifOTWRsdGzRqGUnnCpGfLTRPdbKZiDhTJcxyhnBDtzZUdfMJnvghzOZ.encrypt(LzCkijqYFmwpuPdtoOUOBEZKFDOsYzjTbJYXSLPPDFtEnfmyaPVxBOywQtdsxaAY)
+def gzbycLsDIoAAIdkKrPhXzOCBShxQOsZnySBSMqTNGnQftXQwITlzDOwUPzFObZoY(ciphertext, KEY):
+    pomqRkLaazDlWHNckmjavyDBpFpnRrRIpykliSDFDGZTlZDtLQkmKrXkWRhPKHKB = ciphertext[:AES.block_size]
+    JgNpEzsSeifOTWRsdGzRqGUnnCpGfLTRPdbKZiDhTJcxyhnBDtzZUdfMJnvghzOZ = AES.new(KEY, AES.MODE_CBC, pomqRkLaazDlWHNckmjavyDBpFpnRrRIpykliSDFDGZTlZDtLQkmKrXkWRhPKHKB)
+    LzCkijqYFmwpuPdtoOUOBEZKFDOsYzjTbJYXSLPPDFtEnfmyaPVxBOywQtdsxaAY = JgNpEzsSeifOTWRsdGzRqGUnnCpGfLTRPdbKZiDhTJcxyhnBDtzZUdfMJnvghzOZ.decrypt(ciphertext[AES.block_size:])
+    return BodAoierTToGfVSQozgBfsroKQNCziIpUZREeysKXGdxIZFSWKfqxZWKepaWnjEV(LzCkijqYFmwpuPdtoOUOBEZKFDOsYzjTbJYXSLPPDFtEnfmyaPVxBOywQtdsxaAY)

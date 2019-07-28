@@ -1,3 +1,0 @@
-TcbMoYIWpCeSIdaGVCenlGGCzCXqYajG="""
-"""
-exec(TcbMoYIWpCeSIdaGVCenlGGCzCXqYajG)
