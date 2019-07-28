@@ -6,7 +6,7 @@
 
 ## What is this ?
 - Intensio-Obfsucator tool takes a python source code and transform it into an obfuscated python code
-  - **Replace** all names of `variables/classes/functions/files-name` to random strings and with length defined and all `chars` to their hexadecimal value
+  - **Replace** all names of `variables/classes/functions/files-name` to random strings with length defined and all `chars` to their hexadecimal value
   - **Remove** all `commentaries`, all `lines breaks` and all `print()` functions
   - **Add** to each line a random `scripts` with an always differents values
 
@@ -39,7 +39,7 @@
 | Mixerlevel medium | Generate random strings of 64 chars when `--replacetostr` or `--paddingscripts` or `--replacetohex` or `--replacefilesname`features are specified |
 | Mixerlevel high | Generate random strings of 128 chars when `--replacetostr` or `--paddingscripts` or `--replacetohex` or `--replacefilesname` features are specified |
 
-- `Replace strings to strings mixed`, `Padding scripts`, `Remove print`, `Replace strings to hex` and `Replace files name` features can be executed separatly
+- `Replace strings to strings mixed`, `Padding scripts`, `Remove print`, `Replace strings to hex`, `Replace files name` features can be executed separatly
 
 ## Usages
 | Parameters | Descriptions |
