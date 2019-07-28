@@ -211,19 +211,17 @@ def main():
             replaceData = Replace()
 
         if (replaceData.StringsToHex(args.GetArgsValue().code, args.GetArgsValue().output, args.GetArgsValue().mixerlevel) == EXIT_SUCCESS):
-            print("\n[+] Obfuscation replace strings to hex -> " + SUCESS_COLOUR + "Successful")
+            print("\n[+] Obfuscation replace strings to hex -> " + SUCESS_COLOUR + "Successful\n")
         else:
-            print("\n[-] Obfuscation replace strings to hex -> " + FAILED_COLOUR + "Failed")
+            print("\n[-] Obfuscation replace strings to hex -> " + FAILED_COLOUR + "Failed\n")
     else:
-        print("[!] Obfuscation replace strings to hex no asked !")
+        print("[!] Obfuscation replace strings to hex no asked !\n")
 
-    # -- Remove trash files in output directory -- #
-    print(SECTION_COLOUR + "\n\n************************* [ Remove trash python files ] *************************\n")
+    # -- Remove if only python files compiled in output directory -- #
     if (removeData.TrashFiles(args.GetArgsValue().code, args.GetArgsValue().output) > 0):
-        print("\n[+] Remove .pyc files in output directory -> " + SUCESS_COLOUR + "Successful\n")
-    elif (removeData.TrashFiles(args.GetArgsValue().code, args.GetArgsValue().output) == 0):
-        print("\n[!] No .pyc files in output directory\n")
+        pass
     else:
+        print(SECTION_COLOUR + "\n**************************** [ Remove pyc files ] *****************************\n")
         print("\n[-] Remove .pyc files in output directory -> " + FAILED_COLOUR + "Failed\n")
 
 #----------------------------------------------------------------------------------------------------------------------------#
