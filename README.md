@@ -66,7 +66,7 @@
 - [Python target files](docs/examples/python_code_examples.md)
 
 ## Demo
-![Python target files demo](docs/demo/intensio_obfuscator_demo_python_files.gif)
+![Python target files demo](docs/demo/intensio_obfuscator_python_demo_exec.gif)
 
 ## Todo
 - Version 1.0.1-x:
