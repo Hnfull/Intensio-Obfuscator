@@ -42,13 +42,18 @@
 - `Replace strings to strings mixed`, `Padding scripts`, `Remove print`, `Replace strings to hex`, `Replace files name` features can be executed separatly
 
 ## Usages
+- **Read these Documentations before to use Intensio-Obfuscator tool**
+    - [Steps of usage](docs/steps_usage/python_steps_usage.md)
+    - [Recommendations](docs/recommendations/python_code_recommendations.md)
+    - [Malfunctions](docs/malfunctions/python_code_malfunctions.md)
+    
 | Parameters | Descriptions |
 | ------ | ------ |
 | -h, --help | show this help message and exit |
 | -i, --input  | source directory - indicate a directory that contain your file(s) |
 | -c, --code | language used in input directory, default value: [python], possible value: [python] |
 | -o, --output | output directory that will be obfuscated - indicate a empty directory that will contain your file(s) |
-| -m, --mixerlevel | generate random strings of [lower:32 - medium:64 - high:128] chars when `--replacetostr` or `--paddingscripts` or `--replacetohex` features are specified, default value: [medium], possible values: [lower - medium - high]|
+| -m, --mixerlevel | generate random strings of [ `lower:32` \| `medium:64` \| `high:128` ] chars when `--replacetostr` or `--paddingscripts` or `--replacetohex` features are specified, default value: [medium], possible values: [lower - medium - high]|
 | -rts, --replacetostr | activate the `replace strings to strings mixed` obfuscation feature |
 | -ps, --paddingscripts | activate the `padding scripts` obfuscation feature |
 | -rc, --removecommentaries | activate the `remove commentaries` obfuscation feature (this feature is executed by default) |
@@ -56,11 +61,6 @@
 | -rth, --replacetohex | activate the `replace strings to hex` obfuscation feature |
 | -rfn, --replacefilesname | activate the `replace files name` obfuscation feature |
 | -v, --verbose | improve verbosity |
-
-- **Read these Documentations before to use Intensio-Obfuscator tool**
-    - [Steps of usage](docs/steps_usage/python_steps_usage.md)
-    - [Recommendations](docs/recommendations/python_code_recommendations.md)
-    - [Malfunctions](docs/malfunctions/python_code_malfunctions.md)
 
 ## Examples
 - [Python target files](docs/examples/python_code_examples.md)
@@ -73,7 +73,7 @@
     - Code optimization
     - Fix bugs and problems
     - Improved features already present
-    - See the enchancement in the section issue
+    - See the enchancement in the issue section
     
 - Version 1.1.0-x:
     - Stable version
