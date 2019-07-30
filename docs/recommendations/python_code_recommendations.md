@@ -1,7 +1,7 @@
 # Mandatory recommendations  
 
 
-#### 1) The `-rc --removecommentaries` (parameter by default) should not be disabled, otherwise the other features can generate errors
+### 1) The `-rc --removecommentaries` (parameter by default) should not be disabled, otherwise the other features can generate errors
 - Can generate an error = **yes**
 - **Recommended:**
     - Not modify the default execution of this feature
@@ -10,7 +10,7 @@
     - Desactivate the default execution of this feature
 
 
-#### 2) Do not define your names of local `variables/classes/functions` of your program identically to keywords python of `functions/classes` (keywords) of imported libraries
+### 2) Do not define your names of local `variables/classes/functions` of your source program identically to keywords python of `functions/classes` (keywords) of imported libraries
 - Can generate an error = **yes**
 - **Recommended:**
     ```python
@@ -32,7 +32,7 @@
     # add_argument variable defined is already an function of argparse library :(
     ```
 
-#### 3) You ought exclude python keywords of libraries of your program which will be taken by the `-rts, --replacetostr` feature 
+### 3) You ought exclude python keywords of libraries of your program which will be taken by the `-rts, --replacetostr` feature 
 - Can generate an error = **yes**
 - **Recommended:**
     ```python
@@ -44,7 +44,7 @@
     - Edit [words exclusion](../../intensio/exclude/python/exclude_python_words.txt) and add keywords `choices`, `default` and `help` of argparse library, because the Replace feature take all variables, with this rule `variables=`
 
 
-#### 4) If `#` commentary after line of code, can potentially generate an error if `-rc, --removecommentaries` feature not recognize commentary correctly and remove the code of line
+### 4) If `#` commentary after line of code, can potentially generate an error if `-rc, --removecommentaries` feature not recognize commentary correctly and remove the code of line
 - Can generate an error = **no**
 - **Recommended:**
     ```python
@@ -57,7 +57,7 @@
     test = 'test'# it's a test
     ```
 
-#### 5) All commentaries between `"""` or `'''` on multiple lines should be exactly as in source code examples
+### 5) All commentaries between `"""` or `'''` on multiple lines should be exactly as in source code examples
 - Can generate an error = **yes**
 - **Recommended:**
     ```python
@@ -77,7 +77,7 @@
     see the the placement of quotes :(
     ```
 
-#### 6) If a variable containt text between `"""` or `'''` on multiple lines should be exactly as in source code examples
+### 6) If a variable containt text between `"""` or `'''` on multiple lines should be exactly as in source code examples
 - Can generate an error = **yes**
 - **Recommended:**
     ```python
@@ -98,7 +98,7 @@
     see the the placement of quotes :(
     ```
     
-#### 7) If your value is between `[]` or `()` or `{}` in your source code, the `-ps, --paddingscripts` feature may react differently depending on the code written
+### 7) If your value is between `[]` or `()` or `{}` in your source code, the `-ps, --paddingscripts` feature may react differently depending on the code written
 - Can generate an error = **no**
 - **Recommended**
     ```python
@@ -125,7 +125,7 @@
     # padding script here
     ```
 
-#### 8) If multiple variables follow on a line, the `-rts, --replacetostr` feature does not recognize a particular case
+### 8) If multiple variables follow on a line, the `-rts, --replacetostr` feature does not recognize a particular case
 - Can generate an error = **no**
 - Code example
     ```python
@@ -136,7 +136,7 @@
     - This tool not recognize this case, you should edit [words inclusion](../../intensio/include/python/include_python_words.txt) and add your `cmd` variable, only `action` variable is replaced automaticaly
 
 
-#### 9) If a variables/classes/functions are not takin by `-rts, --Replacetostr` feature (optionnal)
+### 9) If a variables/classes/functions are not takin by `-rts, --Replacetostr` feature (optionnal)
 - Can generate an error = **no**
 - **Recommended:**
     - Edit [words inclusion](../../intensio/include/python/include_python_words.txt) and add your variables/classes/functions name
