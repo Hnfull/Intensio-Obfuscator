@@ -679,8 +679,11 @@ class Replace:
                                     checkFilesFound.remove(i)
                                     continue
 
-        if (remove.Backslashes(codeArg, outputArg) == 0):    
-            return EXIT_SUCCESS        
+        if checkFilesFound == []:
+            if (remove.Backslashes(codeArg, outputArg) == 0):    
+                return EXIT_SUCCESS        
+            else:
+                return EXIT_FAILURE
         else:
             return EXIT_FAILURE
 
