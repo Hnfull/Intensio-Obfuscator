@@ -21,9 +21,9 @@ from core.utils.intensio_error import EXIT_SUCCESS, EXIT_FAILURE, ERROR_BAD_ARGU
 class Padding:
 
     def __init__(self):
-        self.mixer              = Mixer()
-        self.remove             = Remove()
-        self.utils              = Utils()
+        self.mixer  = Mixer()
+        self.remove = Remove()
+        self.utils  = Utils()
 
 
     def ScriptsGenerator(self, codeArg, mixerLevelArg):
@@ -410,7 +410,6 @@ class Padding:
                 print("\n-> {0} scripts added in {1} file(s)\n".format(countScriptsAdded, countRecursFiles))
                 print("-> {0} lines added in {1} file(s)\n".format(countLineAdded, countRecursFiles))
                 return EXIT_SUCCESS
-                
             else:
                 return EXIT_FAILURE
         else:

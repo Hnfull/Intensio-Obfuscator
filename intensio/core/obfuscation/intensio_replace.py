@@ -202,6 +202,7 @@ class Replace:
         if codeArg == "python":
             detectFiles = "py"
             blockDir    = "__pycache__"
+            blockFile   = "__init__"
 
             functionsDefined        = r"def\s(\w+)"                             # Functions
             classDefined            = r"class\s(\w+)"                           # Classes
@@ -259,7 +260,7 @@ class Replace:
                             mixer = self.mixer.GetStringMixer(mixerLevelArg)
                             if search.group(1) not in functionsDict:
                                 if codeArg == "python":
-                                    if not re.match(r"__init__", search.group(1)):
+                                    if not blockFile in search.group(1):
                                         functionsDict[search.group(1)] = mixer
 
                         # -- Classes -- #
@@ -458,8 +459,11 @@ class Replace:
         remove              = Remove()
 
         if codeArg == "python":
-            detectFiles         = "py"
-            blockDir           = "__pycache__"
+            detectFiles = "py"
+            blockDir    = "__pycache__"
+
+            detectExecFunc  = r"exec\(\w+\)"
+            detectQuotes    = r"[\'|\"]{3}"
 
         recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, utils.Platform(), detectFiles), recursive=True)]
 
@@ -478,9 +482,10 @@ class Replace:
                 else:
                     # -- Add a new first random line and move the old first line to the second line to avoid replacing it -- #
                     with open(file, "r") as inputFile:
-                        stringRandomMixer = mixer.GetStringMixer(mixerLevelArg)
-                        firstLine = "{0}\n".format(stringRandomMixer)
-                        line      = inputFile.readlines()
+                        stringRandomMixer   = mixer.GetStringMixer(mixerLevelArg)
+                        firstLine           = "{0}\n".format(stringRandomMixer)
+                        line                = inputFile.readlines()
+
                         line.insert(0, firstLine)
 
                     with open(file, "w") as inputFile:
@@ -500,24 +505,32 @@ class Replace:
                                     getLetterLineList.append(letterToHex) # Get list of all letters in line          
                                 hexLine = "".join(getLetterLineList)
                                 print(hexLine)
-                    
+
+                    # -- Add exec funtions to interpret hex code in strings -- #
                     with open(file, "a") as inputFile:
                         inputFile.write("\"\"\"")
                         inputFile.write("\nexec({0})".format(varMixer))
 
-        # -- Check if all line are replaced of hexadecimal value -- #
+        # -- Check if all lines are replaced of hexadecimal value -- #
         for file in recursFiles: 
-            with open(file, "r") as inputFile:
-                for eachLine in inputFile:
-                    if blockDir in file:
-                        continue
-                    else:
+            if blockDir in file:
+                continue
+            else:
+                with open(file, "r") as inputFile:
+                    for eachLine in inputFile:
                         if not eachLine:
                             continue
                         else:
-                            if not re.match(r"\\x", eachLine) and re.match(r"[\'|\"]{3}", eachLine):
-                                checkError = True
-        
+                            if not "\\x" in eachLine:
+                                if re.match(detectQuotes, eachLine):
+                                    continue
+                                elif re.match(detectExecFunc, eachLine):
+                                    continue
+                                else:
+                                    checkError = True
+                            else:
+                                continue
+            
         if (remove.Backslashes(codeArg, outputArg) == 0):
             if checkHexError == False:
                 return EXIT_SUCCESS        
@@ -528,25 +541,28 @@ class Replace:
 
 
     def FilesName(self, codeArg, outputArg, mixerLevelArg, verboseArg):
-        filesNameDict       = {}
-        filesNameDictNoExt  = {}
-        filesNameFound      = []
-        filesNameFoundNoExt = []
-        filesNameMixed      = []
-        countRecursFiles    = 0
-        checkRenameInDir    = 0
-        checkRenameInCode   = 0
-        unix                = False
-        win                 = False
-        currentPosition     = os.getcwd()
-        utils               = Utils()
-        mixer               = Mixer()
-        remove              = Remove()
+        filesNameDict           = {}
+        filesNameDictNoExt      = {}
+        filesNameFound          = []
+        filesNameFoundNoExt     = []
+        filesNameMixed          = []
+        checkFilesFound         = []
+        countRecursFiles        = 0
+        checkRenameInDir        = 0
+        checkRenameInCode       = 0
+        unix                    = False
+        win                     = False
+        currentPosition         = os.getcwd()
+        utils                   = Utils()
+        mixer                   = Mixer()
+        remove                  = Remove()
 
         if codeArg == "python":
-            detectFiles         = "py"
-            blockDir            = "__pycache__"
-            blockFile           = "__init__"
+            detectFiles = "py"
+            blockDir    = "__pycache__"
+            blockFile   = "__init__"
+
+            detectImport = r"\s*from\s+|\s*import\s+"
     
         recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, utils.Platform(), detectFiles), recursive=True)]
 
@@ -564,6 +580,8 @@ class Replace:
                     parseFilePath = file.split("/")
                     unix = True
 
+                checkFilesFound.append(file)
+
                 mixer = self.mixer.GetStringMixer(mixerLevelArg)
                 filesNameDict[parseFilePath[-1]] = mixer + ".py" 
                 filesNameDictNoExt[parseFilePath[-1].replace(".py", "")] = mixer
@@ -573,7 +591,6 @@ class Replace:
 
                 removeExt = parseFilePath[-1].replace(".py","")
                 filesNameFoundNoExt.append(removeExt)
-      
             
         # -- Diplay all files found with their mixed values if verbose arg is actived -- #
         if verboseArg:
@@ -598,7 +615,7 @@ class Replace:
                                    for fileNameNoExt in filesNameFoundNoExt:
                                         if fileName in eachLine or fileNameNoExt in eachLine:
                                             if not ".py" in eachLine:
-                                                if re.match(r"\s*from\s+|\s*import\s+", eachLine):
+                                                if re.match(detectImport, eachLine):
                                                     eachLine = Replace.EachLine(self, codeArg, eachLine, filesNameDictNoExt.items(), True)
                                                     print(eachLine)
                                                     raise BreakLoop
@@ -633,7 +650,34 @@ class Replace:
                             os.rename(key, value)
                         else:
                             continue
-                    os.chdir(currentPosition) # Return to old position        
+                    os.chdir(currentPosition) # Return to old position   
+
+        # -- Check if all files name are been replaced to random strings with length defined -- #    
+        for i in checkFilesFound:
+            i.replace(".py", "")
+
+        # -- Check for file(s) name -- #
+        for file in recursFiles:
+            if blockDir in file or blockFile in file:
+                continue
+            else:
+                for i in checkFilesFound:
+                    if i in file:
+                        checkFilesFound.remove(i)
+                        continue
+
+        # -- Check for code if file(s) name -- #
+        if checkFilesFound != []:
+            for file in recursFiles:
+                if blockDir in file or blockFile in file:
+                    continue
+                else:
+                    with open(file, "r") as inputFile:
+                        for line in inputFile:
+                            for i in checkFilesFound:
+                                if i in line:
+                                    checkFilesFound.remove(i)
+                                    continue
 
         if (remove.Backslashes(codeArg, outputArg) == 0):    
             return EXIT_SUCCESS        

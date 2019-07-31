@@ -233,7 +233,10 @@ class Remove:
             detectFiles = "py"
             blockDir    = "__pycache__"
 
-            detectPrint = r"\s*print"
+            detectPrint                     = r"\s*print"
+            detectPythonPrint2              = r"\s*print\s*[\"|\']{1}"
+            detectPythonPrint3              = r"\s*print\s*\({1}"
+            detectPythonPrintMultipleLines  = r"^\s+[\"\']{1}\s*\w+|^[\"\']{1}\s*\w+"
 
         recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.utils.Platform(), detectFiles), recursive=True)]
 
@@ -254,14 +257,14 @@ class Remove:
                             if re.match(detectPrint, eachLine):
                                 countPrintLine += 1
                                 # -- If print() python 3 is multiple lines -- #
-                                if re.match(r"\s*print\s*\({1}", eachLine):
+                                if re.match(detectPythonPrint3, eachLine):
                                     if "(" in eachLine and not ")" in eachLine:
                                         checkPrintPy3MultipleLines += 1
                                         continue
                                     else:
                                         continue
                                 # -- If print python 2 is multiple lines -- #        
-                                elif re.match(r"\s*print\s*[\"|\']{1}", eachLine):
+                                elif re.match(detectPythonPrint2, eachLine):
                                     checkPrintPy2MultipleLines += 1
                                     continue
                             else:
@@ -272,7 +275,7 @@ class Remove:
                                     else:
                                         continue
                                 elif checkPrintPy2MultipleLines > 0:
-                                    if re.match(r"^\s+[\"\']{1}\s*\w+|^[\"\']{1}\s*\w+", eachLine):
+                                    if re.match(detectPythonPrintMultipleLines, eachLine):
                                         checkPrintPy2MultipleLines += 1
                                         continue
                                     else:
@@ -310,12 +313,21 @@ class Remove:
             detectFiles = "pyc"
             blockDir    = "__pycache__"
 
+            detectFilesPycFile = r"\w+\.{1}pyc"
+
         recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.utils.Platform(), detectFiles), recursive=True)]
         
         try:
+            # -- Remove pyc file(s)
             for file in recursFiles:    
                 os.remove(file)
                 removeFiles += removeFiles + 1
+
+            # -- Check if pyc file(s) are removed
+            for file in recursFiles:
+                if re.match(detectFilesPycFile, file):
+                    return EXIT_FAILURE
+
             return removeFiles
         except Exception as e:
             print(ERROR_COLOUR + "[-] {0}".format(e))

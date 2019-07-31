@@ -10,6 +10,7 @@ import string
 #--------------------------------------------------- [Function(s)/Class] ----------------------------------------------------#
 
 class Mixer:
+    
     def __init__(self):
         self.lenLower   = 32
         self.lenMedium  = 64

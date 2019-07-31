@@ -163,7 +163,7 @@ def main():
         if (replaceData.StringsToStrings(args.GetArgsValue().code, args.GetArgsValue().output, args.GetArgsValue().mixerlevel, args.GetArgsValue().verbose) == EXIT_SUCCESS):
             print("[+] Obfuscation replace strings to strings mixed -> " + SUCESS_COLOUR + "Successful")
         else:
-            print("\n[-] Obfuscation replace strings to strings mixed-> " + FAILED_COLOUR +  "Failed")
+            print("\n[-] Obfuscation replace strings to strings mixed -> " + FAILED_COLOUR +  "Failed")
     else:
         print("[!] Obfuscation replace strings to strings mixed no asked !")
     
@@ -197,7 +197,7 @@ def main():
             replaceData = Replace()
 
         if (replaceData.FilesName(args.GetArgsValue().code, args.GetArgsValue().output, args.GetArgsValue().mixerlevel, args.GetArgsValue().verbose) == EXIT_SUCCESS):
-            print("\n[+] Obfuscation replace files name  -> " + SUCESS_COLOUR + "Successful")
+            print("\n[+] Obfuscation replace files name -> " + SUCESS_COLOUR + "Successful")
         else:
             print("\n[-] Obfuscation replace files name -> " + FAILED_COLOUR + "Failed")
     else:
@@ -217,7 +217,7 @@ def main():
     else:
         print("[!] Obfuscation replace strings to hex no asked !\n")
 
-    # -- Remove if only python files compiled in output directory -- #
+    # -- Remove if python pyc file(s) in output directory -- #
     if (removeData.TrashFiles(args.GetArgsValue().code, args.GetArgsValue().output) > 0):
         pass
     else:
