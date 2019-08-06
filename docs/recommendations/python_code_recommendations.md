@@ -10,7 +10,7 @@
     - Desactivate the default execution of this feature
 
 
-### 2) Do not define your names of local `variables/classes/functions` of your source program identically to keywords python of `functions/classes` (keywords) of imported libraries
+### 2) Do not define your names of local `variables/classes/functions` in your source program identically to `functions/classes/parameters-of-function` names of imported libraries
 - Can generate an error = **yes**
 - **Recommended:**
     ```python
@@ -19,7 +19,7 @@
     yourChoices = input("number :")
     print(yourChoices)
 
-    # 'yourChoices' variable defined is not a function or parameter of argparse library, 'add_arguments' will not be replaced by [-rts --replacetostr] parameter 
+    # 'yourChoices' variable defined have not the same name with function or parameter of function/class of argparse library, so 'add_arguments' will not be replaced by [-rts --replacetostr] feature
     ```
 
 - **Not recommended:**
@@ -29,10 +29,10 @@
     add_argument = input("number :") # Line of error
     print(add_argument)
 
-    # 'add_argument' variable defined is already an function of argparse library, all 'add_arguments' will be replaced by [-rts --replacetostr] parameter
+    # 'add_argument' variable defined is already a name of function of argparse library, all 'add_arguments' will be replaced by [-rts --replacetostr] feature
     ```
 
-### 3) You ought exclude python keywords of libraries of your program which will be taken by the `-rts, --replacetostr` feature 
+### 3) You must exclude the parameters of the functions/classes of imported libraries into your source program otherwise they will be taken by the `-rts, --replacetostr` feature 
 - Can generate an error = **yes**
 - **Recommended:**
     ```python
@@ -41,9 +41,9 @@
     yourChoices = input("number :")
     print(yourChoices)
     
-    # The [-rts --replacetostr] parameter will replace the variables (keywords) of the argparse library 'choices', 'default' and 'help', because their syntax is 'variable ='
+    # The [-rts --replacetostr] feature will replace the 'choices', 'default' and 'help' parameters of 'add_argument' function from argparse library, because their syntaxes is -> 'parameter=', except if you have exclude their words in 'exclude_python_words.txt'
     ```
-    - Edit [words exclusion](../../intensio/exclude/python/exclude_python_words.txt) and add `choices`, `default` and `help` variables of argparse library, because the Replace feature take all variables, with this rule -> `variables=`
+    - Edit [words exclusion](../../intensio/exclude/python/exclude_python_words.txt) and add `choices`, `default` and `help` parameters of add_argument function of argparse library
 
 
 ### 4) If `#` commentary after line of code, can potentially generate an error if `-rc, --removecommentaries` feature not recognize commentary correctly and remove the code of line
