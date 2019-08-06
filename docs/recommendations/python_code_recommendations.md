@@ -19,7 +19,7 @@
     yourChoices = input("number :")
     print(yourChoices)
 
-    # yourChoices variable defined is not a function or parameter of argparse library :)
+    # 'yourChoices' variable defined is not a function or parameter of argparse library, 'add_arguments' will not be replaced by [-rts --replacetostr] parameter 
     ```
 
 - **Not recommended:**
@@ -29,7 +29,7 @@
     add_argument = input("number :") # Line of error
     print(add_argument)
 
-    # add_argument variable defined is already an function of argparse library :(
+    # 'add_argument' variable defined is already an function of argparse library, all 'add_arguments' will be replaced by [-rts --replacetostr] parameter
     ```
 
 ### 3) You ought exclude python keywords of libraries of your program which will be taken by the `-rts, --replacetostr` feature 
@@ -40,8 +40,10 @@
     self.parser.add_argument("-t", "--test", choices=["test1, test2"], default="test1", help="this is a test !")
     yourChoices = input("number :")
     print(yourChoices)
+    
+    # The [-rts --replacetostr] parameter will replace the variables (keywords) of the argparse library 'choices', 'default' and 'help', because their syntax is 'variable ='
     ```
-    - Edit [words exclusion](../../intensio/exclude/python/exclude_python_words.txt) and add keywords `choices`, `default` and `help` of argparse library, because the Replace feature take all variables, with this rule `variables=`
+    - Edit [words exclusion](../../intensio/exclude/python/exclude_python_words.txt) and add `choices`, `default` and `help` variables of argparse library, because the Replace feature take all variables, with this rule -> `variables=`
 
 
 ### 4) If `#` commentary after line of code, can potentially generate an error if `-rc, --removecommentaries` feature not recognize commentary correctly and remove the code of line
@@ -65,7 +67,7 @@
     --- Display -----
     name : test
 
-    see the the placement of quotes :)
+    see the the placement of quotes
     """
     ```
 
@@ -74,7 +76,7 @@
     """ --- Display -----
     name : test """
 
-    see the the placement of quotes :(
+    see the the placement of quotes
     ```
 
 ### 6) If a variable containt text between `"""` or `'''` on multiple lines should be exactly as in source code examples
@@ -85,7 +87,7 @@
     --- Display -----
     name : test
 
-    see the the placement of quotes :)
+    see the the placement of quotes 
     """
     ```
     
@@ -95,7 +97,7 @@
     --- Display -----
     name : test """
 
-    see the the placement of quotes :(
+    see the the placement of quotes 
     ```
     
 ### 7) If your value is between `[]` or `()` or `{}` in your source code, the `-ps, --paddingscripts` feature may react differently depending on the code written
