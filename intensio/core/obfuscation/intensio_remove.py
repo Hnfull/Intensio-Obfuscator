@@ -11,7 +11,7 @@ import tqdm
 import colorama
 import os
 
-from core.utils.intensio_error import EXIT_SUCCESS, EXIT_FAILURE
+from core.utils.intensio_error import EXIT_SUCCESS, EXIT_FAILURE, ERROR_NOT_FILE
 from core.utils.intensio_utils import Utils
 
 #--------------------------------------------------------- [Global] ---------------------------------------------------------#
@@ -313,22 +313,28 @@ class Remove:
             detectFiles = "pyc"
             blockDir    = "__pycache__"
 
-            detectFilesPycFile = r"\w+\.{1}pyc"
+            detectPycFiles  = r"\w+\.{1}pyc"
 
         recursFiles = [f for f in glob.glob("{0}{1}**{1}*.{2}".format(outputArg, self.utils.Platform(), detectFiles), recursive=True)]
         
         try:
-            # -- Remove pyc file(s)
-            for file in recursFiles:    
-                os.remove(file)
-                removeFiles += removeFiles + 1
-
-            # -- Check if pyc file(s) are removed
+            # Check if .pyc file(s) exists
             for file in recursFiles:
-                if re.match(detectFilesPycFile, file):
-                    return EXIT_FAILURE
+                removeFiles += removeFiles + 1
+            
+            if removeFiles == 0:
+                return removeFiles
+            else:
+                # -- Remove pyc file(s)
+                for file in recursFiles:    
+                    os.remove(file)
 
-            return removeFiles
+                # -- Check if pyc file(s) are removed
+                for file in recursFiles:
+                    if re.match(detectFilesPycFile, file):
+                        return EXIT_FAILURE
+
+                return removeFiles
         except Exception as e:
             print(ERROR_COLOUR + "[-] {0}".format(e))
             return EXIT_FAILURE

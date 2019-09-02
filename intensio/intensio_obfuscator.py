@@ -218,11 +218,11 @@ def main():
         print("[!] Obfuscation replace strings to hex no asked !\n")
 
     # -- Remove if python pyc file(s) in output directory -- #
-    if (removeData.TrashFiles(args.GetArgsValue().code, args.GetArgsValue().output) > 0):
+    if (removeData.TrashFiles(args.GetArgsValue().code, args.GetArgsValue().output) >= 0):
         pass
     else:
         print(SECTION_COLOUR + "\n**************************** [ Remove pyc files ] *****************************\n")
-        print("\n[-] Remove .pyc files in output directory -> " + FAILED_COLOUR + "Failed\n")
+        print("\n[-] Remove .pyc files in {0} directory -> " + FAILED_COLOUR + "Failed\n".format(args.GetArgsValue().output))
 
 #----------------------------------------------------------------------------------------------------------------------------#
 
