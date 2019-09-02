@@ -1,2 +1,2 @@
-tqdm
+progress
 colorama

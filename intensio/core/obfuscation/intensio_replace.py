@@ -10,7 +10,7 @@ import glob
 import os
 import time
 import colorama
-import tqdm
+from progress.bar import Bar
 
 from core.obfuscation.intensio_mixer import Mixer
 from core.obfuscation.intensio_remove import Remove
@@ -19,7 +19,8 @@ from core.utils.intensio_utils import Utils
 
 #--------------------------------------------------------- [Global] ---------------------------------------------------------#
 
-ERROR_COLOUR = colorama.Fore.RED + colorama.Style.BRIGHT
+ERROR_COLOUR    = colorama.Back.RED + colorama.Style.BRIGHT
+PROGRESS_COLOUR = colorama.Fore.BLUE + colorama.Style.BRIGHT 
 
 #------------------------------------------------- [Function(s)/Class(es)] --------------------------------------------------#
 
@@ -380,9 +381,10 @@ class Replace:
         # -- Change variables/classes/functions to mixed values -- #
         print("\n[+] Running replacement of variables/classes/functions in {0} file(s)...\n".format(countRecursFiles))
 
-        with tqdm.tqdm(total=countRecursFiles) as pbar:
+        #with tqdm.tqdm(total=countRecursFiles) as pbar:
+        with Bar(PROGRESS_COLOUR + 'Processing', max=countRecursFiles) as bar:
             for file in recursFiles:
-                pbar.update(1)
+                bar.next(1)
                 if blockDir in file:
                     continue
                 else:
@@ -416,7 +418,8 @@ class Replace:
                                         eachLine = Replace.EachLine(self, codeArg, eachLine, allDict.items(), False)
                                         print(eachLine)
                                         continue
-                            
+            bar.finish()
+
         # -- Check if variables/classes/functions have been mixed -- #
         for file in recursFiles:
             if blockDir in file:
@@ -473,10 +476,10 @@ class Replace:
         print("\n[+] Running replace all strings to their hexadecimal value in {0} file(s)...\n".format(countRecursFiles))
 
         # -- Replace all strings to their hexadecimal value -- #
-        with tqdm.tqdm(total=countRecursFiles) as pbar:
+        with Bar(PROGRESS_COLOUR + 'Processing', max=countRecursFiles) as bar:
             for file in recursFiles:
                 checkPrint = 0 # initialize check print() func at the begining of each file
-                pbar.update(1)
+                bar.next(1)
                 if blockDir in file:
                     continue
                 else:
@@ -510,6 +513,7 @@ class Replace:
                     with open(file, "a") as inputFile:
                         inputFile.write("\"\"\"")
                         inputFile.write("\nexec({0})".format(varMixer))
+            bar.finish()
 
         # -- Check if all lines are replaced of hexadecimal value -- #
         for file in recursFiles: 
@@ -601,9 +605,9 @@ class Replace:
         print("\n[+] Running replace files name in {0} file(s)...\n".format(countRecursFiles))
         
         # -- Replace all files name to random strings with length defined -- #
-        with tqdm.tqdm(total=countRecursFiles) as pbar:
+        with Bar(PROGRESS_COLOUR + 'Processing', max=countRecursFiles) as bar:
             for file in recursFiles:
-                pbar.update(1)
+                bar.next(1)
                 if blockDir in file:
                     continue
                 else:
@@ -651,6 +655,7 @@ class Replace:
                         else:
                             continue
                     os.chdir(currentPosition) # Return to old position   
+            bar.finish()
 
         # -- Check if all files name are been replaced to random strings with length defined -- #    
         for i in checkFilesFound:

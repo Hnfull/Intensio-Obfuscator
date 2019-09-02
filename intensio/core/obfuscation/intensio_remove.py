@@ -7,16 +7,17 @@
 import re
 import fileinput
 import glob
-import tqdm
 import colorama
 import os
+from progress.bar import Bar
 
 from core.utils.intensio_error import EXIT_SUCCESS, EXIT_FAILURE, ERROR_NOT_FILE
 from core.utils.intensio_utils import Utils
 
 #--------------------------------------------------------- [Global] ---------------------------------------------------------#
 
-ERROR_COLOUR = colorama.Fore.RED + colorama.Style.BRIGHT
+ERROR_COLOUR    = colorama.Back.RED + colorama.Style.BRIGHT
+PROGRESS_COLOUR = colorama.Fore.BLUE + colorama.Style.BRIGHT 
 
 #------------------------------------------------- [Function(s)/Class(es)] --------------------------------------------------#
 
@@ -98,9 +99,9 @@ class Remove:
             
         print("\n[+] Running remove commentaries in {0} file(s)...\n".format(countRecursFiles))
 
-        with tqdm.tqdm(total=countRecursFiles) as pbar:
+        with Bar(PROGRESS_COLOUR + 'Processing', max=countRecursFiles) as bar:
             for file in recursFiles:
-                pbar.update(1)
+                bar.next(1)
                 if blockDir in file:
                     continue
                 else:
@@ -155,6 +156,7 @@ class Remove:
                                 print(eachLine)
                             else:
                                 print(eachLine)
+            bar.finish()
 
         # -- Initialize vars -- #
         isCommentary = 0
@@ -245,9 +247,9 @@ class Remove:
 
         print("\n[+] Running remove print function in {0} file(s)...\n".format(countRecursFiles))
 
-        with tqdm.tqdm(total=countRecursFiles) as pbar:
+        with Bar(PROGRESS_COLOUR + 'Processing', max=countRecursFiles) as bar:
             for file in recursFiles:
-                pbar.update(1)
+                bar.next(1)
                 if blockDir in file:
                     continue
                 else: 
@@ -284,6 +286,7 @@ class Remove:
                                         continue
                                 else:
                                     print(eachLine)
+            bar.finish()
 
         # -- Check if all print functions are removed -- #
         for file in recursFiles:

@@ -9,12 +9,17 @@ import random
 import textwrap
 import re
 import glob
-import tqdm
+import colorama
+from progress.bar import Bar
 
 from core.obfuscation.intensio_mixer import Mixer
 from core.obfuscation.intensio_remove import Remove
 from core.utils.intensio_utils import Utils
 from core.utils.intensio_error import EXIT_SUCCESS, EXIT_FAILURE, ERROR_BAD_ARGUMENTS
+
+#--------------------------------------------------------- [Global] ---------------------------------------------------------#
+
+PROGRESS_COLOUR = colorama.Fore.BLUE + colorama.Style.BRIGHT 
 
 #------------------------------------------------- [Function(s)/Class(es)] --------------------------------------------------#
 
@@ -211,9 +216,9 @@ class Padding:
         print("\n[+] Running add of random scripts in {0} file(s)...\n".format(countRecursFiles))
 
         # -- Padding scripts added -- #
-        with tqdm.tqdm(total=countRecursFiles) as pbar:
+        with Bar(PROGRESS_COLOUR + 'Processing', max=countRecursFiles) as bar:
             for file in recursFiles:
-                pbar.update(1)
+                bar.next(1)
                 if blockDir in file:
                     continue
                 else:
@@ -390,7 +395,8 @@ class Padding:
                                         countScriptsAdded += 1
                                     else:
                                         continue
-                                
+            bar.finish()
+
         # -- Check padding has added in output script -- #
         for file in recursFiles:
             if blockDir in file:
