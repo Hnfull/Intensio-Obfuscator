@@ -381,13 +381,12 @@ class Replace:
         # -- Change variables/classes/functions to mixed values -- #
         print("\n[+] Running replacement of variables/classes/functions in {0} file(s)...\n".format(countRecursFiles))
 
-        #with tqdm.tqdm(total=countRecursFiles) as pbar:
-        with Bar(PROGRESS_COLOUR + 'Processing', max=countRecursFiles) as bar:
+        with Bar(PROGRESS_COLOUR + "Processing", max=countRecursFiles) as bar:
             for file in recursFiles:
-                bar.next(1)
                 if blockDir in file:
                     continue
                 else:
+                    bar.next(1)
                     with fileinput.input(file, inplace=True) as inputFile:
                         for eachLine in inputFile:
                             if not eachLine:
@@ -418,20 +417,17 @@ class Replace:
                                         eachLine = Replace.EachLine(self, codeArg, eachLine, allDict.items(), False)
                                         print(eachLine)
                                         continue
-            bar.finish()
 
-        # -- Check if variables/classes/functions have been mixed -- #
-        for file in recursFiles:
-            if blockDir in file:
-                continue
-            else:
-                with open(file, "r") as readFile:
-                    readF = readFile.readlines()
-                    for eachLine in readF:
-                        for value in allDict.values():
-                            if value in eachLine:
-                                checkWordsMixed.append(value)
-            
+                    # -- Check if variables/classes/functions have been mixed -- #
+                    with open(file, "r") as readFile:
+                        readF = readFile.readlines()
+                        for eachLine in readF:
+                            for value in allDict.values():
+                                if value in eachLine:
+                                    checkWordsMixed.append(value)
+            bar.next(1)
+        bar.finish()
+
         # -- Remove duplicated key -- #
         checkListWordsMixed = list(dict.fromkeys(checkWordsMixed))
         
@@ -476,14 +472,13 @@ class Replace:
         print("\n[+] Running replace all strings to their hexadecimal value in {0} file(s)...\n".format(countRecursFiles))
 
         # -- Replace all strings to their hexadecimal value -- #
-        with Bar(PROGRESS_COLOUR + 'Processing', max=countRecursFiles) as bar:
+        with Bar(PROGRESS_COLOUR + "Processing", max=countRecursFiles) as bar:
             for file in recursFiles:
-                checkPrint = 0 # initialize check print() func at the begining of each file
-                bar.next(1)
                 if blockDir in file:
                     continue
                 else:
                     # -- Add a new first random line and move the old first line to the second line to avoid replacing it -- #
+                    checkPrint = 0 # initialize check print() func at the begining of each file
                     with open(file, "r") as inputFile:
                         stringRandomMixer   = mixer.GetStringMixer(mixerLevelArg)
                         firstLine           = "{0}\n".format(stringRandomMixer)
@@ -513,28 +508,25 @@ class Replace:
                     with open(file, "a") as inputFile:
                         inputFile.write("\"\"\"")
                         inputFile.write("\nexec({0})".format(varMixer))
+            
+                    # -- Check if all lines are replaced of hexadecimal value -- #
+                    with open(file, "r") as inputFile:
+                        for eachLine in inputFile:
+                            if not eachLine:
+                                continue
+                            else:
+                                if not "\\x" in eachLine:
+                                    if re.match(detectQuotes, eachLine):
+                                        continue
+                                    elif re.match(detectExecFunc, eachLine):
+                                        continue
+                                    else:
+                                        checkError = True
+                                else:
+                                    continue
+                bar.next(1)
             bar.finish()
 
-        # -- Check if all lines are replaced of hexadecimal value -- #
-        for file in recursFiles: 
-            if blockDir in file:
-                continue
-            else:
-                with open(file, "r") as inputFile:
-                    for eachLine in inputFile:
-                        if not eachLine:
-                            continue
-                        else:
-                            if not "\\x" in eachLine:
-                                if re.match(detectQuotes, eachLine):
-                                    continue
-                                elif re.match(detectExecFunc, eachLine):
-                                    continue
-                                else:
-                                    checkError = True
-                            else:
-                                continue
-            
         if (remove.Backslashes(codeArg, outputArg) == 0):
             if checkHexError == False:
                 return EXIT_SUCCESS        
@@ -605,9 +597,8 @@ class Replace:
         print("\n[+] Running replace files name in {0} file(s)...\n".format(countRecursFiles))
         
         # -- Replace all files name to random strings with length defined -- #
-        with Bar(PROGRESS_COLOUR + 'Processing', max=countRecursFiles) as bar:
+        with Bar(PROGRESS_COLOUR + "Processing", max=countRecursFiles) as bar:
             for file in recursFiles:
-                bar.next(1)
                 if blockDir in file:
                     continue
                 else:
@@ -655,6 +646,7 @@ class Replace:
                         else:
                             continue
                     os.chdir(currentPosition) # Return to old position   
+                bar.next(1)
             bar.finish()
 
         # -- Check if all files name are been replaced to random strings with length defined -- #    

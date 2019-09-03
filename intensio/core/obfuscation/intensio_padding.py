@@ -218,7 +218,6 @@ class Padding:
         # -- Padding scripts added -- #
         with Bar(PROGRESS_COLOUR + 'Processing', max=countRecursFiles) as bar:
             for file in recursFiles:
-                bar.next(1)
                 if blockDir in file:
                     continue
                 else:
@@ -395,6 +394,7 @@ class Padding:
                                         countScriptsAdded += 1
                                     else:
                                         continue
+                bar.next(1)
             bar.finish()
 
         # -- Check padding has added in output script -- #

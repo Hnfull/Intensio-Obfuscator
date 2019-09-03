@@ -191,7 +191,7 @@ def main():
 
     print(SECTION_COLOUR + "\n\n********************** [ Obfuscation replace files name ] ***********************\n")
     if args.GetArgsValue().replacefilesname:
-        if args.GetArgsValue().replacetostr or args.GetArgsValue().replacetohex:
+        if args.GetArgsValue().replacetostr:
             pass
         else:
             replaceData = Replace()
@@ -205,7 +205,7 @@ def main():
         
     print(SECTION_COLOUR + "\n\n******************** [ Obfuscation replace strings to hex ] *********************\n")
     if args.GetArgsValue().replacetohex:
-        if args.GetArgsValue().replacetostr:
+        if args.GetArgsValue().replacetostr or args.GetArgsValue().replacefilesname:
             pass
         else:
             replaceData = Replace()

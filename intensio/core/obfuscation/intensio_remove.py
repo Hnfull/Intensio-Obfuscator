@@ -50,10 +50,10 @@ class Remove:
     
         # -- Check if all line breaks are deleted -- #
         for file in recursFiles:
-            checkLine = 0 # Initialize check vars for the next file 
             if blockDir in file:
                 continue
             else:
+                checkLine = 0 # Initialize check vars for the next file 
                 with open(file, "r") as readFile:
                     readF = readFile.readlines()
                     for eachLine in readF:
@@ -101,7 +101,6 @@ class Remove:
 
         with Bar(PROGRESS_COLOUR + 'Processing', max=countRecursFiles) as bar:
             for file in recursFiles:
-                bar.next(1)
                 if blockDir in file:
                     continue
                 else:
@@ -156,6 +155,7 @@ class Remove:
                                 print(eachLine)
                             else:
                                 print(eachLine)
+                bar.next(1)
             bar.finish()
 
         # -- Initialize vars -- #
@@ -249,7 +249,6 @@ class Remove:
 
         with Bar(PROGRESS_COLOUR + 'Processing', max=countRecursFiles) as bar:
             for file in recursFiles:
-                bar.next(1)
                 if blockDir in file:
                     continue
                 else: 
@@ -286,6 +285,7 @@ class Remove:
                                         continue
                                 else:
                                     print(eachLine)
+                bar.next(1)
             bar.finish()
 
         # -- Check if all print functions are removed -- #
