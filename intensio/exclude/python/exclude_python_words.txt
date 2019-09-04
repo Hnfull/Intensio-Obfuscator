@@ -2,7 +2,7 @@
 
 ########### BASIC RAT TEST IN REPOS #############
 
-######## local variables #########
+####### local variables that not be modified #######
 _
 
 ############# glob ###############
@@ -37,7 +37,7 @@ architecture
 
 ############################# START DO NOT MODIFY IT ##################################
 
-##### default python keywords #####
+##### default python functions #####
 False
 None
 True
@@ -72,8 +72,35 @@ while
 with
 yield
 
-######### Other keywords ##########
+######### others native python functions ##########
 replace
+b
+u
+slice
+buffer
+encode
+hash
+date
+dict
+tulpe
+list
+chr
+ord
+next
+allsplit
+append
+open
+read
+str
+int
+bool
+float
+close
+append
+format
+encode
+decode
+readlines
 
 ############################## END DO NOT MODIFY IT ###################################
 
