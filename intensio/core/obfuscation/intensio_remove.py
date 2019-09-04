@@ -334,7 +334,7 @@ class Remove:
 
                 # -- Check if pyc file(s) are removed
                 for file in recursFiles:
-                    if re.match(detectFilesPycFile, file):
+                    if re.match(detectPycFiles, file):
                         return EXIT_FAILURE
 
                 return removeFiles
