@@ -194,6 +194,9 @@ class Replace:
         wordsExcludedFound      = []
         wordsIncludedFound      = []
         wordsIncludedNotFound   = []
+        checkAllWords           = []
+        checkWordsError         = []
+        checkKeyWordsMixed      = []
         checkCountWordsMixed    = 0
         checkCountWordsValue    = 0
         checkQuotePassing       = 0
@@ -386,7 +389,6 @@ class Replace:
                 if blockDir in file:
                     continue
                 else:
-                    bar.next(1)
                     with fileinput.input(file, inplace=True) as inputFile:
                         for eachLine in inputFile:
                             if not eachLine:
@@ -422,15 +424,18 @@ class Replace:
                     with open(file, "r") as readFile:
                         readF = readFile.readlines()
                         for eachLine in readF:
-                            for value in allDict.values():
+                            for key, value in allDict.items():
                                 if value in eachLine:
                                     checkWordsMixed.append(value)
-            bar.next(1)
-        bar.finish()
+                                    checkKeyWordsMixed.append(key)
 
-        # -- Remove duplicated key -- #
+                bar.next(1)
+            bar.finish()
+
+        # -- Remove duplicated words -- #
         checkListWordsMixed = list(dict.fromkeys(checkWordsMixed))
-        
+        checkKeyWordsMixed  = list(dict.fromkeys(checkKeyWordsMixed))
+
         for i in checkListWordsMixed:
             checkCountWordsMixed += 1
         for i in allDict.values():
@@ -441,6 +446,16 @@ class Replace:
                 print("\n-> {0} variables/classes/functions replaced in {1} file(s)\n".format(checkCountWordsValue, countRecursFiles))
                 return EXIT_SUCCESS
             else:
+                if verboseArg:
+                    for key in allDict.keys():
+                        checkAllWords.append(key)
+
+                    checkWordsError = list(set(checkAllWords) - set(checkKeyWordsMixed))
+
+                    print("\n" + ERROR_COLOUR + "[-] Words that not be replaced and have generate an error :\n")
+                    for i in checkWordsError:
+                        print(i)    
+
                 return EXIT_FAILURE
         else:
             return EXIT_FAILURE
