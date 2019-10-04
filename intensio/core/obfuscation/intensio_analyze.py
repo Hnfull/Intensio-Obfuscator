@@ -178,7 +178,7 @@ class Analyze:
 
                                     bar.finish()
                             else:
-                                print(ERROR_COLOUR + "[-] Copy '{0}' to '{1}' failed, this is not a output directory copied !".format(inputArg, outputArg))
+                                print(ERROR_COLOUR + "[-] Copy '{0}' to '{1}' failed, this is not a output directory copied".format(inputArg, outputArg))
                                 return ERROR_DIR_NOT_FOUND
                         else:
                             print(ERROR_COLOUR + "[-] Copy '{0}' to '{1}' failed".format(inputArg, outputArg))

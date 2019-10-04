@@ -31,7 +31,7 @@
 | ------ | ------ |
 | remove comment | Remove all comments (this feature is executed by default) |
 | remove space line | Remove all spaces line (this feature is executed by default) |
-| correction padding empty class/function | Adding padding to empty classes and functions, if the class or function contains only comments, the default feature `remove comments` will leave a class or function empty, this will avoid generating an error (this feature is executed by default) |
+| correction padding empty class/function | Add padding to empty classes and functions, if the class or function contains only comments, the default feature `remove comments` will leave a class or function empty, this will avoid generating an error (this feature is executed by default) |
 | replace string to string mixed | Replace all names of variables/classes/functions to random strings with length defined|
 | padding script | Add padding of random scripts after each line|
 | replace file name | Replace all files name to random strings with length defined |
