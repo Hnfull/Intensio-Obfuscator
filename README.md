@@ -33,7 +33,7 @@
 | remove space line | Remove all spaces line (this feature is executed by default) |
 | correction padding empty class/function | Adding padding to empty classes and functions, if the class or function contains only comments, the default feature `remove comments` will leave a class or function empty, this will avoid generating an error (this feature is executed by default) |
 | replace string to string mixed | Replace all names of variables/classes/functions to random strings with length defined|
-| padding script | Adding padding of random scripts after each line|
+| padding script | Add padding of random scripts after each line|
 | replace file name | Replace all files name to random strings with length defined |
 | replace string to hex | Replace all chars to their hexadecimal value |
 | correction remove pyc file | Remove all pyc file in output directory (this feature is executed by default) |

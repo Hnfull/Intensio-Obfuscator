@@ -11,7 +11,7 @@
             print(yourChoices)
 
             # 'yourChoices' variable defined have not the same name with function or parameter of function/class of argparse library, so 'add_arguments' will not be replaced by [-rts --replacetostr] feature
-            # If you cannot change the source code edit (intensio/exclude/string_to_string_mixed/exclude_word.txt) word that will you want exclude
+            # If you cannot change the source code edit (intensio/exclude/string_to_string_mixed/exclude_word_by_user.txt) word that will you want exclude
             ```
 
         - **Not recommended:**
@@ -33,9 +33,9 @@
             yourChoices = input("number :")
             print(yourChoices)
             
-            # The [-rts --replacetostr] feature will replace the 'choices', 'default' and 'help' parameters of 'add_argument' function from argparse library, because their syntaxes is -> 'parameter=', except if you have exclude their words in 'exclude_python_words.txt'
+            # The [-rts --replacetostr] feature will replace the 'choices', 'default' and 'help' parameters of 'add_argument' function from argparse library, because their syntaxes is -> 'parameter=', except if you have exclude their words in 'intensio/exclude/string_to_string_mixed/exclude_word_by_user.txt'
             ```
-            - Edit [word exclusion](../../intensio/exclude/string_to_string_mixed/exclude_word.txt) and add `choices`, `default` and `help` parameters of add_argument function of argparse library
+            - Edit [word exclusion](../../intensio/exclude/string_to_string_mixed/exclude_word_by_user.txt) and add `choices`, `default` and `help` parameters of add_argument function of argparse library
 
 
 - If a variable containt text between `"""` or `'''` on multiple lines should be exactly as in source code examples
