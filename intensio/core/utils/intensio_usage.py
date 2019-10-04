@@ -10,72 +10,53 @@ import argparse
 class Args:
 
     def __init__(self):
-        self.parser = argparse.ArgumentParser(
-                                            prog="intensio_obfuscator.py"
-                                            )
+        self.parser = argparse.ArgumentParser(prog="intensio_obfuscator.py")
+        
         self.parser.add_argument(
                                 "-i", "--input",
                                 help="source file or directory - if multiple files indicate a directory that contain all your files"
-                                )
-        self.parser.add_argument(
-                                "-c", "--code",
-                                choices=["python"],
-                                default="python",
-                                help="language used in source file or directory"
-                                )
+        )
         self.parser.add_argument(
                                 "-o", "--output",
                                 help="output file or directory that will be obfuscated - if multiple file indicate a empty directory that will contain all your files"
-                                )
+        )
         self.parser.add_argument(
                                 "-m", "--mixerlevel",
                                 choices=["lower", "medium", "high"],
                                 default="medium",
-                                help="generate random strings of [lower:32 | medium:64 | high:128] chars when 'replacetostr' and 'paddingscripts' and 'replacetohex'\
-                                    features are specified, default value: [medium], possible values: [lower, medium, high]"
-                                )
+                                help="generate random strings of [lower:32 | medium:64 | high:128] chars when 'replacetostr' - 'paddingscript' - 'replacefilename'\
+                                    - 'replacetohex' features are specified, default value: [medium], possible values: [lower, medium, high]"
+        )
         self.parser.add_argument(
                                 "-rts", "--replacetostr",
                                 action="store_true",
                                 default=False,
-                                help="activate the 'replace strings to strings mixed' obfuscation feature"
-                                )
+                                help="activate the 'replace string to string mixed' obfuscation feature"
+        )
         self.parser.add_argument(
-                                "-ps", "--paddingscripts",
+                                "-ps", "--paddingscript",
                                 action="store_true",
                                 default=False,
-                                help="activate the 'padding scripts' obfuscation feature"
-                                )
+                                help="activate the 'padding script' obfuscation feature"
+        )
         self.parser.add_argument(
-                                "-rc", "--removecommentaries",
-                                action="store_true",
-                                default=True,
-                                help="activate the 'remove commentaries' obfuscation feature"
-                                )
-        self.parser.add_argument(
-                                "-rp", "--removeprint",
+                                "-rfn", "--replacefilename",
                                 action="store_true",
                                 default=False,
-                                help="activate the 'remove print' obfuscation feature"
-                                )
+                                help="activate the 'replace file name' obfuscation feature"
+        )
         self.parser.add_argument(
                                 "-rth", "--replacetohex",
                                 action="store_true",
                                 default=False,
-                                help="activate the 'replace strings to hex' obfuscation feature"
-                                )
-        self.parser.add_argument(
-                                "-rfn", "--replacefilesname",
-                                action="store_true",
-                                default=False,
-                                help="activate the 'replace files name' obfuscation feature"
-                                )
+                                help="activate the 'replace string to hex' obfuscation feature"
+        )
         self.parser.add_argument(
                                 "-v", "--verbose",
                                 action="store_true",
                                 default=False,
                                 help="improve verbosity"
-                                )
+        )
 
 
     def GetArgHelp(self):

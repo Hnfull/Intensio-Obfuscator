@@ -11,21 +11,22 @@ import string
 
 class Mixer:
     
+    
     def __init__(self):
         self.lenLower   = 32
         self.lenMedium  = 64
         self.lenHigh    = 128
 
 
-    def StringGenerator(self, stringLenght):
+    def StringGenerator(self, stringLenght=None):
         return "".join(random.choice(string.ascii_letters) for i in range(stringLenght))
     
 
-    def GetStringMixer(self, mixerLevelArg):
-        if mixerLevelArg == "lower":
+    def GetStringMixer(self, lenght=None):
+        if lenght == "lower":
             return Mixer.StringGenerator(self, self.lenLower)
-        elif mixerLevelArg == "medium":
+        elif lenght == "medium":
             return Mixer.StringGenerator(self, self.lenMedium)
-        elif mixerLevelArg == "high":
+        elif lenght == "high":
             return Mixer.StringGenerator(self, self.lenHigh)
 
