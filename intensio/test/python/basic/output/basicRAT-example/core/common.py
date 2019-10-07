@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
-def TofsSFKzThKLEjrPFcjpnVhMZkgwJUnNJjRaBIPOsnewGOcytOugpAYbPPEqtfdaQATWIoPiVzLCEAwaKlYZwFMKCCkoiicKlJmfOxamRdgOGHpXKPJSJQTfyUSLIKmK(bytes):
-    FvpxZgVYiqCVZQREyOmdAmYlVppRCmvFCwEfvRNKRKrcVvUjNZWGruQtwfSsXlzvMfWYdEIGJdnFxEfHEcONURkQFfROfyXOSXzYcSdeSKdsNDBZVFmXScMTspQaDAQk = 0
+def GutZpRlAsBCAvPyzhYlxoAGyimkaOLTR(bytes):
+    JYxOQoHxrWVlWZGFRgpIWcoGVeKxUiXr = 0
     while bytes:
-        FvpxZgVYiqCVZQREyOmdAmYlVppRCmvFCwEfvRNKRKrcVvUjNZWGruQtwfSsXlzvMfWYdEIGJdnFxEfHEcONURkQFfROfyXOSXzYcSdeSKdsNDBZVFmXScMTspQaDAQk = FvpxZgVYiqCVZQREyOmdAmYlVppRCmvFCwEfvRNKRKrcVvUjNZWGruQtwfSsXlzvMfWYdEIGJdnFxEfHEcONURkQFfROfyXOSXzYcSdeSKdsNDBZVFmXScMTspQaDAQk << 8
-        FvpxZgVYiqCVZQREyOmdAmYlVppRCmvFCwEfvRNKRKrcVvUjNZWGruQtwfSsXlzvMfWYdEIGJdnFxEfHEcONURkQFfROfyXOSXzYcSdeSKdsNDBZVFmXScMTspQaDAQk += ord(bytes[-1])
+        JYxOQoHxrWVlWZGFRgpIWcoGVeKxUiXr = JYxOQoHxrWVlWZGFRgpIWcoGVeKxUiXr << 8
+        JYxOQoHxrWVlWZGFRgpIWcoGVeKxUiXr += ord(bytes[-1])
         bytes = bytes[:-1]
-    return FvpxZgVYiqCVZQREyOmdAmYlVppRCmvFCwEfvRNKRKrcVvUjNZWGruQtwfSsXlzvMfWYdEIGJdnFxEfHEcONURkQFfROfyXOSXzYcSdeSKdsNDBZVFmXScMTspQaDAQk
-def jZZUKrXpvRFSVTUPPTSqrAafippCfNkXUcPLwKIVALBgbWnfbqYjtjnCaRLDwhkDaNGjDLcqYXnTvmeOvyQqNnUHJqrqyTwKfWgKnRboFSGlzuzEMqiBfcybbeLgHzXk(FvpxZgVYiqCVZQREyOmdAmYlVppRCmvFCwEfvRNKRKrcVvUjNZWGruQtwfSsXlzvMfWYdEIGJdnFxEfHEcONURkQFfROfyXOSXzYcSdeSKdsNDBZVFmXScMTspQaDAQk):
-    xdYyAFRJybMCiYZATgJlLWcruIZaYDvQuIsGRHGvzfnhqgDkVYMSMCggqLFHxwhPcIOWfSeVRZSjpfNjvcuihCgeyrAosQfEuCelJHEYGrHjnxloFeejCajZoliorjvm = ''
-    while FvpxZgVYiqCVZQREyOmdAmYlVppRCmvFCwEfvRNKRKrcVvUjNZWGruQtwfSsXlzvMfWYdEIGJdnFxEfHEcONURkQFfROfyXOSXzYcSdeSKdsNDBZVFmXScMTspQaDAQk:
-        xdYyAFRJybMCiYZATgJlLWcruIZaYDvQuIsGRHGvzfnhqgDkVYMSMCggqLFHxwhPcIOWfSeVRZSjpfNjvcuihCgeyrAosQfEuCelJHEYGrHjnxloFeejCajZoliorjvm += chr(FvpxZgVYiqCVZQREyOmdAmYlVppRCmvFCwEfvRNKRKrcVvUjNZWGruQtwfSsXlzvMfWYdEIGJdnFxEfHEcONURkQFfROfyXOSXzYcSdeSKdsNDBZVFmXScMTspQaDAQk & 0xff)
-        FvpxZgVYiqCVZQREyOmdAmYlVppRCmvFCwEfvRNKRKrcVvUjNZWGruQtwfSsXlzvMfWYdEIGJdnFxEfHEcONURkQFfROfyXOSXzYcSdeSKdsNDBZVFmXScMTspQaDAQk = FvpxZgVYiqCVZQREyOmdAmYlVppRCmvFCwEfvRNKRKrcVvUjNZWGruQtwfSsXlzvMfWYdEIGJdnFxEfHEcONURkQFfROfyXOSXzYcSdeSKdsNDBZVFmXScMTspQaDAQk >> 8
-    return xdYyAFRJybMCiYZATgJlLWcruIZaYDvQuIsGRHGvzfnhqgDkVYMSMCggqLFHxwhPcIOWfSeVRZSjpfNjvcuihCgeyrAosQfEuCelJHEYGrHjnxloFeejCajZoliorjvm
+    return JYxOQoHxrWVlWZGFRgpIWcoGVeKxUiXr
+def OwBGcBlzySYfaqOsrGimMtFLwhqqzoHn(JYxOQoHxrWVlWZGFRgpIWcoGVeKxUiXr):
+    kGYTWSfvuDprKpGLiqehVAXxBnCjSGTy = ''
+    while JYxOQoHxrWVlWZGFRgpIWcoGVeKxUiXr:
+        kGYTWSfvuDprKpGLiqehVAXxBnCjSGTy += chr(JYxOQoHxrWVlWZGFRgpIWcoGVeKxUiXr & 0xff)
+        JYxOQoHxrWVlWZGFRgpIWcoGVeKxUiXr = JYxOQoHxrWVlWZGFRgpIWcoGVeKxUiXr >> 8
+    return kGYTWSfvuDprKpGLiqehVAXxBnCjSGTy
