@@ -219,8 +219,8 @@ class Replace:
         classDefined            = r"class\s+(\w+)"                            
         variablesErrorDefined   = r"except(\s+\w+\s+as\s+)(\w)"           
         variablesLoopDefined    = r"for\s+([\w\s\,]+)(\s+in\s+)"            
-        #variablesDefined        = r"(^\w+|\s+\w+)(\s*=\s*[\[|\{\(|\w+|\"|\'])"
         variablesDefined        = r"(^[\s|a-zA-Z_]+[\,\s\w]{0,})+(\s*=\s*[\[|\{\(|\w+|\"|\'])"
+        
         quotesIntoVariable      = r".*={1}\s*[\"|\']{3}"
         quotesEndMultipleLines  = r"^\s*[\"|\']{3}\)?\.?"
         quotesInRegex           = r"={1}\s*r{1}[\"|\']{3}"
