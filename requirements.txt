@@ -1,2 +1,2 @@
-progress
-colorama
+progress>=1.5
+colorama>=0.4.1 
