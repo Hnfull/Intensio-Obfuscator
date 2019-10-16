@@ -69,7 +69,7 @@
 - [Update] `remove line space` feature is no longer called after each obfuscation function, henceforth now she is called only once at the beginning of the obfuscation process.
 - [Update] change `print()` function that write in all file with fileinput library by sys.stdout.write function, now no space line is added after end line
 - [Update] improve all regex that catch a specifique pattern in a file
-- [Fix] issue #20 - no answer of user \(this nly a question , not a bug\)
+- [Fix] issue #20 - no answer of user \(this is only a question , no a bug\)
 - [Fix] issue #21 - updating `Remove comments` feature when she handle multiple quotes on one line and multiple lines \(I am waiting for the user to validate the fix\)
 - [Fix] issue #22
 - [Remove] `-c, --python` parameter, because is useless currently
@@ -81,5 +81,5 @@
 - [Add] `correction padding function` feature (check if function are empty after `remove comments` feature is executed and adding padding)
 - [Add] verbosity mode into `remove pyc file` feature - `padding class` feature - `padding function` feature
 - [Add] check process in `replace file name` feature - `replace string to hex` feature - `padding class` feature - `padding function` feature and `remove pyc file` feature with `-v, --verbose` parameter
-- [Add] `Intensio-Obfuscator/releases/` directory to store àll old version of project 
+- [Add] `Intensio-Obfuscator/releases/` to store all old version of project 
 - [Add] `Intensio-Obfuscator/intensio/exclude/file_name/exclude_word.txt` exclude the file name when the `replace file name` feature is called ( this is required when you has the same name as the file name with a directory name in path, this generates an error if the exclusion is not done. see (`docs/recommendations/python_code_recommendations.md`)
