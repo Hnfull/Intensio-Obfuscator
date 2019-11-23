@@ -41,7 +41,11 @@
 | mixerlevel medium | Generate random strings of 64 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameter are specified |
 | mixerlevel high | Generate random strings of 128 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameter are specified |
 
-- `replace string to string mixed` -> `-rts, --replacetostr`, `padding script` -> `-ps, --paddingscript`, `replace file name` -> `-rfn, --replacefilename`, `replace string to hex` -> `-rth, --replacetohex` features can be executed separatly
+- Features can be executed separatly
+    - `replace string to string mixed` -> `-rts, --replacetostr`
+    - `padding script` -> `-ps, --paddingscript`
+    - `replace file name` -> `-rfn, --replacefilename`
+    - `replace string to hex` -> `-rth, --replacetohex`
 
 ## Usages
 - **Read these Documentations before to use Intensio-Obfuscator tool !**
@@ -65,6 +69,9 @@
 - [Python files obfuscated](docs/examples/python_code_examples.md)
 
 ## Todo
+- Next Version 1.0.7:
+    - Optimisation of 'Replace string to string' feature allowing to reduce considerably time to obfuscate code
+
 - Version 1.0.1-x:
     - Code optimization
     - Fix issues
