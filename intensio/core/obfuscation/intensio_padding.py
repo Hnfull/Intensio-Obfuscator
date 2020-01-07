@@ -13,7 +13,6 @@ import sys
 from progress.bar import Bar
 
 from core.obfuscation.intensio_mixer import Mixer
-from core.obfuscation.intensio_remove import Remove
 from core.utils.intensio_utils import Utils
 from core.utils.intensio_error import EXIT_SUCCESS, EXIT_FAILURE
 
@@ -29,7 +28,6 @@ class Padding:
 
     def __init__(self):
         self.mixer  = Mixer()
-        self.remove = Remove()
         self.utils  = Utils()
 
         # -- Len of spaces -- #

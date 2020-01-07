@@ -13,7 +13,7 @@ from progress.bar import Bar
 
 from core.utils.intensio_utils import Utils
 from core.utils.intensio_error import EXIT_SUCCESS, ERROR_FILE_NOT_FOUND, ERROR_PATH_NOT_FOUND,ERROR_FILE_EMPTY,\
-                                        ERROR_CAN_NOT_COPY, ERROR_CAN_NOT_REMOVE, ERROR_DIR_NOT_FOUND, EXIT_FAILURE, \
+                                        ERROR_CAN_NOT_COPY, ERROR_CAN_NOT_DELETE, ERROR_DIR_NOT_FOUND, EXIT_FAILURE, \
                                         ERROR_DIR_EMPTY
 
 #--------------------------------------------------------- [Global] ---------------------------------------------------------#
@@ -114,9 +114,9 @@ class Analyze:
         countRecursFiles        = 0
 
         if os.path.exists(outputArg) == True:
-            removeRequest = input("[!] Output '{0}' already exists, do you want remove it ? (Y/N) : ".format(outputArg))
-            removeRequest = removeRequest.upper()
-            if removeRequest == "Y":
+            deleteRequest = input("[!] Output '{0}' already exists, do you want delete it ? (Y/N) : ".format(outputArg))
+            deleteRequest = deleteRequest.upper()
+            if deleteRequest == "Y":
                 try:
                     shutil.rmtree(outputArg)
                     if os.path.exists(outputArg) == False:
@@ -184,15 +184,15 @@ class Analyze:
                             print(ERROR_COLOUR + "[-] Copy '{0}' to '{1}' failed".format(inputArg, outputArg))
                             return ERROR_CAN_NOT_COPY
                     else:
-                        print(ERROR_COLOUR + "[-] Remove '{0}' failed".format(outputArg))
-                        return ERROR_CAN_NOT_REMOVE
+                        print(ERROR_COLOUR + "[-] Delete '{0}' failed".format(outputArg))
+                        return ERROR_CAN_NOT_DELETE
 
                 except Exception as e:
                     print(ERROR_COLOUR + "[-] {0}".format(e))
                     return EXIT_FAILURE
             else:
-                print(ERROR_COLOUR + "[-] Remove '{0}' failed, the user has refused".format(outputArg))
-                return ERROR_CAN_NOT_REMOVE
+                print(ERROR_COLOUR + "[-] Delete '{0}' failed, the user has refused".format(outputArg))
+                return ERROR_CAN_NOT_DELETE
         else:    
             try:
                 shutil.copytree(inputArg, outputArg)

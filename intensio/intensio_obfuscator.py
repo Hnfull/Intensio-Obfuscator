@@ -52,7 +52,7 @@ from core.utils.intensio_error  import EXIT_SUCCESS, ERROR_INVALID_PARAMETER, ER
 from core.obfuscation.intensio_replace  import Replace
 from core.obfuscation.intensio_padding  import Padding
 from core.obfuscation.intensio_analyze  import Analyze
-from core.obfuscation.intensio_remove   import Remove
+from core.obfuscation.intensio_delete   import Delete
 
 #--------------------------------------------------------- [Global] ---------------------------------------------------------#
 
@@ -135,39 +135,39 @@ def main():
         sys.exit(ERROR_INVALID_FUNCTION)
     
     # -- Obfuscation process -- #    
-    print(SECTION_COLOUR + "\n\n************************ [ Obfuscation remove comment ] *************************\n")
-    removeData = Remove()    
-    removeCommentsData = removeData.Comments(
+    print(SECTION_COLOUR + "\n\n************************ [ Obfuscation delete comments ] *************************\n")
+    deleteData = Delete()    
+    deleteCommentsData = deleteData.Comments(
                                             outputArg=args.GetArgsValue().output,
                                             verboseArg=args.GetArgsValue().verbose
     )
-    if removeCommentsData == EXIT_SUCCESS:
-        print("[+] Obfuscation remove comments -> " + SUCESS_COLOUR + "Successful")
+    if deleteCommentsData == EXIT_SUCCESS:
+        print("[+] Obfuscation delete comments -> " + SUCESS_COLOUR + "Successful")
     else:
-        print("\n[-] Obfuscation remove comments -> " + FAILED_COLOUR  + "Failed")
+        print("\n[-] Obfuscation delete comments -> " + FAILED_COLOUR  + "Failed")
         if not args.GetArgsValue().verbose:
             print("\n[!] Retry with [-v, --verbose] parameter")
 
-    print(SECTION_COLOUR + "\n\n*********************** [ Obfuscation remove line space ] ***********************\n")
-    if removeData:
+    print(SECTION_COLOUR + "\n\n*********************** [ Obfuscation delete line space(s) ] ***********************\n")
+    if deleteData:
         pass
     else:    
-        removeData = Remove()    
+        deleteData = Delete()    
     
-    removeLinesSpacesData = removeData.LinesSpaces(
+    deleteLinesSpacesData = deleteData.LinesSpaces(
                                                     outputArg=args.GetArgsValue().output, 
                                                     verboseArg=args.GetArgsValue().verbose
     )
 
-    if removeLinesSpacesData == EXIT_SUCCESS:
-        print("[+] Obfuscation remove lines spaces -> " + SUCESS_COLOUR + "Successful")
+    if deleteLinesSpacesData == EXIT_SUCCESS:
+        print("[+] Obfuscation delete lines spaces -> " + SUCESS_COLOUR + "Successful")
     else:
-        print("\n[-] Obfuscation remove lines spaces -> " + FAILED_COLOUR  + "Failed")
+        print("\n[-] Obfuscation delete lines spaces -> " + FAILED_COLOUR  + "Failed")
         if not args.GetArgsValue().verbose:
             print("\n[!] Retry with [-v, --verbose] parameter")
 
       # -- If empty class (avert to generate an error) -- #
-    print(SECTION_COLOUR + "\n\n*********************** [ Correction padding empty class ] **********************\n")
+    print(SECTION_COLOUR + "\n\n*********************** [ Correction padding empty class(es) ] **********************\n")
     paddingData             = Padding()
     paddingDataEmptyClass   = paddingData.EmptyClasses(
                                                         outputArg=args.GetArgsValue().output, 
@@ -182,7 +182,7 @@ def main():
             print("\n[!] Retry with [-v, --verbose] parameter")
 
     # -- If empty functions (avert to generate an error) -- #
-    print(SECTION_COLOUR + "\n\n********************** [ Correction padding empty function ] ********************\n")
+    print(SECTION_COLOUR + "\n\n********************** [ Correction padding empty function(s) ] ********************\n")
     if paddingData:
         pass
     else:
@@ -200,7 +200,7 @@ def main():
         if not args.GetArgsValue().verbose:
             print("\n[!] Retry with [-v, --verbose] parameter")
 
-    print(SECTION_COLOUR + "\n\n**************** [ Obfuscation replace string to string mixed ] *****************\n")
+    print(SECTION_COLOUR + "\n\n**************** [ Obfuscation replace string(s) to string(s) mixed ] *****************\n")
     if args.GetArgsValue().replacetostr:
         replaceData = Replace()
 
@@ -219,7 +219,7 @@ def main():
     else:
         print("[!] Obfuscation [ replace string to string ] mixed no asked !")
     
-    print(SECTION_COLOUR + "\n\n********************* [ Obfuscation adding padding script ] *********************\n")
+    print(SECTION_COLOUR + "\n\n********************* [ Obfuscation adding padding script(s) ] *********************\n")
     if args.GetArgsValue().paddingscript:
         if paddingData:
             pass
@@ -240,7 +240,7 @@ def main():
     else:
         print("[!] Obfuscation [ padding script ] no asked !")
 
-    print(SECTION_COLOUR + "\n\n********************** [ Obfuscation replace file name ] ************************\n")
+    print(SECTION_COLOUR + "\n\n********************** [ Obfuscation replace file(s) name ] ************************\n")
     if args.GetArgsValue().replacefilename:
         if args.GetArgsValue().replacetostr:
             pass
@@ -261,7 +261,7 @@ def main():
     else:
         print("[!] Obfuscation [ replace file name ] feature no asked !")
     
-    print(SECTION_COLOUR + "\n\n******************** [ Obfuscation replace string to hex ] **********************\n")
+    print(SECTION_COLOUR + "\n\n******************** [ Obfuscation replace string(s) to hex ] **********************\n")
     if args.GetArgsValue().replacetohex:
         if args.GetArgsValue().replacetostr or args.GetArgsValue().replacefilename:
             pass
@@ -282,21 +282,21 @@ def main():
     else:
         print("[!] Obfuscation [ replace string to hex ] feature no asked !")
 
-    # -- Remove if python pyc file in output directory -- #
-    print(SECTION_COLOUR + "\n\n*********************** [ Correction remove .pyc file ] *************************\n")
-    if removeData:
+    # -- Delete if python pyc file in output directory -- #
+    print(SECTION_COLOUR + "\n\n*********************** [ Correction delete .pyc file(s) ] *************************\n")
+    if deleteData:
         pass
     else:
-        removeData = Remove()
+        deleteData = Delete()
 
-    removePycData = removeData.TrashFiles(
+    deletePycData = deleteData.TrashFiles(
                                         outputArg=args.GetArgsValue().output, 
                                         verboseArg=args.GetArgsValue().verbose,
     )
-    if removePycData == EXIT_SUCCESS:
+    if deletePycData == EXIT_SUCCESS:
         pass
     else:
-        print("\n[-] Remove .pyc file in {0} directory -> ".format(args.GetArgsValue().output) + FAILED_COLOUR + "Failed")
+        print("\n[-] Delete .pyc file in {0} directory -> ".format(args.GetArgsValue().output) + FAILED_COLOUR + "Failed")
         if not args.GetArgsValue().verbose:
                 print("\n[!] Retry with [-v, --verbose] parameter for more informations")
 

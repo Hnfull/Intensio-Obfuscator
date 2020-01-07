@@ -5,7 +5,7 @@
 #---------------------------------------------------------- [Lib] -----------------------------------------------------------#
 
 import re
-import fileinput    
+import fileinput
 import os
 import time
 import colorama
@@ -13,14 +13,13 @@ import sys
 from progress.bar import Bar
 
 from core.obfuscation.intensio_mixer import Mixer
-from core.obfuscation.intensio_remove import Remove
 from core.utils.intensio_error import BreakLoop, EXIT_SUCCESS, EXIT_FAILURE, ERROR_DIR_EMPTY
 from core.utils.intensio_utils import Utils
 
 #--------------------------------------------------------- [Global] ---------------------------------------------------------#
 
 ERROR_COLOUR    = colorama.Back.RED + colorama.Style.BRIGHT
-PROGRESS_COLOUR = colorama.Fore.BLUE + colorama.Style.BRIGHT     
+PROGRESS_COLOUR = colorama.Fore.BLUE + colorama.Style.BRIGHT
 
 #------------------------------------------------- [Function(s)/Class(es)] --------------------------------------------------#
 
@@ -29,10 +28,10 @@ class Replace:
 
     def __init__(self):
         self.mixer  = Mixer()
-        self.remove = Remove()
         self.utils  = Utils()
         self.pythonExcludeDefaultString = "exclude/string_to_string_mixed/exclude_word_do_not_modify.txt"
         self.pythonExcludeUserString    = "exclude/string_to_string_mixed/exclude_word_by_user.txt"
+        self.pythonExcludeUserFileName  = "exclude/file_name/exclude_file_name_by_user.txt"
 
 
     def EachLine(self, line="", dictionary={}, fileNameImport=False, listModuleImport=False):
@@ -94,14 +93,14 @@ class Replace:
                                             # -- If indexError return to next loop -- #
                                             try:
                                                 getIndexLineList[indexExplore]
-                                            except IndexError: 
+                                            except IndexError:
                                                 continue
-                                                
+
                                             # -- Check the char after and before the word -- #
                                             if re.match(detectChars, getIndexLineList[indexExplore]):
                                                 indexExploreBefore  = indexLine - 1 # Index check if word finded is not into the other word
                                                 indexExploreAfter   = indexLine + 2 # Index check char after the end string found with 'detectChars' regex
-                                                
+
                                                 try:
                                                     if not re.match(r"\w|\\|\%", getIndexLineList[indexExploreBefore]):
                                                         # -- Check if it's 'from' and 'import' file in line to avoid replace name of file if variable is identic name to file -- #
@@ -124,7 +123,7 @@ class Replace:
                                                                 if re.match(r"\[|\(|\{", getIndexLineList[indexExploreAfter - 1]):
                                                                     checkCharAfterWord = 0
                                                                 else:
-                                                                    checkCharAfterWord = 1                                                               
+                                                                    checkCharAfterWord = 1
                                                             else:
                                                                 checkCharAfterWord = 0
                                                         # -- Only for [-rfn, --replacefilsname] feature -- #
@@ -132,7 +131,7 @@ class Replace:
                                                             # -- check if file name is imported - #
                                                             breakLine = getIndexLineList[:indexLine]
                                                             breakLine = "".join(breakLine)
-                                                            # -- if file name is imported after 'import', the file name is not replaced -- #
+                                                            # -- If file name is imported after 'import', the file name is not replaced -- #
                                                             if "import" in breakLine:
                                                                 checkCharAfterWord = 1
                                                             else:
@@ -151,7 +150,7 @@ class Replace:
                                                 getWord             = []
 
                                                 indexExploreStart   = indexLine
-                                                indexExploreEnd     = indexLine + len(key) - 1 # Remove -1, first letter is already increment
+                                                indexExploreEnd     = indexLine + len(key) - 1 # Delete -1, first letter is already increment
 
                                                 # -- List contain all letters of key -- #
                                                 for getLetterKey in key:
@@ -193,8 +192,8 @@ class Replace:
         # -- Rewrite the line -- #
         returnLine = "".join(returnLine)
         return returnLine[:]
-    
-     
+
+
     def StringToString(self, outputArg=None, mixerLevelArg=None, verboseArg=None):
         variablesDict               = {}
         classesDict                 = {}
@@ -212,23 +211,23 @@ class Replace:
         checkCountWordsMixed        = 0
         checkCountWordsValue        = 0
         checkQuotePassing           = 0
-        countRecursFiles            = 0 
+        countRecursFiles            = 0
 
         # -- Catch all variable(s)/class(es)/function(s) name -- #
-        functionsDefined        = r"def\s+(\w+)"                               
-        classDefined            = r"class\s+(\w+)"                            
-        variablesErrorDefined   = r"except(\s+\w+\s+as\s+)(\w)"           
-        variablesLoopDefined    = r"for\s+([\w\s\,]+)(\s+in\s+)"            
+        functionsDefined        = r"def\s+(\w+)"
+        classDefined            = r"class\s+(\w+)"
+        variablesErrorDefined   = r"except(\s+\w+\s+as\s+)(\w)"
+        variablesLoopDefined    = r"for\s+([\w\s\,]+)(\s+in\s+)"
         variablesDefined        = r"(^[\s|a-zA-Z_]+[\,\s\w]{0,})+(\s*=\s*[\[|\{\(|\w+|\"|\'])"
-        
+
         quotesIntoVariable      = r".*={1}\s*[\"|\']{3}"
         quotesEndMultipleLines  = r"^\s*[\"|\']{3}\)?\.?"
         quotesInRegex           = r"={1}\s*r{1}[\"|\']{3}"
-        
+
         recursFiles = self.utils.CheckFileDir(
-                                                output=outputArg, 
-                                                detectFiles="py", 
-                                                blockDir="__pycache__", 
+                                                output=outputArg,
+                                                detectFiles="py",
+                                                blockDir="__pycache__",
                                                 blockFile=False,
                                                 dirOnly=False
         )
@@ -244,7 +243,7 @@ class Replace:
                 with open(file, "r") as readFile:
                     readF = readFile.readlines()
                     for eachLine in readF:
-                        # -- Variables -- #     
+                        # -- Variables -- #
                         search = re.search(variablesDefined, eachLine)
                         if search:
                             if "," in search.group(1):
@@ -260,14 +259,14 @@ class Replace:
                                     mixer = self.mixer.GetStringMixer(lenght=mixerLevelArg)
                                     modifySearch = search.group(1).strip()
                                     variablesDict[modifySearch] = mixer
-                        
+
                         # -- Error variables -- #
                         search = re.search(variablesErrorDefined, eachLine)
                         if search:
                             mixer = self.mixer.GetStringMixer(lenght=mixerLevelArg)
                             if search.group(2) not in variablesDict:
                                 variablesDict[search.group(2)] = mixer
-                        
+
                         # -- Loop variables -- #
                         search = re.search(variablesLoopDefined, eachLine)
                         if search:
@@ -277,13 +276,13 @@ class Replace:
                                 for i in modifySearch:
                                     if i not in variablesDict:
                                         mixer = self.mixer.GetStringMixer(lenght=mixerLevelArg)
-                                        variablesDict[i] = mixer 
+                                        variablesDict[i] = mixer
                             else:
                                 if search.group(1) not in variablesDict:
                                     mixer = self.mixer.GetStringMixer(lenght=mixerLevelArg)
                                     variablesDict[search.group(1)] = mixer
-                        
-                        # -- Function(s) -- #         
+
+                        # -- Function(s) -- #
                         search = re.search(functionsDefined, eachLine)
                         if search:
                             mixer = self.mixer.GetStringMixer(lenght=mixerLevelArg)
@@ -299,30 +298,30 @@ class Replace:
                                 classesDict[search.group(1)] = mixer
                 bar.next(1)
 
-            # -- Remove excluded variables/classes/functions defined from 'exclude/string_to_string_mixed/exclude_word_do_not_modify.txt' -- #
+            # -- Delete excluded variables/classes/functions defined from 'exclude/string_to_string_mixed/exclude_word_do_not_modify.txt' -- #
             if os.path.exists(self.pythonExcludeDefaultString) == True:
                 with open(self.pythonExcludeDefaultString, "r") as readFile:
                     for word in readFile:
                         if "#" in word or word == "\n":
                             continue
                         else:
-                            word = word.rstrip()    
+                            word = word.rstrip()
                             wordsExcludedDefault.append(word)
             else:
                 print(ERROR_COLOUR + "[-] '{0}' file not found\n".format(self.pythonExcludeDefaultString))
 
-            # -- Remove excluded variables/classes/functions defined from 'exclude/string_to_string_mixed/exclude_word_by_user.txt' -- #
+            # -- Delete excluded variables/classes/functions defined from 'exclude/string_to_string_mixed/exclude_word_by_user.txt' -- #
             if os.path.exists(self.pythonExcludeUserString) == True:
                 with open(self.pythonExcludeUserString, "r") as readFile:
                     for word in readFile:
                         if "#" in word or word == "\n":
                             continue
                         else:
-                            word = word.rstrip()    
+                            word = word.rstrip()
                             wordsExcludedUser.append(word)
             else:
                 print(ERROR_COLOUR + "[-] '{0}' file not found\n".format(self.pythonExcludeUserString))
-            
+
             for word in wordsExcludedUser:
                 for key in variablesDict.keys():
                     if word in key:
@@ -358,7 +357,7 @@ class Replace:
                         del classesDict[word]
                     if word in functionsDict.keys():
                         del functionsDict[word]
-            
+
                 for word in wordsExcludedDefaultFound:
                     if word in variablesDict.keys():
                         del variablesDict[word]
@@ -367,7 +366,7 @@ class Replace:
                     if word in functionsDict.keys():
                         del functionsDict[word]
             bar.finish()
-            
+
         # -- Display variables/classes/functions found -- #
         if verboseArg:
             print("\n[+] Variable(s) found :\n")
@@ -376,14 +375,14 @@ class Replace:
             else:
                 for key, value in variablesDict.items():
                     print("-> {0} : {1}".format(key, value))
-            
+
             print("\n[+] Class(es) found :\n")
             if classesDict == {}:
                 print("-> No result")
             else:
                 for key, value in classesDict.items():
                     print("-> {0} : {1}".format(key, value))
-            
+
             print("\n[+] Function(s) found :\n")
             if functionsDict == {}:
                 print("-> No result")
@@ -428,9 +427,9 @@ class Replace:
                                 else:
                                     checkQuotePassing += 1
                                     eachLine = Replace.EachLine(
-                                                                self, 
-                                                                line=eachLine, 
-                                                                dictionary=allDict.items(), 
+                                                                self,
+                                                                line=eachLine,
+                                                                dictionary=allDict.items(),
                                                                 fileNameImport=False,
                                                                 listModuleImport=False
                                     )
@@ -442,9 +441,9 @@ class Replace:
                                 else:
                                     checkQuotePassing += 1
                                     eachLine = Replace.EachLine(
-                                                                self, 
-                                                                line=eachLine, 
-                                                                dictionary=allDict.items(), 
+                                                                self,
+                                                                line=eachLine,
+                                                                dictionary=allDict.items(),
                                                                 fileNameImport=False,
                                                                 listModuleImport=False
                                     )
@@ -459,18 +458,18 @@ class Replace:
                             else:
                                 if re.match(r"\s*__all__\s*=\s*\[", eachLine):
                                     eachLine = Replace.EachLine(
-                                                                self, 
-                                                                line=eachLine, 
-                                                                dictionary=classFuncDict.items(), 
+                                                                self,
+                                                                line=eachLine,
+                                                                dictionary=classFuncDict.items(),
                                                                 fileNameImport=False,
                                                                 listModuleImport=True
                                     )
                                     sys.stdout.write(eachLine)
                                 else:
                                     eachLine = Replace.EachLine(
-                                                                self, 
-                                                                line=eachLine, 
-                                                                dictionary=allDict.items(), 
+                                                                self,
+                                                                line=eachLine,
+                                                                dictionary=allDict.items(),
                                                                 fileNameImport=False,
                                                                 listModuleImport=False
                                     )
@@ -492,8 +491,8 @@ class Replace:
                                     checkWordsMixed.append(value)
                                     checkKeyWordsMixed.append(key)
                 bar.next(1)
-                        
-            # -- Remove duplicated words -- #
+
+            # -- Delete duplicated words -- #
             checkListWordsMixed = list(dict.fromkeys(checkWordsMixed))
             checkKeyWordsMixed  = list(dict.fromkeys(checkKeyWordsMixed))
 
@@ -516,7 +515,7 @@ class Replace:
                 print("\n[!] Word(s) that not been replaced, check if an error will appear when will launch your obfuscated code... :\n")
                 if checkWordsError != []:
                     for wordNoReplaced in checkWordsError:
-                        print("-> Word : {0}".format(wordNoReplaced))  
+                        print("-> Word : {0}".format(wordNoReplaced))
             return EXIT_FAILURE
 
 
@@ -533,9 +532,9 @@ class Replace:
         detectQuotes    = r"\'{3}|\"{3}"
 
         recursFiles = self.utils.CheckFileDir(
-                                                output=outputArg, 
-                                                detectFiles="py", 
-                                                blockDir="__pycache__", 
+                                                output=outputArg,
+                                                detectFiles="py",
+                                                blockDir="__pycache__",
                                                 blockFile=False,
                                                 dirOnly=False
         )
@@ -566,12 +565,12 @@ class Replace:
                         if checkPrint == 0:
                             varMixer = self.mixer.GetStringMixer(lenght=mixerLevelArg)
                             sys.stdout.write(varMixer + "=\"\"\"")
-                            checkPrint = 1   
+                            checkPrint = 1
                         else:
-                            getLetterLineList = []     
+                            getLetterLineList = []
                             for letterLine in eachLine:
                                 letterToHex = "\\x" + str(letterLine.encode().hex())
-                                getLetterLineList.append(letterToHex) # Get list of all letters in line          
+                                getLetterLineList.append(letterToHex) # Get list of all letters in line
                             hexLine = "".join(getLetterLineList)
                             sys.stdout.write(hexLine)
 
@@ -579,9 +578,9 @@ class Replace:
                 with open(file, "a") as inputFile:
                     inputFile.write("\"\"\"")
                     inputFile.write("\nexec({0})".format(varMixer))
-                bar.next(1)    
+                bar.next(1)
             bar.finish()
-        
+
         with Bar(PROGRESS_COLOUR + "Check       ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
                 numberLine = 0
@@ -606,7 +605,7 @@ class Replace:
             bar.finish()
 
         if checkError == False:
-            return EXIT_SUCCESS        
+            return EXIT_SUCCESS
         else:
             if verboseArg:
                 print("\n[!] Line(s) that have not been replaced by their hexadecimal values... :\n")
@@ -625,8 +624,8 @@ class Replace:
         filesNameFound          = []
         filesNameFoundNoExt     = []
         filesNameMixed          = []
-        wordsExcluded           = []
-        wordsExcludedFound      = []
+        fileNameExcluded        = []
+        fileNameExcludedFound   = []
         importNoCompliantFound  = []
         badNameDir              = []
         numberLine              = 0
@@ -637,27 +636,27 @@ class Replace:
         currentPosition         = os.getcwd()
 
         detectImport = r"\s*from\s+|\s*import\s+"
-        
+
         recursFiles = self.utils.CheckFileDir(
-                                                output=outputArg, 
-                                                detectFiles="py", 
-                                                blockDir="__pycache__", 
+                                                output=outputArg,
+                                                detectFiles="py",
+                                                blockDir="__pycache__",
                                                 blockFile="__init__",
                                                 dirOnly=False
         )
-        
+
         recursFilesWithInit = self.utils.CheckFileDir(
-                                                        output=outputArg, 
-                                                        detectFiles="py", 
-                                                        blockDir="__pycache__", 
+                                                        output=outputArg,
+                                                        detectFiles="py",
+                                                        blockDir="__pycache__",
                                                         blockFile=False,
                                                         dirOnly=False
         )
 
         recursDirs = self.utils.CheckFileDir(
-                                            output=outputArg, 
-                                            detectFiles="", 
-                                            blockDir="__pycache__", 
+                                            output=outputArg,
+                                            detectFiles="",
+                                            blockDir="__pycache__",
                                             blockFile=False,
                                             dirOnly=True
         )
@@ -677,32 +676,45 @@ class Replace:
                     unix = True
 
                 mixer = self.mixer.GetStringMixer(lenght=mixerLevelArg)
-                filesNameDict[parseFilePath[-1]] = mixer + ".py" 
+                filesNameDict[parseFilePath[-1]] = mixer + ".py"
                 filesNameDictNoExt[parseFilePath[-1].replace(".py", "")] = mixer
 
-                removeExt = parseFilePath[-1].replace(".py","")
-                
+                deleteExt = parseFilePath[-1].replace(".py","")
+
                 filesNameFound.append(parseFilePath[-1])
-                filesNameFoundNoExt.append(removeExt)
+                filesNameFoundNoExt.append(deleteExt)
                 filesNameMixed.append(mixer + ".py")
-            
+
             # -- Check if directory have the same name
             for directory in recursDirs:
                 for fileName in filesNameFoundNoExt:
                     if re.match(r".*/{1}" + re.escape(fileName) + r"/{1}.*", directory):
-                        wordsExcluded.append(fileName)
-                        badNameDir.append(fileName)                    
+                        fileNameExcluded.append(fileName)
+                        badNameDir.append(fileName)
 
-            for word in wordsExcluded:
+            # -- Delete if file name excluded by user from exclude/file_name/exclude_file_name_by_user.txt' -- #
+            if os.path.exists(self.pythonExcludeUserFileName) == True:
+                with open(self.pythonExcludeUserFileName) as readFile:
+                    for fileName in readFile:
+                        if "#" in fileName or fileName == "\n":
+                            continue
+                        else:
+                            fileName = fileName.rstrip()
+                            fileNameExcluded.append(fileName)
+            else:
+                print(ERROR_COLOUR + "[-] '{0}' file not found\n".format(self.pythonExcludeUserFileName))
+            
+            # -- Delete file name excluded in dictionnary -- #
+            for word in fileNameExcluded:
                 for fileNameNoExt in filesNameFoundNoExt:
                     if fileNameNoExt == word:
-                        wordsExcludedFound.append(word)
+                        fileNameExcludedFound.append(word)
                         filesNameFoundNoExt.remove(word)
                 for fileName in filesNameFound:
                     if fileName == word:
                         filesNameFound.remove(word)
                 if word in filesNameDictNoExt.keys():
-                    del filesNameDictNoExt[word]            
+                    del filesNameDictNoExt[word]
                 word = word + ".py"
                 if word in filesNameDict.keys():
                     del filesNameDict[word]
@@ -729,13 +741,13 @@ class Replace:
                                             i = i + ".py"
                                             filesNameFound.remove(i)
                                     if i in filesNameDictNoExt.keys():
-                                        del filesNameDictNoExt[i]            
+                                        del filesNameDictNoExt[i]
                                     i = i + ".py"
                                     if i in filesNameDict.keys():
                                         del filesNameDict[i]
                 bar.next(1)
             bar.finish()
-    
+
         # -- Diplay all files found with their mixed values if verbose arg is actived -- #
         if verboseArg:
             print("\n[+] File(s) name found with their mixed values :\n")
@@ -754,9 +766,9 @@ class Replace:
                 print("\n[!] Directory that have same name of python file(s) :\n")
                 for i in badNameDir:
                     print("-> {0} : no compliant ( file name has been excluded automatically)".format(i))
-                    i = i.rstrip()    
+                    i = i.rstrip()
             print("")
-    
+
         # -- Replace all files name to random strings with length defined -- #
         with Bar(PROGRESS_COLOUR + "Obfuscation ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
             for fileInCode in recursFilesWithInit:
@@ -765,9 +777,9 @@ class Replace:
                     for eachLine in inputFile:
                         if re.match(detectImport, eachLine):
                             eachLine = Replace.EachLine(
-                                                        self, 
-                                                        line=eachLine, 
-                                                        dictionary=filesNameDictNoExt.items(), 
+                                                        self,
+                                                        line=eachLine,
+                                                        dictionary=filesNameDictNoExt.items(),
                                                         fileNameImport=True,
                                                         listModuleImport=False
                             )
@@ -786,7 +798,7 @@ class Replace:
                     parseFilePath = file.split("/")
                     unix = True
 
-                for key, value in filesNameDict.items():        
+                for key, value in filesNameDict.items():
                     if key == parseFilePath[-1]:
                         parseFilePath.remove(parseFilePath[-1])
                         if unix == True:
@@ -802,9 +814,9 @@ class Replace:
             bar.finish()
 
         checkRecursFiles = self.utils.CheckFileDir(
-                                                    output=outputArg, 
-                                                    detectFiles="py", 
-                                                    blockDir="__pycache__", 
+                                                    output=outputArg,
+                                                    detectFiles="py",
+                                                    blockDir="__pycache__",
                                                     blockFile="__init__",
                                                     dirOnly=False
         )

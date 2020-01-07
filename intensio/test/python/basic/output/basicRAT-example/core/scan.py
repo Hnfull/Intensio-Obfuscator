@@ -1,19 +1,19 @@
 # -*- coding: utf-8 -*-
 import socket
-yYxudvlLhtmQwRMZlxMVkuZzsTYvDTcG = [ 
+PORTS = [ 
             21, 22, 23, 25, 53, 80, 110, 111, 135, 139, 143, 179, 443, 445,
             514, 993, 995, 1723, 3306, 3389, 5900, 8000, 8080, 8443, 8888
 ]
-def lxpHoRVQHmZlAmDEjqZZhfmtRDctbLaW(ip):
+def single_host(ip):
     try:
         socket.inet_aton(ip)
     except socket.error:
         return 'Error: Invalid IP address.'
-    hTHEiuCIZGZSbKRssLNLpfrQaMYerPyt = ''
-    for jWOhPeWyYiAMZGeISnknzYlvOIKdtTqh in yYxudvlLhtmQwRMZlxMVkuZzsTYvDTcG:
-        cfVfTzUSlYOIdEbVStOBAaeUNJdepWJu = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        xSQpmyINTvpmGsETqSvOlKRYiEgmKGNz = cfVfTzUSlYOIdEbVStOBAaeUNJdepWJu.connect_ex((ip, jWOhPeWyYiAMZGeISnknzYlvOIKdtTqh))
+    results = ''
+    for p in PORTS:
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        c = s.connect_ex((ip, p))
         socket.setdefaulttimeout(0.5)
-        hdAsvQFjtqifMrwkWKdvjaPZZeitgfAe = 'open' if not xSQpmyINTvpmGsETqSvOlKRYiEgmKGNz else 'closed'
-        hTHEiuCIZGZSbKRssLNLpfrQaMYerPyt += '{:>5}/tcp {:>7}\n'.format(jWOhPeWyYiAMZGeISnknzYlvOIKdtTqh, hdAsvQFjtqifMrwkWKdvjaPZZeitgfAe)
-    return hTHEiuCIZGZSbKRssLNLpfrQaMYerPyt.rstrip()
+        state = 'open' if not c else 'closed'
+        results += '{:>5}/tcp {:>7}\n'.format(p, state)
+    return results.rstrip()

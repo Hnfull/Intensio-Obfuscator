@@ -1,13 +1,13 @@
 # Intensio-Obfuscator (Beta)
 
 ![](https://img.shields.io/badge/Python->=3.5-blue.svg)
-![](https://img.shields.io/badge/Version-1.0.6-green.svg)
+![](https://img.shields.io/badge/Version-1.0.7-green.svg)
 ![](https://img.shields.io/badge/Licence-MIT-red.svg)
 
 ## What is this ?
 - Intensio-Obfsucator tool takes a python source code and transform it into an obfuscated python code
   - **Replace** all names of `variables/classes/functions/files-name` to random strings with length defined and all `chars` to their hexadecimal value
-  - **Remove** all `comments`, all `spaces lines`
+  - **Delete** all `comments`, all `spaces lines`
   - **Padding** random `scripts` with an always differents values
 
 ## Requirements
@@ -29,17 +29,17 @@
 ## Features
 | Features | Descriptions |
 | ------ | ------ |
-| remove comment | Remove all comments (this feature is executed by default) |
-| remove space line | Remove all spaces line (this feature is executed by default) |
-| correction padding empty class/function | Add padding to empty classes and functions, if the class or function contains only comments, the default feature `remove comments` will leave a class or function empty, this will avoid generating an error (this feature is executed by default) |
+| delete comment | Delete all comments (this feature is executed by default) |
+| delete space line | Delete all spaces line (this feature is executed by default) |
+| correction padding empty class/function | Add padding to empty classes and functions, if the class or function contains only comments, the default feature `delete comments` will leave a class or function empty, this will avoid generating an error (this feature is executed by default) |
 | replace string to string mixed | Replace all names of variables/classes/functions to random strings with length defined|
 | padding script | Add padding of random scripts after each line|
 | replace file name | Replace all files name to random strings with length defined |
 | replace string to hex | Replace all chars to their hexadecimal value |
-| correction remove pyc file | Remove all pyc file in output directory (this feature is executed by default) |
-| mixerlevel lower | Generate random strings of 32 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameter are specified |
-| mixerlevel medium | Generate random strings of 64 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameter are specified |
-| mixerlevel high | Generate random strings of 128 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameter are specified |
+| correction delete pyc file | delete all pyc file in output directory (this feature is executed by default) |
+| mixerlevel lower | Generate random strings of 32 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified |
+| mixerlevel medium | Generate random strings of 64 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified |
+| mixerlevel high | Generate random strings of 128 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified |
 
 - Features can be executed separatly
     - `replace string to string mixed` -> `-rts, --replacetostr`
@@ -69,7 +69,7 @@
 - [Python files obfuscated](docs/examples/python_code_examples.md)
 
 ## Todo
-- Next Version 1.0.7:
+- Next Version 1.0.8:
     - Optimisation of 'Replace string to string' feature allowing to reduce considerably time to obfuscate code
 
 - Version 1.0.1-x:
