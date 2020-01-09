@@ -3,24 +3,24 @@ import datetime
 import os
 import urllib
 import zipfile
-def unzip(f):
+def YqJAJWVCKIQnzKVFYIFbwvGyLEHkdSzJ(f):
     if os.path.isfile(f):
         try:
             with zipfile.ZipFile(f) as zf:
                 zf.extractall('.')
                 return 'File {} extracted.'.format(f)
         except zipfile.BadZipfile:
-            return 'Error: Failed to unzip file.'
+            return 'Error: Failed to YqJAJWVCKIQnzKVFYIFbwvGyLEHkdSzJ file.'
     else:
         return 'Error: File not found.'
-def wget(url):
-    if not url.startswith('http'):
+def IqKsJvdgDmUmoQnjYBwqdobWQbQIsuSB(YVUdGVfPLuGahYVogiZwNjGiGgGkIegS):
+    if not YVUdGVfPLuGahYVogiZwNjGiGgGkIegS.startswith('http'):
         return 'Error: URL must begin with http:// or https:// .'
-    fname = url.split('/')[-1]
-    if not fname:
-        fname = 'file-'.format(str(datetime.datetime.now()).replace(' ', '-'))
+    FncUDhpNFnbFvciPnXtmEumcvADoZbpd = YVUdGVfPLuGahYVogiZwNjGiGgGkIegS.split('/')[-1]
+    if not FncUDhpNFnbFvciPnXtmEumcvADoZbpd:
+        FncUDhpNFnbFvciPnXtmEumcvADoZbpd = 'file-'.format(str(datetime.datetime.now()).replace(' ', '-'))
     try:
-        urllib.urlretrieve(url, fname)
+        urllib.urlretrieve(YVUdGVfPLuGahYVogiZwNjGiGgGkIegS, FncUDhpNFnbFvciPnXtmEumcvADoZbpd)
     except IOError:
         return 'Error: Download failed.'
-    return 'File {} downloaded.'.format(fname)
+    return 'File {} downloaded.'.format(FncUDhpNFnbFvciPnXtmEumcvADoZbpd)

