@@ -1,4 +1,4 @@
-# CHANGESLOG 
+# CHANGELOG of Intensio-Obfuscator project
 
 ## 06-02-2019
 - [Upgrade] version 1.0.0
@@ -6,7 +6,6 @@
 
 ## 06-07-2019
 - [Upgrade] version 1.0.1
-- [Update] Code improvement
 - [Update] one file example and multiple files example (larger project)
 - [Update] README.md file improvement
 - [Add] rules to replacement of variables - classes - functions
@@ -27,7 +26,6 @@
 ## 06-17-2019
 - [Ugrade] version 1.0.3
 - [Update] `-rm --remove` parameter to `-rc --rcomments` parameter to remove all comments
-- [Update] Code improvements
 - [Add] new feature `-rp --rprint` this parameter remove all print functions
 - [Add] `docs/recommendation.md` reference to all the best practices for using this tool
 - [Add] `docs/malfunctions.md`  reference any known dysfunctions
@@ -38,7 +36,6 @@
 - [Update] `-rc --rcomments`, this parameter is henceforth by executed default
 - [Update] `-m --mixer` to `-m --mixerlevel`
 - [Update] documentation Improvement
-- [Update] Code improvements
 - [Fix] issue #11 - Improvement of the handle and detect process to all features
 - [Remove] `docs/malfunctions.md` reference any known dysfunctions, is merged with `docs/recommendation.md`
 - [Add] an copy of Intensio-Obfuscator project at test obfuscation code #5

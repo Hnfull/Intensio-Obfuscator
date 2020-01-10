@@ -9,8 +9,6 @@ intensio/test/python/advanced/output/dev
 intensio/include/dev
 intensio/exclude/dev
 
-
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
