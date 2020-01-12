@@ -85,6 +85,5 @@
 - [Update] spelling error (remove => delete)
 - [Update] name of class `Remove` to `Delete`
 - [Update] name of `intensio_remove.py` to `intensio_delete.py`
-- [Update] improve documentation
-- [Add] new feature to exclude file name of obfuscation 
+- [Add] new feature to exclude file name of obfuscation #35
 - [Add] `Intensio-Obfuscator/intensio/exclude/file_name/exclude_file_name_by_user.txt` allow a user to exclude file name when the `replace file name [-rfn, --replacefilename]` is called
