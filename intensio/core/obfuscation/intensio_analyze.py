@@ -30,7 +30,7 @@ class Analyze:
         self.utils = Utils()
 
 
-    def InputAvailable(self, inputArg=None, verboseArg=None):
+    def InputAvailable(self, inputArg, verboseArg):
         inputFileFound      = []
         inputFileEmpty      = []
         inputFileFoundCount = 0
@@ -72,8 +72,10 @@ class Analyze:
                             else:
                                 inputFileEmpty.append(file)
                                 inputFileEmptyCount += inputFileEmptyCount + 1
+
                         bar.next(1)
-                    
+                    bar.finish()
+
                     if inputFileFoundCount >= 1 and inputFileEmptyCount < inputFileFoundCount:
                         if verboseArg:
                             print("\n\n[+] File input found :\n")
@@ -95,9 +97,6 @@ class Analyze:
                     else:
                         print(ERROR_COLOUR + "[-] No file available in '{0}'.".format(inputArg))
                         return ERROR_FILE_NOT_FOUND
-
-                    bar.finish()
-
             else:
                 print(ERROR_COLOUR + "[-] '{0}' is not a directory".format(inputArg))
                 return ERROR_DIR_NOT_FOUND
@@ -106,7 +105,7 @@ class Analyze:
             return ERROR_PATH_NOT_FOUND
 
 
-    def OutputAvailable(self, inputArg=None, outputArg=None, verboseArg=None):
+    def OutputAvailable(self, inputArg, outputArg, verboseArg):
         outputFileFound         = []
         outputFileEmpty         = []
         outputFileFoundCount    = 0
@@ -156,7 +155,9 @@ class Analyze:
                                             else:
                                                 outputFileEmpty.append(file)
                                                 outputFileEmptyCount += outputFileEmptyCount + 1
+
                                         bar.next(1)
+                                    bar.finish()
                                 
                                     if outputFileFoundCount >= 1 and outputFileFoundCount > outputFileEmptyCount:
                                         if verboseArg:
@@ -175,8 +176,6 @@ class Analyze:
                                     else:
                                         print(ERROR_COLOUR + "[-] No files available in '{0}'".format(outputArg))
                                         return ERROR_FILE_NOT_FOUND
-
-                                    bar.finish()
                             else:
                                 print(ERROR_COLOUR + "[-] Copy '{0}' to '{1}' failed, this is not a output directory copied".format(inputArg, outputArg))
                                 return ERROR_DIR_NOT_FOUND
@@ -230,8 +229,10 @@ class Analyze:
                                         outputFileFoundCount += outputFileFoundCount + 1
                                     else:
                                         outputFileEmpty.append(file)
-                                        outputFileEmptyCount += outputFileEmptyCount + 1    
-                                bar.next(1)    
+                                        outputFileEmptyCount += outputFileEmptyCount + 1
+
+                                bar.next(1)
+                            bar.finish()    
 
                             if outputFileFoundCount >= 1 and outputFileFoundCount > outputFileEmptyCount:
                                 if verboseArg:
@@ -249,9 +250,7 @@ class Analyze:
                                 return EXIT_SUCCESS   
                             else:
                                 print(ERROR_COLOUR + "[-] No files available in '{0}'".format(outputArg))
-                                return ERROR_FILE_NOT_FOUND
-
-                            bar.finish()
+                                return ERROR_FILE_NOT_FOUND                
                     else:
                         print(ERROR_COLOUR + "[-] Copy '{0}' to '{1}' failed, this is not a output directory copied !".format(inputArg, outputArg))
                         return ERROR_DIR_NOT_FOUND

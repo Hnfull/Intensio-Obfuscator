@@ -34,7 +34,7 @@ class Replace:
         self.pythonExcludeUserFileName  = "exclude/file_name/exclude_file_name_by_user.txt"
 
 
-    def EachLine(self, line="", dictionary={}, fileNameImport=False, listModuleImport=False):
+    def EachLine(self, line, dictionary, fileNameImport, listModuleImport):
         getIndexLineList    = []
         returnLine          = []
         charValue           = []
@@ -194,7 +194,7 @@ class Replace:
         return returnLine[:]
 
 
-    def StringToString(self, outputArg=None, mixerLevelArg=None, verboseArg=None):
+    def StringToString(self, outputArg, mixerLevelArg, verboseArg):
         variablesDict               = {}
         classesDict                 = {}
         functionsDict               = {}
@@ -238,7 +238,7 @@ class Replace:
         print("\n[+] Running replacement of variables/classes/functions in {0} file(s), he can be long... you have time to make a coffee :)\n".format(countRecursFiles))
 
         # -- Replace variables/classes/functions to random strings with length defined -- #
-        with Bar(PROGRESS_COLOUR + "Setting up  ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
+        with Bar(PROGRESS_COLOUR + "Setting up  ", fill="=", max=100, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
                 with open(file, "r") as readFile:
                     readF = readFile.readlines()
@@ -296,7 +296,7 @@ class Replace:
                             mixer = self.mixer.GetStringMixer(lenght=mixerLevelArg)
                             if search.group(1) not in classesDict:
                                 classesDict[search.group(1)] = mixer
-                bar.next(1)
+            bar.next(40)
 
             # -- Delete excluded variables/classes/functions defined from 'exclude/string_to_string_mixed/exclude_word_do_not_modify.txt' -- #
             if os.path.exists(self.pythonExcludeDefaultString) == True:
@@ -310,6 +310,8 @@ class Replace:
             else:
                 print(ERROR_COLOUR + "[-] '{0}' file not found\n".format(self.pythonExcludeDefaultString))
 
+            bar.next(10)
+
             # -- Delete excluded variables/classes/functions defined from 'exclude/string_to_string_mixed/exclude_word_by_user.txt' -- #
             if os.path.exists(self.pythonExcludeUserString) == True:
                 with open(self.pythonExcludeUserString, "r") as readFile:
@@ -321,6 +323,8 @@ class Replace:
                             wordsExcludedUser.append(word)
             else:
                 print(ERROR_COLOUR + "[-] '{0}' file not found\n".format(self.pythonExcludeUserString))
+
+            bar.next(10)
 
             for word in wordsExcludedUser:
                 for key in variablesDict.keys():
@@ -335,6 +339,8 @@ class Replace:
                     if word in key:
                         if re.match(r"^" + re.escape(word) + r"$", key):
                             wordsExcludedUserFound.append(word)
+            
+            bar.next(20)
 
             for word in wordsExcludedDefault:
                 for key in variablesDict.keys():
@@ -365,6 +371,8 @@ class Replace:
                         del classesDict[word]
                     if word in functionsDict.keys():
                         del functionsDict[word]
+
+            bar.next(20)
             bar.finish()
 
         # -- Display variables/classes/functions found -- #
@@ -474,10 +482,11 @@ class Replace:
                                                                 listModuleImport=False
                                     )
                                     sys.stdout.write(eachLine)
+
                 bar.next(1)
             bar.finish()
 
-        with Bar(PROGRESS_COLOUR + "Check       ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
+        with Bar(PROGRESS_COLOUR + "Check       ", fill="=", max=100, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
                 # -- Check if variables/classes/functions have been mixed -- #
                 with open(file, "r") as readFile:
@@ -490,16 +499,21 @@ class Replace:
                                 else:
                                     checkWordsMixed.append(value)
                                     checkKeyWordsMixed.append(key)
-                bar.next(1)
+            
+            bar.next(70)
 
             # -- Delete duplicated words -- #
             checkListWordsMixed = list(dict.fromkeys(checkWordsMixed))
             checkKeyWordsMixed  = list(dict.fromkeys(checkKeyWordsMixed))
 
+            bar.next(15)
+
             for i in checkListWordsMixed:
                 checkCountWordsMixed += 1
             for i in allDict.values():
                 checkCountWordsValue += 1
+
+            bar.next(15)
             bar.finish()
 
         if checkCountWordsMixed == checkCountWordsValue:
@@ -519,7 +533,7 @@ class Replace:
             return EXIT_FAILURE
 
 
-    def StringsToHex(self, outputArg=None, mixerLevelArg=None, verboseArg=None):
+    def StringsToHex(self, outputArg, mixerLevelArg, verboseArg):
         checkHexError       = {}
         getLetterLineList   = []
         countRecursFiles    = 0
@@ -578,6 +592,7 @@ class Replace:
                 with open(file, "a") as inputFile:
                     inputFile.write("\"\"\"")
                     inputFile.write("\nexec({0})".format(varMixer))
+
                 bar.next(1)
             bar.finish()
 
@@ -601,6 +616,7 @@ class Replace:
                                     checkError = True
                             else:
                                 continue
+
                 bar.next(1)
             bar.finish()
 
@@ -617,7 +633,7 @@ class Replace:
             return EXIT_FAILURE
 
 
-    def FilesName(self, outputArg=None, mixerLevelArg=None, verboseArg=None):
+    def FilesName(self, outputArg, mixerLevelArg, verboseArg):
         checkFilesFoundCompare  = {}
         filesNameDict           = {}
         filesNameDictNoExt      = {}
@@ -666,7 +682,7 @@ class Replace:
 
         print("\n[+] Running replace files name in {0} file(s)...\n".format(countRecursFiles))
 
-        with Bar(PROGRESS_COLOUR + "Setting up  ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
+        with Bar(PROGRESS_COLOUR + "Setting up  ", fill="=", max=100, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
                 if "\"" in file:
                     parseFilePath = file.split("\"")
@@ -685,12 +701,16 @@ class Replace:
                 filesNameFoundNoExt.append(deleteExt)
                 filesNameMixed.append(mixer + ".py")
 
+            bar.next(30)
+
             # -- Check if directory have the same name
             for directory in recursDirs:
                 for fileName in filesNameFoundNoExt:
                     if re.match(r".*/{1}" + re.escape(fileName) + r"/{1}.*", directory):
                         fileNameExcluded.append(fileName)
                         badNameDir.append(fileName)
+
+            bar.next(20)
 
             # -- Delete if file name excluded by user from exclude/file_name/exclude_file_name_by_user.txt' -- #
             if os.path.exists(self.pythonExcludeUserFileName) == True:
@@ -704,6 +724,8 @@ class Replace:
             else:
                 print(ERROR_COLOUR + "[-] '{0}' file not found\n".format(self.pythonExcludeUserFileName))
             
+            bar.next(10)
+
             # -- Delete file name excluded in dictionnary -- #
             for word in fileNameExcluded:
                 for fileNameNoExt in filesNameFoundNoExt:
@@ -718,6 +740,8 @@ class Replace:
                 word = word + ".py"
                 if word in filesNameDict.keys():
                     del filesNameDict[word]
+
+            bar.next(10)
 
             # -- Check if file name in code is after 'import' native python function --#
             for file in recursFiles:
@@ -745,7 +769,8 @@ class Replace:
                                     i = i + ".py"
                                     if i in filesNameDict.keys():
                                         del filesNameDict[i]
-                bar.next(1)
+
+            bar.next(30)
             bar.finish()
 
         # -- Diplay all files found with their mixed values if verbose arg is actived -- #
@@ -770,7 +795,7 @@ class Replace:
             print("")
 
         # -- Replace all files name to random strings with length defined -- #
-        with Bar(PROGRESS_COLOUR + "Obfuscation ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
+        with Bar(PROGRESS_COLOUR + "Obfuscation ", fill="=", max=100, suffix="%(percent)d%%") as bar:
             for fileInCode in recursFilesWithInit:
                 # -- Rename all files in python code -- #
                 with fileinput.input(fileInCode, inplace=True) as inputFile:
@@ -787,7 +812,8 @@ class Replace:
                             continue
                         else:
                             sys.stdout.write(eachLine)
-                bar.next(0.5)
+            
+            bar.next(50)
 
             for file in recursFiles:
                 # -- Rename all files in their directories -- #
@@ -809,8 +835,10 @@ class Replace:
                         os.rename(key, value)
                     else:
                         continue
+
                 os.chdir(currentPosition)
-                bar.next(0.5)
+            
+            bar.next(50)
             bar.finish()
 
         checkRecursFiles = self.utils.CheckFileDir(
@@ -832,6 +860,7 @@ class Replace:
                 for key, value in filesNameDict.items():
                     if key in file:
                         checkFilesFoundCompare[key] = value
+
                 bar.next(1)
             bar.finish()
 

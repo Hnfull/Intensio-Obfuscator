@@ -18,11 +18,11 @@ class Mixer:
         self.lenHigh    = 128
 
 
-    def StringGenerator(self, stringLenght=None):
+    def StringGenerator(self, stringLenght):
         return "".join(random.choice(string.ascii_letters) for i in range(stringLenght))
     
 
-    def GetStringMixer(self, lenght=None):
+    def GetStringMixer(self, lenght):
         if lenght == "lower":
             return Mixer.StringGenerator(self, self.lenLower)
         elif lenght == "medium":

@@ -50,7 +50,7 @@ class Padding:
         self.space64 = "                                                                "
 
 
-    def ScriptsGenerator(self, mixerLevelArg=None):
+    def ScriptsGenerator(self, mixerLevelArg):
         varRandom1   = self.mixer.GetStringMixer(lenght=mixerLevelArg)
         varRandom2   = self.mixer.GetStringMixer(lenght=mixerLevelArg)
         varRandom3   = self.mixer.GetStringMixer(lenght=mixerLevelArg)
@@ -241,7 +241,7 @@ class Padding:
             return scriptAssPadding7
 
 
-    def AddRandomScripts(self, outputArg=None, mixerLevelArg=None, verboseArg=None):
+    def AddRandomScripts(self, outputArg, mixerLevelArg, verboseArg):
         countScriptsAdded       = 0
         countLineAdded          = 0
         countLine               = 0
@@ -280,6 +280,7 @@ class Padding:
                         if not eachLine:
                             continue
                         countLine += 1
+
                 bar.next(1)
             bar.finish()
 
@@ -449,6 +450,7 @@ class Padding:
                                     countScriptsAdded += 1
                                 else:
                                     continue
+
                 bar.next(1)
             bar.finish()
 
@@ -461,10 +463,12 @@ class Padding:
                         if not eachLine:
                             continue    
                         checkLine += 1
+
                 bar.next(1)
-            countLineAdded = checkLine - countLine
             bar.finish()
-        
+
+        countLineAdded = checkLine - countLine
+
         if checkLine > countLine:    
             print("\n-> {0} scripts added in {1} file(s)\n".format(countScriptsAdded, countRecursFiles))
             print("-> {0} lines added in {1} file(s)\n".format(countLineAdded, countRecursFiles))
@@ -473,7 +477,7 @@ class Padding:
             return EXIT_FAILURE
     
     
-    def EmptyClasses(self, outputArg=None, mixerLevelArg=None, verboseArg=None):
+    def EmptyClasses(self, outputArg, mixerLevelArg, verboseArg):
         countRecursFiles        = 0
         counterToCheckIndent    = 0
         numberLine              = 0
@@ -504,7 +508,6 @@ class Padding:
                     readF = readFile.readlines()
                     for eachLine in readF:
                         numberLineInFile += 1
-                bar.next(0.2)
 
                 # -- Find and put empty class(es) in dict -- #
                 with open(file, "r") as readFile:
@@ -528,7 +531,6 @@ class Padding:
                             else: 
                                 counterToCheckIndent += 1
                                 search = re.search(classDefined, eachLine)
-                bar.next(0.3)
                 
                 # -- Add padding in empty class(es) -- #
                 numberLine = 0
@@ -564,7 +566,8 @@ class Padding:
                                     sys.stdout.write(textwrap.indent(finalVarPadding, self.space12))
                             else:
                                 counterToCheckIndent += 1
-                bar.next(0.5)
+
+                bar.next(1)
             bar.finish()
 
         # -- Check if class(es) is still empty -- #
@@ -594,9 +597,9 @@ class Padding:
                                 else: 
                                     counterToCheckIndent += 1
                                     search = re.search(classDefined, eachLine)
+
                     bar.next(1)
                 bar.finish()
-
         
             if emptyClassInfoCheck == {}:
                 for key, value in emptyClassInfo.items():
@@ -615,7 +618,7 @@ class Padding:
             return EXIT_SUCCESS
 
     
-    def EmptyFunctions(self, outputArg=None, mixerLevelArg=None, verboseArg=None):
+    def EmptyFunctions(self, outputArg, mixerLevelArg, verboseArg):
         countRecursFiles        = 0
         counterToCheckIndent    = 0
         numberLine              = 0
@@ -646,7 +649,6 @@ class Padding:
                     readF = readFile.readlines()
                     for eachLine in readF:
                         numberLineInFile += 1
-                bar.next(0.2)
 
                 # -- Find and put empty function(s) in dict -- #
                 with open(file, "r") as readFile:
@@ -670,7 +672,6 @@ class Padding:
                             else: 
                                 counterToCheckIndent += 1
                                 search = re.search(functionDefined, eachLine)
-                bar.next(0.3)
 
                 # -- Add padding in empty function(s) -- #
                 numberLine = 0
@@ -718,7 +719,8 @@ class Padding:
                                     sys.stdout.write(textwrap.indent(finalVarPadding, self.space24))
                             else:
                                 counterToCheckIndent += 1
-                bar.next(0.5)
+
+                bar.next(1)
             bar.finish()
 
         # -- Check if function(s) is still empty -- #
@@ -748,6 +750,7 @@ class Padding:
                                 else: 
                                     counterToCheckIndent += 1
                                     search = re.search(functionDefined, eachLine)
+
                     bar.next(1)
                 bar.finish()
 

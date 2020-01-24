@@ -27,7 +27,7 @@ class Delete:
         self.utils = Utils()
 
 
-    def LinesSpaces(self, outputArg=None, verboseArg=None):
+    def LinesSpaces(self, outputArg, verboseArg):
         checkLinesSpace     = {}
         checkEmptyLine      = 0
         countRecursFiles    = 0
@@ -53,6 +53,7 @@ class Delete:
                             pass
                         else:
                             sys.stdout.write(eachLine)
+
                 bar.next(1)
             bar.finish()
 
@@ -66,6 +67,7 @@ class Delete:
                         if eachLine == "\n":
                             checkLinesSpace[numberLine] = file
                             checkEmptyLine += 1
+
                 bar.next(1)
             bar.finish()
 
@@ -80,7 +82,7 @@ class Delete:
             return EXIT_FAILURE
 
 
-    def Comments(self, outputArg=None, verboseArg=None):
+    def Comments(self, outputArg, verboseArg):
         checkDeleted            = {}
         countLineOutput         = 0
         countLineInput          = 0
@@ -158,7 +160,6 @@ class Delete:
                                 sys.stdout.write(eachLine)
                         else:
                             sys.stdout.write(eachLine)
-                bar.next(0.5)
 
                 with fileinput.input(file, inplace=True) as inputFile:
                     for eachLine in inputFile:
@@ -177,9 +178,9 @@ class Delete:
                             sys.stdout.write(eachLine)
                         else:
                             sys.stdout.write(eachLine)
-                bar.next(0.5)
-            bar.finish()
 
+                bar.next(1)
+            bar.finish()
 
         # -- Check if all comments are deleted -- #
         noComments              = 0
@@ -234,7 +235,6 @@ class Delete:
                                     pass
                             else:
                                 pass
-                bar.next(0.5)
                   
                 with open(file, "r") as readFile:
                     readF = readFile.readlines()
@@ -254,7 +254,8 @@ class Delete:
                                 countLineOutput += 1
                             else:
                                 pass
-                bar.next(0.5)
+
+                bar.next(1)
             bar.finish()
 
         if countLineOutput == 0:
@@ -273,7 +274,7 @@ class Delete:
             return EXIT_FAILURE
 
 
-    def TrashFiles(self, outputArg=None, verboseArg=None):
+    def TrashFiles(self, outputArg, verboseArg):
         countRecursFiles    = 0
         deleteFiles         = 0
         checkPycFile        = []
@@ -305,6 +306,7 @@ class Delete:
                 if re.match(detectPycFiles, file):
                     deleteFiles += 1
                     checkPycFile.append(file)
+
                 bar.next(1)
             bar.finish()
 
@@ -317,6 +319,7 @@ class Delete:
                     os.chdir(moveFolder)
                     os.remove(extractPycFiles.group(0))
                     os.chdir(currentPosition)
+                    
                 bar.next(1)
             bar.finish()
         

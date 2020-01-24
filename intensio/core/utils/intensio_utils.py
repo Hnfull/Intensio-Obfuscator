@@ -23,12 +23,12 @@ class Utils:
             return "/"
 
 
-    def DictMerge(self, dict1={}, dict2={}):
+    def DictMerge(self, dict1, dict2):
         merge = {**dict1, **dict2}
         return merge
 
 
-    def CheckFileDir(self, output=None, detectFiles="", blockDir="", blockFile="", dirOnly=False):
+    def CheckFileDir(self, output, detectFiles, blockDir, blockFile, dirOnly):
         filesName       = []
 
         if dirOnly == False:
