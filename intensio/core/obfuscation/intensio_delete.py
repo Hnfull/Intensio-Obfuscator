@@ -6,17 +6,12 @@
 
 import re
 import fileinput
-import colorama
 import os
 import sys
 from progress.bar import Bar
 
 from core.utils.intensio_error import EXIT_SUCCESS, EXIT_FAILURE, ERROR_FILE_NOT_FOUND
-from core.utils.intensio_utils import Utils
-
-#--------------------------------------------------------- [Global] ---------------------------------------------------------#
-
-PROGRESS_COLOR = colorama.Fore.BLUE + colorama.Style.BRIGHT 
+from core.utils.intensio_utils import Utils, Colors
 
 #------------------------------------------------- [Function(s)/Class(es)] --------------------------------------------------#
 
@@ -44,7 +39,7 @@ class Delete:
             countRecursFiles += 1
 
         # -- Delete all empty lines -- #
-        with Bar(PROGRESS_COLOR + "Obfuscation ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
+        with Bar(Colors.PROGRESS + "Obfuscation ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
                 with fileinput.FileInput(file, inplace=True) as inputFile:
                     for eachLine in inputFile:
@@ -55,8 +50,9 @@ class Delete:
 
                 bar.next(1)
             bar.finish()
+            sys.stdout.write(Colors.DISABLE)
 
-        with Bar(PROGRESS_COLOR + "Check       ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
+        with Bar(Colors.PROGRESS + "Check       ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
                 numberLine = 0
                 with open(file, "r") as readFile:
@@ -69,6 +65,7 @@ class Delete:
 
                 bar.next(1)
             bar.finish()
+            sys.stdout.write(Colors.DISABLE)
 
         if checkEmptyLine == 0:
             return EXIT_SUCCESS
@@ -112,7 +109,7 @@ class Delete:
         # -- Delete comments and Count comments will be deleted -- #            
         print("\n[+] Running delete comments in {0} file(s)...\n".format(countRecursFiles))
 
-        with Bar(PROGRESS_COLOR + "Obfuscation ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
+        with Bar(Colors.PROGRESS + "Obfuscation ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
                 # -- Delete comments -- #
                 with fileinput.input(file, inplace=True) as inputFile:
@@ -180,12 +177,13 @@ class Delete:
 
                 bar.next(1)
             bar.finish()
-
+            sys.stdout.write(Colors.DISABLE)
+            
         # -- Check if all comments are deleted -- #
         noComments              = 0
         multipleLinesComments   = 0
 
-        with Bar(PROGRESS_COLOR + "Check       ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
+        with Bar(Colors.PROGRESS + "Check       ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
                 with open(file, "r") as readFile:
                     readF = readFile.readlines()
@@ -254,9 +252,10 @@ class Delete:
                             else:
                                 pass
 
-                bar.next(1)
+                bar.next(1)  
             bar.finish()
-
+            sys.stdout.write(Colors.DISABLE)
+        
         if countLineOutput == 0:
             print("\n-> {0} lines of comments deleted\n".format(countLineInput))            
             return EXIT_SUCCESS
@@ -300,7 +299,7 @@ class Delete:
         print("\n[+] Running delete {0} .pyc file(s)...\n".format(countRecursFiles))
 
         # -- Check if .pyc file(s) exists and delete it -- #
-        with Bar(PROGRESS_COLOR + "Setting up  ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
+        with Bar(Colors.PROGRESS + "Setting up  ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
                 if re.match(detectPycFiles, file):
                     deleteFiles += 1
@@ -308,9 +307,10 @@ class Delete:
 
                 bar.next(1)
             bar.finish()
+            sys.stdout.write(Colors.DISABLE)
 
         # -- Delete pyc file(s) -- #
-        with Bar(PROGRESS_COLOR + "Correction  ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
+        with Bar(Colors.PROGRESS + "Correction  ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
             for file in recursFiles:   
                 if re.match(detectPycFiles, file):
                     extractPycFiles = re.search(deletePycFiles, file)
@@ -321,6 +321,7 @@ class Delete:
                     
                 bar.next(1)
             bar.finish()
+            sys.stdout.write(Colors.DISABLE)
         
         checkRecursFiles = self.utils.CheckFileDir(
                                                     output=outputArg, 

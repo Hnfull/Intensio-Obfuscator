@@ -73,11 +73,8 @@ class Utils:
 
 class Colors:
 
-    HEADER = '\033[95m'
-    PROGRESS = '\033[94m'
-    SUCCESS = '\033[92m'
-    ERROR = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
+    PROGRESS = '\033[94m' + '\033[1m'   # blue + bold
+    SUCCESS = '\033[92m'                # green
+    SECTION = '\033[93m' + '\033[1m'    # yellow + bold
+    ERROR   = '\x1b[1;37;41m'           # highlighted red
+    DISABLE = '\033[0m'                 # disable color

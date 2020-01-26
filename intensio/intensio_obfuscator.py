@@ -43,7 +43,6 @@
 import sys
 import re
 import time
-import colorama
 
 from core.utils.intensio_design import INTENSIO_BANNER
 from core.utils.intensio_utils  import Utils, Colors
@@ -56,21 +55,13 @@ from core.obfuscation.intensio_delete   import Delete
 
 #--------------------------------------------------------- [Global] ---------------------------------------------------------#
 
-colorama.init(autoreset=True) # Reset colors
-
-SUCESS_COLOR   = Colors.SUCCESS
-FAILED_COLOR   = Colors.ERROR
-BANNER_COLOR   = colorama.Fore.WHITE   + colorama.Style.BRIGHT  
-SECTION_COLOR  = colorama.Fore.YELLOW  + colorama.Style.BRIGHT
-ERROR_COLOR    = Colors.ERROR
-
 def main():
     if sys.version_info[0] != 3:
-        print(ERROR_COLOR + "[-] Intensio-Obfuscator only support Python 3.x")
+        print(Colors.ERROR + "[-] Intensio-Obfuscator only support Python 3.x" + Colors.DISABLE)
         sys.exit(1)
 
     if sys.platform != "win32" and sys.platform != "linux":
-        print(ERROR_COLOR + "[-] This tool support [windows - Linux] only !")
+        print(Colors.ERROR + "[-] This tool support [windows - Linux] only !" + Colors.DISABLE)
         sys.exit(1)
 
     args    = Args()
@@ -79,7 +70,7 @@ def main():
     if len(sys.argv) > 1 and len(sys.argv) <= 13:
         pass
     else:
-        print(ERROR_COLOR + "[-] Incorrect number of arguments\n")
+        print(Colors.ERROR + "[-] Incorrect number of arguments\n" + Colors.DISABLE)
         args.GetArgHelp()
         sys.exit(ERROR_BAD_ARGUMENTS)
     
@@ -89,36 +80,36 @@ def main():
                 if re.match(r"^lower$|^medium$|^high$", args.GetArgsValue().mixerlevel):
                     if not args.GetArgsValue().paddingscript and not args.GetArgsValue().replacetostr \
                         and not args.GetArgsValue().replacefilename and not args.GetArgsValue().replacetohex:
-                        print(ERROR_COLOR + "\n[-] Need at least one argument [-rts] - [-ps] - [-rfn] - [-rth]")
+                        print(Colors.ERROR + "\n[-] Need at least one argument [-rts] - [-ps] - [-rfn] - [-rth]" + Colors.DISABLE)
                         sys.exit(ERROR_BAD_ARGUMENTS)
                 else:
-                    print(ERROR_COLOR + "[-] Incorrect level of mixerlevel, [lower - medium - high] only supported\n")
+                    print(Colors.ERROR + "[-] Incorrect level of mixerlevel, [lower - medium - high] only supported\n" + Colors.DISABLE)
                     sys.exit(ERROR_INVALID_PARAMETER)
             else:
-                print(ERROR_COLOR + "[-] Mixerlevel [-m, --mixerlevel] argument missing\n")
+                print(Colors.ERROR + "[-] Mixerlevel [-m, --mixerlevel] argument missing\n" + Colors.DISABLE)
                 sys.exit(ERROR_BAD_ARGUMENTS)
         else:
-            print(ERROR_COLOR + "[-] Output [-o, --output] argument missing\n")
+            print(Colors.ERROR + "[-] Output [-o, --output] argument missing\n" + Colors.DISABLE)
             sys.exit(ERROR_BAD_ARGUMENTS)
     else:
-        print(ERROR_COLOR + "[-] Input [-i, --input] argument missing\n")
+        print(Colors.ERROR + "[-] Input [-i, --input] argument missing\n" + Colors.DISABLE)
         sys.exit(ERROR_BAD_ARGUMENTS)
 
     for line in INTENSIO_BANNER.split("\n"):
         time.sleep(0.05)
-        print(BANNER_COLOR + line)
+        print(line)
 
     # -- Analysis and set up of the work environment -- #
-    print(SECTION_COLOR + "\n\n*********************** [ Analyze and setup environment ] ************************\n")
+    print(Colors.SECTION + "\n\n*********************** [ Analyze and setup environment ] ************************\n" + Colors.DISABLE)
     analyzeData         = Analyze()
     analyseDataInEnv    = analyzeData.InputAvailable(
                                                     inputArg=args.GetArgsValue().input,  
                                                     verboseArg=args.GetArgsValue().verbose
     )
     if analyseDataInEnv == EXIT_SUCCESS:
-        print("\n[+] Analyze input argument '{0}' -> ".format(args.GetArgsValue().input) + SUCESS_COLOR + "Successful")
+        print("\n[+] Analyze input argument '{0}' -> ".format(args.GetArgsValue().input) + Colors.SUCCESS + "Successful" + Colors.DISABLE)
     else:
-        print("[-] Analyze input '{0}' -> ".format(args.GetArgsValue().input) + FAILED_COLOR + "failed\n")
+        print("[-] Analyze input '{0}' -> ".format(args.GetArgsValue().input) + Colors.ERROR + "failed\n" + Colors.DISABLE)
         sys.exit(ERROR_INVALID_FUNCTION)
 
     analyseDataOutEnv = analyzeData.OutputAvailable(
@@ -128,26 +119,26 @@ def main():
     )
     if analyseDataOutEnv == EXIT_SUCCESS:
         print("\n[+] Analyze and setup output argument environment '{0}' -> " \
-                .format(args.GetArgsValue().output) + SUCESS_COLOR + "Successful")
+                .format(args.GetArgsValue().output) + Colors.SUCCESS + "Successful" + Colors.DISABLE)
     else:
-        print("[-] Analyze output '{0}' -> ".format(args.GetArgsValue().output) + FAILED_COLOR + "failed\n")
+        print("[-] Analyze output '{0}' -> ".format(args.GetArgsValue().output) + Colors.ERROR + "failed\n" + Colors.DISABLE)
         sys.exit(ERROR_INVALID_FUNCTION)
     
     # -- Obfuscation process -- #    
-    print(SECTION_COLOR + "\n\n************************ [ Obfuscation delete comments ] *************************\n")
+    print(Colors.SECTION + "\n\n************************* [ Obfuscation delete comments ] *************************\n" + Colors.DISABLE)
     deleteData = Delete()    
     deleteCommentsData = deleteData.Comments(
                                             outputArg=args.GetArgsValue().output,
                                             verboseArg=args.GetArgsValue().verbose
     )
     if deleteCommentsData == EXIT_SUCCESS:
-        print("[+] Obfuscation delete comments -> " + SUCESS_COLOR + "Successful")
+        print("[+] Obfuscation delete comments -> " + Colors.SUCCESS + "Successful" + Colors.DISABLE)
     else:
-        print("\n[-] Obfuscation delete comments -> " + FAILED_COLOR  + "Failed")
+        print("\n[-] Obfuscation delete comments -> " + Colors.ERROR  + "Failed" + Colors.DISABLE)
         if not args.GetArgsValue().verbose:
             print("\n[!] Retry with [-v, --verbose] parameter")
 
-    print(SECTION_COLOR + "\n\n*********************** [ Obfuscation delete line space(s) ] ***********************\n")
+    print(Colors.SECTION + "\n\n*********************** [ Obfuscation delete line space(s) ] ***********************\n" + Colors.DISABLE)
     if deleteData:
         pass
     else:    
@@ -159,14 +150,14 @@ def main():
     )
 
     if deleteLinesSpacesData == EXIT_SUCCESS:
-        print("[+] Obfuscation delete lines spaces -> " + SUCESS_COLOR + "Successful")
+        print("[+] Obfuscation delete lines spaces -> " + Colors.SUCCESS + "Successful" + Colors.DISABLE)
     else:
-        print("\n[-] Obfuscation delete lines spaces -> " + FAILED_COLOR  + "Failed")
+        print("\n[-] Obfuscation delete lines spaces -> " + Colors.ERROR  + "Failed" + Colors.DISABLE)
         if not args.GetArgsValue().verbose:
             print("\n[!] Retry with [-v, --verbose] parameter")
 
       # -- If empty class (avert to generate an error) -- #
-    print(SECTION_COLOR + "\n\n*********************** [ Correction padding empty class(es) ] **********************\n")
+    print(Colors.SECTION + "\n\n*********************** [ Correction padding empty class(es) ] *********************\n" + Colors.DISABLE)
     paddingData             = Padding()
     paddingDataEmptyClass   = paddingData.EmptyClasses(
                                                         outputArg=args.GetArgsValue().output, 
@@ -176,12 +167,12 @@ def main():
     if paddingDataEmptyClass == EXIT_SUCCESS:
         pass
     else:
-        print("\n[-] Padding empty class -> " + FAILED_COLOR + "Failed")
+        print("\n[-] Padding empty class -> " + Colors.ERROR + "Failed" + Colors.DISABLE)
         if not args.GetArgsValue().verbose:
             print("\n[!] Retry with [-v, --verbose] parameter")
 
     # -- If empty functions (avert to generate an error) -- #
-    print(SECTION_COLOR + "\n\n********************** [ Correction padding empty function(s) ] ********************\n")
+    print(Colors.SECTION + "\n\n********************** [ Correction padding empty function(s) ] ********************\n" + Colors.DISABLE)
     if paddingData:
         pass
     else:
@@ -195,11 +186,11 @@ def main():
     if paddingDataEmptyFunc == EXIT_SUCCESS:
         pass
     else:    
-        print("\n[-] Padding empty function -> " + FAILED_COLOR + "Failed")
+        print("\n[-] Padding empty function -> " + Colors.ERROR + "Failed" + Colors.DISABLE)
         if not args.GetArgsValue().verbose:
             print("\n[!] Retry with [-v, --verbose] parameter")
 
-    print(SECTION_COLOR + "\n\n**************** [ Obfuscation replace string(s) to string(s) mixed ] *****************\n")
+    print(Colors.SECTION + "\n\n************** [ Obfuscation replace string(s) to string(s) mixed ] ****************\n" + Colors.DISABLE)
     if args.GetArgsValue().replacetostr:
         replaceData = Replace()
 
@@ -210,15 +201,15 @@ def main():
         ) 
 
         if replaceDataStrStr == EXIT_SUCCESS:
-            print("[+] Obfuscation replace string to string mixed -> " + SUCESS_COLOR + "Successful")
+            print("[+] Obfuscation replace string to string mixed -> " + Colors.SUCCESS + "Successful" + Colors.DISABLE)
         else:
-            print("\n[-] Obfuscation replace string to string mixed -> " + FAILED_COLOR +  "Failed")
+            print("\n[-] Obfuscation replace string to string mixed -> " + Colors.ERROR +  "Failed" + Colors.DISABLE)
             if not args.GetArgsValue().verbose:
                 print("\n[!] Retry with [-v, --verbose] parameter for more informations")
     else:
         print("[!] Obfuscation [ replace string to string ] mixed no asked !")
     
-    print(SECTION_COLOR + "\n\n********************* [ Obfuscation adding padding script(s) ] *********************\n")
+    print(Colors.SECTION + "\n\n********************* [ Obfuscation adding padding script(s) ] *********************\n" + Colors.DISABLE)
     if args.GetArgsValue().paddingscript:
         if paddingData:
             pass
@@ -231,15 +222,15 @@ def main():
                                                         verboseArg=args.GetArgsValue().verbose
         )
         if paddingDataGarbage == EXIT_SUCCESS:
-            print("[+] Obfuscation padding script -> " + SUCESS_COLOR + "Successful")
+            print("[+] Obfuscation padding script -> " + Colors.SUCCESS + "Successful" + Colors.DISABLE)
         else:
-            print("\n[-] Obfuscation padding script -> " + FAILED_COLOR + "Failed")
+            print("\n[-] Obfuscation padding script -> " + Colors.ERROR + "Failed" + Colors.DISABLE)
             if not args.GetArgsValue().verbose:
                 print("\n[!] Retry with [-v, --verbose] parameter for more informations")
     else:
         print("[!] Obfuscation [ padding script ] no asked !")
 
-    print(SECTION_COLOR + "\n\n********************** [ Obfuscation replace file(s) name ] ************************\n")
+    print(Colors.SECTION + "\n\n********************** [ Obfuscation replace file(s) name ] ************************\n" + Colors.DISABLE)
     if args.GetArgsValue().replacefilename:
         if args.GetArgsValue().replacetostr:
             pass
@@ -252,15 +243,15 @@ def main():
                                                     verboseArg=args.GetArgsValue().verbose
         )
         if replaceDataStrFname == EXIT_SUCCESS:
-            print("\n[+] Obfuscation replace file name -> " + SUCESS_COLOR + "Successful")
+            print("\n[+] Obfuscation replace file name -> " + Colors.SUCCESS + "Successful" + Colors.DISABLE)
         else:
-            print("\n[-] Obfuscation replace file name -> " + FAILED_COLOR + "Failed")
+            print("\n[-] Obfuscation replace file name -> " + Colors.ERROR + "Failed" + Colors.DISABLE)
             if not args.GetArgsValue().verbose:
                 print("\n[!] Retry with [-v, --verbose] parameter for more informations")
     else:
         print("[!] Obfuscation [ replace file name ] feature no asked !")
     
-    print(SECTION_COLOR + "\n\n******************** [ Obfuscation replace string(s) to hex ] **********************\n")
+    print(Colors.SECTION + "\n\n******************** [ Obfuscation replace string(s) to hex ] **********************\n" + Colors.DISABLE)
     if args.GetArgsValue().replacetohex:
         if args.GetArgsValue().replacetostr or args.GetArgsValue().replacefilename:
             pass
@@ -273,16 +264,16 @@ def main():
                                                     verboseArg=args.GetArgsValue().verbose
         ) 
         if replaceDataStrHex == EXIT_SUCCESS:
-            print("\n[+] Obfuscation replace string to hex -> " + SUCESS_COLOR + "Successful")
+            print("\n[+] Obfuscation replace string to hex -> " + Colors.SUCCESS + "Successful" + Colors.DISABLE)
         else:
-            print("\n[-] Obfuscation replace string to hex -> " + FAILED_COLOR + "Failed")
+            print("\n[-] Obfuscation replace string to hex -> " + Colors.ERROR + "Failed" + Colors.DISABLE)
             if not args.GetArgsValue().verbose:
                 print("\n[!] Retry with [-v, --verbose] parameter for more informations")
     else:
         print("[!] Obfuscation [ replace string to hex ] feature no asked !")
 
     # -- Delete if python pyc file in output directory -- #
-    print(SECTION_COLOR + "\n\n*********************** [ Correction delete .pyc file(s) ] *************************\n")
+    print(Colors.SECTION + "\n\n*********************** [ Correction delete .pyc file(s) ] *************************\n" + Colors.DISABLE)
     if deleteData:
         pass
     else:
@@ -295,7 +286,7 @@ def main():
     if deletePycData == EXIT_SUCCESS:
         pass
     else:
-        print("\n[-] Delete .pyc file in {0} directory -> ".format(args.GetArgsValue().output) + FAILED_COLOR + "Failed")
+        print("\n[-] Delete .pyc file in {0} directory -> ".format(args.GetArgsValue().output) + Colors.ERROR + "Failed" + Colors.DISABLE)
         if not args.GetArgsValue().verbose:
                 print("\n[!] Retry with [-v, --verbose] parameter for more informations")
 
@@ -308,4 +299,4 @@ if __name__ == '__main__':
         main()
         print("\n")
     except KeyboardInterrupt:
-        print(ERROR_COLOR + "\n[!] Exit program\n")
+        print(Colors.ERROR + "\n[!] Exit program\n" + Colors.DISABLE)

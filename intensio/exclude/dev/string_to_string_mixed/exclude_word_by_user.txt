@@ -1,0 +1,101 @@
+# laZagne linux part test program in project #
+
+# local variables/strings that not be modified
+pid
+filename
+date
+encoding
+value
+address
+name
+debug
+#process
+psk
+message
+
+# re lib
+sub
+
+# sys lib
+write
+
+# dbus lib
+bus
+
+# sqlit3 lib
+cursor
+
+# os lib
+environ
+
+# logging lib
+fmt
+warning
+
+# collection lib
+key
+
+# argparse lib
+argparse
+default
+description
+help
+action
+dest 
+formatter_classe
+version
+add_help
+max_help_position
+prog
+type
+parents
+parser
+WARNING
+formatter_class
+info
+
+# crypt lib
+crypt
+
+# time lib
+time
+
+# json lib
+sort_keys
+indent
+separators
+
+# pwd lib
+pwd
+
+# ctype lib
+use_errno
+kernel32
+advapi32
+psapi
+Module32First
+Module32Next
+Process32First
+Process32Next
+CreateToolhelp32Snapshot
+CloseHandle
+OpenProcess
+OpenProcessToken
+ReadProcessMemory
+WriteProcessMemory
+NtWow64ReadVirtualMemory64
+VirtualQueryEx
+mprotect
+lseek64
+open64
+pread64
+libc
+
+# subprocess lib
+shell
+
+# os lib
+path
+
+# xml lib
+file
