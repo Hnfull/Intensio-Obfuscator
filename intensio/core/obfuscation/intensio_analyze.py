@@ -18,14 +18,13 @@ from core.utils.intensio_error import EXIT_SUCCESS, ERROR_FILE_NOT_FOUND, ERROR_
 
 #--------------------------------------------------------- [Global] ---------------------------------------------------------#
 
-ERROR_COLOUR    = colorama.Back.RED + colorama.Style.BRIGHT
-PROGRESS_COLOUR = colorama.Fore.BLUE + colorama.Style.BRIGHT 
+ERROR_COLOR    = colorama.Back.RED + colorama.Style.BRIGHT
+PROGRESS_COLOR = colorama.Fore.BLUE + colorama.Style.BRIGHT 
 
 #------------------------------------------------- [Function(s)/Class(es)] --------------------------------------------------#
 
 class Analyze:
     
-
     def __init__(self):
         self.utils = Utils()
 
@@ -53,7 +52,7 @@ class Analyze:
                 ]
  
                 if recursFiles == []:
-                    print(ERROR_COLOUR + "[-] {0} directory empty or python file not found".format(inputArg))
+                    print(ERROR_COLOR + "[-] {0} directory empty or python file not found".format(inputArg))
                     return ERROR_DIR_EMPTY
 
                 for number in recursFiles:
@@ -61,7 +60,7 @@ class Analyze:
                 
                 print("\n[+] Running analyze input of {0} file(s)...\n".format(countRecursFiles))
                 
-                with Bar(PROGRESS_COLOUR + "Analysis    ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
+                with Bar(PROGRESS_COLOR + "Analysis    ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
                     for file in recursFiles:
                         if blockDir in file:
                             continue
@@ -92,16 +91,16 @@ class Analyze:
                         return EXIT_SUCCESS
                 
                     elif inputFileFoundCount == inputFileEmptyCount and inputFileFoundCount > 0:
-                        print(ERROR_COLOUR + "[-] All files in directory specified are emtpy !")
+                        print(ERROR_COLOR + "[-] All files in directory specified are emtpy !")
                         return ERROR_FILE_EMPTY
                     else:
-                        print(ERROR_COLOUR + "[-] No file available in '{0}'.".format(inputArg))
+                        print(ERROR_COLOR + "[-] No file available in '{0}'.".format(inputArg))
                         return ERROR_FILE_NOT_FOUND
             else:
-                print(ERROR_COLOUR + "[-] '{0}' is not a directory".format(inputArg))
+                print(ERROR_COLOR + "[-] '{0}' is not a directory".format(inputArg))
                 return ERROR_DIR_NOT_FOUND
         else:
-            print(ERROR_COLOUR + "[-] '{0}' not exists".format(inputArg))
+            print(ERROR_COLOR + "[-] '{0}' not exists".format(inputArg))
             return ERROR_PATH_NOT_FOUND
 
 
@@ -141,10 +140,10 @@ class Analyze:
                                 print("\n[+] Running analyze output of {0} file(s)...\n".format(countRecursFiles))
 
                                 if recursFiles == []:
-                                    print(ERROR_COLOUR + "[-] {0} directory empty, no copied file".format(inputArg))
+                                    print(ERROR_COLOR + "[-] {0} directory empty, no copied file".format(inputArg))
                                     return ERROR_DIR_EMPTY
                                                                 
-                                with Bar(PROGRESS_COLOUR + "Analysis    ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
+                                with Bar(PROGRESS_COLOR + "Analysis    ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
                                     for file in recursFiles:
                                         if blockDir in file:
                                             continue
@@ -174,23 +173,23 @@ class Analyze:
                                                 
                                         return EXIT_SUCCESS
                                     else:
-                                        print(ERROR_COLOUR + "[-] No files available in '{0}'".format(outputArg))
+                                        print(ERROR_COLOR + "[-] No files available in '{0}'".format(outputArg))
                                         return ERROR_FILE_NOT_FOUND
                             else:
-                                print(ERROR_COLOUR + "[-] Copy '{0}' to '{1}' failed, this is not a output directory copied".format(inputArg, outputArg))
+                                print(ERROR_COLOR + "[-] Copy '{0}' to '{1}' failed, this is not a output directory copied".format(inputArg, outputArg))
                                 return ERROR_DIR_NOT_FOUND
                         else:
-                            print(ERROR_COLOUR + "[-] Copy '{0}' to '{1}' failed".format(inputArg, outputArg))
+                            print(ERROR_COLOR + "[-] Copy '{0}' to '{1}' failed".format(inputArg, outputArg))
                             return ERROR_CAN_NOT_COPY
                     else:
-                        print(ERROR_COLOUR + "[-] Delete '{0}' failed".format(outputArg))
+                        print(ERROR_COLOR + "[-] Delete '{0}' failed".format(outputArg))
                         return ERROR_CAN_NOT_DELETE
 
                 except Exception as e:
-                    print(ERROR_COLOUR + "[-] {0}".format(e))
+                    print(ERROR_COLOR + "[-] {0}".format(e))
                     return EXIT_FAILURE
             else:
-                print(ERROR_COLOUR + "[-] Delete '{0}' failed, the user has refused".format(outputArg))
+                print(ERROR_COLOR + "[-] Delete '{0}' failed, the user has refused".format(outputArg))
                 return ERROR_CAN_NOT_DELETE
         else:    
             try:
@@ -216,10 +215,10 @@ class Analyze:
                         print("\n[+] Running analyze output of {0} file(s)...\n".format(countRecursFiles))
 
                         if recursFiles == []:
-                            print(ERROR_COLOUR + "[-] {0} directory empty, no copied file".format(inputArg))
+                            print(ERROR_COLOR + "[-] {0} directory empty, no copied file".format(inputArg))
                             return ERROR_DIR_EMPTY
                                                 
-                        with Bar(PROGRESS_COLOUR + "Analysis    ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
+                        with Bar(PROGRESS_COLOR + "Analysis    ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
                             for file in recursFiles:
                                 if blockDir in file:
                                     continue
@@ -249,17 +248,17 @@ class Analyze:
                                 
                                 return EXIT_SUCCESS   
                             else:
-                                print(ERROR_COLOUR + "[-] No files available in '{0}'".format(outputArg))
+                                print(ERROR_COLOR + "[-] No files available in '{0}'".format(outputArg))
                                 return ERROR_FILE_NOT_FOUND                
                     else:
-                        print(ERROR_COLOUR + "[-] Copy '{0}' to '{1}' failed, this is not a output directory copied !".format(inputArg, outputArg))
+                        print(ERROR_COLOR + "[-] Copy '{0}' to '{1}' failed, this is not a output directory copied !".format(inputArg, outputArg))
                         return ERROR_DIR_NOT_FOUND
                 else:
-                    print(ERROR_COLOUR + "[-] Copy '{0}' to '{1}' failed".format(inputArg, outputArg))
+                    print(ERROR_COLOR + "[-] Copy '{0}' to '{1}' failed".format(inputArg, outputArg))
                     return ERROR_CAN_NOT_COPY
 
             except Exception as e:
-                print(ERROR_COLOUR + "[-] {0}".format(e))
+                print(ERROR_COLOR + "[-] {0}".format(e))
                 return EXIT_FAILURE
 
 

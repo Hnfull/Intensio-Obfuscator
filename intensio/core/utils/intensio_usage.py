@@ -31,25 +31,25 @@ class Args:
                                 "-rts", "--replacetostr",
                                 action="store_true",
                                 default=False,
-                                help="activate the 'replace string to string mixed' obfuscation feature"
+                                help="activate 'replace string to string mixed' obfuscation feature"
         )
         self.parser.add_argument(
                                 "-ps", "--paddingscript",
                                 action="store_true",
                                 default=False,
-                                help="activate the 'padding script' obfuscation feature"
+                                help="activate 'padding script' obfuscation feature"
         )
         self.parser.add_argument(
                                 "-rfn", "--replacefilename",
                                 action="store_true",
                                 default=False,
-                                help="activate the 'replace file name' obfuscation feature"
+                                help="activate 'replace file name' obfuscation feature"
         )
         self.parser.add_argument(
                                 "-rth", "--replacetohex",
                                 action="store_true",
                                 default=False,
-                                help="activate the 'replace string to hex' obfuscation feature"
+                                help="activate 'replace string to hex' obfuscation feature"
         )
         self.parser.add_argument(
                                 "-v", "--verbose",

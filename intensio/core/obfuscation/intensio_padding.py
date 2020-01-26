@@ -18,14 +18,13 @@ from core.utils.intensio_error import EXIT_SUCCESS, EXIT_FAILURE
 
 #--------------------------------------------------------- [Global] ---------------------------------------------------------#
 
-PROGRESS_COLOUR = colorama.Fore.BLUE + colorama.Style.BRIGHT 
-ERROR_COLOUR    = colorama.Back.RED + colorama.Style.BRIGHT
+PROGRESS_COLOR = colorama.Fore.BLUE + colorama.Style.BRIGHT 
+ERROR_COLOR    = colorama.Back.RED + colorama.Style.BRIGHT
 
 #------------------------------------------------- [Function(s)/Class(es)] --------------------------------------------------#
 
 class Padding:
     
-
     def __init__(self):
         self.mixer  = Mixer()
         self.utils  = Utils()
@@ -272,7 +271,7 @@ class Padding:
         print("\n[+] Running add of random scripts in {0} file(s)...\n".format(countRecursFiles))
 
         # -- Count the number of lines that will be checked before filling -- #
-        with Bar(PROGRESS_COLOUR + "Setting up  ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
+        with Bar(PROGRESS_COLOR + "Setting up  ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
                 with open(file , "r") as readFile:
                     readF = readFile.readlines()
@@ -285,7 +284,7 @@ class Padding:
             bar.finish()
 
         # -- Padding scripts added -- #
-        with Bar(PROGRESS_COLOUR + "Obfuscation ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
+        with Bar(PROGRESS_COLOR + "Obfuscation ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
                 with fileinput.input(file, inplace=True) as inputFile:
                     for eachLine in inputFile:
@@ -455,7 +454,7 @@ class Padding:
             bar.finish()
 
         # -- Check if padding has added in output script -- #
-        with Bar(PROGRESS_COLOUR + "Check       ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
+        with Bar(PROGRESS_COLOR + "Check       ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
                 with open(file , "r") as readFile:
                     readF = readFile.readlines()
@@ -499,7 +498,7 @@ class Padding:
         for number in recursFiles:
             countRecursFiles += 1
 
-        with Bar(PROGRESS_COLOUR + "Correction  ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
+        with Bar(PROGRESS_COLOR + "Correction  ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
                 numberLineInFile    = 0
                 numberLine          = 0
@@ -572,7 +571,7 @@ class Padding:
 
         # -- Check if class(es) is still empty -- #
         if emptyClassInfo != {}:
-            with Bar(PROGRESS_COLOUR + "Check       ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
+            with Bar(PROGRESS_COLOR + "Check       ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
                 for file in recursFiles:
                     numberLineInFile    = 0
                     numberLine          = 0
@@ -640,7 +639,7 @@ class Padding:
         for number in recursFiles:
             countRecursFiles += 1
 
-        with Bar(PROGRESS_COLOUR + "Correction  ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
+        with Bar(PROGRESS_COLOR + "Correction  ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
                 numberLineInFile    = 0
                 numberLine          = 0
@@ -725,7 +724,7 @@ class Padding:
 
         # -- Check if function(s) is still empty -- #
         if emptyFuncInfo != {}:
-            with Bar(PROGRESS_COLOUR + "Check       ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
+            with Bar(PROGRESS_COLOR + "Check       ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
                 for file in recursFiles:
                     numberLineInFile    = 0
                     numberLine          = 0

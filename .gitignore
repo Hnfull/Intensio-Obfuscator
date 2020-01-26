@@ -6,8 +6,8 @@ intensio/test/python/intermediate/output/dev
 intensio/test/python/advanced/input/dev
 intensio/test/python/advanced/output/dev
 
-intensio/include/dev
-intensio/exclude/dev
+intensio/exclude/file_name/dev
+intensio/exclude/string_to_string_mixed/dev
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
