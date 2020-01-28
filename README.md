@@ -36,7 +36,7 @@
 | padding script | Add padding of random scripts after each line|
 | replace file name | Replace all files name to random strings with length defined |
 | replace string to hex | Replace all chars to their hexadecimal value |
-| correction delete pyc file | delete all pyc file in output directory (this feature is executed by default) |
+| correction delete pyc file | Delete all pyc file in output directory (this feature is executed by default) |
 | mixerlength lower | Define random strings length of 32 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified |
 | mixerlength medium | Define random strings length of 64 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified |
 | mixerlength high | Define random strings length of 128 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified (increase the time of obfuscation) |
@@ -60,12 +60,12 @@
 | -h, --help | show this help message and exit |
 | -i, --input  | source directory - indicate a directory that contain your file |
 | -o, --output | output directory that will be obfuscated - indicate a empty directory that will contain your file |
-| -mlen, --mixerlength | define length of random strings generated [ `lower:32` \| `medium:64` \| `high:128` ] chars when `--replacetostr` or `--paddingscripts` or `--replacetohex` features are specified, default value: [medium], possible values: [lower - medium - high]|
-| -mlvl, --mixerlevel | define obfuscation level of random strings generated [ `simple` \| `hard` ] when `--replacetostr` or `--paddingscripts` or `--replacetohex` features are specified, default value: [simple], possible values: [simple - hard]|
-| -rts, --replacetostr | activate `replace string to string mixed` obfuscation feature |
-| -ps, --paddingscript | activate `padding script` obfuscation feature |
-| -rfn, --replacefilename | activate `replace file name` obfuscation feature |
-| -rth, --replacetohex | activate `replace string to hex` obfuscation feature |
+| -mlen, --mixerlength | define length of random strings generated [ `lower:32` \| `medium:64` \| `high:128` ] chars when `--replacetostr` or `--paddingscripts` or `-rfn, --replacefilesname` or `--replacetohex` features are specified, default value: [medium], possible values: [lower - medium - high]|
+| -mlvl, --mixerlevel | define obfuscation level of random strings generated [ `simple` \| `hard` ] when `--replacetostr` or `--paddingscripts` or `-rfn, --replacefilesname` or `--replacetohex` features are specified, default value: [simple], possible values: [simple - hard]|
+| -rts, --replacetostr | launch `replace string to string mixed` obfuscation feature |
+| -ps, --paddingscript | launch `padding script` obfuscation feature |
+| -rfn, --replacefilename | launch `replace file name` obfuscation feature |
+| -rth, --replacetohex | launch `replace string to hex` obfuscation feature |
 | -v, --verbose | improve verbosity |
 
 ## Obfuscation examples 

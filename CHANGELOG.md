@@ -2,15 +2,15 @@
 
 ## 01-28-2020
 - [Upgrade] to version 1.0.8
-- [Update] `-m, -mixerlevel` become `-mlen, --mixerlength` to control length of random strings generated
+- [Update] `-m, -mixerlevel` becomes `-mlen, --mixerlength` to control length of random strings generated
 - [Update] redefine all colors without external library
 - [Fix] issue # 14
-- [Fix] issue # 28 
+- [Fix] issue # 28
 - [Add] new paramter `-mlvl, --mixerlevel` to control obfuscation level of strings generated (`simple` by default `or hard`)
  
 ## 01-07-2020
 - [Upgrade] to version 1.0.7
-- [Update] spelling error (remove => delete)
+- [Update] spelling error (remove becomes delete)
 - [Update] name of class `Remove` to `Delete`
 - [Update] name of `intensio_remove.py` to `intensio_delete.py`
 - [Add] new feature to exclude file name of obfuscation #35

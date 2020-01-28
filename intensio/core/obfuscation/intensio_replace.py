@@ -397,14 +397,14 @@ class Replace:
                 print("-> No result")
             else:
                 for word in wordsExcludedUserFound:
-                    print("-> {0} : excluded".format(word))
+                    print("-> {0} : excluded by user".format(word))
 
             print("\n[+] String excluded found in '{0}' that have been matched from '{1}' :\n".format(self.pythonExcludeDefaultString, outputArg))
             if wordsExcludedDefaultFound == []:
                 print("-> No result")
             else:
                 for word in wordsExcludedDefaultFound:
-                    print("-> {0} : excluded".format(word))
+                    print("-> {0} : excluded by default".format(word))
             print("")
 
         # -- Merge all dicts -- #
@@ -640,13 +640,12 @@ class Replace:
         filesNameMixed          = []
         fileNameExcluded        = []
         fileNameExcludedFound   = []
+        fileNameExcludedByUser  = []
         importNoCompliantFound  = []
         badNameDir              = []
         numberLine              = 0
         countRecursFiles        = 0
         checkCountRecursFiles   = 0
-        unix                    = False
-        win                     = False
         currentPosition         = os.getcwd()
 
         detectImport = r"\s*from\s+|\s*import\s+"
@@ -682,13 +681,7 @@ class Replace:
 
         with Bar(Colors.PROGRESS + "Setting up  ", fill="=", max=100, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
-                if "\"" in file:
-                    parseFilePath = file.split("\"")
-                    win = True
-                else:
-                    parseFilePath = file.split("/")
-                    unix = True
-
+                parseFilePath = file.split(self.utils.Platform(getOS=False, getPathType=True))
                 mixer = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
                 filesNameDict[parseFilePath[-1]] = mixer + ".py"
                 filesNameDictNoExt[parseFilePath[-1].replace(".py", "")] = mixer
@@ -704,7 +697,8 @@ class Replace:
             # -- Check if directory have the same name
             for directory in recursDirs:
                 for fileName in filesNameFoundNoExt:
-                    if re.match(r".*/{1}" + re.escape(fileName) + r"/{1}.*", directory):
+                    if re.match(r".*" + re.escape(self.utils.Platform(getOS=False, getPathType=True)) + r"{1}" + re.escape(fileName) + \
+                        re.escape(self.utils.Platform(getOS=False, getPathType=True)) + r"{1}.*", directory):
                         fileNameExcluded.append(fileName)
                         badNameDir.append(fileName)
 
@@ -714,11 +708,12 @@ class Replace:
             if os.path.exists(self.pythonExcludeUserFileName) == True:
                 with open(self.pythonExcludeUserFileName) as readFile:
                     for fileName in readFile:
-                        if "#" in fileName or fileName == "\n":
+                        if "#" in fileName or fileName == "\n" or re.match(r"yourFileName[0-9]{1}", fileName):
                             continue
                         else:
                             fileName = fileName.rstrip()
                             fileNameExcluded.append(fileName)
+                            fileNameExcludedByUser.append(fileName)
             else:
                 print(Colors.ERROR + "[-] '{0}' file not found\n".format(self.pythonExcludeUserFileName) + Colors.PROGRESS)
                 
@@ -772,28 +767,39 @@ class Replace:
             bar.finish()
             sys.stdout.write(Colors.DISABLE)
 
-        # -- Diplay all files found with their mixed values if verbose arg is actived -- #
+        # -- Diplay all file name(s) found with their mixed values if verbose arg is actived -- #
         if verboseArg:
-            print("\n[+] File(s) name found with their mixed values :\n")
+            print("\n[+] File name(s) found with their mixed values :\n")
             if filesNameDict == {}:
                 print("-> No result")
             else:
                 for key, value in filesNameDict.items():
                     print("-> {0} : {1}".format(key, value))
 
-            if importNoCompliantFound != []:
-                print("\n[+] File(s) name no compliant for 'replace file name' feature :\n")
+            print("\n[+] File name(s) excluded found in '{0}' that have been matched from '{1}' :\n".format(self.pythonExcludeUserFileName, outputArg))
+            if fileNameExcludedByUser == []:
+                print("-> No result")
+            else:
+                for i in fileNameExcludedByUser:
+                    print("-> {0} : excluded by user".format(i))
+
+            print("\n[+] File name(s) no compliant for 'replace file name' feature :\n")
+            if importNoCompliantFound == []: 
+                print("-> No result")
+            else:
                 for i in importNoCompliantFound:
                     print("-> {0} : no compliant ( file name excluded automatically )".format(i))
 
-            if badNameDir != []:
-                print("\n[!] Directory that have same name of python file(s) :\n")
+            print("\n[+] Directory that have same name of python file(s) :\n")
+            if badNameDir == []:
+                print("-> No result")
+            else:
                 for i in badNameDir:
-                    print("-> {0} : no compliant ( file name has been excluded automatically)".format(i))
+                    print("-> {0} : no compliant ( file name excluded automatically )".format(i))
                     i = i.rstrip()
             print("")
 
-        # -- Replace all files name to random strings with length defined -- #
+        # -- Replace all file names to random strings with length and obfuscation level defined -- #
         with Bar(Colors.PROGRESS + "Obfuscation ", fill="=", max=100, suffix="%(percent)d%%") as bar:
             for fileInCode in recursFilesWithInit:
                 # -- Rename all files in python code -- #
@@ -815,21 +821,12 @@ class Replace:
             bar.next(50)
 
             for file in recursFiles:
+                parseFilePath = file.split(self.utils.Platform(getOS=False, getPathType=True))
                 # -- Rename all files in their directories -- #
-                if "\"" in file:
-                    parseFilePath = file.split("\"")
-                    win = True
-                else:
-                    parseFilePath = file.split("/")
-                    unix = True
-
                 for key, value in filesNameDict.items():
                     if key == parseFilePath[-1]:
                         parseFilePath.remove(parseFilePath[-1])
-                        if unix == True:
-                            parseFilePathToMove = "/".join(parseFilePath)
-                        else:
-                            parseFilePathToMove = "\"".join(parseFilePath)
+                        parseFilePathToMove = self.utils.Platform(getOS=False, getPathType=True).join(parseFilePath)
                         os.chdir(parseFilePathToMove) # Move in directory to rename python file
                         os.rename(key, value)
                     else:

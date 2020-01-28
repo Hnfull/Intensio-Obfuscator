@@ -32,10 +32,10 @@
                                 - 'replacetohex' features are specified, default value: [medium], possible values: [lower, medium, high]"
 -mlvl, --mixerlevel         ->  define the obfuscation level of random strings generated when 'replacetostr' - 'paddingscript' - 'replacefilename'\
                                 - 'replacetohex' features are specified, default value: [simple], possible values: [simple, hard]"
--rts, --replacetostr        ->  activate 'replace string to string mixed' obfuscation feature
--ps, --paddingscript        ->  activate 'padding script' obfuscation feature
--rfn, --replacefilename     ->  activate 'replace file name' obfuscation feature
--rth, --replacetohex        ->  activate 'replace string to hex' obfuscation feature
+-rts, --replacetostr        ->  launch 'replace string to string mixed' obfuscation feature
+-ps, --paddingscript        ->  launch 'padding script' obfuscation feature
+-rfn, --replacefilename     ->  launch 'replace file name' obfuscation feature
+-rth, --replacetohex        ->  launch 'replace string to hex' obfuscation feature
 -v, --verbose               ->  improve verbosity
 
 """
@@ -79,7 +79,7 @@ def main():
     if args.GetArgsValue().input:
         if args.GetArgsValue().output:
             if re.match(r"^lower$|^medium$|^high$", args.GetArgsValue().mixerlength):
-                if args.GetArgsValue().mixerlevel:
+                if re.match(r"^simple$|^hard$", args.GetArgsValue().mixerlevel):
                     if not args.GetArgsValue().paddingscript and not args.GetArgsValue().replacetostr \
                         and not args.GetArgsValue().replacefilename and not args.GetArgsValue().replacetohex:
                         print(Colors.ERROR + "\n[-] Need at least one argument [-rts] - [-ps] - [-rfn] - [-rth]" + Colors.DISABLE)

@@ -12,20 +12,20 @@ import string
 class Mixer:
     
     def __init__(self):
-        self.lenLower   = 32
-        self.lenMedium  = 64
-        self.lenHigh    = 128
-        self.charsGroup = {
-                            "chars0" : "abcdK",
-                            "chars1" : "efghL",
-                            "chars2" : "ijklM",
-                            "chars3" : "mnopN",
-                            "chars4" : "qrstO",
-                            "chars5" : "uvwxP",
-                            "chars6" : "yzABQ",
-                            "chars7" : "CDEFR",
-                            "chars8" : "GHIJS",
-                            "chars9" : "TUVWXYZ"
+        self.lengthLower    = 32
+        self.lengthMedium   = 64
+        self.lengthHigh     = 128
+        self.charsGroup     = {
+                                "chars0" : "abcdK",
+                                "chars1" : "efghL",
+                                "chars2" : "ijklM",
+                                "chars3" : "mnopN",
+                                "chars4" : "qrstO",
+                                "chars5" : "uvwxP",
+                                "chars6" : "yzABQ",
+                                "chars7" : "CDEFR",
+                                "chars8" : "GHIJS",
+                                "chars9" : "TUVWXYZ"
         }
 
 
@@ -36,11 +36,11 @@ class Mixer:
     def StringGeneratorHarder(self, stringLength):
         randomCharsList = []
 
-        if stringLength == 32:
+        if stringLength == self.lengthLower:
             randNumber = random.randrange(10000000000000000000000000000000)
-        elif stringLength == 64:
+        elif stringLength == self.lengthMedium:
             randNumber = random.randrange(1000000000000000000000000000000000000000000000000000000000000000)
-        elif stringLength == 128:
+        elif stringLength == self.lengthHigh:
             randNumber = random.randrange(10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000)
 
         randNumber = str(randNumber)
@@ -114,15 +114,15 @@ class Mixer:
     def GetStringMixer(self, mixerLengthArgDefined, mixerLevelArgDefined):
         if mixerLevelArgDefined == "simple":
             if mixerLengthArgDefined == "lower":
-                return Mixer.StringGeneratorSimple(self, self.lenLower)
+                return Mixer.StringGeneratorSimple(self, self.lengthLower)
             elif mixerLengthArgDefined == "medium":
-                return Mixer.StringGeneratorSimple(self, self.lenMedium)
+                return Mixer.StringGeneratorSimple(self, self.lengthMedium)
             elif mixerLengthArgDefined == "high":
-                return Mixer.StringGeneratorSimple(self, self.lenHigh)
+                return Mixer.StringGeneratorSimple(self, self.lengthHigh)
         elif mixerLevelArgDefined == "hard":
             if mixerLengthArgDefined == "lower":
-                return Mixer.StringGeneratorHarder(self, self.lenLower)
+                return Mixer.StringGeneratorHarder(self, self.lengthLower)
             elif mixerLengthArgDefined == "medium":
-                return Mixer.StringGeneratorHarder(self, self.lenMedium)
+                return Mixer.StringGeneratorHarder(self, self.lengthMedium)
             elif mixerLengthArgDefined == "high":
-                return Mixer.StringGeneratorHarder(self, self.lenHigh)
+                return Mixer.StringGeneratorHarder(self, self.lengthHigh)

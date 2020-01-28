@@ -1,11 +1,10 @@
-# Dev folders for test
-intensio/test/python/basic/input/dev
-intensio/test/python/basic/output/dev
-intensio/test/python/intermediate/input/dev
-intensio/test/python/intermediate/output/dev
-intensio/test/python/advanced/input/dev
-intensio/test/python/advanced/output/dev
-
+# Dev paths for test
+intensio/examples/python/basic/input/dev
+intensio/examples/python/basic/output/dev
+intensio/examples/python/intermediate/input/dev
+intensio/examples/python/intermediate/output/dev
+intensio/examples/python/advanced/input/dev
+intensio/examples/python/advanced/output/dev
 intensio/exclude/file_name/dev
 intensio/exclude/string_to_string_mixed/dev
 

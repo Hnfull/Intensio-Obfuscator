@@ -40,7 +40,7 @@ class Analyze:
                 recursFiles = [
                                 file for file in glob.glob("{0}{1}**{1}*.{2}".format(
                                                                                     inputArg, 
-                                                                                    self.utils.Platform(), 
+                                                                                    self.utils.Platform(getOS=False, getPathType=True), 
                                                                                     detectFiles), 
                                                                                     recursive=True
                                                                             )
@@ -123,7 +123,7 @@ class Analyze:
                                 recursFiles = [
                                                 file for file in glob.glob("{0}{1}**{1}*.{2}".format(
                                                                                                     outputArg, 
-                                                                                                    self.utils.Platform(), 
+                                                                                                    self.utils.Platform(getOS=False, getPathType=True), 
                                                                                                     detectFiles), 
                                                                                                     recursive=True
                                                                                             )
@@ -199,12 +199,11 @@ class Analyze:
                         recursFiles = [
                                         file for file in glob.glob("{0}{1}**{1}*.{2}".format(
                                                                                             outputArg, 
-                                                                                            self.utils.Platform(), 
+                                                                                            self.utils.Platform(getOS=False, getPathType=True), 
                                                                                             detectFiles), 
                                                                                             recursive=True
                                                                                     )
                         ]
-
 
                         for number in recursFiles:
                             countRecursFiles += 1

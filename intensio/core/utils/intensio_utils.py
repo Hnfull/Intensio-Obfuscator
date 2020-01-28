@@ -16,11 +16,17 @@ class Utils:
         self.platform = sys.platform
 
 
-    def Platform(self):
-        if self.platform == "win32":
-            return "\\"
-        else:
-            return "/"
+    def Platform(self, getOS, getPathType):
+        if getOS == True:
+            if self.platform == "win32":
+                return "win32"
+            else:
+                return "unix"
+        elif getPathType == True:
+            if self.platform == "win32":
+                return "\\"
+            else:
+                return "/"
 
 
     def DictMerge(self, dict1, dict2):
@@ -35,7 +41,7 @@ class Utils:
             recursFiles = [
                             file for file in glob.glob("{0}{1}**{1}*.{2}".format(
                                                                                 output, 
-                                                                                Utils.Platform(self), 
+                                                                                Utils.Platform(self, getOS=False, getPathType=True), 
                                                                                 detectFiles), 
                                                                                 recursive=True
                                                                         )
@@ -44,7 +50,7 @@ class Utils:
             recursFiles = [
                             file for file in glob.glob("{0}{1}**{1}".format(
                                                                             output, 
-                                                                            Utils.Platform(self), 
+                                                                            Utils.Platform(self, getOS=False, getPathType=True), 
                                                                             ), 
                                                                             recursive=True
                                                                     )
