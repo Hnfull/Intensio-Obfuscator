@@ -1,12 +1,12 @@
 # Intensio-Obfuscator (Beta)
 
 ![](https://img.shields.io/badge/Python->=3.5-blue.svg)
-![](https://img.shields.io/badge/Version-1.0.7-green.svg)
+![](https://img.shields.io/badge/Version-1.0.8-green.svg)
 ![](https://img.shields.io/badge/Licence-MIT-red.svg)
 
 ## What is this ?
 - Intensio-Obfsucator tool takes a python source code and transform it into an obfuscated python code
-  - **Replace** all names of `variables/classes/functions/files-name` to random strings with length defined and all `chars` to their hexadecimal value
+  - **Replace** all names of `variables/classes/functions/files-name` to random strings with length and obfuscation level defined then all `chars` to their hexadecimal value
   - **Delete** all `comments`, all `spaces lines`
   - **Padding** random `scripts` with an always differents values
 
@@ -37,9 +37,11 @@
 | replace file name | Replace all files name to random strings with length defined |
 | replace string to hex | Replace all chars to their hexadecimal value |
 | correction delete pyc file | delete all pyc file in output directory (this feature is executed by default) |
-| mixerlevel lower | Generate random strings of 32 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified |
-| mixerlevel medium | Generate random strings of 64 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified |
-| mixerlevel high | Generate random strings of 128 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified |
+| mixerlength lower | Define random strings length of 32 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified |
+| mixerlength medium | Define random strings length of 64 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified |
+| mixerlength high | Define random strings length of 128 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified (increase the time of obfuscation) |
+| mixerlevel simple | Define obfuscation level to simple of random strings generated when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified |
+| mixerlevel hard | Define obfuscation level to hard of random strings generated when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified (can increase the time of obfuscation)|
 
 - Features can be executed separatly
     - `replace string to string mixed` -> `-rts, --replacetostr`
@@ -58,18 +60,19 @@
 | -h, --help | show this help message and exit |
 | -i, --input  | source directory - indicate a directory that contain your file |
 | -o, --output | output directory that will be obfuscated - indicate a empty directory that will contain your file |
-| -m, --mixerlevel | generate random strings of [ `lower:32` \| `medium:64` \| `high:128` ] chars when `--replacetostr` or `--paddingscripts` or `--replacetohex` features are specified, default value: [medium], possible values: [lower - medium - high]|
-| -rts, --replacetostr | activate the `replace string to string mixed` obfuscation feature |
-| -ps, --paddingscript | activate the `padding script` obfuscation feature |
-| -rfn, --replacefilename | activate the `replace file name` obfuscation feature |
-| -rth, --replacetohex | activate the `replace string to hex` obfuscation feature |
+| -mlen, --mixerlength | define length of random strings generated [ `lower:32` \| `medium:64` \| `high:128` ] chars when `--replacetostr` or `--paddingscripts` or `--replacetohex` features are specified, default value: [medium], possible values: [lower - medium - high]|
+| -mlvl, --mixerlevel | define obfuscation level of random strings generated [ `simple` \| `hard` ] when `--replacetostr` or `--paddingscripts` or `--replacetohex` features are specified, default value: [simple], possible values: [simple - hard]|
+| -rts, --replacetostr | activate `replace string to string mixed` obfuscation feature |
+| -ps, --paddingscript | activate `padding script` obfuscation feature |
+| -rfn, --replacefilename | activate `replace file name` obfuscation feature |
+| -rth, --replacetohex | activate `replace string to hex` obfuscation feature |
 | -v, --verbose | improve verbosity |
 
 ## Obfuscation examples 
 - [Python files obfuscated](docs/examples/python_code_examples.md)
 
 ## Todo
-- Next Version 1.0.8:
+- Next Version 1.0.9:
     - Optimisation of 'Replace string to string' feature allowing to reduce considerably time to obfuscate code
 
 - Version 1.0.1-x:

@@ -1,5 +1,13 @@
 # CHANGELOG of Intensio-Obfuscator project
 
+## 01-28-2020
+- [Upgrade] to version 1.0.8
+- [Update] `-m, -mixerlevel` become `-mlen, --mixerlength` to control length of random strings generated
+- [Update] redefine all colors without external library
+- [Fix] issue # 14
+- [Fix] issue # 28 
+- [Add] new paramter `-mlvl, --mixerlevel` to control obfuscation level of strings generated (`simple` by default `or hard`)
+ 
 ## 01-07-2020
 - [Upgrade] to version 1.0.7
 - [Update] spelling error (remove => delete)

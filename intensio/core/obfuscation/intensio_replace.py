@@ -187,7 +187,7 @@ class Replace:
         return returnLine[:]
 
 
-    def StringToString(self, outputArg, mixerLevelArg, verboseArg):
+    def StringToString(self, outputArg, mixerLengthArg, mixerLevelArg, verboseArg):
         variablesDict               = {}
         classesDict                 = {}
         functionsDict               = {}
@@ -244,19 +244,19 @@ class Replace:
                                 modifySearch = modifySearch.split()
                                 for i in modifySearch:
                                     if i not in variablesDict:
-                                        mixer = self.mixer.GetStringMixer(lenght=mixerLevelArg)
+                                        mixer = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
                                         i = i.strip()
                                         variablesDict[i] = mixer
                             else:
                                 if search.group(1) not in variablesDict:
-                                    mixer = self.mixer.GetStringMixer(lenght=mixerLevelArg)
+                                    mixer = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
                                     modifySearch = search.group(1).strip()
                                     variablesDict[modifySearch] = mixer
 
                         # -- Error variables -- #
                         search = re.search(variablesErrorDefined, eachLine)
                         if search:
-                            mixer = self.mixer.GetStringMixer(lenght=mixerLevelArg)
+                            mixer = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
                             if search.group(2) not in variablesDict:
                                 variablesDict[search.group(2)] = mixer
 
@@ -268,17 +268,17 @@ class Replace:
                                 modifySearch = modifySearch.split()
                                 for i in modifySearch:
                                     if i not in variablesDict:
-                                        mixer = self.mixer.GetStringMixer(lenght=mixerLevelArg)
+                                        mixer = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
                                         variablesDict[i] = mixer
                             else:
                                 if search.group(1) not in variablesDict:
-                                    mixer = self.mixer.GetStringMixer(lenght=mixerLevelArg)
+                                    mixer = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
                                     variablesDict[search.group(1)] = mixer
 
                         # -- Function(s) -- #
                         search = re.search(functionsDefined, eachLine)
                         if search:
-                            mixer = self.mixer.GetStringMixer(lenght=mixerLevelArg)
+                            mixer = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
                             if search.group(1) not in functionsDict:
                                 if not "__init__" in search.group(1):
                                     functionsDict[search.group(1)] = mixer
@@ -286,7 +286,7 @@ class Replace:
                         # -- Class(es) -- #
                         search = re.search(classDefined, eachLine)
                         if search:
-                            mixer = self.mixer.GetStringMixer(lenght=mixerLevelArg)
+                            mixer = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
                             if search.group(1) not in classesDict:
                                 classesDict[search.group(1)] = mixer
             bar.next(40)
@@ -529,7 +529,7 @@ class Replace:
             return EXIT_FAILURE
 
 
-    def StringsToHex(self, outputArg, mixerLevelArg, verboseArg):
+    def StringsToHex(self, outputArg, mixerLevelArg, mixerLengthArg, verboseArg):
         checkHexError       = {}
         getLetterLineList   = []
         countRecursFiles    = 0
@@ -560,7 +560,7 @@ class Replace:
                 # -- Add a new first random line and move the old first line to the second line to avoid replacing it -- #
                 checkPrint = 0 # initialize check print() func at the begining of each file
                 with open(file, "r") as inputFile:
-                    stringRandomMixer   = self.mixer.GetStringMixer(lenght=mixerLevelArg)
+                    stringRandomMixer   = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
                     firstLine           = "{0}\n".format(stringRandomMixer)
                     line                = inputFile.readlines()
 
@@ -573,7 +573,7 @@ class Replace:
                 with fileinput.input(file, inplace=True) as inputFile:
                     for eachLine in inputFile:
                         if checkPrint == 0:
-                            varMixer = self.mixer.GetStringMixer(lenght=mixerLevelArg)
+                            varMixer = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
                             sys.stdout.write(varMixer + "=\"\"\"")
                             checkPrint = 1
                         else:
@@ -631,7 +631,7 @@ class Replace:
             return EXIT_FAILURE
 
 
-    def FilesName(self, outputArg, mixerLevelArg, verboseArg):
+    def FilesName(self, outputArg, mixerLengthArg, mixerLevelArg, verboseArg):
         checkFilesFoundCompare  = {}
         filesNameDict           = {}
         filesNameDictNoExt      = {}
@@ -689,7 +689,7 @@ class Replace:
                     parseFilePath = file.split("/")
                     unix = True
 
-                mixer = self.mixer.GetStringMixer(lenght=mixerLevelArg)
+                mixer = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
                 filesNameDict[parseFilePath[-1]] = mixer + ".py"
                 filesNameDictNoExt[parseFilePath[-1].replace(".py", "")] = mixer
 

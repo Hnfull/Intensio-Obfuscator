@@ -21,11 +21,18 @@ class Args:
                                 help="output file or directory that will be obfuscated - if multiple file indicate a empty directory that will contain all your files"
         )
         self.parser.add_argument(
-                                "-m", "--mixerlevel",
+                                "-mlen", "--mixerlength",
                                 choices=["lower", "medium", "high"],
                                 default="medium",
-                                help="generate random strings of [lower:32 | medium:64 | high:128] chars when 'replacetostr' - 'paddingscript' - 'replacefilename'\
+                                help="define length of random strings generated [lower:32 | medium:64 | high:128] (number of chars) when 'replacetostr' - 'paddingscript' - 'replacefilename'\
                                     - 'replacetohex' features are specified, default value: [medium], possible values: [lower, medium, high]"
+        )
+        self.parser.add_argument(
+                                "-mlvl", "--mixerlevel",
+                                choices=["simple", "hard"],
+                                default="simple",
+                                help="define the obfuscation level of random strings generated when 'replacetostr' - 'paddingscript' - 'replacefilename'\
+                                    - 'replacetohex' features are specified, default value: [simple], possible values: [simple, hard]"
         )
         self.parser.add_argument(
                                 "-rts", "--replacetostr",

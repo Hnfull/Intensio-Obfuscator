@@ -28,8 +28,10 @@
 -h, --help                  ->  show this help message and exit
 -i, --input                 ->  source directory - indicate a directory that contain your file
 -o, --output                ->  output directory that will be obfuscated - indicate a empty directory that will contain your file
--m, --mixerlevel            ->  generate random strings of [lower:32 | medium:64 | high:128] chars when 'replacetostr' - 'paddingscript' - 'replacefilename'\
-                                - 'replacetohex' parameters are specified, default value: [medium], possible values: [lower, medium, high]
+-mlen, --mixerlength        ->  define length of random strings generated [lower:32 | medium:64 | high:128] (number of chars) when 'replacetostr' - 'paddingscript' - 'replacefilename'\
+                                - 'replacetohex' features are specified, default value: [medium], possible values: [lower, medium, high]"
+-mlvl, --mixerlevel         ->  define the obfuscation level of random strings generated when 'replacetostr' - 'paddingscript' - 'replacefilename'\
+                                - 'replacetohex' features are specified, default value: [simple], possible values: [simple, hard]"
 -rts, --replacetostr        ->  activate 'replace string to string mixed' obfuscation feature
 -ps, --paddingscript        ->  activate 'padding script' obfuscation feature
 -rfn, --replacefilename     ->  activate 'replace file name' obfuscation feature
@@ -67,7 +69,7 @@ def main():
     args    = Args()
     utils   = Utils()
 
-    if len(sys.argv) > 1 and len(sys.argv) <= 13:
+    if len(sys.argv) > 1 and len(sys.argv) <= 15:
         pass
     else:
         print(Colors.ERROR + "[-] Incorrect number of arguments\n" + Colors.DISABLE)
@@ -76,18 +78,18 @@ def main():
     
     if args.GetArgsValue().input:
         if args.GetArgsValue().output:
-            if args.GetArgsValue().mixerlevel:
-                if re.match(r"^lower$|^medium$|^high$", args.GetArgsValue().mixerlevel):
+            if re.match(r"^lower$|^medium$|^high$", args.GetArgsValue().mixerlength):
+                if args.GetArgsValue().mixerlevel:
                     if not args.GetArgsValue().paddingscript and not args.GetArgsValue().replacetostr \
                         and not args.GetArgsValue().replacefilename and not args.GetArgsValue().replacetohex:
                         print(Colors.ERROR + "\n[-] Need at least one argument [-rts] - [-ps] - [-rfn] - [-rth]" + Colors.DISABLE)
                         sys.exit(ERROR_BAD_ARGUMENTS)
                 else:
-                    print(Colors.ERROR + "[-] Incorrect level of mixerlevel, [lower - medium - high] only supported\n" + Colors.DISABLE)
+                    print(Colors.ERROR + "[-] Incorrect level defined of mixerlevel argument, [simple - hard] only supported\n" + Colors.DISABLE)
                     sys.exit(ERROR_INVALID_PARAMETER)
             else:
-                print(Colors.ERROR + "[-] Mixerlevel [-m, --mixerlevel] argument missing\n" + Colors.DISABLE)
-                sys.exit(ERROR_BAD_ARGUMENTS)
+                print(Colors.ERROR + "[-] Incorrect length defined of mixerlength argument, [lower - medium - high] only supported\n" + Colors.DISABLE)
+                sys.exit(ERROR_INVALID_PARAMETER)
         else:
             print(Colors.ERROR + "[-] Output [-o, --output] argument missing\n" + Colors.DISABLE)
             sys.exit(ERROR_BAD_ARGUMENTS)
@@ -161,6 +163,7 @@ def main():
     paddingData             = Padding()
     paddingDataEmptyClass   = paddingData.EmptyClasses(
                                                         outputArg=args.GetArgsValue().output, 
+                                                        mixerLengthArg=args.GetArgsValue().mixerlength,
                                                         mixerLevelArg=args.GetArgsValue().mixerlevel,
                                                         verboseArg=args.GetArgsValue().verbose
     ) 
@@ -180,6 +183,7 @@ def main():
     
     paddingDataEmptyFunc = paddingData.EmptyFunctions(
                                                     outputArg=args.GetArgsValue().output, 
+                                                    mixerLengthArg=args.GetArgsValue().mixerlength,
                                                     mixerLevelArg=args.GetArgsValue().mixerlevel,
                                                     verboseArg=args.GetArgsValue().verbose
     ) 
@@ -196,6 +200,7 @@ def main():
 
         replaceDataStrStr = replaceData.StringToString(
                                                         outputArg=args.GetArgsValue().output, 
+                                                        mixerLengthArg=args.GetArgsValue().mixerlength,
                                                         mixerLevelArg=args.GetArgsValue().mixerlevel, 
                                                         verboseArg=args.GetArgsValue().verbose
         ) 
@@ -218,6 +223,7 @@ def main():
 
         paddingDataGarbage = paddingData.AddRandomScripts(
                                                         outputArg=args.GetArgsValue().output,
+                                                        mixerLengthArg=args.GetArgsValue().mixerlength,
                                                         mixerLevelArg=args.GetArgsValue().mixerlevel,
                                                         verboseArg=args.GetArgsValue().verbose
         )
@@ -238,8 +244,9 @@ def main():
             replaceData = Replace()
 
         replaceDataStrFname = replaceData.FilesName(
-                                                    outputArg=args.GetArgsValue().output, 
-                                                    mixerLevelArg=args.GetArgsValue().mixerlevel, 
+                                                    outputArg=args.GetArgsValue().output,
+                                                    mixerLengthArg=args.GetArgsValue().mixerlength,
+                                                    mixerLevelArg=args.GetArgsValue().mixerlevel,
                                                     verboseArg=args.GetArgsValue().verbose
         )
         if replaceDataStrFname == EXIT_SUCCESS:
@@ -260,6 +267,7 @@ def main():
 
         replaceDataStrHex = replaceData.StringsToHex(
                                                     outputArg=args.GetArgsValue().output, 
+                                                    mixerLengthArg=args.GetArgsValue().mixerlength,
                                                     mixerLevelArg=args.GetArgsValue().mixerlevel,
                                                     verboseArg=args.GetArgsValue().verbose
         ) 
