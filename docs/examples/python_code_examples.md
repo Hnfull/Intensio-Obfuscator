@@ -12,7 +12,7 @@
 - **Intermediate obfuscation** 
 - (defined `length` of random strings generated to `64` chars - defined obfuscation `level` of random strings generated to `hard` - `replace` all names of variables/classes/functions - `padding` random python scripts - `replace` all files names)
   - `python3.x intensio_obfuscator.py -i examples/python/intermediate/input/basicRAT-example -o examples/python/intermediate/output/basicRAT-example -mlen medium -mlvl hard -rts -ps -rfn`
-      - [source directory of project](../../intensio/examplespython/intermediate/input/basicRAT-example)
+      - [source directory of project](../../intensio/examples/python/intermediate/input/basicRAT-example)
       - [output directory of project](../../intensio/examples/python/intermediate/output/basicRAT-example)
 
 
