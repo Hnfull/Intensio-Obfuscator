@@ -55,7 +55,7 @@ class Analyze:
                 
                 print("\n[+] Running analyze input of {0} file(s)...\n".format(countRecursFiles))
                 
-                with Bar(Colors.PROGRESS + "Analysis    ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
+                with Bar("Analysis    ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
                     for file in recursFiles:
                         if blockDir in file:
                             continue
@@ -69,7 +69,6 @@ class Analyze:
 
                         bar.next(1)
                     bar.finish()
-                    sys.stdout.write(Colors.DISABLE)
 
                     if inputFileFoundCount >= 1 and inputFileEmptyCount < inputFileFoundCount:
                         if verboseArg:
@@ -139,7 +138,7 @@ class Analyze:
                                     print(Colors.ERROR + "[-] {0} directory empty, no copied file".format(inputArg) + Colors.DISABLE)
                                     return ERROR_DIR_EMPTY
                                                                 
-                                with Bar(Colors.PROGRESS + "Analysis    ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
+                                with Bar("Analysis    ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
                                     for file in recursFiles:
                                         if blockDir in file:
                                             continue
@@ -153,7 +152,6 @@ class Analyze:
 
                                         bar.next(1)
                                     bar.finish()
-                                    sys.stdout.write(Colors.DISABLE)
                                 
                                     if outputFileFoundCount >= 1 and outputFileFoundCount > outputFileEmptyCount:
                                         if verboseArg:
@@ -214,7 +212,7 @@ class Analyze:
                             print(Colors.ERROR + "[-] {0} directory empty, no copied file".format(inputArg) + Colors.DISABLE)
                             return ERROR_DIR_EMPTY
                                                 
-                        with Bar(Colors.PROGRESS + "Analysis    ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
+                        with Bar("Analysis    ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
                             for file in recursFiles:
                                 if blockDir in file:
                                     continue
@@ -228,7 +226,6 @@ class Analyze:
 
                                 bar.next(1)
                             bar.finish()    
-                            sys.stdout.write(Colors.DISABLE)
 
                             if outputFileFoundCount >= 1 and outputFileFoundCount > outputFileEmptyCount:
                                 if verboseArg:

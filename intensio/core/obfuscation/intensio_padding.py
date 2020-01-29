@@ -12,7 +12,7 @@ import sys
 from progress.bar import Bar
 
 from core.obfuscation.intensio_mixer import Mixer
-from core.utils.intensio_utils import Utils, Colors
+from core.utils.intensio_utils import Utils
 from core.utils.intensio_error import EXIT_SUCCESS, EXIT_FAILURE
 
 #------------------------------------------------- [Function(s)/Class(es)] --------------------------------------------------#
@@ -265,7 +265,7 @@ class Padding:
         print("\n[+] Running add of random scripts in {0} file(s)...\n".format(countRecursFiles))
 
         # -- Count the number of lines that will be checked before filling -- #
-        with Bar(Colors.PROGRESS + "Setting up  ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
+        with Bar("Setting up  ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
                 with open(file , "r") as readFile:
                     readF = readFile.readlines()
@@ -276,10 +276,9 @@ class Padding:
 
                 bar.next(1)
             bar.finish()
-            sys.stdout.write(Colors.DISABLE)
 
         # -- Padding scripts added -- #
-        with Bar(Colors.PROGRESS + "Obfuscation ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
+        with Bar("Obfuscation ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
                 with fileinput.input(file, inplace=True) as inputFile:
                     for eachLine in inputFile:
@@ -447,10 +446,9 @@ class Padding:
 
                 bar.next(1)
             bar.finish()
-            sys.stdout.write(Colors.DISABLE)
 
         # -- Check if padding has added in output script -- #
-        with Bar(Colors.PROGRESS + "Check       ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
+        with Bar("Check       ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
                 with open(file , "r") as readFile:
                     readF = readFile.readlines()
@@ -461,7 +459,6 @@ class Padding:
 
                 bar.next(1)
             bar.finish()
-            sys.stdout.write(Colors.DISABLE)
 
         countLineAdded = checkLine - countLine
 
@@ -495,7 +492,7 @@ class Padding:
         for number in recursFiles:
             countRecursFiles += 1
 
-        with Bar(Colors.PROGRESS + "Correction  ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
+        with Bar("Correction  ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
                 numberLineInFile    = 0
                 numberLine          = 0
@@ -565,11 +562,10 @@ class Padding:
 
                 bar.next(1)
             bar.finish()
-            sys.stdout.write(Colors.DISABLE)
 
         # -- Check if class(es) is still empty -- #
         if emptyClassInfo != {}:
-            with Bar(Colors.PROGRESS + "Check       ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
+            with Bar("Check       ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
                 for file in recursFiles:
                     numberLineInFile    = 0
                     numberLine          = 0
@@ -597,7 +593,6 @@ class Padding:
 
                     bar.next(1)
                 bar.finish()
-                sys.stdout.write(Colors.DISABLE)
         
             if emptyClassInfoCheck == {}:
                 for key, value in emptyClassInfo.items():
@@ -638,7 +633,7 @@ class Padding:
         for number in recursFiles:
             countRecursFiles += 1
 
-        with Bar(Colors.PROGRESS + "Correction  ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
+        with Bar("Correction  ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
                 numberLineInFile    = 0
                 numberLine          = 0
@@ -720,11 +715,10 @@ class Padding:
 
                 bar.next(1)
             bar.finish()
-            sys.stdout.write(Colors.DISABLE)
 
         # -- Check if function(s) is still empty -- #
         if emptyFuncInfo != {}:
-            with Bar(Colors.PROGRESS + "Check       ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
+            with Bar("Check       ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
                 for file in recursFiles:
                     numberLineInFile    = 0
                     numberLine          = 0
@@ -752,7 +746,6 @@ class Padding:
 
                     bar.next(1)
                 bar.finish()
-                sys.stdout.write(Colors.DISABLE)
 
             if emptyFuncInfoCheck == {}:
                 for key, value in emptyFuncInfo.items():

@@ -231,7 +231,7 @@ class Replace:
         print("\n[+] Running replacement of variables/classes/functions in {0} file(s), he can be long... you have time to make a coffee :)\n".format(countRecursFiles))
 
         # -- Replace variables/classes/functions to random strings with length defined -- #
-        with Bar(Colors.PROGRESS + "Setting up  ", fill="=", max=100, suffix="%(percent)d%%") as bar:
+        with Bar("Setting up  ", fill="=", max=100, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
                 with open(file, "r") as readFile:
                     readF = readFile.readlines()
@@ -301,7 +301,7 @@ class Replace:
                             word = word.rstrip()
                             wordsExcludedDefault.append(word)
             else:
-                print(Colors.ERROR + "[-] '{0}' file not found\n".format(self.pythonExcludeDefaultString) + Colors.PROGRESS)
+                print(Colors.ERROR + "[-] '{0}' file not found\n".format(self.pythonExcludeDefaultString) + Colors.DISABLE)
 
             bar.next(10)
 
@@ -315,7 +315,7 @@ class Replace:
                             word = word.rstrip()
                             wordsExcludedUser.append(word)
             else:
-                print(Colors.ERROR + "[-] '{0}' file not found\n".format(self.pythonExcludeUserString) + Colors.PROGRESS)
+                print(Colors.ERROR + "[-] '{0}' file not found\n".format(self.pythonExcludeUserString) + Colors.DISABLE)
 
             bar.next(10)
 
@@ -367,7 +367,6 @@ class Replace:
 
             bar.next(20)
             bar.finish()
-            sys.stdout.write(Colors.DISABLE)
 
         # -- Display variables/classes/functions found -- #
         if verboseArg:
@@ -415,7 +414,7 @@ class Replace:
         classFuncDict   = self.utils.DictMerge(dict1=classFuncDict, dict2=functionsDict)
 
         # -- Change variables/classes/functions to mixed values -- #
-        with Bar(Colors.PROGRESS + "Obfuscation ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
+        with Bar("Obfuscation ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
                 # -- Replace variable(s) only -- #
                 with fileinput.input(file, inplace=True) as inputFile:
@@ -479,9 +478,8 @@ class Replace:
 
                 bar.next(1)
             bar.finish()
-            sys.stdout.write(Colors.DISABLE)
 
-        with Bar(Colors.PROGRESS + "Check       ", fill="=", max=100, suffix="%(percent)d%%") as bar:
+        with Bar("Check       ", fill="=", max=100, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
                 # -- Check if variables/classes/functions have been mixed -- #
                 with open(file, "r") as readFile:
@@ -510,7 +508,6 @@ class Replace:
 
             bar.next(15)
             bar.finish()
-            sys.stdout.write(Colors.DISABLE)
 
         if checkCountWordsMixed == checkCountWordsValue:
             print("\n-> {0} variable(s)/class(es)/function(s) replaced in {1} file(s)\n".format(checkCountWordsValue, countRecursFiles))
@@ -555,7 +552,7 @@ class Replace:
         print("\n[+] Running replace all strings to their hexadecimal value in {0} file(s)...\n".format(countRecursFiles))
 
         # -- Replace all strings to their hexadecimal value -- #
-        with Bar(Colors.PROGRESS + "Obfuscation ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
+        with Bar("Obfuscation ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
                 # -- Add a new first random line and move the old first line to the second line to avoid replacing it -- #
                 checkPrint = 0 # initialize check print() func at the begining of each file
@@ -591,9 +588,8 @@ class Replace:
 
                 bar.next(1)
             bar.finish()
-            sys.stdout.write(Colors.DISABLE)
 
-        with Bar(Colors.PROGRESS + "Check       ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
+        with Bar("Check       ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
                 numberLine = 0
                 # -- Check if all lines are replaced of hexadecimal value -- #
@@ -616,7 +612,6 @@ class Replace:
 
                 bar.next(1)
             bar.finish()
-            sys.stdout.write(Colors.DISABLE)
 
         if checkError == False:
             return EXIT_SUCCESS
@@ -679,7 +674,7 @@ class Replace:
 
         print("\n[+] Running replace files name in {0} file(s)...\n".format(countRecursFiles))
 
-        with Bar(Colors.PROGRESS + "Setting up  ", fill="=", max=100, suffix="%(percent)d%%") as bar:
+        with Bar("Setting up  ", fill="=", max=100, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
                 parseFilePath = file.split(self.utils.Platform(getOS=False, getPathType=True))
                 mixer = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
@@ -715,7 +710,7 @@ class Replace:
                             fileNameExcluded.append(fileName)
                             fileNameExcludedByUser.append(fileName)
             else:
-                print(Colors.ERROR + "[-] '{0}' file not found\n".format(self.pythonExcludeUserFileName) + Colors.PROGRESS)
+                print(Colors.ERROR + "[-] '{0}' file not found\n".format(self.pythonExcludeUserFileName) + Colors.DISABLE)
                 
             bar.next(10)
 
@@ -765,7 +760,6 @@ class Replace:
 
             bar.next(30)
             bar.finish()
-            sys.stdout.write(Colors.DISABLE)
 
         # -- Diplay all file name(s) found with their mixed values if verbose arg is actived -- #
         if verboseArg:
@@ -800,7 +794,7 @@ class Replace:
             print("")
 
         # -- Replace all file names to random strings with length and obfuscation level defined -- #
-        with Bar(Colors.PROGRESS + "Obfuscation ", fill="=", max=100, suffix="%(percent)d%%") as bar:
+        with Bar("Obfuscation ", fill="=", max=100, suffix="%(percent)d%%") as bar:
             for fileInCode in recursFilesWithInit:
                 # -- Rename all files in python code -- #
                 with fileinput.input(fileInCode, inplace=True) as inputFile:
@@ -836,7 +830,6 @@ class Replace:
             
             bar.next(50)
             bar.finish()
-            sys.stdout.write(Colors.DISABLE)
 
         checkRecursFiles = self.utils.CheckFileDir(
                                                     output=outputArg,
@@ -850,7 +843,7 @@ class Replace:
             checkCountRecursFiles += 1
 
         # -- Check if all files name are been replaced to random strings -- #
-        with Bar(Colors.PROGRESS + "Check       ", fill="=", max=checkCountRecursFiles, suffix="%(percent)d%%") as bar:
+        with Bar("Check       ", fill="=", max=checkCountRecursFiles, suffix="%(percent)d%%") as bar:
             for file in checkRecursFiles:
                 numberLine = 0
                 # -- Check for file name in directory -- #
@@ -860,7 +853,6 @@ class Replace:
 
                 bar.next(1)
             bar.finish()
-            sys.stdout.write(Colors.DISABLE)
 
         if checkFilesFoundCompare != {} :
             if verboseArg:
