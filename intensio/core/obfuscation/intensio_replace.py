@@ -244,19 +244,28 @@ class Replace:
                                 modifySearch = modifySearch.split()
                                 for i in modifySearch:
                                     if i not in variablesDict:
-                                        mixer = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
+                                        mixer = self.mixer.GetStringMixer(
+                                                                            mixerLengthArgDefined=mixerLengthArg, 
+                                                                            mixerLevelArgDefined=mixerLevelArg
+                                        )
                                         i = i.strip()
                                         variablesDict[i] = mixer
                             else:
                                 if search.group(1) not in variablesDict:
-                                    mixer = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
+                                    mixer = self.mixer.GetStringMixer(
+                                                                        mixerLengthArgDefined=mixerLengthArg, 
+                                                                        mixerLevelArgDefined=mixerLevelArg
+                                    )
                                     modifySearch = search.group(1).strip()
                                     variablesDict[modifySearch] = mixer
 
                         # -- Error variables -- #
                         search = re.search(variablesErrorDefined, eachLine)
                         if search:
-                            mixer = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
+                            mixer = self.mixer.GetStringMixer(
+                                                                mixerLengthArgDefined=mixerLengthArg, 
+                                                                mixerLevelArgDefined=mixerLevelArg
+                            )
                             if search.group(2) not in variablesDict:
                                 variablesDict[search.group(2)] = mixer
 
@@ -268,17 +277,26 @@ class Replace:
                                 modifySearch = modifySearch.split()
                                 for i in modifySearch:
                                     if i not in variablesDict:
-                                        mixer = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
+                                        mixer = self.mixer.GetStringMixer(
+                                                                            mixerLengthArgDefined=mixerLengthArg, 
+                                                                            mixerLevelArgDefined=mixerLevelArg
+                                        )
                                         variablesDict[i] = mixer
                             else:
                                 if search.group(1) not in variablesDict:
-                                    mixer = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
+                                    mixer = self.mixer.GetStringMixer(
+                                                                        mixerLengthArgDefined=mixerLengthArg, 
+                                                                        mixerLevelArgDefined=mixerLevelArg
+                                    )
                                     variablesDict[search.group(1)] = mixer
 
                         # -- Function(s) -- #
                         search = re.search(functionsDefined, eachLine)
                         if search:
-                            mixer = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
+                            mixer = self.mixer.GetStringMixer(
+                                                                mixerLengthArgDefined=mixerLengthArg, 
+                                                                mixerLevelArgDefined=mixerLevelArg
+                            )
                             if search.group(1) not in functionsDict:
                                 if not "__init__" in search.group(1):
                                     functionsDict[search.group(1)] = mixer
@@ -286,7 +304,10 @@ class Replace:
                         # -- Class(es) -- #
                         search = re.search(classDefined, eachLine)
                         if search:
-                            mixer = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
+                            mixer = self.mixer.GetStringMixer(
+                                                                mixerLengthArgDefined=mixerLengthArg, 
+                                                                mixerLevelArgDefined=mixerLevelArg
+                            )
                             if search.group(1) not in classesDict:
                                 classesDict[search.group(1)] = mixer
             bar.next(40)
@@ -557,9 +578,12 @@ class Replace:
                 # -- Add a new first random line and move the old first line to the second line to avoid replacing it -- #
                 checkPrint = 0 # initialize check print() func at the begining of each file
                 with open(file, "r") as inputFile:
-                    stringRandomMixer   = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
-                    firstLine           = "{0}\n".format(stringRandomMixer)
-                    line                = inputFile.readlines()
+                    stringRandomMixer = self.mixer.GetStringMixer(
+                                                                    mixerLengthArgDefined=mixerLengthArg, 
+                                                                    mixerLevelArgDefined=mixerLevelArg
+                    )
+                    firstLine   = "{0}\n".format(stringRandomMixer)
+                    line        = inputFile.readlines()
 
                     line.insert(0, firstLine)
 
@@ -570,7 +594,10 @@ class Replace:
                 with fileinput.input(file, inplace=True) as inputFile:
                     for eachLine in inputFile:
                         if checkPrint == 0:
-                            varMixer = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
+                            varMixer = self.mixer.GetStringMixer(
+                                                                    mixerLengthArgDefined=mixerLengthArg, 
+                                                                    mixerLevelArgDefined=mixerLevelArg
+                            )
                             sys.stdout.write(varMixer + "=\"\"\"")
                             checkPrint = 1
                         else:
@@ -677,7 +704,10 @@ class Replace:
         with Bar("Setting up  ", fill="=", max=100, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
                 parseFilePath = file.split(self.utils.Platform(getOS=False, getPathType=True))
-                mixer = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
+                mixer = self.mixer.GetStringMixer(
+                                                    mixerLengthArgDefined=mixerLengthArg,
+                                                    mixerLevelArgDefined=mixerLevelArg
+                )
                 filesNameDict[parseFilePath[-1]] = mixer + ".py"
                 filesNameDictNoExt[parseFilePath[-1].replace(".py", "")] = mixer
 
@@ -862,7 +892,7 @@ class Replace:
                         print("\n-> File : {0}".format(key))
                         print("-> Value mixed : {0}".format(value))
             else:
-                print(Colors.ERROR + "\n[-] Launch intensio-obfuscatior with verbose mode because file name(s) have not been replaced by their random string value" + Colors.DISABLE)
+                print(Colors.ERROR + "\n[-] Launch intensio-obfuscatior with verbose mode [-v, --verbose] because file name(s) have not been replaced by their random string value" + Colors.DISABLE)
             return EXIT_FAILURE
         else:
             return EXIT_SUCCESS

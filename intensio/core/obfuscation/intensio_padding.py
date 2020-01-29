@@ -44,20 +44,62 @@ class Padding:
 
 
     def ScriptsGenerator(self, mixerLengthArg, mixerLevelArg):
-        varRandom1   = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
-        varRandom2   = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
-        varRandom3   = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
-        varRandom4   = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
-        varRandom5   = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
-        varRandom6   = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
-        varRandom7   = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
-        varRandom8   = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
-        varRandom9   = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
-        varRandom10  = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
-        varRandom11  = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
-        varRandom12  = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
-        varRandom13  = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
-        varRandom14  = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
+        varRandom1 = self.mixer.GetStringMixer(
+                                                mixerLengthArgDefined=mixerLengthArg, 
+                                                mixerLevelArgDefined=mixerLevelArg
+        )
+        varRandom2 = self.mixer.GetStringMixer(
+                                                mixerLengthArgDefined=mixerLengthArg, 
+                                                mixerLevelArgDefined=mixerLevelArg
+        )
+        varRandom3 = self.mixer.GetStringMixer(
+        										mixerLengthArgDefined=mixerLengthArg, 
+        										mixerLevelArgDefined=mixerLevelArg
+        )
+        varRandom4 = self.mixer.GetStringMixer(
+        										mixerLengthArgDefined=mixerLengthArg, 
+        										mixerLevelArgDefined=mixerLevelArg
+        )
+        varRandom5 = self.mixer.GetStringMixer(
+        										mixerLengthArgDefined=mixerLengthArg, 
+        										mixerLevelArgDefined=mixerLevelArg
+        )
+        varRandom6 = self.mixer.GetStringMixer(
+        										mixerLengthArgDefined=mixerLengthArg, 
+        										mixerLevelArgDefined=mixerLevelArg
+        )
+        varRandom7 = self.mixer.GetStringMixer(
+        										mixerLengthArgDefined=mixerLengthArg, 
+        										mixerLevelArgDefined=mixerLevelArg
+        )
+        varRandom8 = self.mixer.GetStringMixer(
+        										mixerLengthArgDefined=mixerLengthArg, 
+        										mixerLevelArgDefined=mixerLevelArg
+        )
+        varRandom9 = self.mixer.GetStringMixer(
+        										mixerLengthArgDefined=mixerLengthArg, 
+        										mixerLevelArgDefined=mixerLevelArg
+        )
+        varRandom10= self.mixer.GetStringMixer(
+        										mixerLengthArgDefined=mixerLengthArg, 
+        										mixerLevelArgDefined=mixerLevelArg
+        )
+        varRandom11= self.mixer.GetStringMixer(
+        										mixerLengthArgDefined=mixerLengthArg, 
+        										mixerLevelArgDefined=mixerLevelArg
+        )
+        varRandom12= self.mixer.GetStringMixer(
+        										mixerLengthArgDefined=mixerLengthArg, 
+        										mixerLevelArgDefined=mixerLevelArg
+        )
+        varRandom13= self.mixer.GetStringMixer(
+        										mixerLengthArgDefined=mixerLengthArg, 
+        										mixerLevelArgDefined=mixerLevelArg
+        )
+        varRandom14= self.mixer.GetStringMixer(
+        										mixerLengthArgDefined=mixerLengthArg, 
+        										mixerLevelArgDefined=mixerLevelArg
+        )
 
         # ---------- Python random scripts ---------- #
         rand = random.randint(1, 7)
@@ -328,6 +370,7 @@ class Padding:
                                         continue
                             else:
                                 pass
+
                             if re.match(noAddScript, eachLine):
                                 if re.match(r".*[\\|,]\s*$", eachLine):
                                     if checkCharPassing == 1:
@@ -343,103 +386,263 @@ class Padding:
                             # -- Adding scripts -- #
                             elif re.match(addIndentScript, eachLine):
                                 if spaces == 0:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg, mixerLevelArg=mixerLevelArg), self.space4))
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                    															self, 
+                                    															mixerLengthArg=mixerLengthArg, 
+                                    															mixerLevelArg=mixerLevelArg), 
+                                    															self.space4)
+                                    )
                                     countScriptsAdded += 1                                                                
                                 elif spaces == 4:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg, mixerLevelArg=mixerLevelArg), self.space8))
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                    															self, 
+                                    															mixerLengthArg=mixerLengthArg, 
+                                    															mixerLevelArg=mixerLevelArg), 
+                                    															self.space8)
+                                    )
                                     countScriptsAdded += 1
                                 elif spaces == 8:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg, mixerLevelArg=mixerLevelArg), self.space12))
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                    															self, 
+                                    															mixerLengthArg=mixerLengthArg, 
+                                    															mixerLevelArg=mixerLevelArg), 
+                                    															self.space12)
+                                    )
                                     countScriptsAdded += 1
                                 elif spaces == 12:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg, mixerLevelArg=mixerLevelArg), self.space16))
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                    															self, 
+                                    															mixerLengthArg=mixerLengthArg, 
+                                    															mixerLevelArg=mixerLevelArg), 
+                                    															self.space16)
+                                    )
                                     countScriptsAdded += 1
                                 elif spaces == 16:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg, mixerLevelArg=mixerLevelArg), self.space20))
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                    															self, 
+                                    															mixerLengthArg=mixerLengthArg, 
+                                    															mixerLevelArg=mixerLevelArg), 
+                                    															self.space20)
+                                    )
                                     countScriptsAdded += 1
                                 elif spaces == 20:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg, mixerLevelArg=mixerLevelArg), self.space24))
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                    															self, 
+                                    															mixerLengthArg=mixerLengthArg, 
+                                    															mixerLevelArg=mixerLevelArg), 
+                                    															self.space24)
+                                    )
                                     countScriptsAdded += 1
                                 elif spaces == 24:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg, mixerLevelArg=mixerLevelArg), self.space28))
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                    															self, 
+                                    															mixerLengthArg=mixerLengthArg, 
+                                    															mixerLevelArg=mixerLevelArg), 
+                                    															self.space28)
+                                    )
                                     countScriptsAdded += 1
                                 elif spaces == 28:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg, mixerLevelArg=mixerLevelArg), self.space32))
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                    															self, 
+                                    															mixerLengthArg=mixerLengthArg, 
+                                    															mixerLevelArg=mixerLevelArg), 
+                                    															self.space32)
+                                    )
                                     countScriptsAdded += 1
                                 elif spaces == 32:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg, mixerLevelArg=mixerLevelArg), self.space36))
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                    															self, 
+                                    															mixerLengthArg=mixerLengthArg, 
+                                    															mixerLevelArg=mixerLevelArg), 
+                                    															self.space36)
+                                    )
                                     countScriptsAdded += 1
                                 elif spaces == 36:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg, mixerLevelArg=mixerLevelArg), self.space40))
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                    															self, 
+                                    															mixerLengthArg=mixerLengthArg, 
+                                    															mixerLevelArg=mixerLevelArg), 
+                                    															self.space40)
+                                    )
                                     countScriptsAdded += 1
                                 elif spaces == 40:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg, mixerLevelArg=mixerLevelArg), self.space44))
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                    															self, 
+                                    															mixerLengthArg=mixerLengthArg, 
+                                    															mixerLevelArg=mixerLevelArg), 
+                                    															self.space44)
+                                    )
                                     countScriptsAdded += 1
                                 elif spaces == 44:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg, mixerLevelArg=mixerLevelArg), self.space48))
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                    															self, 
+                                    															mixerLengthArg=mixerLengthArg, 
+                                    															mixerLevelArg=mixerLevelArg), 
+                                    															self.space48)
+                                    )
                                     countScriptsAdded += 1
                                 elif spaces == 48:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg, mixerLevelArg=mixerLevelArg), self.space52))
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                    															self, 
+                                    															mixerLengthArg=mixerLengthArg, 
+                                    															mixerLevelArg=mixerLevelArg), 
+                                    															self.space52)
+                                    )
                                     countScriptsAdded += 1
                                 elif spaces == 52:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg, mixerLevelArg=mixerLevelArg), self.space56))
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                    															self, 
+                                    															mixerLengthArg=mixerLengthArg, 
+                                    															mixerLevelArg=mixerLevelArg), 
+                                    															self.space56)
+                                    )
                                     countScriptsAdded += 1
                                 elif spaces == 56:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg, mixerLevelArg=mixerLevelArg), self.space60))
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                    															self, 
+                                    															mixerLengthArg=mixerLengthArg, 
+                                    															mixerLevelArg=mixerLevelArg), 
+                                    															self.space60)
+                                    )
                                     countScriptsAdded += 1
                                 elif spaces == 60:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg, mixerLevelArg=mixerLevelArg), self.space64))
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                    															self, 
+                                    															mixerLengthArg=mixerLengthArg, 
+                                    															mixerLevelArg=mixerLevelArg), 
+                                    															self.space64)
+                                    )
                                     countScriptsAdded += 1
                                 else:
                                     continue
                             else:
                                 if spaces == 0:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg, mixerLevelArg=mixerLevelArg), self.space0))
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                    															self, 
+                                    															mixerLengthArg=mixerLengthArg, 
+                                    															mixerLevelArg=mixerLevelArg), 
+                                    															self.space0)
+                                    )
                                     countScriptsAdded += 1
                                 elif spaces == 4:                                                                       
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg, mixerLevelArg=mixerLevelArg), self.space4))
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                    															self, 
+                                    															mixerLengthArg=mixerLengthArg, 
+                                    															mixerLevelArg=mixerLevelArg), 
+                                    															self.space4)
+                                    )
                                     countScriptsAdded += 1
                                 elif spaces == 8:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg, mixerLevelArg=mixerLevelArg), self.space8))
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                    															self, 
+                                    															mixerLengthArg=mixerLengthArg, 
+                                    															mixerLevelArg=mixerLevelArg), 
+                                    															self.space8)
+                                    )
                                     countScriptsAdded += 1
                                 elif spaces == 12:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg, mixerLevelArg=mixerLevelArg), self.space12))
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                    															self, 
+                                    															mixerLengthArg=mixerLengthArg, 
+                                    															mixerLevelArg=mixerLevelArg), 
+                                    															self.space12)
+                                    )
                                     countScriptsAdded += 1
                                 elif spaces == 16:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg, mixerLevelArg=mixerLevelArg), self.space16))
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                    															self, 
+                                    															mixerLengthArg=mixerLengthArg, 
+                                    															mixerLevelArg=mixerLevelArg), 
+                                    															self.space16)
+                                    )
                                     countScriptsAdded += 1
                                 elif spaces == 20:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg, mixerLevelArg=mixerLevelArg), self.space20))
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                    															self, 
+                                    															mixerLengthArg=mixerLengthArg, 
+                                    															mixerLevelArg=mixerLevelArg), 
+                                    															self.space20)
+                                    )
                                     countScriptsAdded += 1
                                 elif spaces == 24:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg, mixerLevelArg=mixerLevelArg), self.space24))
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                    															self, 
+                                    															mixerLengthArg=mixerLengthArg, 
+                                    															mixerLevelArg=mixerLevelArg), 
+                                    															self.space24)
+                                    )
                                     countScriptsAdded += 1
                                 elif spaces == 28:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg, mixerLevelArg=mixerLevelArg), self.space28))
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                    															self, 
+                                    															mixerLengthArg=mixerLengthArg, 
+                                    															mixerLevelArg=mixerLevelArg), 
+                                    															self.space28)
+                                    )
                                     countScriptsAdded += 1
                                 elif spaces == 32:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg, mixerLevelArg=mixerLevelArg), self.space32))
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                    															self, 
+                                    															mixerLengthArg=mixerLengthArg, 
+                                    															mixerLevelArg=mixerLevelArg), 
+                                    															self.space32)
+                                    )
                                     countScriptsAdded += 1
                                 elif spaces == 36:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg, mixerLevelArg=mixerLevelArg), self.space36))
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                    															self, 
+                                    															mixerLengthArg=mixerLengthArg, 
+                                    															mixerLevelArg=mixerLevelArg), 
+                                    															self.space36)
+                                    )
                                     countScriptsAdded += 1
                                 elif spaces == 40:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg, mixerLevelArg=mixerLevelArg), self.space40))
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                    															self, 
+                                    															mixerLengthArg=mixerLengthArg, 
+                                    															mixerLevelArg=mixerLevelArg), 
+                                    															self.space40)
+                                    )
                                     countScriptsAdded += 1
                                 elif spaces == 44:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg, mixerLevelArg=mixerLevelArg), self.space44))
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                    															self, 
+                                    															mixerLengthArg=mixerLengthArg, 
+                                    															mixerLevelArg=mixerLevelArg), 
+                                    															self.space44)
+                                    )
                                     countScriptsAdded += 1
                                 elif spaces == 48:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg, mixerLevelArg=mixerLevelArg), self.space48))
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                    															self, 
+                                    															mixerLengthArg=mixerLengthArg, 
+                                    															mixerLevelArg=mixerLevelArg), 
+                                    															self.space48)
+                                    )
                                     countScriptsAdded += 1
                                 elif spaces == 52:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg, mixerLevelArg=mixerLevelArg), self.space52))
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                    															self, 
+                                    															mixerLengthArg=mixerLengthArg, 
+                                    															mixerLevelArg=mixerLevelArg), 
+                                    															self.space52)
+                                    )
                                     countScriptsAdded += 1
                                 elif spaces == 56:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg, mixerLevelArg=mixerLevelArg), self.space56))
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                    															self, 
+                                    															mixerLengthArg=mixerLengthArg, 
+                                    															mixerLevelArg=mixerLevelArg), 
+                                    															self.space56)
+                                    )
                                     countScriptsAdded += 1
                                 elif spaces == 60:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg, mixerLevelArg=mixerLevelArg), self.space60))
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                    															self, 
+                                    															mixerLengthArg=mixerLengthArg, 
+                                    															mixerLevelArg=mixerLevelArg), 
+                                    															self.space60)
+                                    )
                                     countScriptsAdded += 1
                                 else:
                                     continue
@@ -534,8 +737,14 @@ class Padding:
                             spacesAfterClass = len(eachLine) - len(eachLine.lstrip())
                             counterToCheckIndent = 0
                             if spacesAfterClass == spacesClass:
-                                paddingVar1 = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
-                                paddingVar2 = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
+                                paddingVar1 = self.mixer.GetStringMixer(
+                                                                        mixerLengthArgDefined=mixerLengthArg, 
+                                                                        mixerLevelArgDefined=mixerLevelArg
+                                )
+                                paddingVar2 = self.mixer.GetStringMixer(
+                                                                        mixerLengthArgDefined=mixerLengthArg, 
+                                                                        mixerLevelArgDefined=mixerLevelArg
+                                )
                                 finalVarPadding = "{0} = '{1}'\n".format(paddingVar1, paddingVar2)
                                 if spacesClass == 0:
                                     sys.stdout.write(textwrap.indent(finalVarPadding, self.space4))                                                                
@@ -548,8 +757,14 @@ class Padding:
                         if re.match(detectClass, eachLine):
                             spacesClass = len(eachLine) - len(eachLine.lstrip())
                             if numberLine == numberLineInFile:
-                                paddingVar1 = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
-                                paddingVar2 = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
+                                paddingVar1 = self.mixer.GetStringMixer(
+                                                                        mixerLengthArgDefined=mixerLengthArg, 
+                                                                        mixerLevelArgDefined=mixerLevelArg
+                                )
+                                paddingVar2 = self.mixer.GetStringMixer(
+                                                                        mixerLengthArgDefined=mixerLengthArg, 
+                                                                        mixerLevelArgDefined=mixerLevelArg
+                                )
                                 finalVarPadding = "{0} = '{1}'\n".format(paddingVar1, paddingVar2)
                                 if spacesClass == 0:
                                     sys.stdout.write(textwrap.indent(finalVarPadding, self.space4))                                                                
@@ -675,8 +890,14 @@ class Padding:
                             spacesAfterFunc = len(eachLine) - len(eachLine.lstrip())
                             counterToCheckIndent = 0
                             if spacesAfterFunc == spacesFunc:
-                                paddingVar1 = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
-                                paddingVar2 = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
+                                paddingVar1 = self.mixer.GetStringMixer(
+                                                                        mixerLengthArgDefined=mixerLengthArg, 
+                                                                        mixerLevelArgDefined=mixerLevelArg
+                                )
+                                paddingVar2 = self.mixer.GetStringMixer(
+                                                                        mixerLengthArgDefined=mixerLengthArg, 
+                                                                        mixerLevelArgDefined=mixerLevelArg
+                                )
                                 finalVarPadding = "{0} = '{1}'\n".format(paddingVar1, paddingVar2)
                                 if spacesFunc == 0:
                                     sys.stdout.write(textwrap.indent(finalVarPadding, self.space4))                                                                
@@ -695,8 +916,14 @@ class Padding:
                         if re.match(detectFunction, eachLine):
                             spacesFunc = len(eachLine) - len(eachLine.lstrip())
                             if numberLine == numberLineInFile:
-                                paddingVar1 = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
-                                paddingVar2 = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg, mixerLevelArgDefined=mixerLevelArg)
+                                paddingVar1 = self.mixer.GetStringMixer(
+                                                                        mixerLengthArgDefined=mixerLengthArg,
+                                                                        mixerLevelArgDefined=mixerLevelArg
+                                )
+                                paddingVar2 = self.mixer.GetStringMixer(
+                                                                        mixerLengthArgDefined=mixerLengthArg, 
+                                                                        mixerLevelArgDefined=mixerLevelArg
+                                )
                                 finalVarPadding = "{0} = '{1}'\n".format(paddingVar1, paddingVar2)
                                 if spacesFunc == 0:
                                     sys.stdout.write(textwrap.indent(finalVarPadding, self.space4))                                                                
