@@ -91,17 +91,21 @@ class Replace:
 
                                             # -- Check the char after and before the word -- #
                                             if re.match(detectChars, getIndexLineList[indexExplore]):
-                                                indexExploreBefore  = indexLine - 1 # Index check if word finded is not into the other word
-                                                indexExploreAfter   = indexLine + 2 # Index check char after the end string found with 'detectChars' regex
+                                                # Index check if word finded is not into the other word
+                                                indexExploreBefore  = indexLine - 1
+                                                # Index check char after the end string found with 'detectChars' regex
+                                                indexExploreAfter   = indexLine + 2
 
                                                 try:
                                                     if not re.match(r"\w|\\|\%", getIndexLineList[indexExploreBefore]):
-                                                        # -- Check if it's 'from' and 'import' file in line to avoid replace name of file if variable is identic name to file -- #
+                                                        # -- Check if it's 'from' and 'import' file in line to avoid replace \
+                                                        # name of file if variable is identic name to file -- #
                                                         getLine = "".join(getIndexLineList)
                                                         if fileNameImport == False:
                                                             if "import" in getLine:
                                                                 if "from" in getLine:
-                                                                    # -- Cut the line from the current index and check if it is not there is the keyword "import" in the line -- #
+                                                                    # -- Cut the line from the current index and check if it is \
+                                                                    # not there is the keyword "import" in the line -- #
                                                                     breakLine = getIndexLineList[:indexLine]
                                                                     breakLine = "".join(breakLine)
                                                                     if not "import" in breakLine:
@@ -111,7 +115,8 @@ class Replace:
                                                                         checkCharAfterWord = 0
                                                                 else:
                                                                     checkCharAfterWord = 1
-                                                            # -- Check if after char find by 'detectChars' variable it's not ' or " -- #
+                                                            # -- Check if after char find by 'detectChars' variable it's \
+                                                            # not ' or " -- #
                                                             elif re.match(r"\"|\'", getIndexLineList[indexExploreAfter]):
                                                                 if re.match(r"\[|\(|\{", getIndexLineList[indexExploreAfter - 1]):
                                                                     checkCharAfterWord = 0
@@ -124,7 +129,8 @@ class Replace:
                                                             # -- check if file name is imported - #
                                                             breakLine = getIndexLineList[:indexLine]
                                                             breakLine = "".join(breakLine)
-                                                            # -- If file name is imported after 'import', the file name is not replaced -- #
+                                                            # -- If file name is imported after 'import', the file name is not \
+                                                            # replaced -- #
                                                             if "import" in breakLine:
                                                                 checkCharAfterWord = 1
                                                             else:
@@ -143,7 +149,8 @@ class Replace:
                                                 getWord             = []
 
                                                 indexExploreStart   = indexLine
-                                                indexExploreEnd     = indexLine + len(key) - 1 # Delete -1, first letter is already increment
+                                                # -- Delete -1, first letter is already increment -- #
+                                                indexExploreEnd     = indexLine + len(key) - 1
 
                                                 # -- List contain all letters of key -- #
                                                 for getLetterKey in key:
@@ -151,7 +158,8 @@ class Replace:
 
                                                 # -- Check if all letters of key is equal to all letters of word -- #
                                                 for indexCheckLetter, checkLetter in enumerate(getIndexLineList):
-                                                    if indexCheckLetter >= indexExploreStart and indexCheckLetter <= indexExploreEnd:
+                                                    if indexCheckLetter >= indexExploreStart and \
+                                                    indexCheckLetter <= indexExploreEnd:
                                                         getWord.append(checkLetter)
 
                                                 # -- Check if number of chars in key equal number of chars in word -- #
@@ -228,7 +236,8 @@ class Replace:
         for file in recursFiles:
             countRecursFiles += 1
 
-        print("\n[+] Running replacement of variables/classes/functions in {0} file(s), he can be long... you have time to make a coffee :)\n".format(countRecursFiles))
+        print("\n[+] Running replacement of variables/classes/functions in {0} file(s), he can be long... you have time to make " + \
+            "a coffee :)\n".format(countRecursFiles))
 
         # -- Replace variables/classes/functions to random strings with length defined -- #
         with Bar("Setting up  ", fill="=", max=100, suffix="%(percent)d%%") as bar:
@@ -312,7 +321,8 @@ class Replace:
                                 classesDict[search.group(1)] = mixer
             bar.next(40)
 
-            # -- Delete excluded variables/classes/functions defined from 'exclude/string_to_string_mixed/exclude_word_do_not_modify.txt' -- #
+            # -- Delete excluded variables/classes/functions defined from \
+            # 'exclude/string_to_string_mixed/exclude_word_do_not_modify.txt' -- #
             if os.path.exists(self.pythonExcludeDefaultString) == True:
                 with open(self.pythonExcludeDefaultString, "r") as readFile:
                     for word in readFile:
@@ -326,7 +336,8 @@ class Replace:
 
             bar.next(10)
 
-            # -- Delete excluded variables/classes/functions defined from 'exclude/string_to_string_mixed/exclude_word_by_user.txt' -- #
+            # -- Delete excluded variables/classes/functions defined from \
+            # 'exclude/string_to_string_mixed/exclude_word_by_user.txt' -- #
             if os.path.exists(self.pythonExcludeUserString) == True:
                 with open(self.pythonExcludeUserString, "r") as readFile:
                     for word in readFile:
@@ -412,14 +423,22 @@ class Replace:
                 for key, value in functionsDict.items():
                     print("-> {0} : {1}".format(key, value))
 
-            print("\n[+] String excluded found in '{0}' that have been matched from '{1}' :\n".format(self.pythonExcludeUserString, outputArg))
+            print("\n[+] String excluded found in '{0}' that have been matched from '{1}' :\n".format(
+                                                                                                self.pythonExcludeUserString, 
+                                                                                                outputArg
+                                                                                                )
+            )
             if wordsExcludedUserFound == []:
                 print("-> No result")
             else:
                 for word in wordsExcludedUserFound:
                     print("-> {0} : excluded by user".format(word))
 
-            print("\n[+] String excluded found in '{0}' that have been matched from '{1}' :\n".format(self.pythonExcludeDefaultString, outputArg))
+            print("\n[+] String excluded found in '{0}' that have been matched from '{1}' :\n".format(
+                                                                                                self.pythonExcludeDefaultString, 
+                                                                                                outputArg
+                                                                                                )
+            )
             if wordsExcludedDefaultFound == []:
                 print("-> No result")
             else:
@@ -531,7 +550,11 @@ class Replace:
             bar.finish()
 
         if checkCountWordsMixed == checkCountWordsValue:
-            print("\n-> {0} variable(s)/class(es)/function(s) replaced in {1} file(s)\n".format(checkCountWordsValue, countRecursFiles))
+            print("\n-> {0} variable(s)/class(es)/function(s) replaced in {1} file(s)\n".format(
+                                                                                                checkCountWordsValue, 
+                                                                                                countRecursFiles
+                                                                                                )
+            )
             return EXIT_SUCCESS
         else:
             if verboseArg:
@@ -540,7 +563,8 @@ class Replace:
 
                 checkWordsError = list(set(checkAllWords) - set(checkKeyWordsMixed))
 
-                print("\n[!] Word(s) that not been replaced, check if an error will appear when will launch your obfuscated code... :\n")
+                print("\n[!] Word(s) that not been replaced, check if an error will appear when will launch your " + \
+                    "obfuscated code... :\n")
                 if checkWordsError != []:
                     for wordNoReplaced in checkWordsError:
                         print("-> Word : {0}".format(wordNoReplaced))
@@ -649,7 +673,8 @@ class Replace:
                     print("\n-> File : {0}".format(value))
                     print("-> Line : {0}".format(key))
             else:
-                print(Colors.ERROR + "\n[!] Launch Intensio-Obfuscator with verbose mode because line(s) have not been replaced by their hexadecimal values\n" + Colors.DISABLE)
+                print(Colors.ERROR + "\n[!] Launch Intensio-Obfuscator with verbose mode because line(s) have not been " + \
+                    "replaced by their hexadecimal values\n" + Colors.DISABLE)
             return EXIT_FAILURE
 
 
@@ -722,8 +747,9 @@ class Replace:
             # -- Check if directory have the same name
             for directory in recursDirs:
                 for fileName in filesNameFoundNoExt:
-                    if re.match(r".*" + re.escape(self.utils.Platform(getOS=False, getPathType=True)) + r"{1}" + re.escape(fileName) + \
-                        re.escape(self.utils.Platform(getOS=False, getPathType=True)) + r"{1}.*", directory):
+                    if re.match(r".*" + re.escape(self.utils.Platform(getOS=False, getPathType=True)) + r"{1}" + \
+                        re.escape(fileName) + re.escape(self.utils.Platform(getOS=False, getPathType=True)) + \
+                        r"{1}.*", directory):
                         fileNameExcluded.append(fileName)
                         badNameDir.append(fileName)
 
@@ -800,7 +826,11 @@ class Replace:
                 for key, value in filesNameDict.items():
                     print("-> {0} : {1}".format(key, value))
 
-            print("\n[+] File name(s) excluded found in '{0}' that have been matched from '{1}' :\n".format(self.pythonExcludeUserFileName, outputArg))
+            print("\n[+] File name(s) excluded found in '{0}' that have been matched from '{1}' :\n".format(
+                                                                                            self.pythonExcludeUserFileName, 
+                                                                                            outputArg
+                                                                                            )
+            )
             if fileNameExcludedByUser == []:
                 print("-> No result")
             else:
@@ -892,7 +922,8 @@ class Replace:
                         print("\n-> File : {0}".format(key))
                         print("-> Value mixed : {0}".format(value))
             else:
-                print(Colors.ERROR + "\n[-] Launch intensio-obfuscatior with verbose mode [-v, --verbose] because file name(s) have not been replaced by their random string value" + Colors.DISABLE)
+                print(Colors.ERROR + "\n[-] Launch intensio-obfuscatior with verbose mode [-v, --verbose] because file name(s) " + \
+                    "have not been replaced by their random string value" + Colors.DISABLE)
             return EXIT_FAILURE
         else:
             return EXIT_SUCCESS

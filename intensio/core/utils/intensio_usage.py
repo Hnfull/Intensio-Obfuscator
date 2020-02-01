@@ -7,6 +7,7 @@
 import argparse
 
 #------------------------------------------------- [Function(s)/Class(es)] --------------------------------------------------#
+
 class Args:
 
     def __init__(self):
@@ -14,25 +15,29 @@ class Args:
         
         self.parser.add_argument(
                                 "-i", "--input",
-                                help="source file or directory - if multiple files indicate a directory that contain all your files"
+                                help="source file or directory - if multiple files indicate a directory that contain all \
+                                your files"
         )
         self.parser.add_argument(
                                 "-o", "--output",
-                                help="output file or directory that will be obfuscated - if multiple file indicate a empty directory that will contain all your files"
+                                help="output file or directory that will be obfuscated - if multiple file indicate a empty \
+                                directorythat will contain all your files"
         )
         self.parser.add_argument(
                                 "-mlen", "--mixerlength",
                                 choices=["lower", "medium", "high"],
                                 default="medium",
-                                help="define length of random strings generated [lower:32 | medium:64 | high:128] (number of chars) when 'replacetostr' - 'paddingscript' - 'replacefilename'\
-                                    - 'replacetohex' features are specified, default value: [medium], possible values: [lower, medium, high]"
+                                help="define length of random strings generated [lower:32 | medium:64 | high:128] \
+                                (number of chars) when 'replacetostr' - 'paddingscript' - 'replacefilename' - 'replacetohex' \
+                                features are specified, default value: [medium], possible values: [lower, medium, high]"
         )
         self.parser.add_argument(
                                 "-mlvl", "--mixerlevel",
                                 choices=["simple", "hard"],
                                 default="simple",
-                                help="define the obfuscation level of random strings generated when 'replacetostr' - 'paddingscript' - 'replacefilename'\
-                                    - 'replacetohex' features are specified, default value: [simple], possible values: [simple, hard]"
+                                help="define the obfuscation level of random strings generated when 'replacetostr' - \
+                                'paddingscript' - 'replacefilename' - 'replacetohex' features are specified, default value: \
+                                [simple], possible values: [simple, hard]"
         )
         self.parser.add_argument(
                                 "-rts", "--replacetostr",

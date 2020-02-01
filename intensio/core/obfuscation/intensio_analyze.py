@@ -40,7 +40,10 @@ class Analyze:
                 recursFiles = [
                                 file for file in glob.glob("{0}{1}**{1}*.{2}".format(
                                                                                     inputArg, 
-                                                                                    self.utils.Platform(getOS=False, getPathType=True), 
+                                                                                    self.utils.Platform(
+                                                                                                        getOS=False, 
+                                                                                                        getPathType=True
+                                                                                    ), 
                                                                                     detectFiles), 
                                                                                     recursive=True
                                                                             )
@@ -122,7 +125,10 @@ class Analyze:
                                 recursFiles = [
                                                 file for file in glob.glob("{0}{1}**{1}*.{2}".format(
                                                                                                     outputArg, 
-                                                                                                    self.utils.Platform(getOS=False, getPathType=True), 
+                                                                                                    self.utils.Platform(
+                                                                                                                    getOS=False, 
+                                                                                                                    getPathType=True
+                                                                                                    ), 
                                                                                                     detectFiles), 
                                                                                                     recursive=True
                                                                                             )
@@ -135,7 +141,8 @@ class Analyze:
                                 print("\n[+] Running analyze output of {0} file(s)...\n".format(countRecursFiles))
 
                                 if recursFiles == []:
-                                    print(Colors.ERROR + "[-] {0} directory empty, no copied file".format(inputArg) + Colors.DISABLE)
+                                    print(Colors.ERROR + "[-] {0} directory empty, no copied file".format(inputArg) + \
+                                        Colors.DISABLE)
                                     return ERROR_DIR_EMPTY
                                                                 
                                 with Bar("Analysis    ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
@@ -171,7 +178,8 @@ class Analyze:
                                         print(Colors.ERROR + "[-] No files available in '{0}'".format(outputArg) + Colors.DISABLE)
                                         return ERROR_FILE_NOT_FOUND
                             else:
-                                print(Colors.ERROR + "[-] Copy '{0}' to '{1}' failed, this is not a output directory copied".format(inputArg, outputArg) + Colors.DISABLE)
+                                print(Colors.ERROR + "[-] Copy '{0}' to '{1}' failed, this is not a output directory copied"\
+                                    .format(inputArg, outputArg) + Colors.DISABLE)
                                 return ERROR_DIR_NOT_FOUND
                         else:
                             print(Colors.ERROR + "[-] Copy '{0}' to '{1}' failed".format(inputArg, outputArg) + Colors.DISABLE)
@@ -197,7 +205,10 @@ class Analyze:
                         recursFiles = [
                                         file for file in glob.glob("{0}{1}**{1}*.{2}".format(
                                                                                             outputArg, 
-                                                                                            self.utils.Platform(getOS=False, getPathType=True), 
+                                                                                            self.utils.Platform(
+                                                                                                                getOS=False, 
+                                                                                                                getPathType=True
+                                                                                            ), 
                                                                                             detectFiles), 
                                                                                             recursive=True
                                                                                     )
@@ -245,7 +256,8 @@ class Analyze:
                                 print(Colors.ERROR + "[-] No files available in '{0}'".format(outputArg) + Colors.DISABLE)
                                 return ERROR_FILE_NOT_FOUND                
                     else:
-                        print(Colors.ERROR + "[-] Copy '{0}' to '{1}' failed, this is not a output directory copied !".format(inputArg, outputArg) + Colors.DISABLE)
+                        print(Colors.ERROR + "[-] Copy '{0}' to '{1}' failed, this is not a output directory copied !"\
+                            .format(inputArg, outputArg) + Colors.DISABLE)
                         return ERROR_DIR_NOT_FOUND
                 else:
                     print(Colors.ERROR + "[-] Copy '{0}' to '{1}' failed".format(inputArg, outputArg) + Colors.DISABLE)

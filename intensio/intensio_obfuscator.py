@@ -27,11 +27,13 @@
 
 -h, --help                  ->  show this help message and exit
 -i, --input                 ->  source directory - indicate a directory that contain your file
--o, --output                ->  output directory that will be obfuscated - indicate a empty directory that will contain your file
--mlen, --mixerlength        ->  define length of random strings generated [lower:32 | medium:64 | high:128] (number of chars) when 'replacetostr' - 'paddingscript' - 'replacefilename'\
-                                - 'replacetohex' features are specified, default value: [medium], possible values: [lower, medium, high]"
--mlvl, --mixerlevel         ->  define the obfuscation level of random strings generated when 'replacetostr' - 'paddingscript' - 'replacefilename'\
-                                - 'replacetohex' features are specified, default value: [simple], possible values: [simple, hard]"
+-o, --output                ->  output directory that will be obfuscated - indicate a empty directory that will contain your file  
+-mlen, --mixerlength        ->  define length of random strings generated [lower:32 | medium:64 | high:128] (number of chars) \
+                                when 'replacetostr' - 'paddingscript' - 'replacefilename' - 'replacetohex' features are specified \
+                                default value: [medium], possible values: [lower, medium, high]
+-mlvl, --mixerlevel         ->  define the obfuscation level of random strings generated when 'replacetostr' - 'paddingscript' - \
+                                'replacefilename' - 'replacetohex' features are specified, default value: [simple], possible \
+                                values: [simple, hard]"
 -rts, --replacetostr        ->  launch 'replace string to string mixed' obfuscation feature
 -ps, --paddingscript        ->  launch 'padding script' obfuscation feature
 -rfn, --replacefilename     ->  launch 'replace file name' obfuscation feature
@@ -85,10 +87,10 @@ def main():
                         print(Colors.ERROR + "\n[-] Need at least one argument [-rts] - [-ps] - [-rfn] - [-rth]" + Colors.DISABLE)
                         sys.exit(ERROR_BAD_ARGUMENTS)
                 else:
-                    print(Colors.ERROR + "[-] Incorrect level defined of mixerlevel argument, [simple - hard] only supported\n" + Colors.DISABLE)
+                    print(Colors.ERROR + "[-] -mlvl, --mixerlevel argument [simple-hard] only supported\n" + Colors.DISABLE)
                     sys.exit(ERROR_INVALID_PARAMETER)
             else:
-                print(Colors.ERROR + "[-] Incorrect length defined of mixerlength argument, [lower - medium - high] only supported\n" + Colors.DISABLE)
+                print(Colors.ERROR + "[-] -mlen, --mixerlength argument [lower-medium-high] only supported\n" + Colors.DISABLE)
                 sys.exit(ERROR_INVALID_PARAMETER)
         else:
             print(Colors.ERROR + "[-] Output [-o, --output] argument missing\n" + Colors.DISABLE)
@@ -102,14 +104,16 @@ def main():
         print(line)
 
     # -- Analysis and set up of the work environment -- #
-    print(Colors.SECTION + "\n\n*********************** [ Analyze and setup environment ] ************************\n" + Colors.DISABLE)
+    print(Colors.SECTION + "\n\n********************* [ Analyze and setup environment ] **********************\n" \
+        + Colors.DISABLE)
     analyzeData         = Analyze()
     analyseDataInEnv    = analyzeData.InputAvailable(
                                                     inputArg=args.GetArgsValue().input,  
                                                     verboseArg=args.GetArgsValue().verbose
     )
     if analyseDataInEnv == EXIT_SUCCESS:
-        print("\n[+] Analyze input argument '{0}' -> ".format(args.GetArgsValue().input) + Colors.SUCCESS + "Successful" + Colors.DISABLE)
+        print("\n[+] Analyze input argument '{0}' -> ".format(args.GetArgsValue().input) + Colors.SUCCESS + \
+            "Successful" + Colors.DISABLE)
     else:
         print("[-] Analyze input '{0}' -> ".format(args.GetArgsValue().input) + Colors.ERROR + "failed\n" + Colors.DISABLE)
         sys.exit(ERROR_INVALID_FUNCTION)
@@ -127,7 +131,7 @@ def main():
         sys.exit(ERROR_INVALID_FUNCTION)
     
     # -- Obfuscation process -- #    
-    print(Colors.SECTION + "\n\n************************* [ Obfuscation delete comments ] *************************\n" + Colors.DISABLE)
+    print(Colors.SECTION + "\n\n********************** [ Obfuscation delete comments ] ***********************\n" + Colors.DISABLE)
     deleteData = Delete()    
     deleteCommentsData = deleteData.Comments(
                                             outputArg=args.GetArgsValue().output,
@@ -140,7 +144,7 @@ def main():
         if not args.GetArgsValue().verbose:
             print("\n[!] Retry with [-v, --verbose] parameter")
 
-    print(Colors.SECTION + "\n\n*********************** [ Obfuscation delete line space(s) ] ***********************\n" + Colors.DISABLE)
+    print(Colors.SECTION + "\n\n******************** [ Obfuscation delete line space(s) ] ********************\n" + Colors.DISABLE)
     if deleteData:
         pass
     else:    
@@ -159,7 +163,7 @@ def main():
             print("\n[!] Retry with [-v, --verbose] parameter")
 
       # -- If empty class (avert to generate an error) -- #
-    print(Colors.SECTION + "\n\n*********************** [ Correction padding empty class(es) ] *********************\n" + Colors.DISABLE)
+    print(Colors.SECTION + "\n\n******************* [ Correction padding empty class(es) ] *******************\n" + Colors.DISABLE)
     paddingData             = Padding()
     paddingDataEmptyClass   = paddingData.EmptyClasses(
                                                         outputArg=args.GetArgsValue().output, 
@@ -175,7 +179,7 @@ def main():
             print("\n[!] Retry with [-v, --verbose] parameter")
 
     # -- If empty functions (avert to generate an error) -- #
-    print(Colors.SECTION + "\n\n********************** [ Correction padding empty function(s) ] ********************\n" + Colors.DISABLE)
+    print(Colors.SECTION + "\n\n****************** [ Correction padding empty function(s) ] ******************\n" + Colors.DISABLE)
     if paddingData:
         pass
     else:
@@ -194,7 +198,7 @@ def main():
         if not args.GetArgsValue().verbose:
             print("\n[!] Retry with [-v, --verbose] parameter")
 
-    print(Colors.SECTION + "\n\n************** [ Obfuscation replace string(s) to string(s) mixed ] ****************\n" + Colors.DISABLE)
+    print(Colors.SECTION + "\n\n************ [ Obfuscation replace string(s) to string(s) mixed ] ************\n" + Colors.DISABLE)
     if args.GetArgsValue().replacetostr:
         replaceData = Replace()
 
@@ -214,7 +218,7 @@ def main():
     else:
         print("[!] Obfuscation [ replace string to string ] mixed no asked !")
     
-    print(Colors.SECTION + "\n\n********************* [ Obfuscation adding padding script(s) ] *********************\n" + Colors.DISABLE)
+    print(Colors.SECTION + "\n\n****************** [ Obfuscation adding padding script(s) ] ******************\n" + Colors.DISABLE)
     if args.GetArgsValue().paddingscript:
         if paddingData:
             pass
@@ -236,7 +240,7 @@ def main():
     else:
         print("[!] Obfuscation [ padding script ] no asked !")
 
-    print(Colors.SECTION + "\n\n********************** [ Obfuscation replace file(s) name ] ************************\n" + Colors.DISABLE)
+    print(Colors.SECTION + "\n\n******************** [ Obfuscation replace file(s) name ] ********************\n" + Colors.DISABLE)
     if args.GetArgsValue().replacefilename:
         if args.GetArgsValue().replacetostr:
             pass
@@ -258,7 +262,7 @@ def main():
     else:
         print("[!] Obfuscation [ replace file name ] feature no asked !")
     
-    print(Colors.SECTION + "\n\n******************** [ Obfuscation replace string(s) to hex ] **********************\n" + Colors.DISABLE)
+    print(Colors.SECTION + "\n\n****************** [ Obfuscation replace string(s) to hex ] ******************\n" + Colors.DISABLE)
     if args.GetArgsValue().replacetohex:
         if args.GetArgsValue().replacetostr or args.GetArgsValue().replacefilename:
             pass
@@ -281,7 +285,7 @@ def main():
         print("[!] Obfuscation [ replace string to hex ] feature no asked !")
 
     # -- Delete if python pyc file in output directory -- #
-    print(Colors.SECTION + "\n\n*********************** [ Correction delete .pyc file(s) ] *************************\n" + Colors.DISABLE)
+    print(Colors.SECTION + "\n\n********************* [ Correction delete .pyc file(s) ] *********************\n" + Colors.DISABLE)
     if deleteData:
         pass
     else:
@@ -294,7 +298,8 @@ def main():
     if deletePycData == EXIT_SUCCESS:
         pass
     else:
-        print("\n[-] Delete .pyc file in {0} directory -> ".format(args.GetArgsValue().output) + Colors.ERROR + "Failed" + Colors.DISABLE)
+        print("\n[-] Delete .pyc file from {0} directory -> ".format(args.GetArgsValue().output) + Colors.ERROR + \
+            "Failed" + Colors.DISABLE)
         if not args.GetArgsValue().verbose:
                 print("\n[!] Retry with [-v, --verbose] parameter for more informations")
 
