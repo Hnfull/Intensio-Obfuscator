@@ -236,8 +236,8 @@ class Replace:
         for file in recursFiles:
             countRecursFiles += 1
 
-        print("\n[+] Running replacement of variables/classes/functions in {0} file(s), he can be long... you have time to make " + \
-            "a coffee :)\n".format(countRecursFiles))
+        print("\n[+] Running replacement of variables/classes/functions in {0} file(s), he can be long... you have time to " + \
+            "make a coffee :)\n".format(countRecursFiles))
 
         # -- Replace variables/classes/functions to random strings with length defined -- #
         with Bar("Setting up  ", fill="=", max=100, suffix="%(percent)d%%") as bar:
@@ -922,8 +922,8 @@ class Replace:
                         print("\n-> File : {0}".format(key))
                         print("-> Value mixed : {0}".format(value))
             else:
-                print(Colors.ERROR + "\n[-] Launch intensio-obfuscatior with verbose mode [-v, --verbose] because file name(s) " + \
-                    "have not been replaced by their random string value" + Colors.DISABLE)
+                print(Colors.ERROR + "\n[-] Launch intensio-obfuscatior with verbose mode [-v, --verbose] because " + \
+                    "file name(s) have not been replaced by their random string value" + Colors.DISABLE)
             return EXIT_FAILURE
         else:
             return EXIT_SUCCESS
