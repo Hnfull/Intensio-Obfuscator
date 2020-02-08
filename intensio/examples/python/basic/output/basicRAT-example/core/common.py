@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
-def eCYwFUxuSOdzxlFJDXYkjfnEbtTZqEYg(bytes):
-    kJsMTlOenjgnlvKLOJTqQqAwyESQpoCs = 0
+def ckAjUaLEXnferbefRGpQeOZRysoqlffQ(bytes):
+    kWFtuPcTzhXQsxkZcspaKNvhNllUXCxh = 0
     while bytes:
-        kJsMTlOenjgnlvKLOJTqQqAwyESQpoCs = kJsMTlOenjgnlvKLOJTqQqAwyESQpoCs << 8
-        kJsMTlOenjgnlvKLOJTqQqAwyESQpoCs += ord(bytes[-1])
+        kWFtuPcTzhXQsxkZcspaKNvhNllUXCxh = kWFtuPcTzhXQsxkZcspaKNvhNllUXCxh << 8
+        kWFtuPcTzhXQsxkZcspaKNvhNllUXCxh += ord(bytes[-1])
         bytes = bytes[:-1]
-    return kJsMTlOenjgnlvKLOJTqQqAwyESQpoCs
-def SNYDucfxYRhXDMuRJTDBCRnAkWNYSZBi(kJsMTlOenjgnlvKLOJTqQqAwyESQpoCs):
-    uhKbXIobsxIiifCMGPRzFNBHQAeJupJM = ''
-    while kJsMTlOenjgnlvKLOJTqQqAwyESQpoCs:
-        uhKbXIobsxIiifCMGPRzFNBHQAeJupJM += chr(kJsMTlOenjgnlvKLOJTqQqAwyESQpoCs & 0xff)
-        kJsMTlOenjgnlvKLOJTqQqAwyESQpoCs = kJsMTlOenjgnlvKLOJTqQqAwyESQpoCs >> 8
-    return uhKbXIobsxIiifCMGPRzFNBHQAeJupJM
+    return kWFtuPcTzhXQsxkZcspaKNvhNllUXCxh
+def xJiPZbUzlGCIdemowYnQNONypdeudgmd(kWFtuPcTzhXQsxkZcspaKNvhNllUXCxh):
+    FRIUnJhVUpQceKKKwrGdGufEFeSRdAAs = ''
+    while kWFtuPcTzhXQsxkZcspaKNvhNllUXCxh:
+        FRIUnJhVUpQceKKKwrGdGufEFeSRdAAs += chr(kWFtuPcTzhXQsxkZcspaKNvhNllUXCxh & 0xff)
+        kWFtuPcTzhXQsxkZcspaKNvhNllUXCxh = kWFtuPcTzhXQsxkZcspaKNvhNllUXCxh >> 8
+    return FRIUnJhVUpQceKKKwrGdGufEFeSRdAAs
