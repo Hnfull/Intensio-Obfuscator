@@ -284,6 +284,26 @@ def main():
     else:
         print("[!] Obfuscation [ replace string to hex ] feature no asked !")
 
+     # -- Delete line spaces of padding scripts -- #
+    if args.GetArgsValue().paddingscript:
+        print(Colors.SECTION + "\n\n******************** [ Obfuscation delete line space(s) ] ********************\n" + Colors.DISABLE)
+        if deleteData:
+            pass
+        else:    
+            deleteData = Delete()    
+    
+        deleteLinesSpacesData = deleteData.LinesSpaces(
+                                                        outputArg=args.GetArgsValue().output, 
+                                                        verboseArg=args.GetArgsValue().verbose
+        )
+
+        if deleteLinesSpacesData == EXIT_SUCCESS:
+            print("[+] Obfuscation delete lines spaces of padding scripts-> " + Colors.SUCCESS + "Successful" + Colors.DISABLE)
+        else:
+            print("\n[-] Obfuscation delete lines spaces of padding scripts -> " + Colors.ERROR  + "Failed" + Colors.DISABLE)
+            if not args.GetArgsValue().verbose:
+                print("\n[!] Retry with [-v, --verbose] parameter")
+
     # -- Delete if python pyc file in output directory -- #
     print(Colors.SECTION + "\n\n********************* [ Correction delete .pyc file(s) ] *********************\n" + Colors.DISABLE)
     if deleteData:
