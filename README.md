@@ -29,19 +29,19 @@
 ## Features
 | Features | Descriptions |
 | ------ | ------ |
-| delete comment | Delete all comments (this feature is executed by default) |
-| delete space line | Delete all spaces line (this feature is executed by default) |
-| correction padding empty class/function | Add padding to empty classes and functions, if the class or function contains only comments, the default feature `delete comments` will leave a class or function empty, this will avoid generating an error (this feature is executed by default) |
+| delete comments | Delete all comments (this feature is executed by default) |
+| delete line spaces | Delete all spaces line (this feature is executed by default) |
+| correction padding empty classes/functions | Add padding to empty classes and functions, if the class or function contains only comments, the default feature `delete comments` will leave a class or function empty, this will avoid generating an error (this feature is executed by default) |
 | replace string to string mixed | Replace all names of variables/classes/functions to random strings with length defined|
 | padding script | Add padding of random scripts after each line|
 | replace file name | Replace all files name to random strings with length defined |
 | replace string to hex | Replace all chars to their hexadecimal value |
 | correction delete pyc file | Delete all pyc file in output directory (this feature is executed by default) |
-| mixerlength lower | Define random strings length of 32 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified |
-| mixerlength medium | Define random strings length of 64 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified |
-| mixerlength high | Define random strings length of 128 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified (increase the time of obfuscation) |
-| mixerlevel simple | Define obfuscation level to simple of random strings generated when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified |
-| mixerlevel hard | Define obfuscation level to hard of random strings generated when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified (can increase the time of obfuscation)|
+| mixer length lower | Define random strings length of 32 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified |
+| mixer length medium | Define random strings length of 64 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified |
+| mixer length high | Define random strings length of 128 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified (increase the time of obfuscation) |
+| mixer level simple | Define obfuscation level to simple of random strings generated when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified |
+| mixer level hard | Define obfuscation level to hard of random strings generated when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified (can increase the time of obfuscation)|
 
 - Features can be executed separatly
     - `replace string to string mixed` -> `-rts, --replacetostr`
