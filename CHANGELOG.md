@@ -1,12 +1,21 @@
 # CHANGELOG of Intensio-Obfuscator project
 
+## 03-10-2020 
+- [Update] StringGenerator function that change method of generate number (ramdom.random() => random.SystemRandom() that use urandom)
+- [Remove] intensio_error.py file, that contained useless feature to improve verbosity type of error during the reading of Intensio-Obfuscator code
+- [Remove] `simple` obfuscation removed, previous parameter` hard` obfuscation is used by default for strings obfuscation now
+- [Remove] parameter `-mlvl, --mixerlevel` to control obfuscation level of strings generated (`simple` by default or `hard`)
+
+## 02-01-2020
+- [Update] visibility of code with PEP 8 recommandation part : `maximum line length` 
+
 ## 01-28-2020
 - [Upgrade] to version 1.0.8
 - [Update] `-m, -mixerlevel` becomes `-mlen, --mixerlength` to control length of random strings generated
 - [Update] redefine all colors without external library
 - [Fix] issue # 14
 - [Fix] issue # 28
-- [Add] new paramter `-mlvl, --mixerlevel` to control obfuscation level of strings generated (`simple` by default `or hard`)
+- [Add] new paramter `-mlvl, --mixerlevel` to control obfuscation level of strings generated (`simple` by default or `hard`)
  
 ## 01-07-2020
 - [Upgrade] to version 1.0.7

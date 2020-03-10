@@ -12,9 +12,6 @@ import re
 from progress.bar import Bar
 
 from core.utils.intensio_utils import Utils, Colors
-from core.utils.intensio_error import EXIT_SUCCESS, ERROR_FILE_NOT_FOUND, ERROR_PATH_NOT_FOUND,ERROR_FILE_EMPTY,\
-                                        ERROR_CAN_NOT_COPY, ERROR_CAN_NOT_DELETE, ERROR_DIR_NOT_FOUND, EXIT_FAILURE, \
-                                        ERROR_DIR_EMPTY
 
 #------------------------------------------------- [Function(s)/Class(es)] --------------------------------------------------#
 
@@ -50,13 +47,13 @@ class Analyze:
                 ]
  
                 if recursFiles == []:
-                    print(Colors.ERROR + "[-] {0} directory empty or python file not found".format(inputArg) + Colors.DISABLE)
-                    return ERROR_DIR_EMPTY
+                    print(Colors.ERROR + "[-] {} directory empty or python file not found".format(inputArg) + Colors.DISABLE)
+                    return 1
 
                 for number in recursFiles:
                     countRecursFiles += 1
                 
-                print("\n[+] Running analyze input of {0} file(s)...\n".format(countRecursFiles))
+                print("\n[+] Running analyze input of {} file(s)...\n".format(countRecursFiles))
                 
                 with Bar("Analysis    ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
                     for file in recursFiles:
@@ -81,25 +78,25 @@ class Analyze:
                                 print("-> no result")
                             else:
                                 for file in inputFileFound:
-                                    print("-> {0}".format(file))
+                                    print("-> {}".format(file))
                         
                                 for file in inputFileEmpty:
-                                    print("-> {0} : empty".format(file))
+                                    print("-> {} : empty".format(file))
                     
-                        return EXIT_SUCCESS
+                        return 0
                 
                     elif inputFileFoundCount == inputFileEmptyCount and inputFileFoundCount > 0:
                         print(Colors.ERROR + "[-] All files in directory specified are emtpy !" + Colors.DISABLE)
-                        return ERROR_FILE_EMPTY
+                        return 1
                     else:
-                        print(Colors.ERROR + "[-] No file available in '{0}'.".format(inputArg) + Colors.DISABLE)
-                        return ERROR_FILE_NOT_FOUND
+                        print(Colors.ERROR + "[-] No file available in '{}'.".format(inputArg) + Colors.DISABLE)
+                        return 1
             else:
-                print(Colors.ERROR + "[-] '{0}' is not a directory".format(inputArg) + Colors.DISABLE)
-                return ERROR_DIR_NOT_FOUND
+                print(Colors.ERROR + "[-] '{}' is not a directory".format(inputArg) + Colors.DISABLE)
+                return 1
         else:
-            print(Colors.ERROR + "[-] '{0}' not exists".format(inputArg) + Colors.DISABLE)
-            return ERROR_PATH_NOT_FOUND
+            print(Colors.ERROR + "[-] '{}' not exists".format(inputArg) + Colors.DISABLE)
+            return 1
 
 
     def OutputAvailable(self, inputArg, outputArg, verboseArg):
@@ -110,7 +107,7 @@ class Analyze:
         countRecursFiles        = 0
 
         if os.path.exists(outputArg) == True:
-            deleteRequest = input("[!] Output '{0}' already exists, do you want delete it ? (Y/N) : ".format(outputArg))
+            deleteRequest = input("[!] Output '{}' already exists, do you want delete it ? (Y/N) : ".format(outputArg))
             deleteRequest = deleteRequest.upper()
             if deleteRequest == "Y":
                 try:
@@ -137,12 +134,12 @@ class Analyze:
                                 for number in recursFiles:
                                     countRecursFiles += 1
 
-                                print("\n[+] Running analyze output of {0} file(s)...\n".format(countRecursFiles))
+                                print("\n[+] Running analyze output of {} file(s)...\n".format(countRecursFiles))
 
                                 if recursFiles == []:
-                                    print(Colors.ERROR + "[-] {0} directory empty, no copied file".format(inputArg) + \
+                                    print(Colors.ERROR + "[-] {} directory empty, no copied file".format(inputArg) + \
                                         Colors.DISABLE)
-                                    return ERROR_DIR_EMPTY
+                                    return 1
                                                                 
                                 with Bar("Analysis    ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
                                     for file in recursFiles:
@@ -167,32 +164,32 @@ class Analyze:
                                                 print("-> no result")
                                             else:
                                                 for file in outputFileFound:
-                                                    print("-> {0}".format(file))
+                                                    print("-> {}".format(file))
                                             
                                                 for file in outputFileEmpty:
-                                                    print("-> {0} : empty".format(file))
+                                                    print("-> {} : empty".format(file))
                                                 
-                                        return EXIT_SUCCESS
+                                        return 0
                                     else:
-                                        print(Colors.ERROR + "[-] No files available in '{0}'".format(outputArg) + Colors.DISABLE)
-                                        return ERROR_FILE_NOT_FOUND
+                                        print(Colors.ERROR + "[-] No files available in '{}'".format(outputArg) + Colors.DISABLE)
+                                        return 1
                             else:
-                                print(Colors.ERROR + "[-] Copy '{0}' to '{1}' failed, this is not a output directory copied"\
+                                print(Colors.ERROR + "[-] Copy '{}' to '{}' failed, this is not a output directory copied"\
                                     .format(inputArg, outputArg) + Colors.DISABLE)
-                                return ERROR_DIR_NOT_FOUND
+                                return 1
                         else:
-                            print(Colors.ERROR + "[-] Copy '{0}' to '{1}' failed".format(inputArg, outputArg) + Colors.DISABLE)
-                            return ERROR_CAN_NOT_COPY
+                            print(Colors.ERROR + "[-] Copy '{}' to '{}' failed".format(inputArg, outputArg) + Colors.DISABLE)
+                            return 1
                     else:
-                        print(Colors.ERROR + "[-] Delete '{0}' failed".format(outputArg) + Colors.DISABLE)
-                        return ERROR_CAN_NOT_DELETE
+                        print(Colors.ERROR + "[-] Delete '{}' failed".format(outputArg) + Colors.DISABLE)
+                        return 1
 
                 except Exception as e:
-                    print(Colors.ERROR + "[-] {0}".format(e) + Colors.DISABLE)
-                    return EXIT_FAILURE
+                    print(Colors.ERROR + "[-] {}".format(e) + Colors.DISABLE)
+                    return 1
             else:
-                print(Colors.ERROR + "[-] Delete '{0}' failed, the user has refused".format(outputArg) + Colors.DISABLE)
-                return ERROR_CAN_NOT_DELETE
+                print(Colors.ERROR + "[-] Delete '{}' failed, the user has refused".format(outputArg) + Colors.DISABLE)
+                return 1
         else:    
             try:
                 shutil.copytree(inputArg, outputArg)
@@ -216,11 +213,11 @@ class Analyze:
                         for number in recursFiles:
                             countRecursFiles += 1
 
-                        print("\n[+] Running analyze output of {0} file(s)...\n".format(countRecursFiles))
+                        print("\n[+] Running analyze output of {} file(s)...\n".format(countRecursFiles))
 
                         if recursFiles == []:
-                            print(Colors.ERROR + "[-] {0} directory empty, no copied file".format(inputArg) + Colors.DISABLE)
-                            return ERROR_DIR_EMPTY
+                            print(Colors.ERROR + "[-] {} directory empty, no copied file".format(inputArg) + Colors.DISABLE)
+                            return 1
                                                 
                         with Bar("Analysis    ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
                             for file in recursFiles:
@@ -245,26 +242,26 @@ class Analyze:
                                         print("-> no result")
                                     else:
                                         for file in outputFileFound:
-                                            print("-> {0} : copy".format(file))
+                                            print("-> {} : copy".format(file))
                                     
                                         for file in outputFileEmpty:
-                                            print("-> {0} : copy empty".format(file))
+                                            print("-> {} : copy empty".format(file))
                                 
-                                return EXIT_SUCCESS   
+                                return 0   
                             else:
-                                print(Colors.ERROR + "[-] No files available in '{0}'".format(outputArg) + Colors.DISABLE)
-                                return ERROR_FILE_NOT_FOUND                
+                                print(Colors.ERROR + "[-] No files available in '{}'".format(outputArg) + Colors.DISABLE)
+                                return 1                
                     else:
-                        print(Colors.ERROR + "[-] Copy '{0}' to '{1}' failed, this is not a output directory copied !"\
+                        print(Colors.ERROR + "[-] Copy '{}' to '{}' failed, this is not a output directory copied !"\
                             .format(inputArg, outputArg) + Colors.DISABLE)
-                        return ERROR_DIR_NOT_FOUND
+                        return 1
                 else:
-                    print(Colors.ERROR + "[-] Copy '{0}' to '{1}' failed".format(inputArg, outputArg) + Colors.DISABLE)
-                    return ERROR_CAN_NOT_COPY
+                    print(Colors.ERROR + "[-] Copy '{}' to '{}' failed".format(inputArg, outputArg) + Colors.DISABLE)
+                    return 1
 
             except Exception as e:
-                print(Colors.ERROR + "[-] {0}".format(e) + Colors.DISABLE)
-                return EXIT_FAILURE
+                print(Colors.ERROR + "[-] {}".format(e) + Colors.DISABLE)
+                return 1
 
 
     

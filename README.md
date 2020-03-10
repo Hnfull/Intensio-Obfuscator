@@ -1,12 +1,12 @@
 # Intensio-Obfuscator (Beta)
 
 ![](https://img.shields.io/badge/Python->=3.5-blue.svg)
-![](https://img.shields.io/badge/Version-1.0.8-green.svg)
+![](https://img.shields.io/badge/Version-1.0.8.1-green.svg)
 ![](https://img.shields.io/badge/Licence-MIT-red.svg)
 
 ## What is this ?
 - Intensio-Obfsucator tool takes a python source code and transform it into an obfuscated python code
-  - **Replace** all names of `variables/classes/functions/files-name` to random strings with length and obfuscation level defined then all `chars` to their hexadecimal value
+  - **Replace** all names of `variables/classes/functions/files-name` to random strings with length defined then all `chars` to their hexadecimal value
   - **Delete** all `comments`, all `spaces lines`
   - **Padding** random `scripts` with an always differents values
 
@@ -40,8 +40,6 @@
 | mixer length lower | Define random strings length of 32 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified |
 | mixer length medium | Define random strings length of 64 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified |
 | mixer length high | Define random strings length of 128 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified (increase the time of obfuscation) |
-| mixer level simple | Define obfuscation level to simple of random strings generated when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified |
-| mixer level hard | Define obfuscation level to hard of random strings generated when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified (can increase the time of obfuscation)|
 
 - Features can be executed separatly
     - `replace string to string mixed` -> `-rts, --replacetostr`
@@ -61,18 +59,17 @@
 | -i, --input  | source directory - indicate a directory that contain your file |
 | -o, --output | output directory that will be obfuscated - indicate a empty directory that will contain your file |
 | -mlen, --mixerlength | define length of random strings generated [ `lower:32` \| `medium:64` \| `high:128` ] chars when `--replacetostr` or `--paddingscripts` or `-rfn, --replacefilesname` or `--replacetohex` features are specified, default value: [medium], possible values: [lower - medium - high]|
-| -mlvl, --mixerlevel | define obfuscation level of random strings generated [ `simple` \| `hard` ] when `--replacetostr` or `--paddingscripts` or `-rfn, --replacefilesname` or `--replacetohex` features are specified, default value: [simple], possible values: [simple - hard]|
-| -rts, --replacetostr | launch `replace string to string mixed` obfuscation feature |
-| -ps, --paddingscript | launch `padding script` obfuscation feature |
-| -rfn, --replacefilename | launch `replace file name` obfuscation feature |
-| -rth, --replacetohex | launch `replace string to hex` obfuscation feature |
+| -rts, --replacetostr | enable `replace string to string mixed` obfuscation feature |
+| -ps, --paddingscript | enable `padding script` obfuscation feature |
+| -rfn, --replacefilename | enable `replace file name` obfuscation feature |
+| -rth, --replacetohex | enable `replace string to hex` obfuscation feature |
 | -v, --verbose | improve verbosity |
 
 ## Obfuscation examples 
 - [Python files obfuscated](docs/examples/python_code_examples.md)
 
 ## Todo
-- Next Version 1.0.9:
+- Next Version 1.0.9-x:
     - Optimisation of 'Replace string to string' feature allowing to reduce considerably time to obfuscate code
 
 - Version 1.0.1-x:

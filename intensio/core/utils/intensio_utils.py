@@ -78,9 +78,13 @@ class Utils:
 
 
 class Colors:
-
     # PROGRESS = "\033[94m" + "\033[1m" # blue + bold
     SUCCESS = "\033[92m"                # green
     SECTION = "\033[93m" + "\033[1m"    # yellow + bold
     ERROR   = "\x1b[1;37;41m"           # highlighted red
-    DISABLE = "\033[0m"                 # disable color
+    DISABLE = "\033[0m"                 # disable colors
+
+
+# --only for breaking a loop -- #
+class BreakLoop (Exception):
+    pass

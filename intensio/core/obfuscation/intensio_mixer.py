@@ -16,113 +16,131 @@ class Mixer:
         self.lengthMedium   = 64
         self.lengthHigh     = 128
         self.charsGroup     = {
-                                "chars0" : "abcdK",
-                                "chars1" : "efghL",
-                                "chars2" : "ijklM",
-                                "chars3" : "mnopN",
-                                "chars4" : "qrstO",
-                                "chars5" : "uvwxP",
-                                "chars6" : "yzABQ",
-                                "chars7" : "CDEFR",
-                                "chars8" : "GHIJS",
-                                "chars9" : "TUVWXYZ"
+                                "chars0" : "abcd",
+                                "chars1" : "efgh",
+                                "chars2" : "ijkl",
+                                "chars3" : "mnop",
+                                "chars4" : "qrst",
+                                "chars5" : "uvwx",
+                                "chars6" : "yzAB",
+                                "chars7" : "CDEF",
+                                "chars8" : "GHIJ",
+                                "chars9" : "KLMN",
+                                "chars10": "OPQR",
+                                "chars11": "STUV",
+                                "chars12": "WXYZ"
         }
 
 
-    def StringGeneratorSimple(self, stringLength):
-        return "".join(random.choice(string.ascii_letters) for i in range(stringLength))
-    
-
-    def StringGeneratorHarder(self, stringLength):
+    def StringGenerator(self, stringLength):
         randomCharsList = []
+        uRandom         = random.SystemRandom() # use random string from os.urandom
 
+        # -- choose integer between 0 to string length chosen by user -- #
         if stringLength == self.lengthLower:
-            randNumber = random.randrange(10000000000000000000000000000000)
+            randNumber = uRandom.randrange(10000000000000000000000000000000)
         elif stringLength == self.lengthMedium:
-            randNumber = random.randrange(1000000000000000000000000000000000000000000000000000000000000000)
+            randNumber = uRandom.randrange(1000000000000000000000000000000000000000000000000000000000000000)
         elif stringLength == self.lengthHigh:
-            randNumber = random.randrange(10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000)
+            randNumber = uRandom.randrange(10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000)
 
-        randNumber = str(randNumber)
+        randNumber = str(randNumber) # convert number generated into str
 
+        # -- for each number in number generated -- #
         for i in randNumber:
+            # -- if number is equal to number between quotes defined manually -- #
             if i == "0":
-                chooseList = random.randrange(0, 9)
+                # -- generate a number depending of number of keys in dictionnary defined above -- #
+                chooseList = uRandom.randrange(0, 12)
+                # -- if number obtained is smaller of number defined manually, the key used from \ -- #
+                # -- dictionnary is selected randomly, also is defined manually and choice a letter \ -- #
+                # -- in value of the key and is added in a list -- # 
                 if chooseList < 1:
-                    randomCharsList.append(random.choice(self.charsGroup.get("chars0")))
+                    randomCharsList.append(uRandom.choice(self.charsGroup.get("chars0")))
                 else:
-                    randomCharsList.append(random.choice(self.charsGroup.get("chars{0}".format(chooseList))))
+                    randomCharsList.append(uRandom.choice(self.charsGroup.get("chars{}".format(chooseList))))
             elif i == "1":
-                chooseList = random.randrange(0, 9)
+                chooseList = uRandom.randrange(0, 12)
                 if chooseList < 2:
-                    randomCharsList.append(random.choice(self.charsGroup.get("chars1")))
+                    randomCharsList.append(uRandom.choice(self.charsGroup.get("chars1")))
                 else:
-                    randomCharsList.append(random.choice(self.charsGroup.get("chars{0}".format(chooseList))))
+                    randomCharsList.append(uRandom.choice(self.charsGroup.get("chars{}".format(chooseList))))
             elif i == "2":
-                chooseList = random.randrange(0, 9)
+                chooseList = uRandom.randrange(0, 12)
                 if chooseList < 3:
-                    randomCharsList.append(random.choice(self.charsGroup.get("chars2")))
+                    randomCharsList.append(uRandom.choice(self.charsGroup.get("chars2")))
                 else:
-                    randomCharsList.append(random.choice(self.charsGroup.get("chars{0}".format(chooseList))))
+                    randomCharsList.append(uRandom.choice(self.charsGroup.get("chars{}".format(chooseList))))
             elif i == "3":
-                chooseList = random.randrange(0, 9)
+                chooseList = uRandom.randrange(0, 12)
                 if chooseList < 4:
-                    randomCharsList.append(random.choice(self.charsGroup.get("chars3")))
+                    randomCharsList.append(uRandom.choice(self.charsGroup.get("chars3")))
                 else:
-                    randomCharsList.append(random.choice(self.charsGroup.get("chars{0}".format(chooseList))))
+                    randomCharsList.append(uRandom.choice(self.charsGroup.get("chars{}".format(chooseList))))
             elif i == "4":
-                chooseList = random.randrange(0, 9)
+                chooseList = uRandom.randrange(0, 12)
                 if chooseList < 5:
-                    randomCharsList.append(random.choice(self.charsGroup.get("chars4")))
+                    randomCharsList.append(uRandom.choice(self.charsGroup.get("chars4")))
                 else:
-                    randomCharsList.append(random.choice(self.charsGroup.get("chars{0}".format(chooseList))))
+                    randomCharsList.append(uRandom.choice(self.charsGroup.get("chars{}".format(chooseList))))
             elif i == "5":
-                chooseList = random.randrange(0, 9)
+                chooseList = uRandom.randrange(0, 12)
                 if chooseList < 6:
-                    randomCharsList.append(random.choice(self.charsGroup.get("chars5")))
+                    randomCharsList.append(uRandom.choice(self.charsGroup.get("chars5")))
                 else:
-                    randomCharsList.append(random.choice(self.charsGroup.get("chars{0}".format(chooseList))))
+                    randomCharsList.append(uRandom.choice(self.charsGroup.get("chars{}".format(chooseList))))
             elif i == "6":
-                chooseList = random.randrange(0, 9)
+                chooseList = uRandom.randrange(0, 12)
                 if chooseList < 7:
-                    randomCharsList.append(random.choice(self.charsGroup.get("chars6")))
+                    randomCharsList.append(uRandom.choice(self.charsGroup.get("chars6")))
                 else:
-                    randomCharsList.append(random.choice(self.charsGroup.get("chars{0}".format(chooseList))))
+                    randomCharsList.append(uRandom.choice(self.charsGroup.get("chars{}".format(chooseList))))
             elif i == "7":
-                chooseList = random.randrange(0, 9)
+                chooseList = uRandom.randrange(0, 12)
                 if chooseList < 8:
-                    randomCharsList.append(random.choice(self.charsGroup.get("chars7")))
+                    randomCharsList.append(uRandom.choice(self.charsGroup.get("chars7")))
                 else:
-                    randomCharsList.append(random.choice(self.charsGroup.get("chars{0}".format(chooseList))))
+                    randomCharsList.append(uRandom.choice(self.charsGroup.get("chars{}".format(chooseList))))
             elif i == "8":
-                chooseList = random.randrange(0, 9)
+                chooseList = uRandom.randrange(0, 12)
                 if chooseList < 9:
-                    randomCharsList.append(random.choice(self.charsGroup.get("chars8")))
+                    randomCharsList.append(uRandom.choice(self.charsGroup.get("chars8")))
                 else:
-                    randomCharsList.append(random.choice(self.charsGroup.get("chars{0}".format(chooseList))))
+                    randomCharsList.append(uRandom.choice(self.charsGroup.get("chars{}".format(chooseList))))
             elif i == "9":
-                chooseList = random.randrange(0, 10)
-                if chooseList < 5:
-                    randomCharsList.append(random.choice(self.charsGroup.get("chars9")))
+                chooseList = uRandom.randrange(0, 12)
+                if chooseList < 10:
+                    randomCharsList.append(uRandom.choice(self.charsGroup.get("chars9")))
                 else:
-                    randomCharsList.append(random.choice(self.charsGroup.get("chars{0}".format(chooseList))))
+                    randomCharsList.append(uRandom.choice(self.charsGroup.get("chars{}".format(chooseList))))
+            elif i == "10":
+                chooseList = uRandom.randrange(0, 12)
+                if chooseList < 11:
+                    randomCharsList.append(uRandom.choice(self.charsGroup.get("chars10")))
+                else:
+                    randomCharsList.append(uRandom.choice(self.charsGroup.get("chars{}".format(chooseList))))
+            elif i == "11":
+                chooseList = uRandom.randrange(0, 12)
+                if chooseList < 12:
+                    randomCharsList.append(uRandom.choice(self.charsGroup.get("chars11")))
+                else:
+                    randomCharsList.append(uRandom.choice(self.charsGroup.get("chars{}".format(chooseList))))
+            elif i == "12":
+                chooseList = uRandom.randrange(0, 12)
+                if chooseList < 13:
+                    randomCharsList.append(uRandom.choice(self.charsGroup.get("chars12")))
+                else:
+                    randomCharsList.append(uRandom.choice(self.charsGroup.get("chars{}".format(chooseList))))
 
-        random.shuffle(randomCharsList)
+        # -- at the end the list is again randomized and convert into an strings with length defined by user -- #
+        uRandom.shuffle(randomCharsList)
         return "".join(randomCharsList)
 
 
-    def GetStringMixer(self, mixerLengthArgDefined, mixerLevelArgDefined):
-        if mixerLevelArgDefined == "simple":
-            if mixerLengthArgDefined == "lower":
-                return Mixer.StringGeneratorSimple(self, self.lengthLower)
-            elif mixerLengthArgDefined == "medium":
-                return Mixer.StringGeneratorSimple(self, self.lengthMedium)
-            elif mixerLengthArgDefined == "high":
-                return Mixer.StringGeneratorSimple(self, self.lengthHigh)
-        elif mixerLevelArgDefined == "hard":
-            if mixerLengthArgDefined == "lower":
-                return Mixer.StringGeneratorHarder(self, self.lengthLower)
-            elif mixerLengthArgDefined == "medium":
-                return Mixer.StringGeneratorHarder(self, self.lengthMedium)
-            elif mixerLengthArgDefined == "high":
-                return Mixer.StringGeneratorHarder(self, self.lengthHigh)
+    def GetStringMixer(self, mixerLengthArgDefined):
+        if mixerLengthArgDefined == "lower":
+            return Mixer.StringGenerator(self, self.lengthLower)
+        elif mixerLengthArgDefined == "medium":
+            return Mixer.StringGenerator(self, self.lengthMedium)
+        elif mixerLengthArgDefined == "high":
+            return Mixer.StringGenerator(self, self.lengthHigh)
