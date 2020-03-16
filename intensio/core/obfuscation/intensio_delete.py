@@ -10,7 +10,6 @@ import os
 import sys
 from progress.bar import Bar
 
-from core.utils.intensio_error import EXIT_SUCCESS, EXIT_FAILURE, ERROR_FILE_NOT_FOUND
 from core.utils.intensio_utils import Utils
 
 #------------------------------------------------- [Function(s)/Class(es)] --------------------------------------------------#
@@ -66,14 +65,14 @@ class Delete:
             bar.finish()
 
         if checkEmptyLine == 0:
-            return EXIT_SUCCESS
+            return 0
         else:
             if verboseArg:
                 print("\n[!] Empty line that not been deleted... :\n")
                 for key, value in checkLinesSpace.items():
-                    print("\n-> File : {0}".format(value))
-                    print("-> Line : {0}".format(key))
-            return EXIT_FAILURE
+                    print("\n-> File : {}".format(value))
+                    print("-> Line : {}".format(key))
+            return 1
 
 
     def Comments(self, outputArg, verboseArg):
@@ -105,7 +104,7 @@ class Delete:
             countRecursFiles += 1
         
         # -- Delete comments and Count comments will be deleted -- #            
-        print("\n[+] Running delete comments in {0} file(s)...\n".format(countRecursFiles))
+        print("\n[+] Running delete comments in {} file(s)...\n".format(countRecursFiles))
 
         with Bar("Obfuscation ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
@@ -201,7 +200,7 @@ class Delete:
                                     else:
                                         if multipleLinesComments == 1:
                                             multipleLinesComments = 0
-                                            checkDeleted[numberLine] = "{0} ( multiple lines comments )".format(file)
+                                            checkDeleted[numberLine] = "{} ( multiple lines comments )".format(file)
                                             countLineOutput += 1
                                         else:
                                             noComments = 0
@@ -253,19 +252,19 @@ class Delete:
             bar.finish()
         
         if countLineOutput == 0:
-            print("\n-> {0} lines of comments deleted\n".format(countLineInput))            
-            return EXIT_SUCCESS
+            print("\n-> {} lines of comments deleted\n".format(countLineInput))            
+            return 0
         else:
             if verboseArg:
                 print("\n[!] Comments that not been deleted... :\n")
                 for key, value in checkDeleted.items():
-                    print("\n-> File : {0}".format(value))
+                    print("\n-> File : {}".format(value))
                     if "multiple lines comments" in value:
-                        print("-> Line : {0} ( This is the end line of multiple lines comments )".format(key))
+                        print("-> Line : {} ( This is the end line of multiple lines comments )".format(key))
                     else:
-                        print("-> Line : {0}".format(key))
-                print("\n-> {0} lines of comments no deleted\n".format(countLineOutput))
-            return EXIT_FAILURE
+                        print("-> Line : {}".format(key))
+                print("\n-> {} lines of comments no deleted\n".format(countLineOutput))
+            return 1
 
 
     def TrashFiles(self, outputArg, verboseArg):
@@ -289,10 +288,10 @@ class Delete:
             countRecursFiles += 1
 
         if countRecursFiles == 0:
-            print("[!] No .pyc file(s) found in {0}".format(outputArg))
-            return EXIT_SUCCESS
+            print("[!] No .pyc file(s) found in {}".format(outputArg))
+            return 0
 
-        print("\n[+] Running delete {0} .pyc file(s)...\n".format(countRecursFiles))
+        print("\n[+] Running delete {} .pyc file(s)...\n".format(countRecursFiles))
 
         # -- Check if .pyc file(s) exists and delete it -- #
         with Bar("Setting up  ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
@@ -328,11 +327,11 @@ class Delete:
         if checkRecursFiles != []:
             if verboseArg:
                 for pycFile in checkRecursFiles:
-                    print("-> .pyc file no deleted : {0}".format(pycFile))
-            return EXIT_FAILURE
+                    print("-> .pyc file no deleted : {}".format(pycFile))
+            return 1
         else:
             if verboseArg:
                 for pycFile in checkPycFile:
-                    print("-> .pyc file deleted : {0}".format(pycFile))
-        print("\n-> {0} .pyc file(s) deleted".format(deleteFiles))
-        return EXIT_SUCCESS
+                    print("-> .pyc file deleted : {}".format(pycFile))
+        print("\n-> {} .pyc file(s) deleted".format(deleteFiles))
+        return 0

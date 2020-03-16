@@ -12,8 +12,7 @@ import sys
 from progress.bar import Bar
 
 from core.obfuscation.intensio_mixer import Mixer
-from core.utils.intensio_error import BreakLoop, EXIT_SUCCESS, EXIT_FAILURE, ERROR_DIR_EMPTY
-from core.utils.intensio_utils import Utils, Colors
+from core.utils.intensio_utils import Utils, Colors, BreakLoop
 
 #------------------------------------------------- [Function(s)/Class(es)] --------------------------------------------------#
 
@@ -145,12 +144,12 @@ class Replace:
 
                                             if checkCharAfterWord == 0:
                                                 # -- Initialize vars -- #
-                                                getCharAllInKey     = []
-                                                getWord             = []
+                                                getCharAllInKey = []
+                                                getWord         = []
 
-                                                indexExploreStart   = indexLine
+                                                indexExploreStart = indexLine
                                                 # -- Delete -1, first letter is already increment -- #
-                                                indexExploreEnd     = indexLine + len(key) - 1
+                                                indexExploreEnd = indexLine + len(key) - 1
 
                                                 # -- List contain all letters of key -- #
                                                 for getLetterKey in key:
@@ -164,8 +163,8 @@ class Replace:
 
                                                 # -- Check if number of chars in key equal number of chars in word -- #
                                                 if list(set(getCharAllInKey) - set(getWord)) == []:
-                                                    checkGetWord    = "".join(getWord)
-                                                    checkGetKey     = "".join(getCharAllInKey)
+                                                    checkGetWord = "".join(getWord)
+                                                    checkGetKey = "".join(getCharAllInKey)
 
                                                     # -- Check if key == word -- #
                                                     if checkGetWord == checkGetKey:
@@ -195,7 +194,7 @@ class Replace:
         return returnLine[:]
 
 
-    def StringToString(self, outputArg, mixerLengthArg, mixerLevelArg, verboseArg):
+    def StringToString(self, outputArg, mixerLengthArg, verboseArg):
         variablesDict               = {}
         classesDict                 = {}
         functionsDict               = {}
@@ -253,28 +252,19 @@ class Replace:
                                 modifySearch = modifySearch.split()
                                 for i in modifySearch:
                                     if i not in variablesDict:
-                                        mixer = self.mixer.GetStringMixer(
-                                                                            mixerLengthArgDefined=mixerLengthArg, 
-                                                                            mixerLevelArgDefined=mixerLevelArg
-                                        )
+                                        mixer = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
                                         i = i.strip()
                                         variablesDict[i] = mixer
                             else:
                                 if search.group(1) not in variablesDict:
-                                    mixer = self.mixer.GetStringMixer(
-                                                                        mixerLengthArgDefined=mixerLengthArg, 
-                                                                        mixerLevelArgDefined=mixerLevelArg
-                                    )
+                                    mixer = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
                                     modifySearch = search.group(1).strip()
                                     variablesDict[modifySearch] = mixer
 
                         # -- Error variables -- #
                         search = re.search(variablesErrorDefined, eachLine)
                         if search:
-                            mixer = self.mixer.GetStringMixer(
-                                                                mixerLengthArgDefined=mixerLengthArg, 
-                                                                mixerLevelArgDefined=mixerLevelArg
-                            )
+                            mixer = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
                             if search.group(2) not in variablesDict:
                                 variablesDict[search.group(2)] = mixer
 
@@ -286,26 +276,17 @@ class Replace:
                                 modifySearch = modifySearch.split()
                                 for i in modifySearch:
                                     if i not in variablesDict:
-                                        mixer = self.mixer.GetStringMixer(
-                                                                            mixerLengthArgDefined=mixerLengthArg, 
-                                                                            mixerLevelArgDefined=mixerLevelArg
-                                        )
+                                        mixer = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
                                         variablesDict[i] = mixer
                             else:
                                 if search.group(1) not in variablesDict:
-                                    mixer = self.mixer.GetStringMixer(
-                                                                        mixerLengthArgDefined=mixerLengthArg, 
-                                                                        mixerLevelArgDefined=mixerLevelArg
-                                    )
+                                    mixer = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
                                     variablesDict[search.group(1)] = mixer
 
                         # -- Function(s) -- #
                         search = re.search(functionsDefined, eachLine)
                         if search:
-                            mixer = self.mixer.GetStringMixer(
-                                                                mixerLengthArgDefined=mixerLengthArg, 
-                                                                mixerLevelArgDefined=mixerLevelArg
-                            )
+                            mixer = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
                             if search.group(1) not in functionsDict:
                                 if not "__init__" in search.group(1):
                                     functionsDict[search.group(1)] = mixer
@@ -313,10 +294,7 @@ class Replace:
                         # -- Class(es) -- #
                         search = re.search(classDefined, eachLine)
                         if search:
-                            mixer = self.mixer.GetStringMixer(
-                                                                mixerLengthArgDefined=mixerLengthArg, 
-                                                                mixerLevelArgDefined=mixerLevelArg
-                            )
+                            mixer = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
                             if search.group(1) not in classesDict:
                                 classesDict[search.group(1)] = mixer
             bar.next(40)
@@ -332,7 +310,8 @@ class Replace:
                             word = word.rstrip()
                             wordsExcludedDefault.append(word)
             else:
-                print(Colors.ERROR + "[-] '{0}' file not found\n".format(self.pythonExcludeDefaultString) + Colors.DISABLE)
+                print(Colors.ERROR + "[-] '{}' file not found".format(self.pythonExcludeDefaultString) + Colors.DISABLE \
+                    + "\n")
 
             bar.next(10)
 
@@ -347,55 +326,44 @@ class Replace:
                             word = word.rstrip()
                             wordsExcludedUser.append(word)
             else:
-                print(Colors.ERROR + "[-] '{0}' file not found\n".format(self.pythonExcludeUserString) + Colors.DISABLE)
+                print(Colors.ERROR + "[-] '{}' file not found".format(self.pythonExcludeUserString) + Colors.DISABLE \
+                    + "\n")
 
             bar.next(10)
 
             for word in wordsExcludedUser:
-                for key in variablesDict.keys():
-                    if word in key:
-                        if re.match(r"^" + re.escape(word) + r"$", key):
-                            wordsExcludedUserFound.append(word)
-                for key in classesDict.keys():
-                    if word in key:
-                        if re.match(r"^" + re.escape(word) + r"$", key):
-                            wordsExcludedUserFound.append(word)
-                for key in functionsDict.keys():
-                    if word in key:
-                        if re.match(r"^" + re.escape(word) + r"$", key):
-                            wordsExcludedUserFound.append(word)
+                if word in variablesDict.keys():
+                    wordsExcludedUserFound.append(word)
+                if word in classesDict.keys():
+                    wordsExcludedUserFound.append(word)
+                if word in functionsDict.keys():
+                    wordsExcludedUserFound.append(word)
             
             bar.next(20)
 
             for word in wordsExcludedDefault:
-                for key in variablesDict.keys():
-                    if word in key:
-                        if re.match(r"^" + re.escape(word) + r"$", key):
-                            wordsExcludedDefaultFound.append(word)
-                for key in classesDict.keys():
-                    if word in key:
-                        if re.match(r"^" + re.escape(word) + r"$", key):
-                            wordsExcludedDefaultFound.append(word)
-                for key in functionsDict.keys():
-                    if word in key:
-                        if re.match(r"^" + re.escape(word) + r"$", key):
-                            wordsExcludedDefaultFound.append(word)
+                if word in variablesDict.keys():
+                    wordsExcludedDefaultFound.append(word)
+                if word in classesDict.keys():
+                    wordsExcludedDefaultFound.append(word)
+                if word in functionsDict.keys():
+                    wordsExcludedDefaultFound.append(word)
 
-                for word in wordsExcludedUserFound:
-                    if word in variablesDict.keys():
-                        del variablesDict[word]
-                    if word in classesDict.keys():
-                        del classesDict[word]
-                    if word in functionsDict.keys():
-                        del functionsDict[word]
+            for word in wordsExcludedUserFound:
+                if word in variablesDict.keys():
+                    del variablesDict[word]
+                if word in classesDict.keys():
+                    del classesDict[word]
+                if word in functionsDict.keys():
+                    del functionsDict[word]
 
-                for word in wordsExcludedDefaultFound:
-                    if word in variablesDict.keys():
-                        del variablesDict[word]
-                    if word in classesDict.keys():
-                        del classesDict[word]
-                    if word in functionsDict.keys():
-                        del functionsDict[word]
+            for word in wordsExcludedDefaultFound:
+                if word in variablesDict.keys():
+                    del variablesDict[word]
+                if word in classesDict.keys():
+                    del classesDict[word]
+                if word in functionsDict.keys():
+                    del functionsDict[word]
 
             bar.next(20)
             bar.finish()
@@ -407,23 +375,23 @@ class Replace:
                 print("-> No result")
             else:
                 for key, value in variablesDict.items():
-                    print("-> {0} : {1}".format(key, value))
+                    print("-> {} : {}".format(key, value))
 
             print("\n[+] Class(es) found :\n")
             if classesDict == {}:
                 print("-> No result")
             else:
                 for key, value in classesDict.items():
-                    print("-> {0} : {1}".format(key, value))
+                    print("-> {} : {}".format(key, value))
 
             print("\n[+] Function(s) found :\n")
             if functionsDict == {}:
                 print("-> No result")
             else:
                 for key, value in functionsDict.items():
-                    print("-> {0} : {1}".format(key, value))
+                    print("-> {} : {}".format(key, value))
 
-            print("\n[+] String excluded found in '{0}' that have been matched from '{1}' :\n".format(
+            print("\n[+] String excluded found in '{}' that have been matched from '{}' :\n".format(
                                                                                                 self.pythonExcludeUserString, 
                                                                                                 outputArg
                                                                                                 )
@@ -432,9 +400,9 @@ class Replace:
                 print("-> No result")
             else:
                 for word in wordsExcludedUserFound:
-                    print("-> {0} : excluded by user".format(word))
+                    print("-> {} : excluded by user".format(word))
 
-            print("\n[+] String excluded found in '{0}' that have been matched from '{1}' :\n".format(
+            print("\n[+] String excluded found in '{}' that have been matched from '{}' :\n".format(
                                                                                                 self.pythonExcludeDefaultString, 
                                                                                                 outputArg
                                                                                                 )
@@ -443,7 +411,7 @@ class Replace:
                 print("-> No result")
             else:
                 for word in wordsExcludedDefaultFound:
-                    print("-> {0} : excluded by default".format(word))
+                    print("-> {} : excluded by default".format(word))
             print("")
 
         # -- Merge all dicts -- #
@@ -550,12 +518,12 @@ class Replace:
             bar.finish()
 
         if checkCountWordsMixed == checkCountWordsValue:
-            print("\n-> {0} variable(s)/class(es)/function(s) replaced in {1} file(s)\n".format(
-                                                                                                checkCountWordsValue, 
-                                                                                                countRecursFiles
-                                                                                                )
+            print("\n-> {} variable(s)/class(es)/function(s) replaced in {} file(s)\n".format(
+                                                                                            checkCountWordsValue, 
+                                                                                            countRecursFiles
+                                                                                            )
             )
-            return EXIT_SUCCESS
+            return 0
         else:
             if verboseArg:
                 for key in allDict.keys():
@@ -567,11 +535,11 @@ class Replace:
                     "obfuscated code... :\n")
                 if checkWordsError != []:
                     for wordNoReplaced in checkWordsError:
-                        print("-> Word : {0}".format(wordNoReplaced))
-            return EXIT_FAILURE
+                        print("-> Word : {}".format(wordNoReplaced))
+            return 1
 
 
-    def StringsToHex(self, outputArg, mixerLevelArg, mixerLengthArg, verboseArg):
+    def StringsToHex(self, outputArg, mixerLengthArg, verboseArg):
         checkHexError       = {}
         getLetterLineList   = []
         countRecursFiles    = 0
@@ -594,7 +562,7 @@ class Replace:
         for number in recursFiles:
             countRecursFiles += 1
 
-        print("\n[+] Running replace all strings to their hexadecimal value in {0} file(s)...\n".format(countRecursFiles))
+        print("\n[+] Running replace all strings to their hexadecimal value in {} file(s)...\n".format(countRecursFiles))
 
         # -- Replace all strings to their hexadecimal value -- #
         with Bar("Obfuscation ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
@@ -602,11 +570,8 @@ class Replace:
                 # -- Add a new first random line and move the old first line to the second line to avoid replacing it -- #
                 checkPrint = 0 # initialize check print() func at the begining of each file
                 with open(file, "r") as inputFile:
-                    stringRandomMixer = self.mixer.GetStringMixer(
-                                                                    mixerLengthArgDefined=mixerLengthArg, 
-                                                                    mixerLevelArgDefined=mixerLevelArg
-                    )
-                    firstLine   = "{0}\n".format(stringRandomMixer)
+                    stringRandomMixer = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
+                    firstLine   = "{}\n".format(stringRandomMixer)
                     line        = inputFile.readlines()
 
                     line.insert(0, firstLine)
@@ -618,10 +583,7 @@ class Replace:
                 with fileinput.input(file, inplace=True) as inputFile:
                     for eachLine in inputFile:
                         if checkPrint == 0:
-                            varMixer = self.mixer.GetStringMixer(
-                                                                    mixerLengthArgDefined=mixerLengthArg, 
-                                                                    mixerLevelArgDefined=mixerLevelArg
-                            )
+                            varMixer = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
                             sys.stdout.write(varMixer + "=\"\"\"")
                             checkPrint = 1
                         else:
@@ -635,7 +597,7 @@ class Replace:
                 # -- Add exec funtions to interpret hex code in strings -- #
                 with open(file, "a") as inputFile:
                     inputFile.write("\"\"\"")
-                    inputFile.write("\nexec({0})".format(varMixer))
+                    inputFile.write("\nexec({})".format(varMixer))
 
                 bar.next(1)
             bar.finish()
@@ -665,20 +627,20 @@ class Replace:
             bar.finish()
 
         if checkError == False:
-            return EXIT_SUCCESS
+            return 0
         else:
             if verboseArg:
                 print("\n[!] Line(s) that have not been replaced by their hexadecimal values... :\n")
                 for key, value in checkHexError.items():
-                    print("\n-> File : {0}".format(value))
-                    print("-> Line : {0}".format(key))
+                    print("\n-> File : {}".format(value))
+                    print("-> Line : {}".format(key))
             else:
-                print(Colors.ERROR + "\n[!] Launch Intensio-Obfuscator with verbose mode because line(s) have not been " + \
-                    "replaced by their hexadecimal values\n" + Colors.DISABLE)
-            return EXIT_FAILURE
+                print("\n" + Colors.ERROR + "[!] Launch Intensio-Obfuscator with verbose mode because line(s) have not been " + \
+                    "replaced by their hexadecimal values" + Colors.DISABLE + "\n")
+            return 1
 
 
-    def FilesName(self, outputArg, mixerLengthArg, mixerLevelArg, verboseArg):
+    def FilesName(self, outputArg, mixerLengthArg, verboseArg):
         checkFilesFoundCompare  = {}
         filesNameDict           = {}
         filesNameDictNoExt      = {}
@@ -724,15 +686,12 @@ class Replace:
         for file in recursFiles:
             countRecursFiles += 1
 
-        print("\n[+] Running replace files name in {0} file(s)...\n".format(countRecursFiles))
+        print("\n[+] Running replace files name in {} file(s)...\n".format(countRecursFiles))
 
         with Bar("Setting up  ", fill="=", max=100, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
                 parseFilePath = file.split(self.utils.Platform(getOS=False, getPathType=True))
-                mixer = self.mixer.GetStringMixer(
-                                                    mixerLengthArgDefined=mixerLengthArg,
-                                                    mixerLevelArgDefined=mixerLevelArg
-                )
+                mixer = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
                 filesNameDict[parseFilePath[-1]] = mixer + ".py"
                 filesNameDictNoExt[parseFilePath[-1].replace(".py", "")] = mixer
 
@@ -766,7 +725,7 @@ class Replace:
                             fileNameExcluded.append(fileName)
                             fileNameExcludedByUser.append(fileName)
             else:
-                print(Colors.ERROR + "[-] '{0}' file not found\n".format(self.pythonExcludeUserFileName) + Colors.DISABLE)
+                print(Colors.ERROR + "[-] '{}' file not found".format(self.pythonExcludeUserFileName) + Colors.DISABLE + "\n")
                 
             bar.next(10)
 
@@ -824,9 +783,9 @@ class Replace:
                 print("-> No result")
             else:
                 for key, value in filesNameDict.items():
-                    print("-> {0} : {1}".format(key, value))
+                    print("-> {} : {}".format(key, value))
 
-            print("\n[+] File name(s) excluded found in '{0}' that have been matched from '{1}' :\n".format(
+            print("\n[+] File name(s) excluded found in '{}' that have been matched from '{}' :\n".format(
                                                                                             self.pythonExcludeUserFileName, 
                                                                                             outputArg
                                                                                             )
@@ -835,21 +794,21 @@ class Replace:
                 print("-> No result")
             else:
                 for i in fileNameExcludedByUser:
-                    print("-> {0} : excluded by user".format(i))
+                    print("-> {} : excluded by user".format(i))
 
             print("\n[+] File name(s) no compliant for 'replace file name' feature :\n")
             if importNoCompliantFound == []: 
                 print("-> No result")
             else:
                 for i in importNoCompliantFound:
-                    print("-> {0} : no compliant ( file name excluded automatically )".format(i))
+                    print("-> {} : no compliant ( file name excluded automatically )".format(i))
 
             print("\n[+] Directory that have same name of python file(s) :\n")
             if badNameDir == []:
                 print("-> No result")
             else:
                 for i in badNameDir:
-                    print("-> {0} : no compliant ( file name excluded automatically )".format(i))
+                    print("-> {} : no compliant ( file name excluded automatically )".format(i))
                     i = i.rstrip()
             print("")
 
@@ -919,11 +878,11 @@ class Replace:
                 if checkFilesFoundCompare != {}:
                     print("\n[!] File name that have not been replaced by their random string value... :\n")
                     for key, value in checkFilesFoundCompare.items():
-                        print("\n-> File : {0}".format(key))
-                        print("-> Value mixed : {0}".format(value))
+                        print("\n-> File : {}".format(key))
+                        print("-> Value mixed : {}".format(value))
             else:
-                print(Colors.ERROR + "\n[-] Launch intensio-obfuscatior with verbose mode [-v, --verbose] because " + \
+                print("\n" + Colors.ERROR + "[-] Launch intensio-obfuscatior with verbose mode [-v, --verbose] because " + \
                     "file name(s) have not been replaced by their random string value" + Colors.DISABLE)
-            return EXIT_FAILURE
+            return 1
         else:
-            return EXIT_SUCCESS
+            return 0

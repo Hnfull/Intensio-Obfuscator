@@ -32,14 +32,6 @@ class Args:
                                 features are specified, default value: [medium], possible values: [lower, medium, high]"
         )
         self.parser.add_argument(
-                                "-mlvl", "--mixerlevel",
-                                choices=["simple", "hard"],
-                                default="simple",
-                                help="define the obfuscation level of random strings generated when 'replacetostr' - \
-                                'paddingscript' - 'replacefilename' - 'replacetohex' features are specified, default value: \
-                                [simple], possible values: [simple, hard]"
-        )
-        self.parser.add_argument(
                                 "-rts", "--replacetostr",
                                 action="store_true",
                                 default=False,
