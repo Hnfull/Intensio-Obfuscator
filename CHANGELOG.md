@@ -11,7 +11,7 @@
 - [remove] `simple` level of string generated for obfuscation is removed, previous parameter` hard` level obfuscation is used by default for level of strings generated for obfuscation now
 - [remove] parameter `-mlvl, --mixerlevel` to control obfuscation level of strings generated (`simple` by default or `hard`)
 
-## 02-01-2020
+## 02-01-2020
 - [update] visibility of code with PEP 8 recommandation part `maximum line length` 
 
 ## 01-28-2020
