@@ -1,7 +1,7 @@
-# Intensio-Obfuscator (Beta)
+# Intensio-Obfuscator
 
 ![](https://img.shields.io/badge/Python->=3.5-blue.svg)
-![](https://img.shields.io/badge/Version-1.0.8.1-green.svg)
+![](https://img.shields.io/badge/Version-1.0.8.2-green.svg)
 ![](https://img.shields.io/badge/Licence-MIT-red.svg)
 
 ## What is this ?
@@ -76,9 +76,6 @@
     - Code optimization
     - Fix issues
     - Improved features already present
-    
-- Version 1.1.0-x:
-    - Stable version
 
 ## License
 - MIT
