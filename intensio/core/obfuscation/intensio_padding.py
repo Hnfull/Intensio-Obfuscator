@@ -19,28 +19,30 @@ from core.utils.intensio_utils import Utils
 class Padding:
     
     def __init__(self):
-        self.mixer  = Mixer()
-        self.utils  = Utils()
+        self.mixer          = Mixer()
+        self.utils          = Utils()
+        self.simpleSpace    = " "
 
-        # -- Len of spaces -- #
-        self.space0  = ""                                                                       
-        self.space4  = "    "
-        self.space8  = "        "
-        self.space12 = "            "
-        self.space16 = "                "
-        self.space20 = "                    "
-        self.space24 = "                        "
-        self.space28 = "                            "
-        self.space32 = "                                "
-        self.space36 = "                                    "
-        self.space40 = "                                        "
-        self.space44 = "                                            "
-        self.space48 = "                                                "
-        self.space52 = "                                                    "
-        self.space56 = "                                                        "
-        self.space60 = "                                                            "
-        self.space64 = "                                                                "
 
+    def CheckBasicIndentation(self, recursPythonFiles):
+        # -- Check basic indentation (2 - 4 - 8) of python files -- #
+        allNumIndentations  = []
+        headerPythonFile    = r"\s*#!.*[python|1-9]|\s*#.*-*-$"
+
+        for file in recursPythonFiles:
+            with open(file, "r") as inputFile:
+                for eachLine in inputFile:
+                    if re.match(headerPythonFile, eachLine):
+                        continue
+                    else:
+                        spaces = len(eachLine) - len(eachLine.lstrip())
+                        if spaces == 0 or spaces == 1:
+                            continue
+                        else:
+                            allNumIndentations.append(spaces)
+
+        allNumIndentations.sort()
+        return allNumIndentations[0]
 
     def ScriptsGenerator(self, mixerLengthArg):
         varRandom1  = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
@@ -63,7 +65,7 @@ class Padding:
 
         # -- script 1 -- #
         if rand == 1:
-            scriptAssPadding1 = textwrap.dedent("""
+            scriptPadding1 = textwrap.dedent("""
                                                 {0} = '{5}'
                                                 {1} = '{6}'
                                                 {2} = '{7}'
@@ -79,11 +81,11 @@ class Padding:
                                                         {1} = {4}
                                                 """).format(varRandom1, varRandom2, varRandom3, varRandom4, varRandom5, \
                                                             varRandom6, varRandom7, varRandom8, varRandom9, varRandom10)
-            return scriptAssPadding1
+            return scriptPadding1
 
         # -- script 2 -- #
         elif rand == 2:
-            scriptAssPadding2 = textwrap.dedent("""
+            scriptPadding2 = textwrap.dedent("""
                                                 {0} = '{2}'
                                                 {1} = '{3}'
                                                 if {0} != {1}:
@@ -91,11 +93,11 @@ class Padding:
                                                     {1} = {0}
                                                     {0} = '{2}'
                                                 """).format(varRandom1, varRandom2, varRandom3, varRandom4)
-            return scriptAssPadding2
+            return scriptPadding2
 
         # -- script 3 -- #
         elif rand == 3:
-            scriptAssPadding3 = textwrap.dedent("""
+            scriptPadding3 = textwrap.dedent("""
                                                 {0} = '{6}'
                                                 {1} = '{7}'
                                                 {2} = '{8}'
@@ -121,11 +123,11 @@ class Padding:
                                                 """).format(varRandom1, varRandom2, varRandom3, varRandom4, varRandom5, \
                                                             varRandom6, varRandom7, varRandom8, varRandom9, varRandom10, \
                                                             varRandom11, varRandom12)
-            return scriptAssPadding3
+            return scriptPadding3
 
         # -- script 4 -- #
         elif rand == 4:
-            scriptAssPadding4 = textwrap.dedent("""
+            scriptPadding4 = textwrap.dedent("""
                                                 {0} = '{3}'
                                                 {1} = '{4}'
                                                 {2} = '{5}'
@@ -137,11 +139,11 @@ class Padding:
                                                     {2} = '{3}'
                                                 """).format(varRandom1, varRandom2, varRandom3, varRandom4, \
                                                             varRandom5, varRandom6,)
-            return scriptAssPadding4
+            return scriptPadding4
 
         # -- script 5 -- #
         elif rand == 5:
-            scriptAssPadding5 = textwrap.dedent("""
+            scriptPadding5 = textwrap.dedent("""
                                                 {0} = '{6}'
                                                 {1} = '{7}'
                                                 {2} = '{8}'
@@ -158,11 +160,11 @@ class Padding:
                                                             varRandom4, varRandom5, varRandom6, \
                                                             varRandom7, varRandom8, varRandom9, \
                                                             varRandom10, varRandom11, varRandom12)
-            return scriptAssPadding5
+            return scriptPadding5
     
         # -- script 6 -- #
         elif rand == 6:
-            scriptAssPadding6 = textwrap.dedent("""
+            scriptPadding6 = textwrap.dedent("""
                                                 {0} = '{4}'
                                                 {1} = '{5}'
                                                 {2} = '{6}'
@@ -195,11 +197,11 @@ class Padding:
                                                 """).format(varRandom1, varRandom2, varRandom3, \
                                                             varRandom4, varRandom5, varRandom6, \
                                                             varRandom7, varRandom8)
-            return scriptAssPadding6
+            return scriptPadding6
         
         # -- script 7 -- #
         elif rand == 7:
-            scriptAssPadding7 = textwrap.dedent("""
+            scriptPadding7 = textwrap.dedent("""
                                                 {0} = '{7}'
                                                 {1} = '{8}'
                                                 {2} = '{9}'
@@ -227,7 +229,7 @@ class Padding:
                                                             varRandom7, varRandom8, varRandom9, \
                                                             varRandom10, varRandom11, varRandom12, \
                                                             varRandom13, varRandom14)
-            return scriptAssPadding7
+            return scriptPadding7
 
 
     def AddRandomScripts(self, outputArg, mixerLengthArg, verboseArg):
@@ -239,21 +241,29 @@ class Padding:
         checkCharPassing        = 0
         checkOtherCharPassing   = 0
         countRecursFiles        = 0
+        basicIndentation        = None
 
-        addIndentScript         = r".*\:{1}\s+$|.*\:{1}\s*$"
+        addIndentScript         = r".*\:{1}\s*$"
         quotesIntoVariable      = r".*={1}\s*[\"|\']{3}"
         quotesEndMultipleLines  = r"^\s*[\"|\']{3}\)?\.?"
         quotesInRegex           = r"={1}\s*r{1}[\"|\']{3}"
         noAddScript             = r"^\@|\s+\@|\s+return|\s*def\s+.+\s*\:{1}|^class\s+.+\s*\:{1}|.*[\{|\[|\(|\)|\]|\}|,|\\|^]\s*$|\s+yield.*|\s+raise.*"
-        quoteIntoVariable       = r".*\={1}\s*\w*\.?\w*[\(|\.]{1}[\']{3}|.*\={1}\s*\w*\.?\w*[\(|\.]{1}[\"\"\"]{3}|.*\={1}\s*[\"]{3}|.*\={1}\s*[\']{3}"
 
         recursFiles = self.utils.CheckFileDir(
-                                                output=outputArg, 
-                                                detectFiles="py", 
-                                                blockDir="__pycache__", 
-                                                blockFile=False,
-                                                dirOnly=False
+                                            output=outputArg, 
+                                            detectFiles="py", 
+                                            blockDir="__pycache__", 
+                                            blockFile=False,
+                                            dirOnly=False
         )
+
+        if verboseArg:
+            print("\n[*] Check basic indentation...\n")
+        
+        basicIndentation = Padding.CheckBasicIndentation(self, recursFiles)
+
+        if verboseArg:
+            print("[*] Basic indentation : {} spaces".format(basicIndentation))
 
         for number in recursFiles:
             countRecursFiles += 1
@@ -273,7 +283,7 @@ class Padding:
                 bar.next(1)
             bar.finish()
 
-        # -- Padding scripts added -- #
+        # -- Padding script added -- #
         with Bar("Obfuscation ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
                 with fileinput.input(file, inplace=True) as inputFile:
@@ -339,108 +349,20 @@ class Padding:
                                     continue
                             # -- Adding scripts -- #
                             elif re.match(addIndentScript, eachLine):
-
-                                if spaces == 0:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg), self.space4))
-                                    countScriptsAdded += 1                                                                
-                                elif spaces == 4:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg), self.space8))
-                                    countScriptsAdded += 1
-                                elif spaces == 8:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg), self.space12))
-                                    countScriptsAdded += 1
-                                elif spaces == 12:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg), self.space16))
-                                    countScriptsAdded += 1
-                                elif spaces == 16:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg), self.space20))
-                                    countScriptsAdded += 1
-                                elif spaces == 20:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg), self.space24))
-                                    countScriptsAdded += 1
-                                elif spaces == 24:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg), self.space28))
-                                    countScriptsAdded += 1
-                                elif spaces == 28:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg), self.space32))
-                                    countScriptsAdded += 1
-                                elif spaces == 32:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg), self.space36))
-                                    countScriptsAdded += 1
-                                elif spaces == 36:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg), self.space40))
-                                    countScriptsAdded += 1
-                                elif spaces == 40:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg), self.space44))
-                                    countScriptsAdded += 1
-                                elif spaces == 44:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg), self.space48))
-                                    countScriptsAdded += 1
-                                elif spaces == 48:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg), self.space52))
-                                    countScriptsAdded += 1
-                                elif spaces == 52:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg), self.space56))
-                                    countScriptsAdded += 1
-                                elif spaces == 56:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg), self.space60))
-                                    countScriptsAdded += 1
-                                elif spaces == 60:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg), self.space64))
-                                    countScriptsAdded += 1
-                                else:
-                                    continue
+                                spaces = spaces + basicIndentation # add indentation
+                                sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                                                                        self, 
+                                                                                        mixerLengthArg=mixerLengthArg), 
+                                                                                        self.simpleSpace * spaces)
+                                )
+                                countScriptsAdded += 1
                             else:
-                                if spaces == 0:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg), self.space0))
-                                    countScriptsAdded += 1
-                                elif spaces == 4:                                                                       
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg), self.space4))
-                                    countScriptsAdded += 1
-                                elif spaces == 8:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg), self.space8))
-                                    countScriptsAdded += 1
-                                elif spaces == 12:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg), self.space12))
-                                    countScriptsAdded += 1
-                                elif spaces == 16:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg), self.space16))
-                                    countScriptsAdded += 1
-                                elif spaces == 20:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg), self.space20))
-                                    countScriptsAdded += 1
-                                elif spaces == 24:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg), self.space24))
-                                    countScriptsAdded += 1
-                                elif spaces == 28:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg), self.space28))
-                                    countScriptsAdded += 1
-                                elif spaces == 32:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg), self.space32))
-                                    countScriptsAdded += 1
-                                elif spaces == 36:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg), self.space36))
-                                    countScriptsAdded += 1
-                                elif spaces == 40:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg), self.space40))
-                                    countScriptsAdded += 1
-                                elif spaces == 44:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg), self.space44))
-                                    countScriptsAdded += 1
-                                elif spaces == 48:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg), self.space48))
-                                    countScriptsAdded += 1
-                                elif spaces == 52:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg), self.space52))
-                                    countScriptsAdded += 1
-                                elif spaces == 56:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg), self.space56))
-                                    countScriptsAdded += 1
-                                elif spaces == 60:
-                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(self, mixerLengthArg=mixerLengthArg), self.space60))
-                                    countScriptsAdded += 1
-                                else:
-                                    continue
+                                sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                                                                        self, 
+                                                                                        mixerLengthArg=mixerLengthArg), 
+                                                                                        self.simpleSpace * spaces)
+                                )
+                                countScriptsAdded += 1
 
                 bar.next(1)
             bar.finish()
@@ -475,9 +397,10 @@ class Padding:
         numberLineInFile        = 0
         emptyClassInfo          = {}
         emptyClassInfoCheck     = {}
+        basicIndentation        = None
 
-        detectClass     = r"^class\s+\w+|\s+class\s+\w+"
-        classDefined    = r"class\s+(\w+)"
+        classDefined        = r"class\s+(\w+)"
+        detectClass         = r"^class\s+\w+|\s+class\s+\w+"        
         
         recursFiles = self.utils.CheckFileDir(
                                                 output=outputArg, 
@@ -486,6 +409,8 @@ class Padding:
                                                 blockFile=False,
                                                 dirOnly=False
         )
+
+        basicIndentation = Padding.CheckBasicIndentation(self, recursFiles)
 
         for number in recursFiles:
             countRecursFiles += 1
@@ -535,12 +460,8 @@ class Padding:
                                 paddingVar1 = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
                                 paddingVar2 = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
                                 finalVarPadding = "{} = '{}'\n".format(paddingVar1, paddingVar2)
-                                if spacesClass == 0:
-                                    sys.stdout.write(textwrap.indent(finalVarPadding, self.space4))                                                                
-                                elif spacesClass == 4:
-                                    sys.stdout.write(textwrap.indent(finalVarPadding, self.space8))
-                                elif spacesClass == 8:
-                                    sys.stdout.write(textwrap.indent(finalVarPadding, self.space12))
+                                spacesClass = spacesClass + basicIndentation
+                                sys.stdout.write(textwrap.indent(finalVarPadding, self.simpleSpace * spacesClass))                                                                
                                 numberLine += 1
                         sys.stdout.write(eachLine)
                         if re.match(detectClass, eachLine):
@@ -549,12 +470,8 @@ class Padding:
                                 paddingVar1 = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
                                 paddingVar2 = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
                                 finalVarPadding = "{} = '{}'\n".format(paddingVar1, paddingVar2)
-                                if spacesClass == 0:
-                                    sys.stdout.write(textwrap.indent(finalVarPadding, self.space4))                                                                
-                                elif spacesClass == 4:
-                                    sys.stdout.write(textwrap.indent(finalVarPadding, self.space8))
-                                elif spacesClass == 8:
-                                    sys.stdout.write(textwrap.indent(finalVarPadding, self.space12))
+                                spacesClass = spacesClass + basicIndentation
+                                sys.stdout.write(textwrap.indent(finalVarPadding, self.simpleSpace * spacesClass))  
                             else:
                                 counterToCheckIndent += 1
 
@@ -616,10 +533,11 @@ class Padding:
         numberLineInFile        = 0
         emptyFuncInfo           = {}
         emptyFuncInfoCheck      = {}
+        basicIndentation        = None
 
-        detectFunction  = r"^def\s+\w+|\s+def\s\w+"
         functionDefined = r"def\s+(\w+)"   
-
+        detectFunction  = r"^def\s+\w+|\s+def\s\w+"
+        
         recursFiles = self.utils.CheckFileDir(
                                                 output=outputArg, 
                                                 detectFiles="py", 
@@ -627,6 +545,8 @@ class Padding:
                                                 blockFile=False,
                                                 dirOnly=False
         )
+
+        basicIndentation = Padding.CheckBasicIndentation(self, recursFiles)
 
         for number in recursFiles:
             countRecursFiles += 1
@@ -676,18 +596,8 @@ class Padding:
                                 paddingVar1 = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
                                 paddingVar2 = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
                                 finalVarPadding = "{} = '{}'\n".format(paddingVar1, paddingVar2)
-                                if spacesFunc == 0:
-                                    sys.stdout.write(textwrap.indent(finalVarPadding, self.space4))                                                                
-                                elif spacesFunc == 4:
-                                    sys.stdout.write(textwrap.indent(finalVarPadding, self.space8))
-                                elif spacesFunc == 8:
-                                    sys.stdout.write(textwrap.indent(finalVarPadding, self.space12))
-                                elif spacesFunc == 12:
-                                    sys.stdout.write(textwrap.indent(finalVarPadding, self.space16))
-                                elif spacesFunc == 16:
-                                    sys.stdout.write(textwrap.indent(finalVarPadding, self.space20))
-                                elif spacesFunc == 20:
-                                    sys.stdout.write(textwrap.indent(finalVarPadding, self.space24))
+                                spacesFunc = spacesFunc + basicIndentation
+                                sys.stdout.write(textwrap.indent(finalVarPadding, self.simpleSpace * spacesFunc))                                                                
                                 numberLine += 1 
                         sys.stdout.write(eachLine)
                         if re.match(detectFunction, eachLine):
@@ -696,18 +606,8 @@ class Padding:
                                 paddingVar1 = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
                                 paddingVar2 = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
                                 finalVarPadding = "{} = '{}'\n".format(paddingVar1, paddingVar2)
-                                if spacesFunc == 0:
-                                    sys.stdout.write(textwrap.indent(finalVarPadding, self.space4))                                                                
-                                elif spacesFunc == 4:
-                                    sys.stdout.write(textwrap.indent(finalVarPadding, self.space8))
-                                elif spacesFunc == 8:
-                                    sys.stdout.write(textwrap.indent(finalVarPadding, self.space12))
-                                elif spacesFunc == 12:
-                                    sys.stdout.write(textwrap.indent(finalVarPadding, self.space16))
-                                elif spacesFunc == 16:
-                                    sys.stdout.write(textwrap.indent(finalVarPadding, self.space20))
-                                elif spacesFunc == 20:
-                                    sys.stdout.write(textwrap.indent(finalVarPadding, self.space24))
+                                spacesFunc = spacesFunc + basicIndentation
+                                sys.stdout.write(textwrap.indent(finalVarPadding, self.simpleSpace * spacesFunc))          
                             else:
                                 counterToCheckIndent += 1
 

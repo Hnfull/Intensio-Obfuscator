@@ -76,6 +76,12 @@ def get_parser():
 
 #---------------------------------------------------------- [Main] ----------------------------------------------------------#
 
+def EmptyFunc():
+    """ comment """
+
+class EmptyClass:
+    """ comment """
+    
 def main():
     parser  = get_parser()
     args    = vars(parser.parse_args())

@@ -100,7 +100,7 @@ class Delete:
                                                 dirOnly=False
         )
 
-        for number in recursFiles:
+        for i in recursFiles:
             countRecursFiles += 1
         
         # -- Delete comments and Count comments will be deleted -- #            
