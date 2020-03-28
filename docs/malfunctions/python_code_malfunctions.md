@@ -17,6 +17,7 @@
       print("this is a ChrVMVxrZASDnzCcsWSmIBrfoWgQkdKD !")
       # your text will have the same value that the mixer value of `variables/class/function`
       ```
+    - You can exclude mannualy a name of variable/class/function edit [word exclusion](../../intensio/exclude/string_to_string_mixed/exclude_word_by_user.txt)
 
 ### 2) when you called  `[-rfn, --replacefilename]`
 - If you `import` python file
@@ -35,7 +36,7 @@
         test1.get("user")
         ```
   	- Intensio-Obfuscator will detect a non compliant format code for obfuscation and exclude this file name automatically
-    - You can excldue mannualy a file name [file name exclusion](../../intensio/exclude/file_name/exclude_file_name_by_user.txt) 
+    - You can exclude mannualy a file name [file name exclusion](../../intensio/exclude/file_name/exclude_file_name_by_user.txt) 
 
 - If you `import` python file and in path the file name have the same name that a folder
   - Can generate an error = **no**
