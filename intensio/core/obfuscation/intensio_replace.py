@@ -769,7 +769,6 @@ class Replace:
                                             filesNameFound.remove(i)
                                     if i in filesNameDictNoExt.keys():
                                         del filesNameDictNoExt[i]
-                                    i = i + ".py"
                                     if i in filesNameDict.keys():
                                         del filesNameDict[i]
 

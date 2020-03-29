@@ -1,4 +1,4 @@
-# required code format
+# Required code format
 
 ### 1) When [-rts, --replacetostr] is called
 - Do not define your names of local `variables/classes/functions` in your source program identically to `functions/classes/parameters-of-function` names of imported libraries

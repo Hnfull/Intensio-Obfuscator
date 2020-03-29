@@ -1,6 +1,10 @@
 # CHANGELOG of Intensio-Obfuscator project
 
+## 03-29-2020
+- [fix] issue #37
+
 ## 03-28-2020
+- [fix] issue #39
 - [fix] issue #38
 - [update] for padding scripts `[-ps, --paddingscript]` feature, adding support of 2 and 8 basic python indentation
 
