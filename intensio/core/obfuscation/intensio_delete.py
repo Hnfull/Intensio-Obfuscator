@@ -76,6 +76,7 @@ class Delete:
 
 
     def Comments(self, outputArg, verboseArg):
+        checkNumQuote           = []
         checkDeleted            = {}
         countLineOutput         = 0
         countLineInput          = 0
@@ -90,7 +91,7 @@ class Delete:
         quoteOfCommentsMultipleLines    = r"^\s+[\"|\']{3}|^[\"|\']{3}"
         quoteIntoVariableOrPrint        = r"s*print.*\(?[\"|\']{3}|.*\=\s*[\"|\']{3}"
         quoteOfCommentsOneLine          = r".*[\"]{3}.*[\"]{3}|.*[\']{3}.*[\']{3}\s*$"
-        commentsAfterLine               = r"\s*\#[^\"|^\'|^\.|^\?|^\*|^\!|^\]|^\[|^\\|^\)|^\(|^\{|^\}].*"
+        commentsAfterLine               = r"\#[^\"|^\'|^\.|^\?|^\*|^\!|^\]|^\[|^\\|^\)|^\(|^\{|^\}].*"
 
         recursFiles = self.utils.CheckFileDir(
                                                 output=outputArg, 
@@ -166,9 +167,13 @@ class Delete:
                             eachLine = eachLine.replace(searchCommentsBeginLine.group(0), "")
                             sys.stdout.write(eachLine)
                         elif searchCommentsAfterLine:
-                            eachLine = eachLine.replace(searchCommentsAfterLine.group(0), "")
-                            countLineInput += 1
-                            sys.stdout.write(eachLine)
+                            if re.match(r"\#\s*.+[\"]{1}|\#\s*.+[\']{1}", searchCommentsAfterLine.group(0)): # Check if '#' char is in a string
+                                sys.stdout.write(eachLine)
+                            else:
+                                eachLine = eachLine.replace(searchCommentsAfterLine.group(0), "")
+                                countLineInput += 1
+                                sys.stdout.write(eachLine)
+
                         else:
                             sys.stdout.write(eachLine)
 

@@ -41,8 +41,11 @@ class Padding:
                         else:
                             allNumIndentations.append(spaces)
 
-        allNumIndentations.sort()
-        return allNumIndentations[0]
+        if allNumIndentations == []:
+            return 0
+        else:
+            allNumIndentations.sort()
+            return allNumIndentations[0]
 
     def ScriptsGenerator(self, mixerLengthArg):
         varRandom1  = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
@@ -61,7 +64,7 @@ class Padding:
         varRandom14 = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
 
         # ---------- Python random scripts ---------- #
-        rand = random.randint(1, 7)
+        rand = random.randint(1, 9)
 
         # -- script 1 -- #
         if rand == 1:
@@ -230,6 +233,22 @@ class Padding:
                                                             varRandom10, varRandom11, varRandom12, \
                                                             varRandom13, varRandom14)
             return scriptPadding7
+
+        # -- script 8 -- #
+        elif rand == 8:
+            scriptPadding8 = textwrap.dedent("""
+                                                {0} = '{1}'
+                                                """).format(varRandom1, varRandom2)
+            return scriptPadding8
+
+        # -- script 9 -- #
+        elif rand == 9:
+            scriptPadding9 = textwrap.dedent("""
+                                                {0} = '{1}'
+                                                {2} = '{3} {1}'
+                                                """).format(varRandom1, varRandom2, varRandom3, \
+                                                            varRandom4,)
+            return scriptPadding9
 
 
     def AddRandomScripts(self, outputArg, mixerLengthArg, verboseArg):
