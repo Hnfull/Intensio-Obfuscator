@@ -9,6 +9,12 @@
   - **Replace** all names of `variables/classes/functions/files-name` to random strings with length defined then all `chars` to their hexadecimal value
   - **Delete** all `comments`, all `spaces lines`
   - **Padding** random `scripts` with an always differents values
+  
+## What purpose ?
+- Provides a high level obfuscation layer to prevent or delay the reading and understanding of your python program
+
+## Level of obfuscation
+- Weak obfuscation, can be used with other types of obfuscation
 
 ## Requirements
 - Python >= 3.5
@@ -27,19 +33,19 @@
 `python3.x intensio_obfuscator.py --help`
 
 ## Features
-| Features | Descriptions |
-| ------ | ------ |
-| delete comments | Delete all comments (this feature is executed by default) |
-| delete line spaces | Delete all spaces line (this feature is executed by default) |
-| correction padding empty classes/functions | Add padding to empty classes and functions, if the class or function contains only comments, the default feature `delete comments` will leave a class or function empty, this will avoid generating an error (this feature is executed by default) |
-| replace string to string mixed | Replace all names of variables/classes/functions to random strings with length defined|
-| padding script | Add padding of random scripts after each line|
-| replace file name | Replace all files name to random strings with length defined |
-| replace string to hex | Replace all chars to their hexadecimal value |
-| correction delete pyc file | Delete all pyc file in output directory (this feature is executed by default) |
-| mixer length lower | Define random strings length of 32 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified |
-| mixer length medium | Define random strings length of 64 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified |
-| mixer length high | Define random strings length of 128 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified |
+| Features | Descriptions | Purpose of obfuscation |
+| ------ | ------ |------ | 
+| Delete comments | Delete all comments (this feature is executed by default) | Delete potential behavioral informations |
+| Delete line spaces | Delete all spaces line (this feature is executed by default) | Reduce the code visibility in clear |
+| Correction padding empty classes/functions | Add padding to empty classes and functions, if the class or function contains comments only, the default feature `Delete comments` can potentially leave a class or function empty, this will avoid to generate an error (this feature is executed by default) | None, only avoid to generate errors |
+| Replace string to string mixed | Replace all names of variables/classes/functions to random strings with length defined| Reduce the code visibility in clear - Delay the deduction of the behavior of variables/classes/functions | 
+| Padding script | Add padding of random scripts after each line| Reduce the code visibility in clear - Create dead snippets code/classes/functions to blur and delay behavior analysis of program |
+| Replace file name | Replace all files name to random strings with length defined | Reduce the code visibility in clear - Reduce the deduction of functionnalities of files |
+| Replace string to hex | Replace all chars to their hexadecimal value | Reduce the code visibility in clear |
+| Correction delete pyc file | Delete all pyc file in output directory (this feature is executed by default) | Delete files already compiled without having been obfuscated before | 
+| Mixer length lower | Define random strings length of 32 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified | The longer the length is used, the more difficult the visibility of the code |
+| Mixer length medium | Define random strings length of 64 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified | The longer the length is used, the more difficult the visibility of the code |
+| Mixer length high | Define random strings length of 128 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified | The longer the length is used, the more difficult the visibility of the code |
 
 - Features can be executed separatly
     - `replace string to string mixed` -> `-rts, --replacetostr`
