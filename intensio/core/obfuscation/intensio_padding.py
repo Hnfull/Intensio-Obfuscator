@@ -47,7 +47,8 @@ class Padding:
             allNumIndentations.sort()
             return allNumIndentations[0]
 
-    def ScriptsGenerator(self, mixerLengthArg):
+
+    def ScriptsGenerator(self, randomClassesFunctions, mixerLengthArg):
         varRandom1  = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
         varRandom2  = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
         varRandom3  = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
@@ -63,10 +64,13 @@ class Padding:
         varRandom13 = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
         varRandom14 = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
 
-        # ---------- Python random scripts ---------- #
-        rand = random.randint(1, 9)
+        # ---------- Python random snippets code ---------- #
+        if randomClassesFunctions == True:
+            rand = random.randint(1, 15)
+        else:
+            rand = random.randint(1, 9)
 
-        # -- script 1 -- #
+        # -- snippet 1 -- #
         if rand == 1:
             scriptPadding1 = textwrap.dedent("""
                                                 {0} = '{5}'
@@ -86,7 +90,7 @@ class Padding:
                                                             varRandom6, varRandom7, varRandom8, varRandom9, varRandom10)
             return scriptPadding1
 
-        # -- script 2 -- #
+        # -- snippet 2 -- #
         elif rand == 2:
             scriptPadding2 = textwrap.dedent("""
                                                 {0} = '{2}'
@@ -98,7 +102,7 @@ class Padding:
                                                 """).format(varRandom1, varRandom2, varRandom3, varRandom4)
             return scriptPadding2
 
-        # -- script 3 -- #
+        # -- snippet 3 -- #
         elif rand == 3:
             scriptPadding3 = textwrap.dedent("""
                                                 {0} = '{6}'
@@ -128,7 +132,7 @@ class Padding:
                                                             varRandom11, varRandom12)
             return scriptPadding3
 
-        # -- script 4 -- #
+        # -- snippet 4 -- #
         elif rand == 4:
             scriptPadding4 = textwrap.dedent("""
                                                 {0} = '{3}'
@@ -144,7 +148,7 @@ class Padding:
                                                             varRandom5, varRandom6,)
             return scriptPadding4
 
-        # -- script 5 -- #
+        # -- snippet 5 -- #
         elif rand == 5:
             scriptPadding5 = textwrap.dedent("""
                                                 {0} = '{6}'
@@ -165,7 +169,7 @@ class Padding:
                                                             varRandom10, varRandom11, varRandom12)
             return scriptPadding5
     
-        # -- script 6 -- #
+        # -- snippet 6 -- #
         elif rand == 6:
             scriptPadding6 = textwrap.dedent("""
                                                 {0} = '{4}'
@@ -202,7 +206,7 @@ class Padding:
                                                             varRandom7, varRandom8)
             return scriptPadding6
         
-        # -- script 7 -- #
+        # -- snippet 7 -- #
         elif rand == 7:
             scriptPadding7 = textwrap.dedent("""
                                                 {0} = '{7}'
@@ -234,14 +238,14 @@ class Padding:
                                                             varRandom13, varRandom14)
             return scriptPadding7
 
-        # -- script 8 -- #
+        # -- snippet 8 -- #
         elif rand == 8:
             scriptPadding8 = textwrap.dedent("""
                                                 {0} = '{1}'
                                                 """).format(varRandom1, varRandom2)
             return scriptPadding8
 
-        # -- script 9 -- #
+        # -- snippet 9 -- #
         elif rand == 9:
             scriptPadding9 = textwrap.dedent("""
                                                 {0} = '{1}'
@@ -250,7 +254,110 @@ class Padding:
                                                             varRandom4,)
             return scriptPadding9
 
+        # ---------- Python random functions ---------- #
+        # -- snippet 10 -- #
+        elif rand == 10:
+            scriptPadding10 = textwrap.dedent("""
+                                                def {0}():
+                                                    {1} = '{2}'
+                                                    {3} = True
+                                                """).format(varRandom1, varRandom2, varRandom3, \
+                                                            varRandom4,)
+            return scriptPadding10
 
+        # -- snippet 11 -- #
+        elif rand == 11:
+            scriptPadding11 = textwrap.dedent("""
+                                                def {0}({1}):
+                                                    {1} = '{2}'
+                                                    {3} = '{4}'
+
+                                                    if {1} == {3}:
+                                                        for {5} in {3}:
+                                                            if {5} == {3}:
+                                                                continue
+                                                            else:
+                                                                {6} = False
+                                                """).format(varRandom1, varRandom2, varRandom3, \
+                                                            varRandom4, varRandom5, varRandom6, \
+                                                            varRandom7)
+            return scriptPadding11
+
+        # -- snippet 12 -- #
+        elif rand == 12:
+            scriptPadding12 = textwrap.dedent("""
+                                                def {0}({1}, {2}):
+                                                    {1} = '{3}'
+                                                    {2} = '{4}'
+
+                                                    try:
+                                                        for {5} in {1}:
+                                                            if {5} == {2}:
+                                                                {6} = []
+                                                                {7} = None
+                                                            else:
+                                                                pass
+                                                    except:
+                                                        pass
+                                                """).format(varRandom1, varRandom2, varRandom3, \
+                                                            varRandom4, varRandom5, varRandom6, \
+                                                            varRandom7, varRandom8)
+            return scriptPadding12
+
+        # -- snippet 13 -- #
+        elif rand == 13:
+            scriptPadding13 = textwrap.dedent("""
+                                                def {0}({1}, {2}, {3}):
+                                                    {1} = '{4}'
+                                                    {2} = '{5}'
+                                                    {6} = True
+
+                                                    while {6}:
+                                                        break
+
+                                                    for {6} in {2}:
+                                                        {3} = False
+                                                """).format(varRandom1, varRandom2, varRandom3, \
+                                                            varRandom4, varRandom5, varRandom6, \
+                                                            varRandom7)
+            return scriptPadding13
+
+        # ---------- Python random classes ---------- #
+        # -- snippet 14 -- #
+        elif rand == 14:
+            scriptPadding14 = textwrap.dedent("""
+                                                class {0}:
+                                                    def __init__(self):
+                                                        self.{1} = '{2}'
+                                                        self.{3} = '{4}'
+                                                    
+                                                    def {5}(self):
+                                                        {6} = True
+                                                        while {6}:
+                                                            break
+                                                """).format(varRandom1, varRandom2, varRandom3, \
+                                                            varRandom4, varRandom5, varRandom6, \
+                                                            varRandom7)
+            return scriptPadding14
+
+        # -- snippet 15 -- #
+        elif rand == 15:
+            scriptPadding15 = textwrap.dedent("""
+                                                class {0}:
+                                                    def __init__(self):
+                                                        self.{1} = '{2}'
+                                                        self.{3} = '{4}'
+                                                        self.{5} = []
+
+                                                    def {6}(self):
+                                                        self.{5} = True
+                                                        self.{3} = '{7}'
+                                                """).format(varRandom1, varRandom2, varRandom3, \
+                                                            varRandom4, varRandom5, varRandom6, \
+                                                            varRandom7, varRandom8)
+            return scriptPadding15
+
+            
     def AddRandomScripts(self, outputArg, mixerLengthArg, verboseArg):
         countScriptsAdded       = 0
         countLineAdded          = 0
@@ -370,18 +477,29 @@ class Padding:
                             elif re.match(addIndentScript, eachLine):
                                 spaces = spaces + basicIndentation # add indentation
                                 sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
-                                                                                        self, 
+                                                                                        self,
+                                                                                        randomClassesFunctions=False,
                                                                                         mixerLengthArg=mixerLengthArg), 
                                                                                         self.simpleSpace * spaces)
                                 )
                                 countScriptsAdded += 1
                             else:
-                                sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
-                                                                                        self, 
-                                                                                        mixerLengthArg=mixerLengthArg), 
-                                                                                        self.simpleSpace * spaces)
-                                )
-                                countScriptsAdded += 1
+                                if spaces == 0:
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                                                                            self,
+                                                                                            randomClassesFunctions=True,
+                                                                                            mixerLengthArg=mixerLengthArg), 
+                                                                                            self.simpleSpace * spaces)
+                                    )
+                                    countScriptsAdded += 1
+                                else:
+                                    sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
+                                                                                            self,
+                                                                                            randomClassesFunctions=False,
+                                                                                            mixerLengthArg=mixerLengthArg), 
+                                                                                            self.simpleSpace * spaces)
+                                    )
+                                    countScriptsAdded += 1
 
                 bar.next(1)
             bar.finish()
@@ -418,8 +536,8 @@ class Padding:
         emptyClassInfoCheck     = {}
         basicIndentation        = None
 
-        classDefined        = r"class\s+(\w+)"
-        detectClass         = r"^class\s+\w+|\s+class\s+\w+"        
+        classDefined        = r"class\s+\w+(\w+)"
+        detectClass         = r"\s*class\s+\w+"        
         
         recursFiles = self.utils.CheckFileDir(
                                                 output=outputArg, 
@@ -466,7 +584,7 @@ class Padding:
                             else: 
                                 counterToCheckIndent += 1
                                 search = re.search(classDefined, eachLine)
-                
+    
                 # -- Add padding in empty class(es) -- #
                 numberLine = 0
                 with fileinput.input(file, inplace=True) as inputFile:
@@ -555,7 +673,7 @@ class Padding:
         basicIndentation        = None
 
         functionDefined = r"def\s+(\w+)"   
-        detectFunction  = r"^def\s+\w+|\s+def\s\w+"
+        detectFunction  = r"\s*def\s+\w+"
         
         recursFiles = self.utils.CheckFileDir(
                                                 output=outputArg, 

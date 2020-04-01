@@ -91,7 +91,7 @@ class Delete:
         quoteOfCommentsMultipleLines    = r"^\s+[\"|\']{3}|^[\"|\']{3}"
         quoteIntoVariableOrPrint        = r"s*print.*\(?[\"|\']{3}|.*\=\s*[\"|\']{3}"
         quoteOfCommentsOneLine          = r".*[\"]{3}.*[\"]{3}|.*[\']{3}.*[\']{3}\s*$"
-        commentsAfterLine               = r"\#[^\"|^\'|^\.|^\?|^\*|^\!|^\]|^\[|^\\|^\)|^\(|^\{|^\}].*"
+        commentsAfterLine               = r"\s*\#[^\"|^\'|^\.|^\?|^\*|^\!|^\]|^\[|^\\|^\)|^\(|^\{|^\}].*"
 
         recursFiles = self.utils.CheckFileDir(
                                                 output=outputArg, 
