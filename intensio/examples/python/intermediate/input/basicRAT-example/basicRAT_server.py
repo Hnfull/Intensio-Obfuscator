@@ -80,8 +80,9 @@ def EmptyFunc():
     """ comment """
 
 class EmptyClass:
-    """ comment """
-    
+
+    """dd"""
+
 def main():
     parser  = get_parser()
     args    = vars(parser.parse_args())

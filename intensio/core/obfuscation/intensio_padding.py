@@ -536,7 +536,7 @@ class Padding:
         emptyClassInfoCheck     = {}
         basicIndentation        = None
 
-        classDefined        = r"class\s+\w+(\w+)"
+        classDefined        = r"\s*class\s+(\w+)"
         detectClass         = r"\s*class\s+\w+"        
         
         recursFiles = self.utils.CheckFileDir(
@@ -562,7 +562,7 @@ class Padding:
                     for eachLine in readF:
                         numberLineInFile += 1
 
-                # -- Find and put empty class(es) in dict -- #
+                # -- Find empty class(es) in dict -- #
                 with open(file, "r") as readFile:
                     readF = readFile.readlines()
                     for eachLine in readF:
@@ -577,7 +577,7 @@ class Padding:
                                     numberLine += 1 # Adding one line because padding will be added
                         if re.match(detectClass, eachLine):
                             spacesClass = len(eachLine) - len(eachLine.lstrip())
-                            if numberLine == numberLineInFile:
+                            if numberLine == numberLineInFile: # If empty class in last line
                                 search = re.search(classDefined, eachLine)
                                 if search:
                                     emptyClassInfo[search.group(1)] = file
@@ -603,7 +603,7 @@ class Padding:
                         sys.stdout.write(eachLine)
                         if re.match(detectClass, eachLine):
                             spacesClass = len(eachLine) - len(eachLine.lstrip())
-                            if numberLine == numberLineInFile:
+                            if numberLine == numberLineInFile: # If empty class in last line
                                 paddingVar1 = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
                                 paddingVar2 = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
                                 finalVarPadding = "{} = '{}'\n".format(paddingVar1, paddingVar2)
@@ -635,7 +635,7 @@ class Padding:
                                         numberLine += 1
                             if re.match(detectClass, eachLine):
                                 spacesClass = len(eachLine) - len(eachLine.lstrip())
-                                if numberLine == numberLineInFile:
+                                if numberLine == numberLineInFile: # If empty class in last line
                                     search = re.search(classDefined, eachLine)
                                     if search:
                                         emptyClassInfo[search.group(1)] = file
@@ -672,7 +672,7 @@ class Padding:
         emptyFuncInfoCheck      = {}
         basicIndentation        = None
 
-        functionDefined = r"def\s+(\w+)"   
+        functionDefined = r"\s*def\s+(\w+)"   
         detectFunction  = r"\s*def\s+\w+"
         
         recursFiles = self.utils.CheckFileDir(
@@ -698,7 +698,7 @@ class Padding:
                     for eachLine in readF:
                         numberLineInFile += 1
 
-                # -- Find and put empty function(s) in dict -- #
+                # -- Find empty function(s) in dict -- #
                 with open(file, "r") as readFile:
                     readF = readFile.readlines()
                     for eachLine in readF:
@@ -713,7 +713,7 @@ class Padding:
                                     numberLine += 1 # Adding one line because padding will be added
                         if re.match(detectFunction, eachLine):
                             spacesFunc = len(eachLine) - len(eachLine.lstrip())
-                            if numberLine == numberLineInFile:
+                            if numberLine == numberLineInFile: # If empty function last line
                                 search = re.search(functionDefined, eachLine)
                                 if search:
                                     emptyFuncInfo[search.group(1)] = file
@@ -739,7 +739,7 @@ class Padding:
                         sys.stdout.write(eachLine)
                         if re.match(detectFunction, eachLine):
                             spacesFunc = len(eachLine) - len(eachLine.lstrip())
-                            if numberLine == numberLineInFile:
+                            if numberLine == numberLineInFile: # IIf empty function last line
                                 paddingVar1 = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
                                 paddingVar2 = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
                                 finalVarPadding = "{} = '{}'\n".format(paddingVar1, paddingVar2)
@@ -771,7 +771,7 @@ class Padding:
                                         numberLine += 1
                             if re.match(detectFunction, eachLine):
                                 spacesFunc = len(eachLine) - len(eachLine.lstrip())
-                                if numberLine == numberLineInFile:
+                                if numberLine == numberLineInFile: # If empty function last line
                                     search = re.search(functionDefined, eachLine)
                                     if search:
                                         emptyFuncInfoCheck[search.group(1)] = file

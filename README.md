@@ -8,13 +8,13 @@
 - Intensio-Obfsucator tool takes a python source code and transform it into an obfuscated python code
   - **Replace** all names of `variables/classes/functions/files-name` to random strings with length defined then all `chars` to their hexadecimal value
   - **Delete** all `comments`, all `spaces lines`
-  - **Padding** random `scripts` with an always differents values
+  - **Padding** random `snippets code/functions/classes` with an always differents values
   
 ## What purpose ?
 - Provides a high level obfuscation layer to prevent or delay the reading and understanding of your python program
 
 ## Level of obfuscation
-- Weak obfuscation, can be used with other types of obfuscation
+- Weak obfuscation if used alone, can be used with other types of obfuscation
 
 ## Requirements
 - Python >= 3.5
@@ -37,9 +37,9 @@
 | ------ | ------ |------ | 
 | Delete comments | Delete all comments (this feature is executed by default) | Delete potential behavioral informations |
 | Delete line spaces | Delete all spaces line (this feature is executed by default) | Reduce the code visibility in clear |
-| Correction padding empty classes/functions | Add padding to empty classes and functions, if the class or function contains comments only, the default feature `Delete comments` can potentially leave a class or function empty, this will avoid to generate an error (this feature is executed by default) | None, only avoid to generate errors |
+| Correction padding empty classes/functions | Add padding to empty classes and functions, if the class or function contains comments only, the default feature `Delete comments` can potentially let a class or function empty, this will avoid to generate an error (this feature is executed by default) | None, only to avoid to generate errors|
 | Replace string to string mixed | Replace all names of variables/classes/functions to random strings with length defined| Reduce the code visibility in clear - Delay the deduction of the behavior of variables/classes/functions | 
-| Padding script | Add padding of random scripts after each line| Reduce the code visibility in clear - Create dead snippets code/classes/functions to blur and delay behavior analysis of program |
+| Padding script | Add padding of random scripts after each line| Reduce the code visibility in clear - add dead snippets code/classes/functions to blur and delay behavior analysis of program |
 | Replace file name | Replace all files name to random strings with length defined | Reduce the code visibility in clear - Reduce the deduction of functionnalities of files |
 | Replace string to hex | Replace all chars to their hexadecimal value | Reduce the code visibility in clear |
 | Correction delete pyc file | Delete all pyc file in output directory (this feature is executed by default) | Delete files already compiled without having been obfuscated before | 
@@ -55,6 +55,7 @@
 
 ## Usages
 - **Read these Documentations before to use Intensio-Obfuscator tool !**
+- **Certain types of pattern are not supported**
     - [Steps of usage](docs/steps_usage/python_steps_usage.md)
     - [Required code format](docs/recommendations/python_code_recommendations.md)
     - [Malfunctions](docs/malfunctions/python_code_malfunctions.md)
