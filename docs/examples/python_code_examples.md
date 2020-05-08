@@ -4,7 +4,7 @@
 
 - **Basic obfuscation**
 - Defined `length` of random strings generated to `32` chars - `replace` all names of variables/classes/functions
-  - ` python3.x intensio_obfuscator.py -i examples/python/basic/input/basicRAT-example -o examples/python/basic/output/basicRAT-example -mlen lower -rts`
+  - `python3.x intensio_obfuscator.py -i examples/python/basic/input/basicRAT-example -o examples/python/basic/output/basicRAT-example -mlen lower -rts`
       - [source directory of project](../../intensio/examples/python/basic/input/basicRAT-example)
       - [output directory of project](../../intensio/examples/python/basic/output/basicRAT-example)
 

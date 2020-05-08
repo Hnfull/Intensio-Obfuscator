@@ -34,6 +34,59 @@ class Utils:
         return merge
 
 
+    def DetectIntoSimpleQuotes(self, line, maxIndexLine=None):
+            if maxIndexLine == None:
+                maxIndex = len(line)
+            else:
+                maxIndex = maxIndexLine
+
+            countQuotes = 0
+            countLoop = 0
+
+            for i in line:
+                if countLoop == maxIndex:
+                    break
+                else:
+                    pass
+
+                if i == "\"" or i == "\'":      
+                    countQuotes += 1
+                countLoop += 1
+
+            if countQuotes == 0:
+                return False
+            elif (countQuotes % 2) == 0:
+                return False
+            else:
+                return True
+
+
+    def DetectMultipleLinesQuotes(self, line):
+        countQuotes = 0
+        simpleQuotes = 0
+        doubleQuotes = 0
+        numberQuotes = 0
+
+        for i in line:
+            if i == "\"" or i == "\'":
+                if i == "\'":
+                    simpleQuotes += 1
+                if i == "\"":
+                    doubleQuotes += 1
+        
+        if simpleQuotes >= doubleQuotes:
+            numberQuotes = simpleQuotes
+        else:
+            numberQuotes = doubleQuotes
+
+        if numberQuotes == 0:
+            return False
+        elif (numberQuotes % 2) == 0:
+            return False
+        else:
+            return True
+
+
     def CheckFileDir(self, output, detectFiles, blockDir, blockFile, dirOnly):
         filesName       = []
 

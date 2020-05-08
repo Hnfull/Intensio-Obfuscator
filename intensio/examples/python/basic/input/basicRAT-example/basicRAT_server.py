@@ -59,11 +59,15 @@ ______           _     ______  ___ _____   _            _
 
 '''
 
-
 COMMANDS = [
             'download', 'help', 'persistence', 'quit', 'rekey',
             'run', 'scan', 'survey', 'unzip', 'upload', 'wget'
 ]
+
+testStringVar1 = """a""" + "HELP_TEXT"
+testStringVar2 = '''HELP_TEXT''' + HELP_TEXT + '''COMMANDS'''
+testStringVar3 = "COMMANDS"
+testStringVar4 = 'HELP_TEXT' + 'COMMANDS' + "HELP_TEXT"
 
 #--------------------------------------------------- [Function(s)/Class] ----------------------------------------------------#
 

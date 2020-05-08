@@ -51,7 +51,7 @@ class Replace:
             # -- Add in final line list all chars mixed -- #
             if charValue != []:
                 for obfIndex, obfValue in enumerate(charValue):
-                    if obfIndex == 0: # First letter in string mixed are already add in the final line
+                    if obfIndex == 0: # First letter in string mixed are already added in the final line
                         continue
                     returnLine.append(obfValue)
                 charValue = []
@@ -79,9 +79,8 @@ class Replace:
                                     # -- Check if letter of word is equal to letter of key -- #
                                     if letterKey == letterLine:
                                         # -- Begin process to check -- #
-                                        if indexKey == 0:
+                                        if indexKey == 0: # if equal to the first letter of word on <key> variable 
                                             indexExplore = indexLine + len(key) # Place index position after the word
-
                                             # -- If indexError return to next loop -- #
                                             try:
                                                 getIndexLineList[indexExplore]
@@ -90,15 +89,15 @@ class Replace:
 
                                             # -- Check the char after and before the word -- #
                                             if re.match(detectChars, getIndexLineList[indexExplore]):
-                                                # Index check if word finded is not into the other word
-                                                indexExploreBefore  = indexLine - 1
-                                                # Index check char after the end string found with 'detectChars' regex
-                                                indexExploreAfter   = indexLine + 2
+                                                # Index check if word found is not into the other word
+                                                indexExploreBefore = indexLine - 1
+                                                # Index check if char after the end of string is found with 'detectChars' regex
+                                                indexExploreAfter = indexExplore
 
                                                 try:
                                                     if not re.match(r"\w|\\|\%", getIndexLineList[indexExploreBefore]):
                                                         # -- Check if it's 'from' and 'import' file in line to avoid replace \
-                                                        # name of file if variable is identic name to file -- #
+                                                        # name of file if variable is identical name to file -- #
                                                         getLine = "".join(getIndexLineList)
                                                         if fileNameImport == False:
                                                             if "import" in getLine:
@@ -108,13 +107,13 @@ class Replace:
                                                                     breakLine = getIndexLineList[:indexLine]
                                                                     breakLine = "".join(breakLine)
                                                                     if not "import" in breakLine:
-                                                                        # -- It's file because only 'from'key word -- #
+                                                                        # -- It's a file because only 'from'key word -- #
                                                                         checkCharAfterWord = 1
                                                                     else:
                                                                         checkCharAfterWord = 0
                                                                 else:
                                                                     checkCharAfterWord = 1
-                                                            # -- Check if after char find by 'detectChars' variable it's \
+                                                            # -- Check if after char of the word found by 'detectChars' is \
                                                             # not ' or " -- #
                                                             elif re.match(r"\"|\'", getIndexLineList[indexExploreAfter]):
                                                                 if re.match(r"\[|\(|\{", getIndexLineList[indexExploreAfter - 1]):
@@ -168,21 +167,25 @@ class Replace:
 
                                                     # -- Check if key == word -- #
                                                     if checkGetWord == checkGetKey:
-                                                        for obfChar in value:
-                                                            charValue.append(obfChar)
+                                                        # -- Check if word is not in strings quotes and if a variable is in format() in end of multiple line -- #
+                                                        if self.utils.DetectIntoSimpleQuotes(getLine, indexLine) == False or self.utils.DetectMultipleLinesQuotes(getLine) == True:
+                                                            for obfChar in value:
+                                                                charValue.append(obfChar)
 
-                                                        letterLine = letterValue
-                                                        raise BreakLoop
+                                                            letterLine = letterValue
+                                                            raise BreakLoop
+                                                        else:
+                                                            break
                                                     else:
-                                                        continue
+                                                        break
                                                 else:
-                                                    continue
+                                                    break
                                             else:
-                                                continue
+                                                break
                                         else:
-                                            continue
+                                            break
                                     else:
-                                        continue
+                                        break
 
                         raise BreakLoop
 
@@ -434,7 +437,11 @@ class Replace:
                                 if re.match(quotesInRegex, eachLine):
                                     sys.stdout.write(eachLine)
                                 else:
-                                    checkQuotePassing += 1
+                                    if self.utils.DetectMultipleLinesQuotes(eachLine) == True:
+                                        checkQuotePassing += 1
+                                    else:
+                                        pass
+
                                     eachLine = Replace.EachLine(
                                                                 self,
                                                                 line=eachLine,
@@ -444,11 +451,15 @@ class Replace:
                                     )
                                     sys.stdout.write(eachLine)
                                     continue
+
                             elif re.match(quotesEndMultipleLines, eachLine):
                                 if re.match(quotesInRegex, eachLine):
                                     sys.stdout.write(eachLine)
                                 else:
-                                    checkQuotePassing += 1
+                                    if self.utils.DetectMultipleLinesQuotes(eachLine) == True:
+                                        checkQuotePassing += 1
+                                    else:
+                                        pass
                                     eachLine = Replace.EachLine(
                                                                 self,
                                                                 line=eachLine,
@@ -460,6 +471,7 @@ class Replace:
                                     if checkQuotePassing == 2:
                                         checkQuotePassing = 0
                                     continue
+
                             if checkQuotePassing == 1:
                                 sys.stdout.write(eachLine)
                             elif checkQuotePassing == 2:

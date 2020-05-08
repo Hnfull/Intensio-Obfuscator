@@ -86,11 +86,12 @@ class Delete:
         numberLine              = 0
             
         commentsBeginLine               = r"^\#.*"
-        quoteOfCommentsEndLines         = r".*[\'\|\"]{3}\s*$"
+        quoteOfCommentsEndLines         = r".*[\'|\"]{3}\s*$"
         quoteInRegex                    = r"={1}\s*r[\"|\']{3}"
         quoteOfCommentsMultipleLines    = r"^\s+[\"|\']{3}|^[\"|\']{3}"
-        quoteIntoVariableOrPrint        = r"s*print.*\(?[\"|\']{3}|.*\=\s*[\"|\']{3}"
-        quoteOfCommentsOneLine          = r".*[\"]{3}.*[\"]{3}|.*[\']{3}.*[\']{3}\s*$"
+        checkCommentCharInStringQuotes  = r"\#\s*.+[\"]{1}|\#\s*.+[\']{1}"
+        quoteIntoVariableOrPrint        = r"\s*print.*\(?[\"|\']{3}|.*\=\s*[\"|\']{3}"
+        quoteOfCommentsOneLine          = r"^\s*[\"]{3}.*[\"]{3}\s*$|^\s*[\']{3}.*[\']{3}\s*$"
         commentsAfterLine               = r"\s*\#[^\"|^\'|^\.|^\?|^\*|^\!|^\]|^\[|^\\|^\)|^\(|^\{|^\}].*"
 
         recursFiles = self.utils.CheckFileDir(
@@ -117,11 +118,7 @@ class Delete:
                             continue
                         if multipleLinesComments == 1 or noComments == 1:
                             if re.match(quoteOfCommentsEndLines, eachLine):
-                                if re.match(quoteInRegex, eachLine):
-                                    countLineInput += 1
-                                    continue
-                                elif re.match(quoteIntoVariableOrPrint, eachLine):
-                                    countLineInput += 1
+                                if re.match(quoteInRegex, eachLine) or re.match(quoteIntoVariableOrPrint, eachLine):
                                     continue
                                 else:
                                     if multipleLinesComments == 1:
@@ -130,26 +127,27 @@ class Delete:
                                     else:
                                         noComments = 0
                                         sys.stdout.write(eachLine)
-                                    continue
                             else:
                                 if noComments == 1:
                                     sys.stdout.write(eachLine)
                                 else:
                                     countLineInput += 1
-                                continue
                         elif multipleLinesComments == 0:
                             if re.match(quoteOfCommentsMultipleLines, eachLine):   
                                 if re.match(quoteOfCommentsOneLine, eachLine):
                                     countLineInput += 1
-                                    continue
                                 else:
-                                    countLineInput += 1
-                                    multipleLinesComments = 1
-                                    continue
+                                    if self.utils.DetectMultipleLinesQuotes(eachLine) == True:
+                                        countLineInput += 1
+                                        multipleLinesComments = 1
+                                    else:
+                                        sys.stdout.write(eachLine)
                             elif re.match(quoteIntoVariableOrPrint, eachLine):
-                                noComments = 1
-                                sys.stdout.write(eachLine)
-                                continue
+                                if self.utils.DetectMultipleLinesQuotes(eachLine) == False:
+                                    sys.stdout.write(eachLine)
+                                else:
+                                    sys.stdout.write(eachLine)
+                                    noComments = 1
                             else:
                                 sys.stdout.write(eachLine)
                         else:
@@ -167,7 +165,7 @@ class Delete:
                             eachLine = eachLine.replace(searchCommentsBeginLine.group(0), "")
                             sys.stdout.write(eachLine)
                         elif searchCommentsAfterLine:
-                            if re.match(r"\#\s*.+[\"]{1}|\#\s*.+[\']{1}", searchCommentsAfterLine.group(0)): # Check if '#' char is in a string
+                            if re.match(checkCommentCharInStringQuotes, searchCommentsAfterLine.group(0)):
                                 sys.stdout.write(eachLine)
                             else:
                                 eachLine = eachLine.replace(searchCommentsAfterLine.group(0), "")
@@ -181,8 +179,7 @@ class Delete:
             bar.finish()
             
         # -- Check if all comments are deleted -- #
-        noComments              = 0
-        multipleLinesComments   = 0
+        multipleLinesComments = 0
 
         with Bar("Check       ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
@@ -196,43 +193,40 @@ class Delete:
                         else:
                             if multipleLinesComments == 1 or noComments == 1:
                                 if re.match(quoteOfCommentsEndLines, eachLine):
-                                    if re.match(quoteInRegex, eachLine):
-                                        countLineOutput += 1
-                                        continue
-                                    elif re.match(quoteIntoVariableOrPrint, eachLine):
-                                        countLineOutput += 1
+                                    if re.match(quoteInRegex, eachLine) or re.match(quoteIntoVariableOrPrint, eachLine):
                                         continue
                                     else:
                                         if multipleLinesComments == 1:
                                             multipleLinesComments = 0
-                                            checkDeleted[numberLine] = "{} ( multiple lines comments )".format(file)
                                             countLineOutput += 1
+                                            checkDeleted[numberLine] = "{} ( multiple lines comments )".format(file)
                                         else:
                                             noComments = 0
-                                        continue
                                 else:
                                     if noComments == 1:
                                         pass
                                     else:
                                         countLineOutput += 1
-                                    continue
                             elif multipleLinesComments == 0:
                                 if re.match(quoteOfCommentsMultipleLines, eachLine):   
                                     if re.match(quoteOfCommentsOneLine, eachLine):
                                         checkDeleted[numberLine] = file
                                         countLineOutput += 1
-                                        continue
                                     else:
-                                        countLineOutput += 1
-                                        multipleLinesComments = 1
-                                        continue
+                                        if self.utils.DetectMultipleLinesQuotes(eachLine) == True:
+                                            countLineOutput += 1
+                                            multipleLinesComments = 1
+                                        else:
+                                            pass
                                 elif re.match(quoteIntoVariableOrPrint, eachLine):
-                                    noComments = 1
-                                    continue
+                                    if self.utils.DetectMultipleLinesQuotes(eachLine) == False:
+                                        pass
+                                    else:
+                                        noComments = 1
                                 else:
-                                    pass
+                                    continue
                             else:
-                                pass
+                                continue
                   
                 with open(file, "r") as readFile:
                     readF = readFile.readlines()
@@ -251,7 +245,7 @@ class Delete:
                                 checkDeleted[numberLine] = file
                                 countLineOutput += 1
                             else:
-                                pass
+                                continue
 
                 bar.next(1)  
             bar.finish()

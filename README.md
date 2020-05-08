@@ -1,7 +1,7 @@
-# Intensio-Obfuscator
+# Intensio-Obfuscator (Beta)
 
 ![](https://img.shields.io/badge/Python->=3.5-blue.svg)
-![](https://img.shields.io/badge/Version-1.0.8.2-green.svg)
+![](https://img.shields.io/badge/Version-1.0.9-green.svg)
 ![](https://img.shields.io/badge/Licence-MIT-red.svg)
 
 ## What is this ?
@@ -76,13 +76,11 @@
 - [Python files obfuscated](docs/examples/python_code_examples.md)
 
 ## Todo
-- Next Version 1.0.9-x:
-    - Optimisation of 'Replace string to string' feature allowing to reduce considerably time to obfuscate code
-
 - Version 1.0.1-x:
     - Code optimization
     - Fix issues
     - Improved features already present
+    - Add other functionalities
 
 ## License
 - MIT

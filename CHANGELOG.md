@@ -1,5 +1,14 @@
 # CHANGELOG of Intensio-Obfuscator project
 
+## 05-09-2020
+- [upgrade] to version 1.0.9
+- [fix] issue #26
+- [fix] issue #23 
+- [fix] regex in delete comments feature which could generate bad behavior with certain type of case involving quotes strings
+- [fix] bad detection when the variable had a value on multiple line in replace string to string feature
+- [update] henceforth it's possible to launch tool without obfuscation argument as [-rts, -ps, -rfn, -rth]
+- [add] execution time of Intensio-Obfuscator tool
+
 ## 03-29-2020
 - [fix] issue #37
 

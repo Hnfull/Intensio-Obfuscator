@@ -1,25 +1,6 @@
 # Malfunctions
 
-### 1) When [-rts, --replacetostr] is called
-- If a `variable/class/function` has an identical name with a word between `' '` or `" "` in an `stdout` function
-  - Can generate an error = **no**
-    - **input:**
-      ```python
-      test = "mixer"
-
-      print("this is a test !")
-      ```
-
-    - **output:**
-      ```python
-      ChrVMVxrZASDnzCcsWSmIBrfoWgQkdKD = "mixer"
-
-      print("this is a ChrVMVxrZASDnzCcsWSmIBrfoWgQkdKD !")
-      # your text will have the same value that the mixer value of `variables/class/function`
-      ```
-    - You can exclude manually a name of variable/class/function edit [word exclusion](../../intensio/exclude/string_to_string_mixed/exclude_word_by_user.txt)
-
-### 2) when `[-rfn, --replacefilename]` is called
+### 1) when `[-rfn, --replacefilename]` is called
 - If you `import` python file
   - Can generate an error = **no**
     - **Recommended:**

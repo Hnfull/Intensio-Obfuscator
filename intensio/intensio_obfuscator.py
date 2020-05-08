@@ -56,6 +56,7 @@ from core.obfuscation.intensio_delete   import Delete
 #--------------------------------------------------------- [Global] ---------------------------------------------------------#
 
 def main():
+    startProgramTime = time.time() # 
     if sys.version_info[0] != 3:
         print(Colors.ERROR + "[-] Intensio-Obfuscator only support Python 3.x" + Colors.DISABLE)
         sys.exit(1)
@@ -77,10 +78,7 @@ def main():
     if args.GetArgsValue().input:
         if args.GetArgsValue().output:
             if re.match(r"^lower$|^medium$|^high$", args.GetArgsValue().mixerlength):
-                if not args.GetArgsValue().paddingscript and not args.GetArgsValue().replacetostr \
-                    and not args.GetArgsValue().replacefilename and not args.GetArgsValue().replacetohex:
-                    print("\n" + Colors.ERROR + "[-] Need at least one argument [-rts] - [-ps] - [-rfn] - [-rth]" + Colors.DISABLE)
-                    sys.exit(1)
+                pass
             else:
                 print(Colors.ERROR + "[-] -mlen, --mixerlength argument [lower-medium-high] only supported" + Colors.DISABLE + "\n")
                 sys.exit(1)
@@ -94,6 +92,9 @@ def main():
     for line in INTENSIO_BANNER.split("\n"):
         time.sleep(0.05)
         print(line)
+
+    print("\n\n" + Colors.SECTION + "********************************* [ START ] **********************************" \
+        + Colors.DISABLE + "\n")
 
     # -- Analysis and set up of the work environment -- #
     print("\n\n" + Colors.SECTION + "********************* [ Analyze and setup environment ] **********************" \
@@ -136,7 +137,7 @@ def main():
         print("\n[-] Obfuscation delete comments -> " + Colors.ERROR  + "Failed" + Colors.DISABLE)
         if not args.GetArgsValue().verbose:
             print("\n[!] Retry with [-v, --verbose] parameter")
-
+    
     print("\n\n" + Colors.SECTION + "******************** [ Obfuscation delete line space(s) ] ********************" \
         + Colors.DISABLE + "\n")
     if deleteData:
@@ -171,7 +172,7 @@ def main():
         print("\n[-] Padding empty class -> " + Colors.ERROR + "Failed" + Colors.DISABLE)
         if not args.GetArgsValue().verbose:
             print("\n[!] Retry with [-v, --verbose] parameter")
-
+    
     # -- If empty functions (avert to generate an error) -- #
     print("\n\n" + Colors.SECTION + "****************** [ Correction padding empty function(s) ] ******************" \
         + Colors.DISABLE + "\n")
@@ -191,7 +192,7 @@ def main():
         print("\n[-] Padding empty function -> " + Colors.ERROR + "Failed" + Colors.DISABLE)
         if not args.GetArgsValue().verbose:
             print("\n[!] Retry with [-v, --verbose] parameter")
-
+    
     print("\n\n" + Colors.SECTION + "************ [ Obfuscation replace string(s) to string(s) mixed ] ************" \
         + Colors.DISABLE + "\n")
     if args.GetArgsValue().replacetostr:
@@ -317,6 +318,17 @@ def main():
         if not args.GetArgsValue().verbose:
                 print("\n[!] Retry with [-v, --verbose] parameter for more informations")
 
+    print("\n\n" + Colors.SECTION + "********************************** [ END ] ************************************" \
+        + Colors.DISABLE + "\n")
+
+    # -- Result of execution time -- #
+    endProgramTime = time.time()
+    executionTime = endProgramTime - startProgramTime
+    executionTime = str(executionTime)
+    executionTime = executionTime.split(".")
+
+    print("[*] Execution Time : {} second(s)".format(executionTime[0]))
+    
 #----------------------------------------------------------------------------------------------------------------------------#
 
 #----------------------------------------------------------------------------------------------------------------------------#
