@@ -87,8 +87,37 @@ class Utils:
             return True
 
 
+    def VerifyMultipleLinesComments(self, line):
+        countQuotes = 0
+        simpleQuotes = 0
+        doubleQuotes = 0
+        numberQuotes = 0
+
+        for i in line:
+            if i == "\"" or i == "\'":
+                if i == "\'":
+                    simpleQuotes += 1
+                if i == "\"":
+                    doubleQuotes += 1
+        
+        if simpleQuotes >= doubleQuotes:
+            numberQuotes = simpleQuotes
+        else:
+            numberQuotes = doubleQuotes
+
+        if numberQuotes == 0:
+            return False
+        elif (numberQuotes % 2) == 0:
+            return False
+        else:
+            if numberQuotes == 3:
+                return True
+            else:
+                return False
+
+
     def CheckFileDir(self, output, detectFiles, blockDir, blockFile, dirOnly):
-        filesName       = []
+        filesName = []
 
         if dirOnly == False:
             recursFiles = [
@@ -128,6 +157,21 @@ class Utils:
                         continue
 
         return filesName[:]
+
+
+class Reg:
+    # -- To detect commentaries -- #
+    hashCommentsAfterLine = r"^[^\#]+\#+"
+    hashCommentsBeginLine = r"^\#.*|^\s+\#.*"
+
+    checkIfVarQuotes    = r"\s*\w+\s*\=\s*[\"|\']{3}"
+    checkIfRegexQuotes  = r"\s*r[\"]{1}.*[[\"]{1}|\s*r[\']{1}.*[[\']{1}"
+    checkIfStdoutQuotes = r"\s*print{1}\s*\(?[\"|\']{3}|\s*sys\.write\.stdout{1}\s*\(?[\"|\']{3}"
+    
+    checkIfEndVarStdoutQuotes = r".*\"{3}|.*\'{3}"     
+
+    quotesCommentsMultipleLines = r"^\s+[\"|\']{3}\s*|^[\"|\']{3}\s*"
+    quotesCommentsOneLine       = r"^\s*[\"]{3}.*[\"]{3}\s*$|^\s*[\']{3}.*[\']{3}\s*$"
 
 
 class Colors:

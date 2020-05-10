@@ -10,14 +10,14 @@ import os
 import sys
 from progress.bar import Bar
 
-from core.utils.intensio_utils import Utils
+from core.utils.intensio_utils import Utils, Reg
 
 #------------------------------------------------- [Function(s)/Class(es)] --------------------------------------------------#
 
 class Delete:
 
     def __init__(self):
-        self.utils = Utils()
+        self.utils  = Utils()
 
 
     def LinesSpaces(self, outputArg, verboseArg):
@@ -76,24 +76,16 @@ class Delete:
 
 
     def Comments(self, outputArg, verboseArg):
-        checkNumQuote           = []
+        getIndexList            = []
         checkDeleted            = {}
-        countLineOutput         = 0
-        countLineInput          = 0
-        noComments              = 0
+        countLineCommentOutput  = 0
+        countLineCommentInput   = 0
         multipleLinesComments   = 0
         countRecursFiles        = 0
         numberLine              = 0
+        noCommentsQuotes        = 0
+        detectIntoSimpleQuotes  = None
             
-        commentsBeginLine               = r"^\#.*"
-        quoteOfCommentsEndLines         = r".*[\'|\"]{3}\s*$"
-        quoteInRegex                    = r"={1}\s*r[\"|\']{3}"
-        quoteOfCommentsMultipleLines    = r"^\s+[\"|\']{3}|^[\"|\']{3}"
-        checkCommentCharInStringQuotes  = r"\#\s*.+[\"]{1}|\#\s*.+[\']{1}"
-        quoteIntoVariableOrPrint        = r"\s*print.*\(?[\"|\']{3}|.*\=\s*[\"|\']{3}"
-        quoteOfCommentsOneLine          = r"^\s*[\"]{3}.*[\"]{3}\s*$|^\s*[\']{3}.*[\']{3}\s*$"
-        commentsAfterLine               = r"\s*\#[^\"|^\'|^\.|^\?|^\*|^\!|^\]|^\[|^\\|^\)|^\(|^\{|^\}].*"
-
         recursFiles = self.utils.CheckFileDir(
                                                 output=outputArg, 
                                                 detectFiles="py", 
@@ -105,7 +97,7 @@ class Delete:
         for i in recursFiles:
             countRecursFiles += 1
         
-        # -- Delete comments and Count comments will be deleted -- #            
+        # -- Delete comments and count comments will be deleted -- #            
         print("\n[+] Running delete comments in {} file(s)...\n".format(countRecursFiles))
 
         with Bar("Obfuscation ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
@@ -115,72 +107,77 @@ class Delete:
                     for eachLine in inputFile:
                         if "coding" in eachLine or "#!" in eachLine:
                             sys.stdout.write(eachLine)
-                            continue
-                        if multipleLinesComments == 1 or noComments == 1:
-                            if re.match(quoteOfCommentsEndLines, eachLine):
-                                if re.match(quoteInRegex, eachLine) or re.match(quoteIntoVariableOrPrint, eachLine):
-                                    continue
-                                else:
-                                    if multipleLinesComments == 1:
-                                        multipleLinesComments = 0
-                                        countLineInput += 1
-                                    else:
-                                        noComments = 0
-                                        sys.stdout.write(eachLine)
-                            else:
-                                if noComments == 1:
-                                    sys.stdout.write(eachLine)
-                                else:
-                                    countLineInput += 1
-                        elif multipleLinesComments == 0:
-                            if re.match(quoteOfCommentsMultipleLines, eachLine):   
-                                if re.match(quoteOfCommentsOneLine, eachLine):
-                                    countLineInput += 1
-                                else:
-                                    if self.utils.DetectMultipleLinesQuotes(eachLine) == True:
-                                        countLineInput += 1
-                                        multipleLinesComments = 1
-                                    else:
-                                        sys.stdout.write(eachLine)
-                            elif re.match(quoteIntoVariableOrPrint, eachLine):
-                                if self.utils.DetectMultipleLinesQuotes(eachLine) == False:
-                                    sys.stdout.write(eachLine)
-                                else:
-                                    sys.stdout.write(eachLine)
-                                    noComments = 1
-                            else:
-                                sys.stdout.write(eachLine)
                         else:
-                            sys.stdout.write(eachLine)
+                            if multipleLinesComments == 1:
+                                if re.match(Reg.quotesCommentsMultipleLines, eachLine):
+                                    if self.utils.VerifyMultipleLinesComments(eachLine) == True:
+                                        if multipleLinesComments == 1:
+                                            countLineCommentInput += 1
+                                            multipleLinesComments = 0
+                                    else:
+                                        countLineCommentInput += 1
+                                else:
+                                    countLineCommentInput += 1
+                            elif noCommentsQuotes == 1:
+                                if re.match(Reg.checkIfEndVarStdoutQuotes, eachLine):
+                                    sys.stdout.write(eachLine)
+                                    noCommentsQuotes = 0
+                                else:
+                                    sys.stdout.write(eachLine)
+                            else:
+                                if re.match(Reg.quotesCommentsOneLine, eachLine):
+                                    countLineCommentInput += 1
+                                else:
+                                    if re.match(Reg.quotesCommentsMultipleLines, eachLine):
+                                        if self.utils.VerifyMultipleLinesComments(eachLine) == True:
+                                            countLineCommentInput += 1
+                                            multipleLinesComments = 1
+                                        else:
+                                            sys.stdout.write(eachLine)
+                                    else:
+                                        if re.match(Reg.checkIfStdoutQuotes, eachLine) or re.match(Reg.checkIfVarQuotes, eachLine):
+                                            sys.stdout.write(eachLine)
+                                            noCommentsQuotes = 1
+                                        elif re.match(Reg.checkIfRegexQuotes, eachLine):
+                                            sys.write.stdout(eachLine)
+                                        else:
+                                            sys.stdout.write(eachLine)
 
                 with fileinput.input(file, inplace=True) as inputFile:
                     for eachLine in inputFile:
                         if "coding" in eachLine or "#!" in eachLine:
                             sys.stdout.write(eachLine)
-                            continue
-                        searchCommentsAfterLine = re.search(commentsAfterLine, eachLine)
-                        searchCommentsBeginLine = re.search(commentsBeginLine, eachLine)
-                        if searchCommentsBeginLine:
-                            countLineInput += 1
-                            eachLine = eachLine.replace(searchCommentsBeginLine.group(0), "")
-                            sys.stdout.write(eachLine)
-                        elif searchCommentsAfterLine:
-                            if re.match(checkCommentCharInStringQuotes, searchCommentsAfterLine.group(0)):
-                                sys.stdout.write(eachLine)
-                            else:
-                                eachLine = eachLine.replace(searchCommentsAfterLine.group(0), "")
-                                countLineInput += 1
-                                sys.stdout.write(eachLine)
-
                         else:
-                            sys.stdout.write(eachLine)
+                            if re.match(Reg.hashCommentsBeginLine, eachLine):
+                                countLineCommentInput += 1
+                            elif re.match(Reg.hashCommentsAfterLine, eachLine):
+                                eachLineList = list(eachLine)
+                                for i, v in enumerate(eachLineList):
+                                    if v == "#":
+                                        getIndexList.append(i)
+                                for i in getIndexList:
+                                    if self.utils.DetectIntoSimpleQuotes(eachLine, maxIndexLine=i) == False:
+                                        countLineCommentInput += 1
+                                        detectIntoSimpleQuotes = False
+                                        break
+                                    else:
+                                        continue
+                                if detectIntoSimpleQuotes == False:
+                                    eachLineList = eachLineList[:getIndexList[-1]]
+                                    eachLineList.append("\n")
+                                    eachLine = "".join(eachLineList)
+                                    sys.stdout.write(eachLine)
+                                    detectIntoSimpleQuotes = None
+                                    continue
+                                else:
+                                    sys.stdout.write(eachLine)
+                            else:
+                                sys.stdout.write(eachLine)
 
                 bar.next(1)
             bar.finish()
             
         # -- Check if all comments are deleted -- #
-        multipleLinesComments = 0
-
         with Bar("Check       ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
                 with open(file, "r") as readFile:
@@ -191,42 +188,38 @@ class Delete:
                         if "coding" in eachLine or "#!" in eachLine:
                             continue
                         else:
-                            if multipleLinesComments == 1 or noComments == 1:
-                                if re.match(quoteOfCommentsEndLines, eachLine):
-                                    if re.match(quoteInRegex, eachLine) or re.match(quoteIntoVariableOrPrint, eachLine):
-                                        continue
-                                    else:
+                            if multipleLinesComments == 1:
+                                if re.match(Reg.quotesCommentsMultipleLines, eachLine):
+                                    if self.utils.VerifyMultipleLinesComments(eachLine) == True:
                                         if multipleLinesComments == 1:
+                                            countLineCommentOutput += 1
                                             multipleLinesComments = 0
-                                            countLineOutput += 1
-                                            checkDeleted[numberLine] = "{} ( multiple lines comments )".format(file)
-                                        else:
-                                            noComments = 0
+                                    else:
+                                        countLineCommentOutput += 1
                                 else:
-                                    if noComments == 1:
-                                        pass
-                                    else:
-                                        countLineOutput += 1
-                            elif multipleLinesComments == 0:
-                                if re.match(quoteOfCommentsMultipleLines, eachLine):   
-                                    if re.match(quoteOfCommentsOneLine, eachLine):
-                                        checkDeleted[numberLine] = file
-                                        countLineOutput += 1
-                                    else:
-                                        if self.utils.DetectMultipleLinesQuotes(eachLine) == True:
-                                            countLineOutput += 1
-                                            multipleLinesComments = 1
-                                        else:
-                                            pass
-                                elif re.match(quoteIntoVariableOrPrint, eachLine):
-                                    if self.utils.DetectMultipleLinesQuotes(eachLine) == False:
-                                        pass
-                                    else:
-                                        noComments = 1
+                                    countLineCommentOutput += 1
+                            elif noCommentsQuotes == 1:
+                                if re.match(Reg.checkIfEndVarStdoutQuotes, eachLine):
+                                    noCommentsQuotes = 0
                                 else:
                                     continue
                             else:
-                                continue
+                                if re.match(Reg.quotesCommentsOneLine, eachLine):
+                                    countLineCommentOutput += 1
+                                else:
+                                    if re.match(Reg.quotesCommentsMultipleLines, eachLine):
+                                        if self.utils.VerifyMultipleLinesComments(eachLine) == True:
+                                            countLineCommentOutput += 1
+                                            multipleLinesComments = 1
+                                        else:
+                                            continue
+                                    else:
+                                        if re.match(Reg.checkIfStdoutQuotes, eachLine) or re.match(Reg.checkIfVarQuotes, eachLine):
+                                            noCommentsQuotes = 1
+                                        elif re.match(Reg.checkIfRegexQuotes, eachLine):
+                                            continue
+                                        else:
+                                            continue
                   
                 with open(file, "r") as readFile:
                     readF = readFile.readlines()
@@ -236,22 +229,33 @@ class Delete:
                         if "coding" in eachLine or "#!" in eachLine:
                             continue
                         else:
-                            searchCommentsAfterLine = re.search(commentsAfterLine, eachLine)
-                            searchCommentsBeginLine = re.search(commentsBeginLine, eachLine)
-                            if searchCommentsBeginLine:
-                                checkDeleted[numberLine] = file
-                                countLineOutput += 1
-                            elif searchCommentsAfterLine:
-                                checkDeleted[numberLine] = file
-                                countLineOutput += 1
+                            if re.match(Reg.hashCommentsBeginLine, eachLine):
+                                countLineCommentInput += 1
+                            elif re.match(Reg.hashCommentsAfterLine, eachLine):
+                                eachLineList = list(eachLine)
+                                for i, v in enumerate(eachLineList):
+                                    if v == "#":
+                                        getIndexList.append(i)
+                                for i in getIndexList:
+                                    if self.utils.DetectIntoSimpleQuotes(eachLine, maxIndexLine=i) == False:
+                                        countLineCommentInput += 1
+                                        detectIntoSimpleQuotes = False
+                                        break
+                                    else:
+                                        continue
+                                if detectIntoSimpleQuotes == False:
+                                    detectIntoSimpleQuotes = None
+                                    continue
+                                else:
+                                    continue
                             else:
                                 continue
 
                 bar.next(1)  
             bar.finish()
         
-        if countLineOutput == 0:
-            print("\n-> {} lines of comments deleted\n".format(countLineInput))            
+        if countLineCommentOutput == 0:
+            print("\n-> {} lines of comments deleted\n".format(countLineCommentInput))            
             return 0
         else:
             if verboseArg:
@@ -262,7 +266,7 @@ class Delete:
                         print("-> Line : {} ( This is the end line of multiple lines comments )".format(key))
                     else:
                         print("-> Line : {}".format(key))
-                print("\n-> {} lines of comments no deleted\n".format(countLineOutput))
+                print("\n-> {} lines of comments no deleted\n".format(countLineCommentOutput))
             return 1
 
 

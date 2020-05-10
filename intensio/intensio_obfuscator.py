@@ -56,7 +56,6 @@ from core.obfuscation.intensio_delete   import Delete
 #--------------------------------------------------------- [Global] ---------------------------------------------------------#
 
 def main():
-    startProgramTime = time.time() # 
     if sys.version_info[0] != 3:
         print(Colors.ERROR + "[-] Intensio-Obfuscator only support Python 3.x" + Colors.DISABLE)
         sys.exit(1)
@@ -95,12 +94,12 @@ def main():
 
     print("\n\n" + Colors.SECTION + "********************************* [ START ] **********************************" \
         + Colors.DISABLE + "\n")
-
+    
     # -- Analysis and set up of the work environment -- #
     print("\n\n" + Colors.SECTION + "********************* [ Analyze and setup environment ] **********************" \
         + Colors.DISABLE + "\n")
-    analyzeData         = Analyze()
-    analyseDataInEnv    = analyzeData.InputAvailable(
+    analyzeData     = Analyze()
+    analyseDataInEnv = analyzeData.InputAvailable(
                                                     inputArg=args.GetArgsValue().input,  
                                                     verboseArg=args.GetArgsValue().verbose
     )
@@ -122,8 +121,10 @@ def main():
     else:
         print("[-] Analyze output '{}' -> ".format(args.GetArgsValue().output) + Colors.ERROR + "failed" + Colors.DISABLE + "\n")
         sys.exit(1)
-    
+
     # -- Obfuscation process -- #    
+    startObfuscationTime = time.time()
+    
     print("\n\n" + Colors.SECTION + "********************** [ Obfuscation delete comments ] ***********************" \
      + Colors.DISABLE + "\n")
     deleteData = Delete()    
@@ -322,12 +323,12 @@ def main():
         + Colors.DISABLE + "\n")
 
     # -- Result of execution time -- #
-    endProgramTime = time.time()
-    executionTime = endProgramTime - startProgramTime
-    executionTime = str(executionTime)
-    executionTime = executionTime.split(".")
+    endObfuscationTime  = time.time()
+    executionTime       = endObfuscationTime - startObfuscationTime
+    executionTime       = str(executionTime)
+    executionTime       = executionTime.split(".")
 
-    print("[*] Execution Time : {} second(s)".format(executionTime[0]))
+    print("[*] Obfuscation Time : {} second(s)".format(executionTime[0]))
     
 #----------------------------------------------------------------------------------------------------------------------------#
 

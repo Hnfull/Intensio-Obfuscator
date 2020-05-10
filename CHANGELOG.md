@@ -1,5 +1,9 @@
 # CHANGELOG of Intensio-Obfuscator project
 
+## 05-10-2020
+- [upgrade] to version 1.0.9.1
+- [fix] a part of issue #46 - improve detect multiple line code on Deletes comments feature
+
 ## 05-09-2020
 - [upgrade] to version 1.0.9
 - [fix] issue #26
