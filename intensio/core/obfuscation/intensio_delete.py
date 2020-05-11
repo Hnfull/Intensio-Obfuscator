@@ -22,7 +22,8 @@ class Delete:
 
     def LinesSpaces(self, outputArg, verboseArg):
         checkLinesSpace     = {}
-        checkEmptyLine      = 0
+        checkEmptyLineOutput = 0
+        checkEmptyLineInput = 0
         countRecursFiles    = 0
         numberLine          = 0
 
@@ -43,6 +44,7 @@ class Delete:
                 with fileinput.FileInput(file, inplace=True) as inputFile:
                     for eachLine in inputFile:
                         if eachLine == "\n":
+                            checkEmptyLineInput += 1
                             pass
                         else:
                             sys.stdout.write(eachLine)
@@ -59,15 +61,16 @@ class Delete:
                         numberLine += 1
                         if eachLine == "\n":
                             checkLinesSpace[numberLine] = file
-                            checkEmptyLine += 1
+                            checkEmptyLineOutput += 1
 
                 bar.next(1)
             bar.finish()
 
-        if checkEmptyLine == 0:
+        if checkEmptyLineOutput == 0:
             return 0
         else:
             if verboseArg:
+                print("\n[*] Empty line that deleted : {}\n".format(checkEmptyLineInput))
                 print("\n[!] Empty line that not been deleted... :\n")
                 for key, value in checkLinesSpace.items():
                     print("\n-> File : {}".format(value))
@@ -77,12 +80,11 @@ class Delete:
 
     def Comments(self, outputArg, verboseArg):
         getIndexList            = []
-        checkDeleted            = {}
+        filesConcerned          = []
         countLineCommentOutput  = 0
         countLineCommentInput   = 0
         multipleLinesComments   = 0
         countRecursFiles        = 0
-        numberLine              = 0
         noCommentsQuotes        = 0
         detectIntoSimpleQuotes  = None
             
@@ -108,7 +110,7 @@ class Delete:
                             sys.stdout.write(eachLine)
                         else:
                             if multipleLinesComments == 1:
-                                if re.match(Reg.quotesCommentsMultipleLines, eachLine):
+                                if re.match(Reg.quotesCommentsEndMultipleLines, eachLine):
                                     if self.utils.VerifyMultipleLinesComments(eachLine) == True:
                                         if multipleLinesComments == 1:
                                             countLineCommentInput += 1
@@ -145,13 +147,14 @@ class Delete:
 
                 with fileinput.input(file, inplace=True) as inputFile:
                     for eachLine in inputFile:
-                        if "coding" in eachLine or "#!" in eachLine:
+                        if re.match(Reg.pythonFileHeader, eachLine):
                             sys.stdout.write(eachLine)
                         else:
                             if re.match(Reg.hashCommentsBeginLine, eachLine):
                                 countLineCommentInput += 1
                             elif re.match(Reg.hashCommentsAfterLine, eachLine):
                                 eachLineList = list(eachLine)
+                                getIndexList = []
                                 for i, v in enumerate(eachLineList):
                                     if v == "#":
                                         getIndexList.append(i)
@@ -176,28 +179,29 @@ class Delete:
 
                 bar.next(1)
             bar.finish()
-            
+
         # -- Check if all comments are deleted -- #
         with Bar("Check       ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
                 with open(file, "r") as readFile:
                     readF = readFile.readlines()
-                    numberLine = 0
                     for eachLine in readF:
-                        numberLine += 1
-                        if "coding" in eachLine or "#!" in eachLine:
+                        if re.match(Reg.pythonFileHeader, eachLine):
                             continue
                         else:
                             if multipleLinesComments == 1:
-                                if re.match(Reg.quotesCommentsMultipleLines, eachLine):
+                                if re.match(Reg.quotesCommentsEndMultipleLines, eachLine):
                                     if self.utils.VerifyMultipleLinesComments(eachLine) == True:
                                         if multipleLinesComments == 1:
                                             countLineCommentOutput += 1
                                             multipleLinesComments = 0
+                                            filesConcerned.append(file)
                                     else:
                                         countLineCommentOutput += 1
+                                        filesConcerned.append(file)
                                 else:
                                     countLineCommentOutput += 1
+                                    filesConcerned.append(file)
                             elif noCommentsQuotes == 1:
                                 if re.match(Reg.checkIfEndVarStdoutMultipleQuotes, eachLine):
                                     noCommentsQuotes = 0
@@ -206,11 +210,13 @@ class Delete:
                             else:
                                 if re.match(Reg.quotesCommentsOneLine, eachLine):
                                     countLineCommentOutput += 1
+                                    filesConcerned.append(file)
                                 else:
                                     if re.match(Reg.quotesCommentsMultipleLines, eachLine):
                                         if self.utils.VerifyMultipleLinesComments(eachLine) == True:
                                             countLineCommentOutput += 1
                                             multipleLinesComments = 1
+                                            filesConcerned.append(file)
                                         else:
                                             continue
                                     else:
@@ -224,27 +230,32 @@ class Delete:
                   
                 with open(file, "r") as readFile:
                     readF = readFile.readlines()
-                    numberLine = 0
                     for eachLine in readF:
-                        numberLine += 1
-                        if "coding" in eachLine or "#!" in eachLine:
+                        if re.match(Reg.pythonFileHeader, eachLine):
                             continue
                         else:
                             if re.match(Reg.hashCommentsBeginLine, eachLine):
-                                countLineCommentInput += 1
+                                countLineCommentOutput += 1
+                                filesConcerned.append(file)
                             elif re.match(Reg.hashCommentsAfterLine, eachLine):
                                 eachLineList = list(eachLine)
+                                getIndexList = []
                                 for i, v in enumerate(eachLineList):
                                     if v == "#":
                                         getIndexList.append(i)
                                 for i in getIndexList:
                                     if self.utils.DetectIntoSimpleQuotes(eachLine, maxIndexLine=i) == False:
-                                        countLineCommentInput += 1
+                                        countLineCommentOutput += 1
                                         detectIntoSimpleQuotes = False
+                                        filesConcerned.append(file)
                                         break
                                     else:
                                         continue
                                 if detectIntoSimpleQuotes == False:
+                                    eachLineList = eachLineList[:getIndexList[-1]]
+                                    eachLineList.append("\n")
+                                    eachLine = "".join(eachLineList)
+                                    sys.stdout.write(eachLine)
                                     detectIntoSimpleQuotes = None
                                     continue
                                 else:
@@ -260,13 +271,10 @@ class Delete:
             return 0
         else:
             if verboseArg:
-                print("\n[!] Comments that not been deleted... :\n")
-                for key, value in checkDeleted.items():
-                    print("\n-> File : {}".format(value))
-                    if "multiple lines comments" in value:
-                        print("-> Line : {} ( This is the end line of multiple lines comments )".format(key))
-                    else:
-                        print("-> Line : {}".format(key))
+                filesConcerned = self.utils.RemoveDuplicatesValuesInList(filesConcerned)
+                print("\nFiles concerned of comments no deleted :\n")
+                for f in filesConcerned:
+                    print("-> {}".format(f))
                 print("\n-> {} lines of comments no deleted\n".format(countLineCommentOutput))
             return 1
 

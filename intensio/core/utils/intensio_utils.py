@@ -41,16 +41,18 @@ class Utils:
                 maxIndex = maxIndexLine
 
             countQuotes = 0
-            countLoop = 0
+            countLoop   = 0
 
             for i in line:
                 if countLoop == maxIndex:
                     break
                 else:
                     pass
-
-                if i == "\"" or i == "\'":      
-                    countQuotes += 1
+                if i == "\"" or i == "\'":
+                    if line[countLoop - 1] == "\\":
+                        pass
+                    else:      
+                        countQuotes += 1
                 countLoop += 1
 
             if countQuotes == 0:
@@ -116,6 +118,11 @@ class Utils:
                 return False
 
 
+    def RemoveDuplicatesValuesInList(self, listArg):
+        removeDuplicateValues = list(dict.fromkeys(listArg))
+        return removeDuplicateValues
+
+
     def CheckFileDir(self, output, detectFiles, blockDir, blockFile, dirOnly):
         filesName = []
 
@@ -161,19 +168,20 @@ class Utils:
 
 class Reg:
     # -- All features -- #
-    checkIfVarMultipleQuotes    = r"\s*\w+\s*\=\s*.*[\"|\']{3}"
+    checkIfVarMultipleQuotes    = r"\s*[\w\.]+\s*\=\s*.*[\"|\']{3}"
     checkIfRegexMultipleQuotes  = r"\s*r{1}[\']{3}|\s*r{1}[\"]{3}"
     checkIfStdoutMultipleQuotes = r"\s*print{1}\s*\(?[\"|\']{3}|\s*sys\.write\.stdout{1}\s*\(?[\"|\']{3}"
     checkIfEndVarStdoutMultipleQuotes = r".*\"{3}|.*\'{3}"
     
-    pythonFileHeader = r"\s*#!.*python[0-9]\s*$|\s*#.*-*-\s*$" 
+    pythonFileHeader = r"^\s*\#\!.*python|^\s*\#\s*-\*-" 
 
     # --  Delete comments feature only -- #
-    hashCommentsAfterLine = r"^[^\#]+\#+"
-    hashCommentsBeginLine = r"^\#.*|^\s+\#.*"
+    hashCommentsAfterLine = r"^[^\#]+\#"
+    hashCommentsBeginLine = r"^\s*\#.*"
 
-    quotesCommentsMultipleLines = r"^\s+[\"|\']{3}\s*|^[\"|\']{3}\s*"
-    quotesCommentsOneLine       = r"^\s*[\"]{3}.*[\"]{3}\s*$|^\s*[\']{3}.*[\']{3}\s*$"
+    quotesCommentsMultipleLines     = r"^\s+[\"|\']{3}\s*|^[\"|\']{3}\s*"
+    quotesCommentsOneLine           = r"^\s*[\"]{3}.*[\"]{3}\s*$|^\s*[\']{3}.*[\']{3}\s*$"
+    quotesCommentsEndMultipleLines  = r"^\s+[\"|\']{3}\s*|^[\"|\']{3}\s*|.+[\"|\']{3}\s*$"
 
     # -- Replace string to string feature only -- #
     detectSpecialChars = r"\.|\:|\)|\(|\=|\[|\]|\{|\}|\,|\+|\s|\*|\-|\%|\/|\^|\'|\""
