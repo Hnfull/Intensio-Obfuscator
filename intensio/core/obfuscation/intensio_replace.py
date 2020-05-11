@@ -38,9 +38,9 @@ class Replace:
         breakLine           = ""
 
         if listModuleImport == True:
-            detectChars = r"\.|\:|\)|\(|\=|\[|\]|\{|\}|\,|\+|\s|\*|\-|\%|\/|\^|\'|\""
+            detectSpecialChars = Reg.detectSpecialChars
         else:
-            detectChars = r"\.|\:|\)|\(|\=|\[|\]|\{|\}|\,|\+|\s|\*|\-|\%|\/|\^"
+            detectSpecialChars = Reg.detectSpecialCharsWihtoutQuotes
 
         # -- Get list of all letters in line -- #
         for indexLine, letterLine in enumerate(line):
@@ -57,7 +57,7 @@ class Replace:
                 charValue = []
 
                 # -- If the variable is only a letter, check if the next character is specific so as not to replace it -- #
-                if re.match(detectChars, letterLine):
+                if re.match(detectSpecialChars, letterLine):
                     returnLine.append(letterLine)
 
                 # -- Count indexes of word to move after it --#
@@ -88,10 +88,10 @@ class Replace:
                                                 continue
 
                                             # -- Check the char after and before the word -- #
-                                            if re.match(detectChars, getIndexLineList[indexExplore]):
+                                            if re.match(detectSpecialChars, getIndexLineList[indexExplore]):
                                                 # Index check if word found is not into the other word
                                                 indexExploreBefore = indexLine - 1
-                                                # Index check if char after the end of string is found with 'detectChars' regex
+                                                # Index check if char after the end of string is found with 'detectSpecialChars' regex
                                                 indexExploreAfter = indexExplore
 
                                                 try:
@@ -113,7 +113,7 @@ class Replace:
                                                                         checkCharAfterWord = 0
                                                                 else:
                                                                     checkCharAfterWord = 1
-                                                            # -- Check if after char of the word found by 'detectChars' is \
+                                                            # -- Check if after char of the word found by 'detectSpecialChars' is \
                                                             # not ' or " -- #
                                                             elif re.match(r"\"|\'", getIndexLineList[indexExploreAfter]):
                                                                 if re.match(r"\[|\(|\{", getIndexLineList[indexExploreAfter - 1]):

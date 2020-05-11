@@ -168,13 +168,17 @@ class Reg:
     
     pythonFileHeader = r"\s*#!.*python[0-9]\s*$|\s*#.*-*-\s*$" 
 
-    # --  Delete comments feature -- #
+    # --  Delete comments feature only -- #
     hashCommentsAfterLine = r"^[^\#]+\#+"
     hashCommentsBeginLine = r"^\#.*|^\s+\#.*"
 
     quotesCommentsMultipleLines = r"^\s+[\"|\']{3}\s*|^[\"|\']{3}\s*"
     quotesCommentsOneLine       = r"^\s*[\"]{3}.*[\"]{3}\s*$|^\s*[\']{3}.*[\']{3}\s*$"
 
+    # -- Replace string to string feature only -- #
+    detectSpecialChars = r"\.|\:|\)|\(|\=|\[|\]|\{|\}|\,|\+|\s|\*|\-|\%|\/|\^|\'|\""
+    detectSpecialCharsWihtoutQuotes = r"\.|\:|\)|\(|\=|\[|\]|\{|\}|\,|\+|\s|\*|\-|\%|\/|\^"
+    
     # -- Replace string to string feature and Padding empty classes and functions feature -- #
     detectFunctions = r"def\s+(\w+)"
     detectClasses   = r"class\s+(\w+)"
@@ -182,25 +186,26 @@ class Reg:
     detectLoopVars  = r"for\s+([\w\s\,]+)(\s+in\s+)"
     detectSimpleVars = r"(^[\s|a-zA-Z_]+[\,\s\w]{0,})+(\s*=\s*[\[|\{\(|\w+|\"|\'])"
 
-    # -- Padding scripts feature -- #
+    # -- Padding scripts feature only -- #
     addIndentScript = r".*\:{1}\s*$"
     noAddScript     = r"^\@|\s+\@|\s+return|\s*def\s+.+\s*\:{1}|^class\s+.+\s*\:{1}|.*[\{|\[|\(|\)|\]|\}|,|\\|\^|\'|\"|0-9]\s*$|\s+yield.*|\s+raise.*"
 
-    # -- Padding empty classes feature-- #
+    # -- Padding empty classes feature only -- #
     checkClassInLine = r"\s*class\s+\w+"
 
-    # -- Padding empty functions feature -- #
+    # -- Padding empty functions feature only -- #
     checkFunctionInLine = r"\s*def\s+\w+"
 
-    # -- Delete .pyc files feature -- #
+    # -- Delete .pyc files feature only -- #
     detectPycFiles = r".*\.pyc$"
 
-    # -- Replace files name feature -- #
+    # -- Replace files name feature only -- #
     detectPythonImport = r"\s*from\s+|\s*import\s+"
 
-    # -- Replace string to hex feature -- #
+    # -- Replace string to hex feature only -- #
     detectExecFunction  = r"exec\(\w+\)"
     detectMultipleQuotes = r"\'{3}|\"{3}"
+
 
 class Colors: 
     # PROGRESS = "\033[94m" + "\033[1m" # blue + bold
