@@ -5,8 +5,7 @@ intensio/examples/python/intermediate/input/dev
 intensio/examples/python/intermediate/output/dev
 intensio/examples/python/advanced/input/dev
 intensio/examples/python/advanced/output/dev
-intensio/exclude/file_name/dev
-intensio/exclude/string_to_string_mixed/dev
+intensio/exclude/dev
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
