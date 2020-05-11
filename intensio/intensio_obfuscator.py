@@ -32,7 +32,8 @@
                                 when 'replacetostr' - 'paddingscript' - 'replacefilename' - 'replacetohex' features are specified \
                                 default value: [medium], possible values: [lower, medium, high]
 -rts, --replacetostr        ->  enable 'replace string to string mixed' obfuscation feature
--ps, --paddingscript        ->  enable 'padding script' obfuscation feature
+-ps, --paddingscript        ->  enable 'padding script' obfuscation feature  and define the indentation [2|4|8] of your python \
+                                source code
 -rfn, --replacefilename     ->  enable 'replace file name' obfuscation feature
 -rth, --replacetohex        ->  enable 'replace string to hex' obfuscation feature
 -v, --verbose               ->  improve verbosity
@@ -46,7 +47,7 @@ import re
 import time
 
 from core.utils.intensio_design import INTENSIO_BANNER
-from core.utils.intensio_utils  import Utils, Colors
+from core.utils.intensio_utils  import Utils, Colors, Reg
 from core.utils.intensio_usage  import Args
 from core.obfuscation.intensio_replace  import Replace
 from core.obfuscation.intensio_padding  import Padding
@@ -67,19 +68,19 @@ def main():
     args = Args()
     utils = Utils()
 
-    if len(sys.argv) > 1 and len(sys.argv) <= 13:
+    if len(sys.argv) > 1 and len(sys.argv) <= 14:
         pass
     else:
         print(Colors.ERROR + "[-] Incorrect number of arguments" + Colors.DISABLE + "\n")
         args.GetArgHelp()
         sys.exit(1)
-    
+
     if args.GetArgsValue().input:
         if args.GetArgsValue().output:
-            if re.match(r"^lower$|^medium$|^high$", args.GetArgsValue().mixerlength):
+            if re.match(Reg.detectMlenArg, args.GetArgsValue().mixerlength):
                 pass
             else:
-                print(Colors.ERROR + "[-] -mlen, --mixerlength argument [lower-medium-high] only supported" + Colors.DISABLE + "\n")
+                print(Colors.ERROR + "[-] -mlen, --mixerlength argument [lower|mediu|high] missing" + Colors.DISABLE + "\n")
                 sys.exit(1)
         else:
             print(Colors.ERROR + "[-] Output [-o, --output] argument missing" + Colors.DISABLE + "\n")
@@ -165,6 +166,7 @@ def main():
     paddingDataEmptyClass   = paddingData.EmptyClasses(
                                                         outputArg=args.GetArgsValue().output, 
                                                         mixerLengthArg=args.GetArgsValue().mixerlength,
+                                                        basicIndentArg=args.GetArgsValue().paddingscript,
                                                         verboseArg=args.GetArgsValue().verbose
     ) 
     if paddingDataEmptyClass == 0:
@@ -185,6 +187,7 @@ def main():
     paddingDataEmptyFunc = paddingData.EmptyFunctions(
                                                     outputArg=args.GetArgsValue().output, 
                                                     mixerLengthArg=args.GetArgsValue().mixerlength,
+                                                    basicIndentArg=args.GetArgsValue().paddingscript,
                                                     verboseArg=args.GetArgsValue().verbose
     ) 
     if paddingDataEmptyFunc == 0:
@@ -224,6 +227,7 @@ def main():
         paddingDataGarbage = paddingData.AddRandomScripts(
                                                         outputArg=args.GetArgsValue().output,
                                                         mixerLengthArg=args.GetArgsValue().mixerlength,
+                                                        basicIndentArg=args.GetArgsValue().paddingscript,
                                                         verboseArg=args.GetArgsValue().verbose
         )
         if paddingDataGarbage == 0:

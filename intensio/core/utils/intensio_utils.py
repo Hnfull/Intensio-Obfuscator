@@ -123,6 +123,18 @@ class Utils:
         return removeDuplicateValues
 
 
+    def VerifyIfInDict():
+        """ development in progress """
+
+
+    def VerifyIfInTuple():
+        """ development in progress """
+
+
+    def VerifyIfInList():
+        """ development in progress """
+
+
     def CheckFileDir(self, output, detectFiles, blockDir, blockFile, dirOnly):
         filesName = []
 
@@ -213,6 +225,10 @@ class Reg:
     # -- Replace string to hex feature only -- #
     detectExecFunction  = r"exec\(\w+\)"
     detectMultipleQuotes = r"\'{3}|\"{3}"
+
+    # -- Detect arg of program -- #
+    detectMlenArg           = r"^lower$|^medium$|^high$"
+    detectPaddingScriptArg  = r"^[2|4|8]{1}$"
 
 
 class Colors: 

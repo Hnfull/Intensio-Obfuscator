@@ -24,29 +24,6 @@ class Padding:
         self.simpleSpace    = " "
 
 
-    def CheckBasicIndentation(self, recursPythonFiles):
-        # -- Check basic indentation (2 - 4 - 8) of python files -- #
-        allNumIndentations  = []
-
-        for file in recursPythonFiles:
-            with open(file, "r") as inputFile:
-                for eachLine in inputFile:
-                    if re.match(Reg.pythonFileHeader, eachLine):
-                        continue
-                    else:
-                        spaces = len(eachLine) - len(eachLine.lstrip())
-                        if spaces == 0 or spaces == 1:
-                            continue
-                        else:
-                            allNumIndentations.append(spaces)
-
-        if allNumIndentations == []:
-            return 0
-        else:
-            allNumIndentations.sort()
-            return allNumIndentations[0]
-
-
     def ScriptsGenerator(self, randomClassesFunctions, mixerLengthArg):
         varRandom1  = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
         varRandom2  = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
@@ -357,14 +334,14 @@ class Padding:
             return scriptPadding15
 
             
-    def AddRandomScripts(self, outputArg, mixerLengthArg, verboseArg):
+    def AddRandomScripts(self, outputArg, mixerLengthArg, basicIndentArg, verboseArg):
         countScriptsAdded       = 0
         countLineAdded          = 0
         countLine               = 0
         checkLine               = 0
         countRecursFiles        = 0
         multipleLinesQuotes     = 0
-        basicIndentation        = None
+        basicIndentArg          = int(basicIndentArg)
 
         recursFiles = self.utils.CheckFileDir(
                                             output=outputArg, 
@@ -376,11 +353,9 @@ class Padding:
 
         if verboseArg:
             print("\n[*] Check basic indentation...\n")
-        
-        basicIndentation = Padding.CheckBasicIndentation(self, recursFiles)
 
         if verboseArg:
-            print("[*] Basic indentation : {} spaces".format(basicIndentation))
+            print("[*] Basic indentation : {} spaces".format(basicIndentArg))
 
         for number in recursFiles:
             countRecursFiles += 1
@@ -434,7 +409,7 @@ class Padding:
                                 continue
                             # -- Adding scripts -- #
                             elif re.match(Reg.addIndentScript, eachLine):
-                                spaces = spaces + basicIndentation # add indentation
+                                spaces = spaces + basicIndentArg # add indentation
                                 sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
                                                                                         self,
                                                                                         randomClassesFunctions=False,
@@ -486,14 +461,14 @@ class Padding:
             return 1
     
     
-    def EmptyClasses(self, outputArg, mixerLengthArg, verboseArg):
+    def EmptyClasses(self, outputArg, mixerLengthArg, basicIndentArg, verboseArg):
         countRecursFiles        = 0
         counterToCheckIndent    = 0
         numberLine              = 0
         numberLineInFile        = 0
         emptyClassInfo          = {}
         emptyClassInfoCheck     = {}
-        basicIndentation        = None
+        basicIndentArg          = int(basicIndentArg)
 
         recursFiles = self.utils.CheckFileDir(
                                                 output=outputArg, 
@@ -502,8 +477,6 @@ class Padding:
                                                 blockFile=False,
                                                 dirOnly=False
         )
-
-        basicIndentation = Padding.CheckBasicIndentation(self, recursFiles)
 
         for number in recursFiles:
             countRecursFiles += 1
@@ -553,7 +526,7 @@ class Padding:
                                 paddingVar1 = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
                                 paddingVar2 = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
                                 finalVarPadding = "{} = '{}'\n".format(paddingVar1, paddingVar2)
-                                spacesClass = spacesClass + basicIndentation
+                                spacesClass = spacesClass + basicIndentArg
                                 sys.stdout.write(textwrap.indent(finalVarPadding, self.simpleSpace * spacesClass))                                                                
                                 numberLine += 1
                         sys.stdout.write(eachLine)
@@ -563,7 +536,7 @@ class Padding:
                                 paddingVar1 = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
                                 paddingVar2 = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
                                 finalVarPadding = "{} = '{}'\n".format(paddingVar1, paddingVar2)
-                                spacesClass = spacesClass + basicIndentation
+                                spacesClass = spacesClass + basicIndentArg
                                 sys.stdout.write(textwrap.indent(finalVarPadding, self.simpleSpace * spacesClass))  
                             else:
                                 counterToCheckIndent += 1
@@ -619,14 +592,14 @@ class Padding:
             return 0
 
     
-    def EmptyFunctions(self, outputArg, mixerLengthArg, verboseArg):
+    def EmptyFunctions(self, outputArg, mixerLengthArg, basicIndentArg, verboseArg):
         countRecursFiles        = 0
         counterToCheckIndent    = 0
         numberLine              = 0
         numberLineInFile        = 0
         emptyFuncInfo           = {}
         emptyFuncInfoCheck      = {}
-        basicIndentation        = None
+        basicIndentArg          = int(basicIndentArg)
         
         recursFiles = self.utils.CheckFileDir(
                                                 output=outputArg, 
@@ -635,8 +608,6 @@ class Padding:
                                                 blockFile=False,
                                                 dirOnly=False
         )
-
-        basicIndentation = Padding.CheckBasicIndentation(self, recursFiles)
 
         for number in recursFiles:
             countRecursFiles += 1
@@ -686,7 +657,7 @@ class Padding:
                                 paddingVar1 = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
                                 paddingVar2 = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
                                 finalVarPadding = "{} = '{}'\n".format(paddingVar1, paddingVar2)
-                                spacesFunc = spacesFunc + basicIndentation
+                                spacesFunc = spacesFunc + basicIndentArg
                                 sys.stdout.write(textwrap.indent(finalVarPadding, self.simpleSpace * spacesFunc))                                                                
                                 numberLine += 1 
                         sys.stdout.write(eachLine)
@@ -696,7 +667,7 @@ class Padding:
                                 paddingVar1 = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
                                 paddingVar2 = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
                                 finalVarPadding = "{} = '{}'\n".format(paddingVar1, paddingVar2)
-                                spacesFunc = spacesFunc + basicIndentation
+                                spacesFunc = spacesFunc + basicIndentArg
                                 sys.stdout.write(textwrap.indent(finalVarPadding, self.simpleSpace * spacesFunc))          
                             else:
                                 counterToCheckIndent += 1

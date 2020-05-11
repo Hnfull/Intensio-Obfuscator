@@ -39,9 +39,8 @@ class Args:
         )
         self.parser.add_argument(
                                 "-ps", "--paddingscript",
-                                action="store_true",
-                                default=False,
-                                help="activate 'padding script' obfuscation feature"
+                                choices=["2", "4", "8"],
+                                help="activate 'padding script' obfuscation feature and define the indentation of your python source code"
         )
         self.parser.add_argument(
                                 "-rfn", "--replacefilename",

@@ -3,6 +3,7 @@
 ## 05-11-2020
 - [upgrade] to version 1.0.9.2
 - [fix] issue #46 - improve detect multiple lines code of Replace string to string and Padding scripts features
+- [add] new parameter to define manually base indentation of python source code
 
 ## 05-10-2020
 - [upgrade] to version 1.0.9.1

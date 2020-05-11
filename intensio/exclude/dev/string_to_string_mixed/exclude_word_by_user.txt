@@ -1,4 +1,4 @@
-# laZagne linux part test program in project #
+# LaZagne linux part #
 
 # local variables/strings that not be modified
 pid
