@@ -168,37 +168,37 @@ class Reg:
     
     pythonFileHeader = r"\s*#!.*python[0-9]\s*$|\s*#.*-*-\s*$" 
 
-    # --  Delete comments features -- #
+    # --  Delete comments feature -- #
     hashCommentsAfterLine = r"^[^\#]+\#+"
     hashCommentsBeginLine = r"^\#.*|^\s+\#.*"
 
     quotesCommentsMultipleLines = r"^\s+[\"|\']{3}\s*|^[\"|\']{3}\s*"
     quotesCommentsOneLine       = r"^\s*[\"]{3}.*[\"]{3}\s*$|^\s*[\']{3}.*[\']{3}\s*$"
 
-    # -- Replace string to string features and Padding empty classes and functions features -- #
+    # -- Replace string to string feature and Padding empty classes and functions feature -- #
     detectFunctions = r"def\s+(\w+)"
     detectClasses   = r"class\s+(\w+)"
     detectErrorVars = r"except(\s+\w+\s+as\s+)(\w)"
     detectLoopVars  = r"for\s+([\w\s\,]+)(\s+in\s+)"
     detectSimpleVars = r"(^[\s|a-zA-Z_]+[\,\s\w]{0,})+(\s*=\s*[\[|\{\(|\w+|\"|\'])"
 
-    # -- Padding scripts features -- #
+    # -- Padding scripts feature -- #
     addIndentScript = r".*\:{1}\s*$"
     noAddScript     = r"^\@|\s+\@|\s+return|\s*def\s+.+\s*\:{1}|^class\s+.+\s*\:{1}|.*[\{|\[|\(|\)|\]|\}|,|\\|\^|\'|\"|0-9]\s*$|\s+yield.*|\s+raise.*"
 
-    # -- Padding empty classes features-- #
+    # -- Padding empty classes feature-- #
     checkClassInLine = r"\s*class\s+\w+"
 
-    # -- Padding empty functions features -- #
+    # -- Padding empty functions feature -- #
     checkFunctionInLine = r"\s*def\s+\w+"
 
     # -- Delete .pyc files feature -- #
     detectPycFiles = r".*\.pyc$"
 
-    # -- Replace files name features -- #
+    # -- Replace files name feature -- #
     detectPythonImport = r"\s*from\s+|\s*import\s+"
 
-    # -- Repalce string to hex features -- #
+    # -- Replace string to hex feature -- #
     detectExecFunction  = r"exec\(\w+\)"
     detectMultipleQuotes = r"\'{3}|\"{3}"
 
