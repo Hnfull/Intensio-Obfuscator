@@ -1,8 +1,12 @@
 # CHANGELOG of Intensio-Obfuscator project
 
+## 05-11-2020
+- [upgrade] to version 1.0.9.2
+- [fix] issue #46 - improve detect multiple lines code of Replace string to string and Padding scripts features
+
 ## 05-10-2020
 - [upgrade] to version 1.0.9.1
-- [fix] a part of issue #46 - improve detect multiple line code on Deletes comments feature
+- [fix] a part of issue #46 - improve detect multiple lines code of Deletes comments feature
 
 ## 05-09-2020
 - [upgrade] to version 1.0.9

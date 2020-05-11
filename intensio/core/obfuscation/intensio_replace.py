@@ -12,7 +12,7 @@ import sys
 from progress.bar import Bar
 
 from core.obfuscation.intensio_mixer import Mixer
-from core.utils.intensio_utils import Utils, Colors, BreakLoop
+from core.utils.intensio_utils import Utils, Colors, BreakLoop, Reg
 
 #------------------------------------------------- [Function(s)/Class(es)] --------------------------------------------------#
 
@@ -167,8 +167,10 @@ class Replace:
 
                                                     # -- Check if key == word -- #
                                                     if checkGetWord == checkGetKey:
-                                                        # -- Check if word is not in strings quotes and if a variable is in format() in end of multiple line -- #
-                                                        if self.utils.DetectIntoSimpleQuotes(getLine, indexLine) == False or self.utils.DetectMultipleLinesQuotes(getLine) == True:
+                                                        # -- Check if word is not in strings quotes and if a variable 
+                                                        # is in format() in end of multiple line -- #
+                                                        if self.utils.DetectIntoSimpleQuotes(getLine, indexLine) == False \
+                                                        or self.utils.DetectMultipleLinesQuotes(getLine) == True:
                                                             for obfChar in value:
                                                                 charValue.append(obfChar)
 
@@ -213,19 +215,8 @@ class Replace:
         checkKeyWordsMixed          = []
         checkCountWordsMixed        = 0
         checkCountWordsValue        = 0
-        checkQuotePassing           = 0
         countRecursFiles            = 0
-
-        # -- Catch all variable(s)/class(es)/function(s) name -- #
-        functionsDefined        = r"def\s+(\w+)"
-        classDefined            = r"class\s+(\w+)"
-        variablesErrorDefined   = r"except(\s+\w+\s+as\s+)(\w)"
-        variablesLoopDefined    = r"for\s+([\w\s\,]+)(\s+in\s+)"
-        variablesDefined        = r"(^[\s|a-zA-Z_]+[\,\s\w]{0,})+(\s*=\s*[\[|\{\(|\w+|\"|\'])"
-
-        quotesIntoVariable      = r".*={1}\s*[\"|\']{3}"
-        quotesEndMultipleLines  = r"^\s*[\"|\']{3}\)?\.?"
-        quotesInRegex           = r"={1}\s*r{1}[\"|\']{3}"
+        multipleLinesQuotes         = 0
 
         recursFiles = self.utils.CheckFileDir(
                                                 output=outputArg,
@@ -248,7 +239,7 @@ class Replace:
                     readF = readFile.readlines()
                     for eachLine in readF:
                         # -- Variables -- #
-                        search = re.search(variablesDefined, eachLine)
+                        search = re.search(Reg.detectSimpleVars, eachLine)
                         if search:
                             if "," in search.group(1):
                                 modifySearch = search.group(1).replace(",", " ")
@@ -265,14 +256,14 @@ class Replace:
                                     variablesDict[modifySearch] = mixer
 
                         # -- Error variables -- #
-                        search = re.search(variablesErrorDefined, eachLine)
+                        search = re.search(Reg.detectErrorVars, eachLine)
                         if search:
                             mixer = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
                             if search.group(2) not in variablesDict:
                                 variablesDict[search.group(2)] = mixer
 
                         # -- Loop variables -- #
-                        search = re.search(variablesLoopDefined, eachLine)
+                        search = re.search(Reg.detectLoopVars, eachLine)
                         if search:
                             if "," in search.group(1):
                                 modifySearch = search.group(1).replace(",", " ")
@@ -287,7 +278,7 @@ class Replace:
                                     variablesDict[search.group(1)] = mixer
 
                         # -- Function(s) -- #
-                        search = re.search(functionsDefined, eachLine)
+                        search = re.search(Reg.detectFunctions, eachLine)
                         if search:
                             mixer = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
                             if search.group(1) not in functionsDict:
@@ -295,7 +286,7 @@ class Replace:
                                     functionsDict[search.group(1)] = mixer
 
                         # -- Class(es) -- #
-                        search = re.search(classDefined, eachLine)
+                        search = re.search(Reg.detectClasses, eachLine)
                         if search:
                             mixer = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
                             if search.group(1) not in classesDict:
@@ -433,68 +424,47 @@ class Replace:
                         if not eachLine:
                             continue
                         else:
-                            if re.match(quotesIntoVariable, eachLine):
-                                if re.match(quotesInRegex, eachLine):
-                                    sys.stdout.write(eachLine)
-                                else:
+                            if multipleLinesQuotes == 1:
+                                if re.match(Reg.checkIfEndVarStdoutMultipleQuotes, eachLine):
                                     if self.utils.DetectMultipleLinesQuotes(eachLine) == True:
-                                        checkQuotePassing += 1
-                                    else:
-                                        pass
-
-                                    eachLine = Replace.EachLine(
+                                        eachLine = Replace.EachLine(
                                                                 self,
                                                                 line=eachLine,
                                                                 dictionary=allDict.items(),
                                                                 fileNameImport=False,
                                                                 listModuleImport=False
-                                    )
-                                    sys.stdout.write(eachLine)
-                                    continue
-
-                            elif re.match(quotesEndMultipleLines, eachLine):
-                                if re.match(quotesInRegex, eachLine):
-                                    sys.stdout.write(eachLine)
-                                else:
-                                    if self.utils.DetectMultipleLinesQuotes(eachLine) == True:
-                                        checkQuotePassing += 1
+                                        )
+                                        sys.stdout.write(eachLine)
+                                        multipleLinesQuotes = 0
                                     else:
-                                        pass
-                                    eachLine = Replace.EachLine(
-                                                                self,
-                                                                line=eachLine,
-                                                                dictionary=allDict.items(),
-                                                                fileNameImport=False,
-                                                                listModuleImport=False
-                                    )
+                                        sys.stdout.write(eachLine)
+                                else:
                                     sys.stdout.write(eachLine)
-                                    if checkQuotePassing == 2:
-                                        checkQuotePassing = 0
-                                    continue
-
-                            if checkQuotePassing == 1:
+                            elif re.match(Reg.checkIfVarMultipleQuotes, eachLine) \
+                            or re.match(Reg.checkIfStdoutMultipleQuotes, eachLine):
+                                if self.utils.DetectMultipleLinesQuotes(eachLine) == False:
+                                    pass
+                                else:
+                                    multipleLinesQuotes = 1
+                                eachLine = Replace.EachLine(
+                                                            self,
+                                                            line=eachLine,
+                                                            dictionary=allDict.items(),
+                                                            fileNameImport=False,
+                                                            listModuleImport=False
+                                )
                                 sys.stdout.write(eachLine)
-                            elif checkQuotePassing == 2:
-                                checkQuotePassing = 0
+                                continue
+
                             else:
-                                if re.match(r"\s*__all__\s*=\s*\[", eachLine):
-                                    eachLine = Replace.EachLine(
-                                                                self,
-                                                                line=eachLine,
-                                                                dictionary=classFuncDict.items(),
-                                                                fileNameImport=False,
-                                                                listModuleImport=True
-                                    )
-                                    sys.stdout.write(eachLine)
-                                else:
-                                    eachLine = Replace.EachLine(
-                                                                self,
-                                                                line=eachLine,
-                                                                dictionary=allDict.items(),
-                                                                fileNameImport=False,
-                                                                listModuleImport=False
-                                    )
-                                    sys.stdout.write(eachLine)
+                                eachLine = Replace.EachLine(
+                                                            self,
+                                                            line=eachLine,
+                                                            dictionary=allDict.items(),
+                                                            fileNameImport=False,
+                                                            listModuleImport=False
+                                )
+                                sys.stdout.write(eachLine)
 
                 bar.next(1)
             bar.finish()
@@ -560,9 +530,6 @@ class Replace:
         checkError          = False
         hexLine             = ""
 
-        detectExecFunc  = r"exec\(\w+\)"
-        detectQuotes    = r"\'{3}|\"{3}"
-
         recursFiles = self.utils.CheckFileDir(
                                                 output=outputArg,
                                                 detectFiles="py",
@@ -625,9 +592,9 @@ class Replace:
                             continue
                         else:
                             if not "\\x" in eachLine:
-                                if re.match(detectQuotes, eachLine):
+                                if re.match(Reg.detectMultipleQuotes, eachLine):
                                     continue
-                                elif re.match(detectExecFunc, eachLine):
+                                elif re.match(Reg.detectExecFunction, eachLine):
                                     continue
                                 else:
                                     checkHexError[numberLine] = file
@@ -668,8 +635,6 @@ class Replace:
         countRecursFiles        = 0
         checkCountRecursFiles   = 0
         currentPosition         = os.getcwd()
-
-        detectImport = r"\s*from\s+|\s*import\s+"
 
         recursFiles = self.utils.CheckFileDir(
                                                 output=outputArg,
@@ -763,7 +728,7 @@ class Replace:
                 with open(file, "r") as readFile:
                     readF = readFile.readlines()
                     for eachLine in readF:
-                        if re.match(detectImport, eachLine):
+                        if re.match(Reg.detectPythonImport, eachLine):
                             searchFileName = re.search(r"(import\s+)(.*)", eachLine)
                             if searchFileName.group(2):
                                 searchFileName = searchFileName.group(2).replace(",", "")
@@ -829,7 +794,7 @@ class Replace:
                 # -- Rename all files in python code -- #
                 with fileinput.input(fileInCode, inplace=True) as inputFile:
                     for eachLine in inputFile:
-                        if re.match(detectImport, eachLine):
+                        if re.match(Reg.detectPythonImport, eachLine):
                             eachLine = Replace.EachLine(
                                                         self,
                                                         line=eachLine,

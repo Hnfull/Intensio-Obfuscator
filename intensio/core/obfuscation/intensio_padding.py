@@ -12,7 +12,7 @@ import sys
 from progress.bar import Bar
 
 from core.obfuscation.intensio_mixer import Mixer
-from core.utils.intensio_utils import Utils
+from core.utils.intensio_utils import Utils, Reg
 
 #------------------------------------------------- [Function(s)/Class(es)] --------------------------------------------------#
 
@@ -27,12 +27,11 @@ class Padding:
     def CheckBasicIndentation(self, recursPythonFiles):
         # -- Check basic indentation (2 - 4 - 8) of python files -- #
         allNumIndentations  = []
-        headerPythonFile    = r"\s*#!.*[python|1-9]|\s*#.*-*-$"
 
         for file in recursPythonFiles:
             with open(file, "r") as inputFile:
                 for eachLine in inputFile:
-                    if re.match(headerPythonFile, eachLine):
+                    if re.match(Reg.pythonFileHeader, eachLine):
                         continue
                     else:
                         spaces = len(eachLine) - len(eachLine.lstrip())
@@ -363,17 +362,9 @@ class Padding:
         countLineAdded          = 0
         countLine               = 0
         checkLine               = 0
-        checkQuotePassing       = 0
-        checkCharPassing        = 0
-        checkOtherCharPassing   = 0
         countRecursFiles        = 0
+        multipleLinesQuotes     = 0
         basicIndentation        = None
-
-        addIndentScript         = r".*\:{1}\s*$"
-        quotesIntoVariable      = r".*={1}\s*[\"|\']{3}"
-        quotesEndMultipleLines  = r"^\s*[\"|\']{3}\)?\.?"
-        quotesInRegex           = r"={1}\s*r{1}[\"|\']{3}"
-        noAddScript             = r"^\@|\s+\@|\s+return|\s*def\s+.+\s*\:{1}|^class\s+.+\s*\:{1}|.*[\{|\[|\(|\)|\]|\}|,|\\|^]\s*$|\s+yield.*|\s+raise.*"
 
         recursFiles = self.utils.CheckFileDir(
                                             output=outputArg, 
@@ -409,7 +400,7 @@ class Padding:
                 bar.next(1)
             bar.finish()
 
-        # -- Padding script added -- #
+        # --  Add padding script -- #
         with Bar("Obfuscation ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
                 with fileinput.input(file, inplace=True) as inputFile:
@@ -420,61 +411,29 @@ class Padding:
                         else:
                             spaces = len(eachLine) - len(eachLine.lstrip())
 
-                            # -- Detect code into 3 quotes excepted comments -- #
-                            if re.match(quotesIntoVariable, eachLine):
-                                if re.match(quotesInRegex, eachLine):
-                                    pass
-                                else:
-                                    checkQuotePassing += 1
-                                    continue
-                            elif re.match(quotesEndMultipleLines, eachLine):
-                                if re.match(quotesInRegex, eachLine):
-                                    pass
-                                else:
-                                    checkQuotePassing += 1
-                                    if checkQuotePassing == 2:
-                                        checkQuotePassing = 0
-                                    continue
-                            if checkQuotePassing == 1:
-                                continue
-                            elif checkQuotePassing == 2:
-                                checkQuotePassing = 0
-                                pass
-                            else:
-                                pass
-                            
-                            # -- Check dict, list, tuple in multiple lines -- #
-                            if checkCharPassing == 1:
-                                if re.match(r".*[\"|\'|\)|\]|\}|\w]\s*$", eachLine):
-                                    checkCharPassing = 0
-                                    continue
-                                else:
-                                    continue
-                            elif checkOtherCharPassing >= 1:
-                                if re.match(r".*[\"|\'|\)|\]|\}|\w]\s*$", eachLine):
-                                    checkOtherCharPassing -= 1
-                                    continue
-                                else:
-                                    if re.match(r".*[\(|\{|\[]\s*$", eachLine):
-                                        checkOtherCharPassing += 1
+                            if multipleLinesQuotes == 1:
+                                if re.match(Reg.checkIfEndVarStdoutMultipleQuotes, eachLine):
+                                    if self.utils.DetectMultipleLinesQuotes(eachLine) == True:
+                                        multipleLinesQuotes = 0
+                                        pass
+                                    else:
                                         continue
+                                else:
+                                    continue
+                            elif re.match(Reg.checkIfVarMultipleQuotes, eachLine) \
+                            or re.match(Reg.checkIfStdoutMultipleQuotes, eachLine):
+                                if self.utils.DetectMultipleLinesQuotes(eachLine) == False:
+                                    pass
+                                else:
+                                    multipleLinesQuotes = 1
+                                    continue
                             else:
                                 pass
 
-                            if re.match(noAddScript, eachLine):
-                                if re.match(r".*[\\|,]\s*$", eachLine):
-                                    if checkCharPassing == 1:
-                                        continue
-                                    else:
-                                        checkCharPassing = 1
-                                        continue
-                                elif re.match(r".*[\(|\{|\[]\s*$", eachLine):
-                                    checkOtherCharPassing += 1
-                                    continue
-                                else:
-                                    continue
+                            if re.match(Reg.noAddScript, eachLine):
+                                continue
                             # -- Adding scripts -- #
-                            elif re.match(addIndentScript, eachLine):
+                            elif re.match(Reg.addIndentScript, eachLine):
                                 spaces = spaces + basicIndentation # add indentation
                                 sys.stdout.write(textwrap.indent(Padding.ScriptsGenerator(
                                                                                         self,
@@ -536,9 +495,6 @@ class Padding:
         emptyClassInfoCheck     = {}
         basicIndentation        = None
 
-        classDefined        = r"\s*class\s+(\w+)"
-        detectClass         = r"\s*class\s+\w+"        
-        
         recursFiles = self.utils.CheckFileDir(
                                                 output=outputArg, 
                                                 detectFiles="py", 
@@ -575,15 +531,15 @@ class Padding:
                                     emptyClassInfo[search.group(1)] = file
                                     numberLineInFile += 1 # Adding one line because padding will be added
                                     numberLine += 1 # Adding one line because padding will be added
-                        if re.match(detectClass, eachLine):
+                        if re.match(Reg.checkClassInLine, eachLine):
                             spacesClass = len(eachLine) - len(eachLine.lstrip())
                             if numberLine == numberLineInFile: # If empty class in last line
-                                search = re.search(classDefined, eachLine)
+                                search = re.search(Reg.detectClasses, eachLine)
                                 if search:
                                     emptyClassInfo[search.group(1)] = file
                             else: 
                                 counterToCheckIndent += 1
-                                search = re.search(classDefined, eachLine)
+                                search = re.search(Reg.detectClasses, eachLine)
     
                 # -- Add padding in empty class(es) -- #
                 numberLine = 0
@@ -601,7 +557,7 @@ class Padding:
                                 sys.stdout.write(textwrap.indent(finalVarPadding, self.simpleSpace * spacesClass))                                                                
                                 numberLine += 1
                         sys.stdout.write(eachLine)
-                        if re.match(detectClass, eachLine):
+                        if re.match(Reg.checkClassInLine, eachLine):
                             spacesClass = len(eachLine) - len(eachLine.lstrip())
                             if numberLine == numberLineInFile: # If empty class in last line
                                 paddingVar1 = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
@@ -633,15 +589,15 @@ class Padding:
                                         emptyClassInfo[search.group(1)] = file
                                         numberLineInFile += 1
                                         numberLine += 1
-                            if re.match(detectClass, eachLine):
+                            if re.match(Reg.checkClassInLine, eachLine):
                                 spacesClass = len(eachLine) - len(eachLine.lstrip())
                                 if numberLine == numberLineInFile: # If empty class in last line
-                                    search = re.search(classDefined, eachLine)
+                                    search = re.search(Reg.detectClasses, eachLine)
                                     if search:
                                         emptyClassInfo[search.group(1)] = file
                                 else: 
                                     counterToCheckIndent += 1
-                                    search = re.search(classDefined, eachLine)
+                                    search = re.search(Reg.detectClasses, eachLine)
 
                     bar.next(1)
                 bar.finish()
@@ -671,9 +627,6 @@ class Padding:
         emptyFuncInfo           = {}
         emptyFuncInfoCheck      = {}
         basicIndentation        = None
-
-        functionDefined = r"\s*def\s+(\w+)"   
-        detectFunction  = r"\s*def\s+\w+"
         
         recursFiles = self.utils.CheckFileDir(
                                                 output=outputArg, 
@@ -711,15 +664,15 @@ class Padding:
                                     emptyFuncInfo[search.group(1)] = file
                                     numberLineInFile += 1 # Adding one line because padding will be added
                                     numberLine += 1 # Adding one line because padding will be added
-                        if re.match(detectFunction, eachLine):
+                        if re.match(Reg.checkFunctionInLine, eachLine):
                             spacesFunc = len(eachLine) - len(eachLine.lstrip())
                             if numberLine == numberLineInFile: # If empty function last line
-                                search = re.search(functionDefined, eachLine)
+                                search = re.search(Reg.detectFunctions, eachLine)
                                 if search:
                                     emptyFuncInfo[search.group(1)] = file
                             else: 
                                 counterToCheckIndent += 1
-                                search = re.search(functionDefined, eachLine)
+                                search = re.search(Reg.detectFunctions, eachLine)
 
                 # -- Add padding in empty function(s) -- #
                 numberLine = 0
@@ -737,7 +690,7 @@ class Padding:
                                 sys.stdout.write(textwrap.indent(finalVarPadding, self.simpleSpace * spacesFunc))                                                                
                                 numberLine += 1 
                         sys.stdout.write(eachLine)
-                        if re.match(detectFunction, eachLine):
+                        if re.match(Reg.checkFunctionInLine, eachLine):
                             spacesFunc = len(eachLine) - len(eachLine.lstrip())
                             if numberLine == numberLineInFile: # IIf empty function last line
                                 paddingVar1 = self.mixer.GetStringMixer(mixerLengthArgDefined=mixerLengthArg)
@@ -769,15 +722,15 @@ class Padding:
                                         emptyFuncInfoCheck[search.group(1)] = file
                                         numberLineInFile += 1
                                         numberLine += 1
-                            if re.match(detectFunction, eachLine):
+                            if re.match(Reg.checkFunctionInLine, eachLine):
                                 spacesFunc = len(eachLine) - len(eachLine.lstrip())
                                 if numberLine == numberLineInFile: # If empty function last line
-                                    search = re.search(functionDefined, eachLine)
+                                    search = re.search(Reg.detectFunctions, eachLine)
                                     if search:
                                         emptyFuncInfoCheck[search.group(1)] = file
                                 else: 
                                     counterToCheckIndent += 1
-                                    search = re.search(functionDefined, eachLine)
+                                    search = re.search(Reg.detectFunctions, eachLine)
 
                     bar.next(1)
                 bar.finish()

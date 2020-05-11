@@ -102,10 +102,9 @@ class Delete:
 
         with Bar("Obfuscation ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
-                # -- Delete comments -- #
                 with fileinput.input(file, inplace=True) as inputFile:
                     for eachLine in inputFile:
-                        if "coding" in eachLine or "#!" in eachLine:
+                        if re.match(Reg.pythonFileHeader, eachLine):
                             sys.stdout.write(eachLine)
                         else:
                             if multipleLinesComments == 1:
@@ -119,7 +118,7 @@ class Delete:
                                 else:
                                     countLineCommentInput += 1
                             elif noCommentsQuotes == 1:
-                                if re.match(Reg.checkIfEndVarStdoutQuotes, eachLine):
+                                if re.match(Reg.checkIfEndVarStdoutMultipleQuotes, eachLine):
                                     sys.stdout.write(eachLine)
                                     noCommentsQuotes = 0
                                 else:
@@ -135,10 +134,11 @@ class Delete:
                                         else:
                                             sys.stdout.write(eachLine)
                                     else:
-                                        if re.match(Reg.checkIfStdoutQuotes, eachLine) or re.match(Reg.checkIfVarQuotes, eachLine):
+                                        if re.match(Reg.checkIfStdoutMultipleQuotes, eachLine) \
+                                        or re.match(Reg.checkIfVarMultipleQuotes, eachLine):
                                             sys.stdout.write(eachLine)
                                             noCommentsQuotes = 1
-                                        elif re.match(Reg.checkIfRegexQuotes, eachLine):
+                                        elif re.match(Reg.checkIfRegexMultipleQuotes, eachLine):
                                             sys.write.stdout(eachLine)
                                         else:
                                             sys.stdout.write(eachLine)
@@ -199,7 +199,7 @@ class Delete:
                                 else:
                                     countLineCommentOutput += 1
                             elif noCommentsQuotes == 1:
-                                if re.match(Reg.checkIfEndVarStdoutQuotes, eachLine):
+                                if re.match(Reg.checkIfEndVarStdoutMultipleQuotes, eachLine):
                                     noCommentsQuotes = 0
                                 else:
                                     continue
@@ -214,9 +214,10 @@ class Delete:
                                         else:
                                             continue
                                     else:
-                                        if re.match(Reg.checkIfStdoutQuotes, eachLine) or re.match(Reg.checkIfVarQuotes, eachLine):
+                                        if re.match(Reg.checkIfStdoutMultipleQuotes, eachLine) \
+                                        or re.match(Reg.checkIfVarMultipleQuotes, eachLine):
                                             noCommentsQuotes = 1
-                                        elif re.match(Reg.checkIfRegexQuotes, eachLine):
+                                        elif re.match(Reg.checkIfRegexMultipleQuotes, eachLine):
                                             continue
                                         else:
                                             continue
@@ -276,9 +277,6 @@ class Delete:
         checkPycFile        = []
         currentPosition     = os.getcwd()
 
-        detectPycFiles  = r".*\.pyc$"
-        deletePycFiles  = r"\w+\.pyc$"
-
         recursFiles = self.utils.CheckFileDir(
                                                 output=outputArg, 
                                                 detectFiles="pyc", 
@@ -299,7 +297,7 @@ class Delete:
         # -- Check if .pyc file(s) exists and delete it -- #
         with Bar("Setting up  ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
             for file in recursFiles:
-                if re.match(detectPycFiles, file):
+                if re.match(Reg.detectPycFiles, file):
                     deleteFiles += 1
                     checkPycFile.append(file)
 
@@ -309,9 +307,9 @@ class Delete:
         # -- Delete pyc file(s) -- #
         with Bar("Correction  ", fill="=", max=countRecursFiles, suffix="%(percent)d%%") as bar:
             for file in recursFiles:   
-                if re.match(detectPycFiles, file):
-                    extractPycFiles = re.search(deletePycFiles, file)
-                    moveFolder      = re.sub(deletePycFiles, "", file)
+                if re.match(Reg.detectPycFiles, file):
+                    extractPycFiles = re.search(r".*\.pyc$", file)
+                    moveFolder      = re.sub(r".*\.pyc$", "", file)
                     os.chdir(moveFolder)
                     os.remove(extractPycFiles.group(0))
                     os.chdir(currentPosition)

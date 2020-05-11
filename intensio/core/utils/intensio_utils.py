@@ -160,21 +160,49 @@ class Utils:
 
 
 class Reg:
-    # -- To detect commentaries -- #
+    # -- All features -- #
+    checkIfVarMultipleQuotes    = r"\s*\w+\s*\=\s*.*[\"|\']{3}"
+    checkIfRegexMultipleQuotes  = r"\s*r{1}[\']{3}|\s*r{1}[\"]{3}"
+    checkIfStdoutMultipleQuotes = r"\s*print{1}\s*\(?[\"|\']{3}|\s*sys\.write\.stdout{1}\s*\(?[\"|\']{3}"
+    checkIfEndVarStdoutMultipleQuotes = r".*\"{3}|.*\'{3}"
+    
+    pythonFileHeader = r"\s*#!.*python[0-9]\s*$|\s*#.*-*-\s*$" 
+
+    # --  Delete comments features -- #
     hashCommentsAfterLine = r"^[^\#]+\#+"
     hashCommentsBeginLine = r"^\#.*|^\s+\#.*"
-
-    checkIfVarQuotes    = r"\s*\w+\s*\=\s*[\"|\']{3}"
-    checkIfRegexQuotes  = r"\s*r[\"]{1}.*[[\"]{1}|\s*r[\']{1}.*[[\']{1}"
-    checkIfStdoutQuotes = r"\s*print{1}\s*\(?[\"|\']{3}|\s*sys\.write\.stdout{1}\s*\(?[\"|\']{3}"
-    
-    checkIfEndVarStdoutQuotes = r".*\"{3}|.*\'{3}"     
 
     quotesCommentsMultipleLines = r"^\s+[\"|\']{3}\s*|^[\"|\']{3}\s*"
     quotesCommentsOneLine       = r"^\s*[\"]{3}.*[\"]{3}\s*$|^\s*[\']{3}.*[\']{3}\s*$"
 
+    # -- Replace string to string features and Padding empty classes and functions features -- #
+    detectFunctions = r"def\s+(\w+)"
+    detectClasses   = r"class\s+(\w+)"
+    detectErrorVars = r"except(\s+\w+\s+as\s+)(\w)"
+    detectLoopVars  = r"for\s+([\w\s\,]+)(\s+in\s+)"
+    detectSimpleVars = r"(^[\s|a-zA-Z_]+[\,\s\w]{0,})+(\s*=\s*[\[|\{\(|\w+|\"|\'])"
 
-class Colors:
+    # -- Padding scripts features -- #
+    addIndentScript = r".*\:{1}\s*$"
+    noAddScript     = r"^\@|\s+\@|\s+return|\s*def\s+.+\s*\:{1}|^class\s+.+\s*\:{1}|.*[\{|\[|\(|\)|\]|\}|,|\\|\^|\'|\"|0-9]\s*$|\s+yield.*|\s+raise.*"
+
+    # -- Padding empty classes features-- #
+    checkClassInLine = r"\s*class\s+\w+"
+
+    # -- Padding empty functions features -- #
+    checkFunctionInLine = r"\s*def\s+\w+"
+
+    # -- Delete .pyc files feature -- #
+    detectPycFiles = r".*\.pyc$"
+
+    # -- Replace files name features -- #
+    detectPythonImport = r"\s*from\s+|\s*import\s+"
+
+    # -- Repalce string to hex features -- #
+    detectExecFunction  = r"exec\(\w+\)"
+    detectMultipleQuotes = r"\'{3}|\"{3}"
+
+class Colors: 
     # PROGRESS = "\033[94m" + "\033[1m" # blue + bold
     SUCCESS = "\033[92m"                # green
     SECTION = "\033[93m" + "\033[1m"    # yellow + bold
