@@ -123,15 +123,24 @@ class Utils:
         return removeDuplicateValues
 
 
-    def VerifyIfInDict():
+    def VerifyIfInDict(line):
         """ development in progress """
 
 
-    def VerifyIfInTuple():
+    def VerifyIfInTuple(line):
         """ development in progress """
 
 
-    def VerifyIfInList():
+    def VerifyIfInList(line):
+        numberParentheses       = 0
+        numberParenthesesLeft   = 0
+        numberParenthesesRight  = 0
+
+        for i in line:
+            if i == "(":
+                numberParenthesesLeft += 1
+            if i == ")":
+                numberParenthesesRight += 1
         """ development in progress """
 
 
@@ -187,6 +196,9 @@ class Reg:
     
     pythonFileHeader = r"^\s*\#\!.*python|^\s*\#\s*-\*-" 
 
+    # -- Delete empty line feature -- #
+    detectLineEmpty = r"^\s*$"
+
     # --  Delete comments feature only -- #
     hashCommentsAfterLine = r"^[^\#]+\#"
     hashCommentsBeginLine = r"^\s*\#.*"
@@ -208,7 +220,8 @@ class Reg:
 
     # -- Padding scripts feature only -- #
     addIndentScript = r".*\:{1}\s*$"
-    noAddScript     = r"^\@|\s+\@|\s+return|\s*def\s+.+\s*\:{1}|^class\s+.+\s*\:{1}|.*[\{|\[|\(|\)|\]|\}|,|\\|\^|\'|\"|0-9]\s*$|\s+yield.*|\s+raise.*"
+    noAddScript     = r"^\@|\s+\@|\s+return|\s*def\s+.+\s*\:{1}|^class\s+.+\s*\:{1}|.*[\{|\[|\(|\)|\]|\}|\,|\\|\^|\'|\"|0-9]\s*$|\s+yield.*|\s+raise.*|\s*\)+\s*for\s+\w+\s+in\s+"
+    detectComma     = r".+\,{1}\s*$"
 
     # -- Padding empty classes feature only -- #
     checkClassInLine = r"\s*class\s+\w+"
@@ -227,8 +240,8 @@ class Reg:
     detectMultipleQuotes = r"\'{3}|\"{3}"
 
     # -- Detect arg of program -- #
-    detectMlenArg           = r"^lower$|^medium$|^high$"
-    detectPaddingScriptArg  = r"^[2|4|8]{1}$"
+    detectMlenArg   = r"^lower$|^medium$|^high$"
+    detectIndentArg = r"^[2|4|8]$"
 
 
 class Colors: 

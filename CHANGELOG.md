@@ -1,9 +1,12 @@
 # CHANGELOG of Intensio-Obfuscator project
 
+## 05-12-2020
+- [update] delete default value of `-ind, --indent` and `-mlen, --mixerlength ` parameter and turn these defaults values to False
+- [add] new parameter `-ind, --indent` to indicate manually base indentation of python source code
+
 ## 05-11-2020
 - [upgrade] to version 1.0.9.2
 - [fix] issue #46 - improve detect multiple lines code of Replace string to string and Padding scripts features
-- [add] new parameter to define manually base indentation of python source code
 
 ## 05-10-2020
 - [upgrade] to version 1.0.9.1

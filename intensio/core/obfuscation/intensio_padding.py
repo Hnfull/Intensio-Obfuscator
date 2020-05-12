@@ -341,6 +341,7 @@ class Padding:
         checkLine               = 0
         countRecursFiles        = 0
         multipleLinesQuotes     = 0
+        comma                   = 0
         basicIndentArg          = int(basicIndentArg)
 
         recursFiles = self.utils.CheckFileDir(
@@ -380,13 +381,19 @@ class Padding:
             for file in recursFiles:
                 with fileinput.input(file, inplace=True) as inputFile:
                     for eachLine in inputFile:
-                        sys.stdout.write(eachLine)
                         if eachLine == "\n":
                             continue
                         else:
+                            sys.stdout.write(eachLine)
                             spaces = len(eachLine) - len(eachLine.lstrip())
 
-                            if multipleLinesQuotes == 1:
+                            if comma == 1:
+                                if re.match(Reg.detectComma, eachLine) == None:
+                                    comma = 0
+                                    continue
+                                else:
+                                    pass
+                            elif multipleLinesQuotes == 1:
                                 if re.match(Reg.checkIfEndVarStdoutMultipleQuotes, eachLine):
                                     if self.utils.DetectMultipleLinesQuotes(eachLine) == True:
                                         multipleLinesQuotes = 0
@@ -402,6 +409,8 @@ class Padding:
                                 else:
                                     multipleLinesQuotes = 1
                                     continue
+                            elif re.match(Reg.detectComma, eachLine): # Args of function on multiple lines for example
+                                comma = 1
                             else:
                                 pass
 

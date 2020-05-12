@@ -22,7 +22,6 @@ class Mixer:
 
         for i in range(stringLength):
            randomCharsList.append(random.choice(string.ascii_letters))
-        
         return "".join(randomCharsList)
         
 

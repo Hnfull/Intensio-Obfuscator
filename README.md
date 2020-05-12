@@ -65,9 +65,10 @@
 | -h, --help | show this help message and exit |
 | -i, --input  | source directory - indicate a directory that contain your file |
 | -o, --output | output directory that will be obfuscated - indicate a empty directory that will contain your file |
-| -mlen, --mixerlength | define length of random strings generated [ `lower:32` \| `medium:64` \| `high:128` ] chars when `--replacetostr` or `--paddingscripts` or `-rfn, --replacefilesname` or `--replacetohex` features are specified, default value: [medium], possible values: [lower - medium - high]|
+| -mlen, --mixerlength | define length of random strings generated [ `lower:32` \| `medium:64` \| `high:128` ] chars when `--replacetostr` or `--paddingscripts` or `-rfn, --replacefilesname` or `--replacetohex` features are specified, possible values: [lower \| medium \| high]|
+|-ind, --indent | indicate the indentation of your python source code, possible values: [2 \| 4 \| 8]| 
 | -rts, --replacetostr | enable `replace string to string mixed` obfuscation feature |
-| -ps, --paddingscript | enable `padding script` obfuscation feature and define the indentation [2\|4\|8] of your python source code|
+| -ps, --paddingscript | enable `padding script` obfuscation feature|
 | -rfn, --replacefilename | enable `replace file name` obfuscation feature |
 | -rth, --replacetohex | enable `replace string to hex` obfuscation feature |
 | -v, --verbose | improve verbosity |

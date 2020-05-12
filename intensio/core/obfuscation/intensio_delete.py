@@ -43,7 +43,7 @@ class Delete:
             for file in recursFiles:
                 with fileinput.FileInput(file, inplace=True) as inputFile:
                     for eachLine in inputFile:
-                        if eachLine == "\n":
+                        if re.match(Reg.detectLineEmpty, eachLine):
                             checkEmptyLineInput += 1
                             pass
                         else:
@@ -59,7 +59,7 @@ class Delete:
                     readF = readFile.readlines()
                     for eachLine in readF:
                         numberLine += 1
-                        if eachLine == "\n":
+                        if re.match(Reg.detectLineEmpty, eachLine):
                             checkLinesSpace[numberLine] = file
                             checkEmptyLineOutput += 1
 

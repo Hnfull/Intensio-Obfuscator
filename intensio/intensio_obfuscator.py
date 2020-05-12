@@ -30,10 +30,10 @@
 -o, --output                ->  output directory that will be obfuscated - indicate a empty directory that will contain your file  
 -mlen, --mixerlength        ->  define length of random strings generated [lower:32 | medium:64 | high:128] (number of chars) \
                                 when 'replacetostr' - 'paddingscript' - 'replacefilename' - 'replacetohex' features are specified \
-                                default value: [medium], possible values: [lower, medium, high]
+                                possible values: [lower | medium | high]
+-ind, --indent              ->  indicate the indentation of your python source code, possible values: [2 | 4 | 8]
 -rts, --replacetostr        ->  enable 'replace string to string mixed' obfuscation feature
--ps, --paddingscript        ->  enable 'padding script' obfuscation feature  and define the indentation [2|4|8] of your python \
-                                source code
+-ps, --paddingscript        ->  enable 'padding script' obfuscation feature
 -rfn, --replacefilename     ->  enable 'replace file name' obfuscation feature
 -rth, --replacetohex        ->  enable 'replace string to hex' obfuscation feature
 -v, --verbose               ->  improve verbosity
@@ -68,7 +68,7 @@ def main():
     args = Args()
     utils = Utils()
 
-    if len(sys.argv) > 1 and len(sys.argv) <= 14:
+    if len(sys.argv) > 1 and len(sys.argv) <= 15:
         pass
     else:
         print(Colors.ERROR + "[-] Incorrect number of arguments" + Colors.DISABLE + "\n")
@@ -77,16 +77,20 @@ def main():
 
     if args.GetArgsValue().input:
         if args.GetArgsValue().output:
-            if re.match(Reg.detectMlenArg, args.GetArgsValue().mixerlength):
-                pass
+            if re.match(Reg.detectMlenArg, str(args.GetArgsValue().mixerlength)):
+                if re.match(Reg.detectIndentArg, str(args.GetArgsValue().indent)):
+                    pass
+                else:
+                    print("\n" + Colors.ERROR + "[-] -ind, --indent argument [2|4|8] missing" + Colors.DISABLE + "\n")
+                    sys.exit(1)
             else:
-                print(Colors.ERROR + "[-] -mlen, --mixerlength argument [lower|mediu|high] missing" + Colors.DISABLE + "\n")
+                print("\n" + Colors.ERROR + "[-] -mlen, --mixerlength argument [lower|medium|high] missing" + Colors.DISABLE + "\n")
                 sys.exit(1)
         else:
-            print(Colors.ERROR + "[-] Output [-o, --output] argument missing" + Colors.DISABLE + "\n")
+            print("\n" + Colors.ERROR + "[-] Output [-o, --output] argument missing" + Colors.DISABLE + "\n")
             sys.exit(1)
     else:
-        print(Colors.ERROR + "[-] Input [-i, --input] argument missing" + Colors.DISABLE + "\n")
+        print("\n" + Colors.ERROR + "[-] Input [-i, --input] argument missing" + Colors.DISABLE + "\n")
         sys.exit(1)
 
     for line in INTENSIO_BANNER.split("\n"):
@@ -166,7 +170,7 @@ def main():
     paddingDataEmptyClass   = paddingData.EmptyClasses(
                                                         outputArg=args.GetArgsValue().output, 
                                                         mixerLengthArg=args.GetArgsValue().mixerlength,
-                                                        basicIndentArg=args.GetArgsValue().paddingscript,
+                                                        basicIndentArg=args.GetArgsValue().indent,
                                                         verboseArg=args.GetArgsValue().verbose
     ) 
     if paddingDataEmptyClass == 0:
@@ -187,7 +191,7 @@ def main():
     paddingDataEmptyFunc = paddingData.EmptyFunctions(
                                                     outputArg=args.GetArgsValue().output, 
                                                     mixerLengthArg=args.GetArgsValue().mixerlength,
-                                                    basicIndentArg=args.GetArgsValue().paddingscript,
+                                                    basicIndentArg=args.GetArgsValue().indent,
                                                     verboseArg=args.GetArgsValue().verbose
     ) 
     if paddingDataEmptyFunc == 0:
@@ -227,7 +231,7 @@ def main():
         paddingDataGarbage = paddingData.AddRandomScripts(
                                                         outputArg=args.GetArgsValue().output,
                                                         mixerLengthArg=args.GetArgsValue().mixerlength,
-                                                        basicIndentArg=args.GetArgsValue().paddingscript,
+                                                        basicIndentArg=args.GetArgsValue().indent,
                                                         verboseArg=args.GetArgsValue().verbose
         )
         if paddingDataGarbage == 0:

@@ -26,10 +26,16 @@ class Args:
         self.parser.add_argument(
                                 "-mlen", "--mixerlength",
                                 choices=["lower", "medium", "high"],
-                                default="medium",
+                                default=False,
                                 help="define length of random strings generated [lower:32 | medium:64 | high:128] \
                                 (number of chars) when 'replacetostr' - 'paddingscript' - 'replacefilename' - 'replacetohex' \
-                                features are specified, default value: [medium], possible values: [lower, medium, high]"
+                                features are specified, possible values: [lower, medium, high]"
+        )
+        self.parser.add_argument(
+                                "-ind", "--indent",
+                                choices=["2", "4", "8"],
+                                default=False,
+                                help="indicate the indentation of your python source code, possible values: [2 | 4 | 8]"
         )
         self.parser.add_argument(
                                 "-rts", "--replacetostr",
@@ -39,8 +45,9 @@ class Args:
         )
         self.parser.add_argument(
                                 "-ps", "--paddingscript",
-                                choices=["2", "4", "8"],
-                                help="activate 'padding script' obfuscation feature and define the indentation of your python source code"
+                                action="store_true",
+                                default=False,
+                                help="activate 'padding script' obfuscation feature"
         )
         self.parser.add_argument(
                                 "-rfn", "--replacefilename",
