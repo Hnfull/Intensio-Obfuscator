@@ -1,5 +1,8 @@
 # CHANGELOG of Intensio-Obfuscator project
 
+## 05-13-2020
+- [update] check of specific values in lists ,dicts ands tuples on multiple lines for `-ps, --padding` feature
+
 ## 05-12-2020
 - [update] delete default value of `-ind, --indent` and `-mlen, --mixerlength ` parameter and turn these defaults values to False
 - [add] new parameter `-ind, --indent` to indicate manually base indentation of python source code

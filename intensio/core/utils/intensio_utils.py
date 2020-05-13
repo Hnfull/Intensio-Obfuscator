@@ -123,27 +123,6 @@ class Utils:
         return removeDuplicateValues
 
 
-    def VerifyIfInDict(line):
-        """ development in progress """
-
-
-    def VerifyIfInTuple(line):
-        """ development in progress """
-
-
-    def VerifyIfInList(line):
-        numberParentheses       = 0
-        numberParenthesesLeft   = 0
-        numberParenthesesRight  = 0
-
-        for i in line:
-            if i == "(":
-                numberParenthesesLeft += 1
-            if i == ")":
-                numberParenthesesRight += 1
-        """ development in progress """
-
-
     def CheckFileDir(self, output, detectFiles, blockDir, blockFile, dirOnly):
         filesName = []
 
@@ -222,6 +201,7 @@ class Reg:
     addIndentScript = r".*\:{1}\s*$"
     noAddScript     = r"^\@|\s+\@|\s+return|\s*def\s+.+\s*\:{1}|^class\s+.+\s*\:{1}|.*[\{|\[|\(|\)|\]|\}|\,|\\|\^|\'|\"|0-9]\s*$|\s+yield.*|\s+raise.*|\s*\)+\s*for\s+\w+\s+in\s+"
     detectComma     = r".+\,{1}\s*$"
+    detectOpenSymb  = r".+[\{|\[|\(]$|.+[\{|\[|\(]\s+$"
 
     # -- Padding empty classes feature only -- #
     checkClassInLine = r"\s*class\s+\w+"

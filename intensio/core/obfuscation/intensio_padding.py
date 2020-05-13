@@ -342,6 +342,7 @@ class Padding:
         countRecursFiles        = 0
         multipleLinesQuotes     = 0
         comma                   = 0
+        openSymb                = 0
         basicIndentArg          = int(basicIndentArg)
 
         recursFiles = self.utils.CheckFileDir(
@@ -393,6 +394,13 @@ class Padding:
                                     continue
                                 else:
                                     pass
+                            elif openSymb == 1:
+                                # -- If value of list, tuple and dict on multiple line isn't alone when detect \ #
+                                # the first line, feature need to check if comma is present -- #
+                                if re.match(Reg.detectComma, eachLine):
+                                    comma = 1
+                                openSymb = 0
+                                continue
                             elif multipleLinesQuotes == 1:
                                 if re.match(Reg.checkIfEndVarStdoutMultipleQuotes, eachLine):
                                     if self.utils.DetectMultipleLinesQuotes(eachLine) == True:
@@ -411,9 +419,12 @@ class Padding:
                                     continue
                             elif re.match(Reg.detectComma, eachLine): # Args of function on multiple lines for example
                                 comma = 1
+                            # -- Avoid to add padding if the values of dict or list is alone on multiple lines and does \ #
+                            # not contain any blacklisted chars -- #
+                            elif re.match(Reg.detectOpenSymb, eachLine): 
+                                openSymb = 1
                             else:
                                 pass
-
                             if re.match(Reg.noAddScript, eachLine):
                                 continue
                             # -- Adding scripts -- #
