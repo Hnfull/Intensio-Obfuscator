@@ -1,6 +1,7 @@
 # CHANGELOG of Intensio-Obfuscator project
 
 ## 05-13-2020
+- [fix] issue #48
 - [update] check of specific values in lists ,dicts ands tuples on multiple lines for `-ps, --padding` feature
 
 ## 05-12-2020
