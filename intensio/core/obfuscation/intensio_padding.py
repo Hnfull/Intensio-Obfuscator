@@ -476,9 +476,9 @@ class Padding:
         if checkLine > countLine:    
             print("\n-> {} scripts added in {} file(s)\n".format(countScriptsAdded, countRecursFiles))
             print("-> {} lines added in {} file(s)\n".format(countLineAdded, countRecursFiles))
-            return 0
-        else:
             return 1
+        else:
+            return 0
     
     
     def EmptyClasses(self, outputArg, mixerLengthArg, basicIndentArg, verboseArg):
@@ -599,17 +599,17 @@ class Padding:
                 for key, value in emptyClassInfo.items():
                     print("\n-> File : {}".format(value))
                     print("-> Padding added in : {} ( empty class )".format(key))
-                return 0   
+                return 1   
             else:
                 if verboseArg:
                     print("\n[!] No padding added to empty class(es)... :\n")
                     for key, value in emptyClassInfoCheck.items():
                         print("\n-> File : {}".format(value))
                         print("-> Class : {}".format(key))
-                return 1
+                return 0
         else:
             print("[!] No empty class found in {}".format(outputArg))
-            return 0
+            return 1
 
     
     def EmptyFunctions(self, outputArg, mixerLengthArg, basicIndentArg, verboseArg):
@@ -730,14 +730,14 @@ class Padding:
                 for key, value in emptyFuncInfo.items():
                     print("\n-> File : {}".format(value))
                     print("-> Padding added in : {} ( empty function )".format(key))
-                return 0
+                return 1
             else:
                 if verboseArg:
                     print("\n[!] No padding added to empty function(s)... :\n")
                     for key, value in emptyFuncInfoCheck.items():
                         print("\n-> File : {}".format(value))
                         print("-> Function : {}".format(key))
-                return 1
+                return 0
         else:
             print("[!] No empty function found in {}".format(outputArg))
-            return 0
+            return 1

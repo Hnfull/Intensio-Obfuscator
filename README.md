@@ -1,4 +1,4 @@
-# Intensio-Obfuscator (Beta)
+# Intensio-Obfuscator
 
 ![](https://img.shields.io/badge/Python->=3.5-blue.svg)
 ![](https://img.shields.io/badge/Version-1.0.9.2-green.svg)
@@ -33,21 +33,21 @@
 `python3.x intensio_obfuscator.py --help`
 
 ## Features
-| Features | Descriptions | Purpose of obfuscation |
-| ------ | ------ |------ | 
-| Delete comments | Delete all comments (this feature is executed by default) | Delete potential behavioral informations |
-| Delete line spaces | Delete all spaces line (this feature is executed by default) | Reduce the code visibility in clear |
-| Correction padding empty classes/functions | Add padding to empty classes and functions, if the class or function contains comments only, the default feature `Delete comments` can potentially let a class or function empty, this will avoid to generate an error (this feature is executed by default) | None, only to avoid to generate errors|
-| Replace string to string mixed | Replace all names of variables/classes/functions to random strings with length defined| Reduce the code visibility in clear - Delay the deduction of the behavior of variables/classes/functions | 
-| Padding script | Add padding of random scripts after each line| Reduce the code visibility in clear - add dead snippets code/classes/functions to blur and delay behavior analysis of program |
-| Replace file name | Replace all files name to random strings with length defined | Reduce the code visibility in clear - Reduce the deduction of functionnalities of files |
-| Replace string to hex | Replace all chars to their hexadecimal value | Reduce the code visibility in clear |
-| Correction delete pyc file | Delete all pyc file in output directory (this feature is executed by default) | Delete files already compiled without having been obfuscated before | 
-| Mixer length lower | Define random strings length of 32 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified | The longer the length is used, the more difficult the visibility of the code |
-| Mixer length medium | Define random strings length of 64 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified | The longer the length is used, the more difficult the visibility of the code |
-| Mixer length high | Define random strings length of 128 chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified | The longer the length is used, the more difficult the visibility of the code |
+| Features | Descriptions | Purpose of obfuscation | Compatibility with all types of codes/syntaxes | Efficacity |
+| ------ | ------ | ------ | ------ | ------ |
+| Delete comments | Delete all comments (this feature is executed by default) | Delete potential behavioral informations | high | low |
+| Delete line spaces | Delete all spaces line (this feature is executed by default) | Reduce the code visibility in clear | high | low |
+| Correction padding empty classes/functions | Add padding to empty classes and functions, if the class or function contains comments only, the default feature `Delete comments` can potentially let a class or function empty, this will avoid to generate an error (this feature is executed by default) | None, only to avoid to generate errors| high |  |
+| Replace string to string mixed | Replace all names of variables/classes/functions to random strings with length defined| Reduce the code visibility in clear - Delay the deduction of the behavior of variables/classes/functions | low - high (depends of number of names that must exclude or not) | medium |
+| Padding script | Add padding of random scripts after each line| Reduce the code visibility in clear - add dead snippets code/classes/functions to blur and delay behavior analysis of program | high | medium |
+| Replace file name | Replace all files name to random strings with length defined | Reduce the code visibility in clear - Reduce the deduction of functionnalities of files | low | low |
+| Replace string to hex | Replace all chars to their hexadecimal value | Reduce the code visibility in clear | high | very low |
+| Correction delete pyc file | Delete all pyc file in output directory (this feature is executed by default) | Delete files already compiled without having been obfuscated before | high | |
+| Mixer length lower | Define random strings length of `32` chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified | The longer the length is used, the more difficult the visibility of the code | | |
+| Mixer length medium | Define random strings length of `64` chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified | The longer the length is used, the more difficult the visibility of the code | | |
+| Mixer length high | Define random strings length of `128` chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified | The longer the length is used, the more difficult the visibility of the code | | |
 
-- Features can be executed separatly
+- Features can be executed separatly:
     - `replace string to string mixed` -> `-rts, --replacetostr`
     - `padding script` -> `-ps, --paddingscript`
     - `replace file name` -> `-rfn, --replacefilename`
@@ -65,8 +65,8 @@
 | -h, --help | show this help message and exit |
 | -i, --input  | source directory - indicate a directory that contain your file |
 | -o, --output | output directory that will be obfuscated - indicate a empty directory that will contain your file |
-| -mlen, --mixerlength | define length of random strings generated [ `lower:32` \| `medium:64` \| `high:128` ] chars when `--replacetostr` or `--paddingscripts` or `-rfn, --replacefilesname` or `--replacetohex` features are specified, possible values: [lower \| medium \| high]|
-|-ind, --indent | indicate the indentation of your python source code, possible values: [2 \| 4 \| 8]| 
+| -mlen, --mixerlength | define length of random strings generated [`lower:32`\|`medium:64`\|`high:128`] chars when `--replacetostr` or `--paddingscripts` or `-rfn, --replacefilesname` or `--replacetohex` features are specified, possible values: [`lower`\|`medium`\|`high`]|
+|-ind, --indent | indicate the indentation of your python source code, possible values: [`2`\|`4`\|`8]`| 
 | -rts, --replacetostr | enable `replace string to string mixed` obfuscation feature |
 | -ps, --paddingscript | enable `padding script` obfuscation feature|
 | -rfn, --replacefilename | enable `replace file name` obfuscation feature |
@@ -77,7 +77,7 @@
 - [Python files obfuscated](docs/examples/python_code_examples.md)
 
 ## Todo
-- Version 1.0.1-x:
+- Version 1.x.x-x:
     - Code optimization
     - Fix issues
     - Improved features already present

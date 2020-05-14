@@ -28,10 +28,10 @@
 -h, --help                  ->  show this help message and exit
 -i, --input                 ->  source directory - indicate a directory that contain your file
 -o, --output                ->  output directory that will be obfuscated - indicate a empty directory that will contain your file  
--mlen, --mixerlength        ->  define length of random strings generated [lower:32 | medium:64 | high:128] (number of chars) \
+-mlen, --mixerlength        ->  define length of random strings generated [lower:32|medium:64|high:128] (number of chars) \
                                 when 'replacetostr' - 'paddingscript' - 'replacefilename' - 'replacetohex' features are specified \
-                                possible values: [lower | medium | high]
--ind, --indent              ->  indicate the indentation of your python source code, possible values: [2 | 4 | 8]
+                                possible values: [lower|medium|high]
+-ind, --indent              ->  indicate the indentation of your python source code, possible values: [2|4|8]
 -rts, --replacetostr        ->  enable 'replace string to string mixed' obfuscation feature
 -ps, --paddingscript        ->  enable 'padding script' obfuscation feature
 -rfn, --replacefilename     ->  enable 'replace file name' obfuscation feature
@@ -59,11 +59,11 @@ from core.obfuscation.intensio_delete   import Delete
 def main():
     if sys.version_info[0] != 3:
         print(Colors.ERROR + "[-] Intensio-Obfuscator only support Python 3.x" + Colors.DISABLE)
-        sys.exit(1)
+        sys.exit(0)
 
     if sys.platform != "win32" and sys.platform != "linux":
         print(Colors.ERROR + "[-] This tool support [windows - Linux] only !" + Colors.DISABLE)
-        sys.exit(1)
+        sys.exit(0)
 
     args = Args()
     utils = Utils()
@@ -73,7 +73,7 @@ def main():
     else:
         print(Colors.ERROR + "[-] Incorrect number of arguments" + Colors.DISABLE + "\n")
         args.GetArgHelp()
-        sys.exit(1)
+        sys.exit(0)
 
     if args.GetArgsValue().input:
         if args.GetArgsValue().output:
@@ -82,16 +82,16 @@ def main():
                     pass
                 else:
                     print("\n" + Colors.ERROR + "[-] -ind, --indent argument [2|4|8] missing" + Colors.DISABLE + "\n")
-                    sys.exit(1)
+                    sys.exit(0)
             else:
                 print("\n" + Colors.ERROR + "[-] -mlen, --mixerlength argument [lower|medium|high] missing" + Colors.DISABLE + "\n")
-                sys.exit(1)
+                sys.exit(0)
         else:
             print("\n" + Colors.ERROR + "[-] Output [-o, --output] argument missing" + Colors.DISABLE + "\n")
-            sys.exit(1)
+            sys.exit(0)
     else:
         print("\n" + Colors.ERROR + "[-] Input [-i, --input] argument missing" + Colors.DISABLE + "\n")
-        sys.exit(1)
+        sys.exit(0)
 
     for line in INTENSIO_BANNER.split("\n"):
         time.sleep(0.05)
@@ -108,24 +108,24 @@ def main():
                                                     inputArg=args.GetArgsValue().input,  
                                                     verboseArg=args.GetArgsValue().verbose
     )
-    if analyseDataInEnv == 0:
+    if analyseDataInEnv == 1:
         print("\n[+] Analyze input argument '{}' -> ".format(args.GetArgsValue().input) + Colors.SUCCESS + \
             "Successful" + Colors.DISABLE)
     else:
         print("[-] Analyze input '{}' -> ".format(args.GetArgsValue().input) + Colors.ERROR + "failed" + Colors.DISABLE + "\n")
-        sys.exit(1)
+        sys.exit(0)
 
     analyseDataOutEnv = analyzeData.OutputAvailable(
                                                     inputArg=args.GetArgsValue().input, 
                                                     outputArg=args.GetArgsValue().output, 
                                                     verboseArg=args.GetArgsValue().verbose
     )
-    if analyseDataOutEnv == 0:
+    if analyseDataOutEnv == 1:
         print("\n[+] Analyze and setup output argument environment '{}' -> " \
                 .format(args.GetArgsValue().output) + Colors.SUCCESS + "Successful" + Colors.DISABLE)
     else:
         print("[-] Analyze output '{}' -> ".format(args.GetArgsValue().output) + Colors.ERROR + "failed" + Colors.DISABLE + "\n")
-        sys.exit(1)
+        sys.exit(0)
 
     # -- Obfuscation process -- #    
     startObfuscationTime = time.time()
@@ -137,7 +137,7 @@ def main():
                                             outputArg=args.GetArgsValue().output,
                                             verboseArg=args.GetArgsValue().verbose
     )
-    if deleteCommentsData == 0:
+    if deleteCommentsData == 1:
         print("[+] Obfuscation delete comments -> " + Colors.SUCCESS + "Successful" + Colors.DISABLE)
     else:
         print("\n[-] Obfuscation delete comments -> " + Colors.ERROR  + "Failed" + Colors.DISABLE)
@@ -156,7 +156,7 @@ def main():
                                                     verboseArg=args.GetArgsValue().verbose
     )
 
-    if deleteLinesSpacesData == 0:
+    if deleteLinesSpacesData == 1:
         print("[+] Obfuscation delete lines spaces -> " + Colors.SUCCESS + "Successful" + Colors.DISABLE)
     else:
         print("\n[-] Obfuscation delete lines spaces -> " + Colors.ERROR  + "Failed" + Colors.DISABLE)
@@ -173,7 +173,7 @@ def main():
                                                         basicIndentArg=args.GetArgsValue().indent,
                                                         verboseArg=args.GetArgsValue().verbose
     ) 
-    if paddingDataEmptyClass == 0:
+    if paddingDataEmptyClass == 1:
         pass
     else:
         print("\n[-] Padding empty class -> " + Colors.ERROR + "Failed" + Colors.DISABLE)
@@ -194,7 +194,7 @@ def main():
                                                     basicIndentArg=args.GetArgsValue().indent,
                                                     verboseArg=args.GetArgsValue().verbose
     ) 
-    if paddingDataEmptyFunc == 0:
+    if paddingDataEmptyFunc == 1:
         pass
     else:    
         print("\n[-] Padding empty function -> " + Colors.ERROR + "Failed" + Colors.DISABLE)
@@ -211,7 +211,7 @@ def main():
                                                         mixerLengthArg=args.GetArgsValue().mixerlength,
                                                         verboseArg=args.GetArgsValue().verbose
         ) 
-        if replaceDataStrStr == 0:
+        if replaceDataStrStr == 1:
             print("[+] Obfuscation replace string to string mixed -> " + Colors.SUCCESS + "Successful" + Colors.DISABLE)
         else:
             print("\n[-] Obfuscation replace string to string mixed -> " + Colors.ERROR +  "Failed" + Colors.DISABLE)
@@ -234,7 +234,7 @@ def main():
                                                         basicIndentArg=args.GetArgsValue().indent,
                                                         verboseArg=args.GetArgsValue().verbose
         )
-        if paddingDataGarbage == 0:
+        if paddingDataGarbage == 1:
             print("[+] Obfuscation padding script -> " + Colors.SUCCESS + "Successful" + Colors.DISABLE)
         else:
             print("\n[-] Obfuscation padding script -> " + Colors.ERROR + "Failed" + Colors.DISABLE)
@@ -256,7 +256,7 @@ def main():
                                                     mixerLengthArg=args.GetArgsValue().mixerlength,
                                                     verboseArg=args.GetArgsValue().verbose
         )
-        if replaceDataStrFname == 0:
+        if replaceDataStrFname == 1:
             print("\n[+] Obfuscation replace file name -> " + Colors.SUCCESS + "Successful" + Colors.DISABLE)
         else:
             print("\n[-] Obfuscation replace file name -> " + Colors.ERROR + "Failed" + Colors.DISABLE)
@@ -278,7 +278,7 @@ def main():
                                                     mixerLengthArg=args.GetArgsValue().mixerlength,
                                                     verboseArg=args.GetArgsValue().verbose
         ) 
-        if replaceDataStrHex == 0:
+        if replaceDataStrHex == 1:
             print("\n[+] Obfuscation replace string to hex -> " + Colors.SUCCESS + "Successful" + Colors.DISABLE)
         else:
             print("\n[-] Obfuscation replace string to hex -> " + Colors.ERROR + "Failed" + Colors.DISABLE)
@@ -300,7 +300,7 @@ def main():
                                                         outputArg=args.GetArgsValue().output, 
                                                         verboseArg=args.GetArgsValue().verbose
         )
-        if deleteLinesSpacesData == 0:
+        if deleteLinesSpacesData == 1:
             print("[+] Obfuscation delete lines spaces of padding scripts-> " + Colors.SUCCESS + "Successful" + Colors.DISABLE)
         else:
             print("\n[-] Obfuscation delete lines spaces of padding scripts -> " + Colors.ERROR  + "Failed" + Colors.DISABLE)
@@ -319,7 +319,7 @@ def main():
                                         outputArg=args.GetArgsValue().output, 
                                         verboseArg=args.GetArgsValue().verbose,
     )
-    if deletePycData == 0:
+    if deletePycData == 1:
         pass
     else:
         print("\n[-] Delete .pyc file from {} directory -> ".format(args.GetArgsValue().output) + Colors.ERROR + \

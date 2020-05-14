@@ -21,11 +21,11 @@ class Delete:
 
 
     def LinesSpaces(self, outputArg, verboseArg):
-        checkLinesSpace     = {}
-        checkEmptyLineOutput = 0
-        checkEmptyLineInput = 0
-        countRecursFiles    = 0
-        numberLine          = 0
+        checkLinesSpace         = {}
+        checkEmptyLineOutput    = 0
+        checkEmptyLineInput     = 0
+        countRecursFiles        = 0
+        numberLine              = 0
 
         recursFiles = self.utils.CheckFileDir(
                                                 output=outputArg, 
@@ -67,15 +67,17 @@ class Delete:
             bar.finish()
 
         if checkEmptyLineOutput == 0:
-            return 0
+            return 1
         else:
             if verboseArg:
-                print("\n[*] Empty line that deleted : {}\n".format(checkEmptyLineInput))
                 print("\n[!] Empty line that not been deleted... :\n")
                 for key, value in checkLinesSpace.items():
                     print("\n-> File : {}".format(value))
                     print("-> Line : {}".format(key))
-            return 1
+            else:
+                print("\n[*] Empty line that deleted : {}\n".format(checkEmptyLineInput))
+
+            return 0
 
 
     def Comments(self, outputArg, verboseArg):
@@ -268,7 +270,7 @@ class Delete:
         
         if countLineCommentOutput == 0:
             print("\n-> {} lines of comments deleted\n".format(countLineCommentInput))            
-            return 0
+            return 1
         else:
             if verboseArg:
                 filesConcerned = self.utils.RemoveDuplicatesValuesInList(filesConcerned)
@@ -276,7 +278,7 @@ class Delete:
                 for f in filesConcerned:
                     print("-> {}".format(f))
                 print("\n-> {} lines of comments no deleted\n".format(countLineCommentOutput))
-            return 1
+            return 0
 
 
     def TrashFiles(self, outputArg, verboseArg):
@@ -298,7 +300,7 @@ class Delete:
 
         if countRecursFiles == 0:
             print("[!] No .pyc file(s) found in {}".format(outputArg))
-            return 0
+            return 1
 
         print("\n[+] Running delete {} .pyc file(s)...\n".format(countRecursFiles))
 
@@ -337,10 +339,10 @@ class Delete:
             if verboseArg:
                 for pycFile in checkRecursFiles:
                     print("-> .pyc file no deleted : {}".format(pycFile))
-            return 1
+            return 0
         else:
             if verboseArg:
                 for pycFile in checkPycFile:
                     print("-> .pyc file deleted : {}".format(pycFile))
         print("\n-> {} .pyc file(s) deleted".format(deleteFiles))
-        return 0
+        return 1

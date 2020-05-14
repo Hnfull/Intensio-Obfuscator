@@ -24,7 +24,7 @@
             # 'add_argument' variable defined is already a name of function of argparse library, all 'add_arguments' will be replaced by [-rts --replacetostr] feature
             ```
 
-- You must exclude the parameters of the functions/classes/parameter-of-function of imported libraries into your source program
+- You must exclude the name of functions/classes/parameter-of-function of imported libraries into your source program
     - Can generate an error = **yes**
         - **Recommended:**
             ```python

@@ -1,5 +1,9 @@
 # CHANGELOG of Intensio-Obfuscator project
 
+## 05-14-2020
+- [update] inverse all values of integer return (0 -> 1 and 1 -> 0)
+- [update] documentation and add efficacy and compatibility part
+
 ## 05-13-2020
 - [fix] issue #48
 - [update] check of specific values in lists ,dicts ands tuples on multiple lines for `-ps, --padding` feature
@@ -31,7 +35,7 @@
 ## 03-28-2020
 - [fix] issue #39
 - [fix] issue #38
-- [update] for padding scripts `[-ps, --paddingscript]` feature, adding support of 2 and 8 basic python indentation
+- [update] for padding scripts `-ps, --paddingscript` feature, adding support of 2 and 8 basic python indentation
 
 ## 03-16-2020
 - [upgrade] to version 1.0.8.2

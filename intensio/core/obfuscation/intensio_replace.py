@@ -505,7 +505,7 @@ class Replace:
                                                                                             countRecursFiles
                                                                                             )
             )
-            return 0
+            return 1
         else:
             if verboseArg:
                 for key in allDict.keys():
@@ -518,7 +518,7 @@ class Replace:
                 if checkWordsError != []:
                     for wordNoReplaced in checkWordsError:
                         print("-> Word : {}".format(wordNoReplaced))
-            return 1
+            return 0
 
 
     def StringsToHex(self, outputArg, mixerLengthArg, verboseArg):
@@ -606,7 +606,7 @@ class Replace:
             bar.finish()
 
         if checkError == False:
-            return 0
+            return 1
         else:
             if verboseArg:
                 print("\n[!] Line(s) that have not been replaced by their hexadecimal values... :\n")
@@ -616,7 +616,7 @@ class Replace:
             else:
                 print("\n" + Colors.ERROR + "[!] Launch Intensio-Obfuscator with verbose mode because line(s) have not been " + \
                     "replaced by their hexadecimal values" + Colors.DISABLE + "\n")
-            return 1
+            return 0
 
 
     def FilesName(self, outputArg, mixerLengthArg, verboseArg):
@@ -859,6 +859,6 @@ class Replace:
             else:
                 print("\n" + Colors.ERROR + "[-] Launch intensio-obfuscatior with verbose mode [-v, --verbose] because " + \
                     "file name(s) have not been replaced by their random string value" + Colors.DISABLE)
-            return 1
-        else:
             return 0
+        else:
+            return 1
