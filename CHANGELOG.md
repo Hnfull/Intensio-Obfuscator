@@ -1,5 +1,9 @@
 # CHANGELOG of Intensio-Obfuscator project
 
+## 05-15-2020
+- [update] documentation, delete efficacity part
+- [add] an issue template file
+
 ## 05-14-2020
 - [update] inverse all values of integer return (0 -> 1 and 1 -> 0)
 - [update] documentation and add efficacy and compatibility part
