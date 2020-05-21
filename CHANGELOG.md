@@ -1,7 +1,10 @@
 # CHANGELOG of Intensio-Obfuscator project
 
+## 05-22-2020
+- [fix] issue #49
+
 ## 05-15-2020
-- [update] documentation, delete efficacity part
+- [update] documentation, delete efficacy part
 - [add] an issue template file
 
 ## 05-14-2020

@@ -523,6 +523,7 @@ class Replace:
 
     def StringsToHex(self, outputArg, mixerLengthArg, verboseArg):
         checkHexError       = {}
+        splitLetter         = []
         getLetterLineList   = []
         countRecursFiles    = 0
         checkPrint          = 0
@@ -568,8 +569,20 @@ class Replace:
                         else:
                             getLetterLineList = []
                             for letterLine in eachLine:
-                                letterToHex = "\\x" + str(letterLine.encode().hex())
-                                getLetterLineList.append(letterToHex) # Get list of all letters in line
+                                if len(letterLine.encode("utf-8").hex()) > 2:
+                                    splitLetter = []
+                                    for i in letterLine.encode("utf-8").hex():
+                                        splitLetter.append(i)
+                                        if len(splitLetter) == 2:
+                                            letterLine = "".join(splitLetter)
+                                            letterToHex = "\\x" + str(letterLine)
+                                            getLetterLineList.append(letterToHex)
+                                            splitLetter = []
+                                        else:
+                                            continue
+                                else:
+                                    letterToHex = "\\x" + str(letterLine.encode("utf-8").hex())
+                                    getLetterLineList.append(letterToHex) # Get list of all letters in line
                             hexLine = "".join(getLetterLineList)
                             sys.stdout.write(hexLine)
 
@@ -592,9 +605,7 @@ class Replace:
                             continue
                         else:
                             if not "\\x" in eachLine:
-                                if re.match(Reg.detectMultipleQuotes, eachLine):
-                                    continue
-                                elif re.match(Reg.detectExecFunction, eachLine):
+                                if re.match(Reg.detectExecFunction, eachLine):
                                     continue
                                 else:
                                     checkHexError[numberLine] = file

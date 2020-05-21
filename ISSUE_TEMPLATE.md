@@ -1,4 +1,4 @@
-# If a bug
+# Bug
 ### Description
 - Description of bug
 
@@ -7,9 +7,9 @@
 
 ### Example
 - Input file (source file)
-- Input file (obfuscated file)
+- Output file (obfuscated file)
 - Describe the normally expected behavior
 
-# If a functionnality
+# Functionnality
 ### Description
 - Description of functionality
