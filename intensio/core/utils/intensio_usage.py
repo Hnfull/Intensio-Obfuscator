@@ -59,7 +59,7 @@ class Args:
                                 "-rth", "--replacetohex",
                                 action="store_true",
                                 default=False,
-                                help="activate 'replace string to hex' obfuscation feature"
+                                help="activate 'replace string to hex' obfuscation feature (python 2 files only)"
         )
         self.parser.add_argument(
                                 "-v", "--verbose",

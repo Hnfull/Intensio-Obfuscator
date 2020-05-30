@@ -35,7 +35,7 @@
 -rts, --replacetostr        ->  enable 'replace string to string mixed' obfuscation feature
 -ps, --paddingscript        ->  enable 'padding script' obfuscation feature
 -rfn, --replacefilename     ->  enable 'replace file name' obfuscation feature
--rth, --replacetohex        ->  enable 'replace string to hex' obfuscation feature
+-rth, --replacetohex        ->  enable 'replace string to hex' obfuscation feature (python 2 files only)
 -v, --verbose               ->  improve verbosity
 
 """
@@ -280,6 +280,7 @@ def main():
         ) 
         if replaceDataStrHex == 1:
             print("\n[+] Obfuscation replace string to hex -> " + Colors.SUCCESS + "Successful" + Colors.DISABLE)
+            print("\n[!] care, only works for python 2 files")
         else:
             print("\n[-] Obfuscation replace string to hex -> " + Colors.ERROR + "Failed" + Colors.DISABLE)
             if not args.GetArgsValue().verbose:

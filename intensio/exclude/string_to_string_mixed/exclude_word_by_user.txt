@@ -1,4 +1,4 @@
-# basic-Rat is an example in Intensio-Obfuscator/intensio/test/python/* #
+# basic-Rat is an example in Intensio-Obfuscator/intensio/examples/python/* #
 
 # glob
 recursive
@@ -27,7 +27,7 @@ platform
 processor
 architecture
 
-# end section basic-Rat example in Intensio-Obfuscator/intensio/test/python/* #
+# end section basic-Rat example in Intensio-Obfuscator/intensio/examples/python/* #
 
 
 # put your vars-classes-funcs-strings to exclude and delete part of basic-RAT example above #

@@ -35,14 +35,14 @@
 ## Features
 | Features | Descriptions | Purpose of obfuscation | Compatibility with all types of python codes/syntaxes |
 | ------ | ------ | ------ | ------ |
-| Delete comments | Delete all comments (this feature is executed by default) | Delete potential behavioral informations | high |
-| Delete line spaces | Delete all spaces line (this feature is executed by default) | Reduce the code visibility in clear | high |
-| Correction padding empty classes/functions | Add padding to empty classes and functions, if the class or function contains comments only, the default feature `Delete comments` can potentially let a class or function empty, this will avoid to generate an error (this feature is executed by default) | None, only to avoid to generate errors | high |
-| Replace string to string mixed | Replace all names of variables/classes/functions to random strings with length defined| Reduce the code visibility in clear - Delay the deduction of the behavior of variables/classes/functions | low - high (depends of number of names that must exclude or not) | medium |
-| Padding script | Add padding of random scripts after each line| Reduce the code visibility in clear - add dead snippets code/classes/functions to blur and delay behavior analysis of program | high |
-| Replace file name | Replace all files name to random strings with length defined | Reduce the code visibility in clear - Reduce the deduction of functionnalities of files | low |
-| Replace string to hex | Replace all chars to their hexadecimal value | Reduce the code visibility in clear / avoid to be detected by the \'grep\' commands per example| medium (don't work for python 3 chars strings) |
-| Correction delete pyc file | Delete all pyc file in output directory (this feature is executed by default) | Delete files already compiled without having been obfuscated before | high |
+| Delete comments | Delete all comments (this feature is executed by default) | Delete potential behavioral informations | high `python files 2 & 3`|
+| Delete line spaces | Delete all spaces line (this feature is executed by default) | Reduce the code visibility in clear | high `python files 2 & 3`|
+| Correction padding empty classes/functions | Add padding to empty classes and functions, if the class or function contains comments only, the default feature `Delete comments` can potentially let a class or function empty, this will avoid to generate an error (this feature is executed by default) | None, only to avoid to generate errors | high `python files 2 & 3`|
+| Replace string to string mixed | Replace all names of variables/classes/functions to random strings with length defined| Reduce the code visibility in clear - Delay the deduction of the behavior of variables/classes/functions | low - high (depends of number of names that must exclude or not) | medium `python files 2 & 3`|
+| Padding script | Add padding of random scripts after each line| Reduce the code visibility in clear - add dead snippets code/classes/functions to blur and delay behavior analysis of program | high `python file 2 & 3`|
+| Replace file name | Replace all files name to random strings with length defined | Reduce the code visibility in clear - Reduce the deduction of functionnalities of files | low `python files 2 & 3`|
+| Replace string to hex | Replace all chars to their hexadecimal value | Reduce the code visibility in clear / avoid to be detected by the \'grep\' commands per example| medium `python files 2 only` |
+| Correction delete pyc file | Delete all pyc file in output directory (this feature is executed by default) | Delete files already compiled without having been obfuscated before | high `python files 2 & 3`|
 | Mixer length lower | Define random strings length of `32` chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified | The longer the length is used, the more difficult the visibility of the code | Information not required |
 | Mixer length medium | Define random strings length of `64` chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified | The longer the length is used, the more difficult the visibility of the code | Information not required |
 | Mixer length high | Define random strings length of `128` chars when `-rts, --replacetostr` or `-ps, --paddingscripts` or `-rfn, --replacefilesname` or `-rth, --replacetohex` parameters are specified | The longer the length is used, the more difficult the visibility of the code | Information not required |
@@ -69,7 +69,7 @@
 | -rts, --replacetostr | enable `replace string to string mixed` obfuscation feature |
 | -ps, --paddingscript | enable `padding script` obfuscation feature|
 | -rfn, --replacefilename | enable `replace file name` obfuscation feature |
-| -rth, --replacetohex | enable `replace string to hex` obfuscation feature (don't work for python 3 chars strings)|
+| -rth, --replacetohex | enable `replace string to hex` obfuscation `(python files 2 only)`|
 | -v, --verbose | improve verbosity |
 
 ## Obfuscation examples 

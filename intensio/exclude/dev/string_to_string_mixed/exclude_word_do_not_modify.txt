@@ -207,10 +207,11 @@ write
 writeable
 writelines
 
-# type
+# types
 b
 r
 u
+f
 
 # special
 _

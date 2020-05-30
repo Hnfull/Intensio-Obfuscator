@@ -1,5 +1,9 @@
 # CHANGELOG of Intensio-Obfuscator project
 
+## 05-30-2020
+- [update] isse template file
+- [update] documentation for code compatibility documentation
+
 ## 05-22-2020
 - [fix] issue #49
 
