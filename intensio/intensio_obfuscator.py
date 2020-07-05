@@ -61,10 +61,6 @@ def main():
         print(Colors.ERROR + "[-] Intensio-Obfuscator only support Python 3.x" + Colors.DISABLE)
         sys.exit(0)
 
-    if sys.platform != "win32" and sys.platform != "linux":
-        print(Colors.ERROR + "[-] This tool support [windows - Linux] only !" + Colors.DISABLE)
-        sys.exit(0)
-
     args = Args()
     utils = Utils()
 
