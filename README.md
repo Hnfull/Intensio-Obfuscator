@@ -1,7 +1,7 @@
 # Intensio-Obfuscator
 
 ![](https://img.shields.io/badge/Python->=3.5-blue.svg)
-![](https://img.shields.io/badge/Version-1.0.9.2-green.svg)
+![](https://img.shields.io/badge/Version-1.0.9.9-green.svg)
 ![](https://img.shields.io/badge/Licence-MIT-red.svg)
 
 ## What is this ?

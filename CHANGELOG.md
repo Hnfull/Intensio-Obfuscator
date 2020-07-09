@@ -1,25 +1,36 @@
 # CHANGELOG of Intensio-Obfuscator project
 
+## 07-09-2020
+- [upgrade] to version 1.0.9.9
+- [fix] issue #53
+- [fix] issue #44 with pull request #52 
+
 ## 05-30-2020
+- [upgrade] to version 1.0.9.8
 - [update] isse template file
 - [update] documentation for code compatibility documentation
 
 ## 05-22-2020
+- [upgrade] to version 1.0.9.7
 - [fix] issue #49
 
 ## 05-15-2020
+- [upgrade] to version 1.0.9.6
 - [update] documentation, delete efficacy part
 - [add] an issue template file
 
 ## 05-14-2020
+- [upgrade] to version 1.0.9.5
 - [update] inverse all values of integer return (0 -> 1 and 1 -> 0)
 - [update] documentation and add efficacy and compatibility part
 
 ## 05-13-2020
+- [upgrade] to version 1.0.9.4
 - [fix] issue #48
 - [update] check of specific values in lists ,dicts ands tuples on multiple lines for `-ps, --padding` feature
 
 ## 05-12-2020
+- [upgrade] to version 1.0.9.3
 - [update] delete default value of `-ind, --indent` and `-mlen, --mixerlength ` parameter and turn these defaults values to False
 - [add] new parameter `-ind, --indent` to indicate manually base indentation of python source code
 
@@ -32,7 +43,7 @@
 - [fix] a part of issue #46 - improve detect multiple lines code of Deletes comments feature
 
 ## 05-09-2020
-- [upgrade] to version 1.0.9
+- [upgrade] to version 1.0.9.0
 - [fix] issue #26
 - [fix] issue #23 
 - [fix] regex in delete comments feature which could generate bad behavior with certain type of case involving quotes strings
@@ -41,34 +52,38 @@
 - [add] execution time of Intensio-Obfuscator tool
 
 ## 03-29-2020
+- [upgrade] to version 1.0.8.6
 - [fix] issue #37
 
 ## 03-28-2020
+- [upgrade] to version 1.0.8.5
 - [fix] issue #39
 - [fix] issue #38
 - [update] for padding scripts `-ps, --paddingscript` feature, adding support of 2 and 8 basic python indentation
 
 ## 03-16-2020
-- [upgrade] to version 1.0.8.2
+- [upgrade] to version 1.0.8.4
 - [update] StringGenerator function to reduce the process of string replacement when `-rts, --replacetostr` is called
 - [update] move any line feed (\n) after disabling the color
 
 ## 03-10-2020
-- [upgrade] to version 1.0.8.1 
+- [upgrade] to version 1.0.8.3
 - [remove] intensio_error.py file, that contained useless feature to improve verbosity type of error during the reading of Intensio-Obfuscator code
 - [remove] `simple` level of string generated for obfuscation is removed, previous parameter` hard` level obfuscation is used by default for level of strings generated for obfuscation now
 - [remove] parameter `-mlvl, --mixerlevel` to control obfuscation level of strings generated (`simple` by default or `hard`)
 
 ## 03-10-2020 
+- [Upgrade] to version 1.0.8.2
 - [Remove] intensio_error.py file, that contained useless feature to improve verbosity type of error during the reading of Intensio-Obfuscator code
 - [Remove] `simple` level of string generated for obfuscation is removed, previous parameter` hard` level obfuscation is used by default for level of strings generated for obfuscation now
 - [Remove] parameter `-mlvl, --mixerlevel` to control obfuscation level of strings generated (`simple` by default or `hard`)
 
 ## 02-01-2020
+- [Upgrade] to version 1.0.8.1
 - [Update] visibility of code with PEP 8 recommandation part : `maximum line length` 
 
 ## 01-28-2020
-- [Upgrade] to version 1.0.8
+- [Upgrade] to version 1.0.8.0
 - [Update] `-m, -mixerlevel` becomes `-mlen, --mixerlength` to control length of random strings generated
 - [Update] redefine all colors without external library
 - [Fix] issue #14
@@ -76,7 +91,7 @@
 - [Add] new paramter `-mlvl, --mixerlevel` to control obfuscation level of strings generated (`simple` by default or `hard`)
  
 ## 01-07-2020
-- [upgrade] to version 1.0.7
+- [upgrade] to version 1.0.7.0
 - [update] spelling error (remove becomes delete)
 - [update] name of class `Remove` to `Delete`
 - [update] name of `intensio_remove.py` to `intensio_delete.py`
@@ -84,7 +99,7 @@
 - [add] `Intensio-Obfuscator/intensio/exclude/file_name/exclude_file_name_by_user.txt` allow a user to exclude file name when the `replace file name [-rfn, --replacefilename]` is called
 
 ## 10-02-2019
-- [upgrade] to version 1.0.6 
+- [upgrade] to version 1.0.6.0
 - [update] documentation Improvement 
 - [update] improve visual quality of code
 - [update] `replace string to string mixed` feature, better detect somes code cases
@@ -110,7 +125,7 @@
 - [add] `Intensio-Obfuscator/releases/` to store all old version of project 
 
 ## 07-27-2019
-- [upgrade] to version 1.0.5
+- [upgrade] to version 1.0.5.0
 - [update] Documentation Improvement 
 - [update] color when tool Failed and Successful
 - [update] renaming all parameters and functions
@@ -123,7 +138,7 @@
 - [add] new feature to trash all pyc files
 
 ## 07-01-2019
-- [upgrade] to version 1.0.4
+- [upgrade] to version 1.0.4.0
 - [update] `-rc --rcomments`, this parameter is henceforth by executed default
 - [update] `-m --mixer` to `-m --mixerlevel`
 - [update] documentation Improvement
@@ -133,7 +148,7 @@
 - [add] verbose mode `-v --verbose` #9
 
 ## 06-17-2019
-- [ugrade] version 1.0.3
+- [ugrade] version 1.0.3.0
 - [update] `-rm --remove` parameter to `-rc --rcomments` parameter to remove all comments
 - [add] new feature `-rp --rprint` this parameter remove all print functions
 - [add] `docs/recommendation.md` reference to all the best practices for using this tool
@@ -141,7 +156,7 @@
 - [add] `docs/examples/python_example.md` to put all examples will follow shortly
 
 ## 06-15-2019
-- [upgrade] version 1.0.2
+- [upgrade] version 1.0.2.0
 - [update] Path change from `include_python_words.txt` path to `include/python/include_python_words.txt`
 - [update] Path change from `exclude_python_words.txt` path to `include/python/exclude_python_words.txt`
 - [update] Correcting spelling errors in `intensio_replace.py`, `intensio_obfuscation.py`, `intensio_padding.py`, `intensio_remove.py`
@@ -150,7 +165,7 @@
 - [add] a display tqdm bar progress  when  `-r --replace`, `-p --padding`, `-rm --remove` features are specified
 
 ## 06-07-2019
-- [upgrade] version 1.0.1
+- [upgrade] version 1.0.1.0
 - [update] one file example and multiple files example (larger project)
 - [update] README.md file improvement
 - [add] rules to replacement of variables - classes - functions
@@ -160,5 +175,5 @@
 - [add] Allow execute each obfuscation features separately
 
 ## 06-02-2019
-- [upgrade] version 1.0.0
+- [upgrade] version 1.0.0.0
 - [add] Repository created
