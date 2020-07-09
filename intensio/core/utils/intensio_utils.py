@@ -179,7 +179,7 @@ class Reg:
     detectLineEmpty = r"^\s*$"
 
     # --  Delete comments feature only -- #
-    hashCommentsAfterLine = r"^[^\#]+\#"
+    hashCommentsAfterLine = r"^[^\#]+\#.*"
     hashCommentsBeginLine = r"^\s*\#.*"
 
     quotesCommentsMultipleLines     = r"^\s+[\"|\']{3}\s*|^[\"|\']{3}\s*"

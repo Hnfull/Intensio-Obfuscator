@@ -83,12 +83,15 @@ class Delete:
     def Comments(self, outputArg, verboseArg):
         getIndexList            = []
         filesConcerned          = []
+        eachLineListCheckIndex  = []
         countLineCommentOutput  = 0
         countLineCommentInput   = 0
         multipleLinesComments   = 0
         countRecursFiles        = 0
         noCommentsQuotes        = 0
+        getIndex                = 0
         detectIntoSimpleQuotes  = None
+        eachLineCheckIndex      = ""
             
         recursFiles = self.utils.CheckFileDir(
                                                 output=outputArg, 
@@ -168,12 +171,22 @@ class Delete:
                                     else:
                                         continue
                                 if detectIntoSimpleQuotes == False:
-                                    eachLineList = eachLineList[:getIndexList[-1]]
+                                    for i in getIndexList:
+                                        eachLineListCheckIndex = eachLineList[:i]
+                                        eachLineListCheckIndex.append("\n")
+                                        eachLineCheckIndex = "".join(eachLineListCheckIndex)
+                                        if self.utils.DetectIntoSimpleQuotes(eachLineCheckIndex, maxIndexLine=i) == False:
+                                            getIndex = i
+                                            break
+                                        else:
+                                            continue
+
+                                    eachLineList = eachLineList[:getIndex]
                                     eachLineList.append("\n")
                                     eachLine = "".join(eachLineList)
                                     sys.stdout.write(eachLine)
                                     detectIntoSimpleQuotes = None
-                                    continue
+                                    countLineCommentInput += 1
                                 else:
                                     sys.stdout.write(eachLine)
                             else:
@@ -254,12 +267,21 @@ class Delete:
                                     else:
                                         continue
                                 if detectIntoSimpleQuotes == False:
-                                    eachLineList = eachLineList[:getIndexList[-1]]
+                                    for i in getIndexList:
+                                        eachLineListCheckIndex = eachLineList[:i]
+                                        eachLineListCheckIndex.append("\n")
+                                        eachLineCheckIndex = "".join(eachLineListCheckIndex)
+                                        if self.utils.DetectIntoSimpleQuotes(eachLineCheckIndex, maxIndexLine=i) == False:
+                                            getIndex = i
+                                            break
+                                        else:
+                                            continue
+
+                                    eachLineList = eachLineList[:getIndex]
                                     eachLineList.append("\n")
                                     eachLine = "".join(eachLineList)
-                                    sys.stdout.write(eachLine)
+                                    countLineCommentOutput += 1
                                     detectIntoSimpleQuotes = None
-                                    continue
                                 else:
                                     continue
                             else:
