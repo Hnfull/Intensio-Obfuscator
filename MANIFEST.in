@@ -1,4 +1,5 @@
 include README.md
+include pypi_README.md
 include LICENSE.txt
 include requirements.txt
 recursive-include src/ *

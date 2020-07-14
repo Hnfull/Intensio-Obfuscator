@@ -3,12 +3,12 @@ import setuptools
 
 project_dir = Path(__file__).parent
 
-with open("README.md", "r") as fh:
+with open("pypi_README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="intensio_obfuscator",
-    version="1.0.10.1",
+    version="1.0.10.3",
     author="hnfull",
     author_email="gitland@protonmail.com",
     keywords=["python"],
