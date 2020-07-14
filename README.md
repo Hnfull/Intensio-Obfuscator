@@ -33,7 +33,7 @@ python3 intensio_obfuscator.py --help
 ```
 - With pip
 ```
-pip install intensio_obfuscator
+pip install intensio-obfuscator
 ```
 
 ## Features
