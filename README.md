@@ -1,6 +1,6 @@
 # Intensio-Obfuscator
 
-![](https://img.shields.io/badge/Python->=3.5-blue.svg)
+![](https://img.shields.io/badge/Python->=3.5-green.svg)
 [![PyPI Version](https://img.shields.io/pypi/v/intensio-obfuscator.svg)](https://pypi.python.org/pypi/intensio-obfuscator/)
 ![](https://img.shields.io/badge/Licence-MIT-red.svg)
 
@@ -24,16 +24,17 @@
 - Files written in python 2.x and 3.x 
 
 ## Installation
-- With git
+- From source
+```sh
+$ git clone https://github.com/Hnfull/Intensio-Obfuscator.git
+$ python3 -m pip install -r Intensio-Obfuscator/requirements.txt
+$ cd Intensio-Obfuscator/src/intensio_obfuscator
+$ python3 intensio_obfuscator.py --help
 ```
-git clone https://github.com/Hnfull/Intensio-Obfuscator.git
-python3 -m pip install -r Intensio-Obfuscator/requirements.txt
-cd Intensio-Obfuscator/src/intensio_obfuscator
-python3 intensio_obfuscator.py --help
-```
-- With pip
-```
-pip install intensio-obfuscator
+- From python package
+```sh
+$ pip install intensio-obfuscator
+$ ./intensio_obfuscator --help
 ```
 
 ## Features

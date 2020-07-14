@@ -10,14 +10,17 @@ import os
 import sys
 from progress.bar import Bar
 
-from core.utils.intensio_utils import Utils, Reg
+try:
+    from intensio_obfuscator.core.utils.intensio_utils import Utils, Reg
+except ModuleNotFoundError:
+    from core.utils.intensio_utils import Utils, Reg
 
 #------------------------------------------------- [Function(s)/Class(es)] --------------------------------------------------#
 
 class Delete:
 
     def __init__(self):
-        self.utils  = Utils()
+        self.utils = Utils()
 
 
     def LinesSpaces(self, outputArg, verboseArg):

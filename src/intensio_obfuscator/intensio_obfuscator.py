@@ -50,13 +50,22 @@ import sys
 import re
 import time
 
-from core.utils.intensio_design import INTENSIO_BANNER
-from core.utils.intensio_utils  import Utils, Colors, Reg
-from core.utils.intensio_usage  import Args
-from core.obfuscation.intensio_replace  import Replace
-from core.obfuscation.intensio_padding  import Padding
-from core.obfuscation.intensio_analyze  import Analyze
-from core.obfuscation.intensio_delete   import Delete
+try:
+    from intensio_obfuscator.core.utils.intensio_design import INTENSIO_BANNER
+    from intensio_obfuscator.core.utils.intensio_utils  import Utils, Colors, Reg
+    from intensio_obfuscator.core.utils.intensio_usage  import Args
+    from intensio_obfuscator.core.obfuscation.intensio_replace  import Replace
+    from intensio_obfuscator.core.obfuscation.intensio_padding  import Padding
+    from intensio_obfuscator.core.obfuscation.intensio_analyze  import Analyze
+    from intensio_obfuscator.core.obfuscation.intensio_delete   import Delete
+except ModuleNotFoundError:
+    from core.utils.intensio_design import INTENSIO_BANNER
+    from core.utils.intensio_utils  import Utils, Colors, Reg
+    from core.utils.intensio_usage  import Args
+    from core.obfuscation.intensio_replace  import Replace
+    from core.obfuscation.intensio_padding  import Padding
+    from core.obfuscation.intensio_analyze  import Analyze
+    from core.obfuscation.intensio_delete   import Delete
 
 #--------------------------------------------------------- [Global] ---------------------------------------------------------#
 

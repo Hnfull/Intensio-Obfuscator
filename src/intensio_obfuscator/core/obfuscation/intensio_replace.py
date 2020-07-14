@@ -10,9 +10,14 @@ import os
 import sys
 from progress.bar import Bar
 
-from core.obfuscation.intensio_mixer import Mixer
-from core.utils.intensio_exclude import EXCLUDE_WORDS_BY_DEFAULT
-from core.utils.intensio_utils import Utils, Colors, BreakLoop, Reg
+try:
+    from intensio_obfuscator.core.obfuscation.intensio_mixer import Mixer
+    from intensio_obfuscator.core.utils.intensio_exclude import EXCLUDE_WORDS_BY_DEFAULT
+    from intensio_obfuscator.core.utils.intensio_utils import Utils, Colors, BreakLoop, Reg
+except ModuleNotFoundError:
+    from core.obfuscation.intensio_mixer import Mixer
+    from core.utils.intensio_exclude import EXCLUDE_WORDS_BY_DEFAULT
+    from core.utils.intensio_utils import Utils, Colors, BreakLoop, Reg
 
 #------------------------------------------------- [Function(s)/Class(es)] --------------------------------------------------#
 

@@ -11,7 +11,10 @@ import glob
 import re
 from progress.bar import Bar
 
-from core.utils.intensio_utils import Utils, Colors
+try:
+    from intensio_obfuscator.core.utils.intensio_utils import Utils, Colors
+except ModuleNotFoundError:
+    from core.utils.intensio_utils import Utils, Colors
 
 #------------------------------------------------- [Function(s)/Class(es)] --------------------------------------------------#
 

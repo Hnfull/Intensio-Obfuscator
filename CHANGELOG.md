@@ -1,5 +1,9 @@
 # CHANGELOG of Intensio-Obfuscator project
 
+## 07-15-2020
+- [upgrade] to version 1.0.10.1
+- [fix] ModuleNotFoundError add a comptatibility of imports when tool is installed from python package or source, the python path has not been defined identically
+
 ## 07-14-2020
 - [upgrade] to version 1.0.10.0
 - [fix] issue #51 (release on PyPI)

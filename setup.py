@@ -8,9 +8,10 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="intensio_obfuscator",
-    version="1.0.10.0",
+    version="1.0.10.1",
     author="hnfull",
     author_email="gitland@protonmail.com",
+    keywords=["python"],
     description="Obfuscate a python code 2.x and 3.x ",
     long_description=long_description,
     long_description_content_type="text/markdown",

@@ -11,8 +11,12 @@ import re
 import sys
 from progress.bar import Bar
 
-from core.obfuscation.intensio_mixer import Mixer
-from core.utils.intensio_utils import Utils, Reg
+try:
+    from intensio_obfuscator.core.obfuscation.intensio_mixer import Mixer
+    from intensio_obfuscator.core.utils.intensio_utils import Utils, Reg
+except ModuleNotFoundError:
+    from core.obfuscation.intensio_mixer import Mixer
+    from core.utils.intensio_utils import Utils, Reg
 
 #------------------------------------------------- [Function(s)/Class(es)] --------------------------------------------------#
 
