@@ -11,7 +11,8 @@
             print(yourChoices)
 
             # 'yourChoices' variable defined have not the same name with function or parameter of function/class of argparse library, so 'add_arguments' will not be replaced by [-rts --replacetostr] feature
-            # If you cannot change the source code edit (intensio/exclude/string_to_string_mixed/exclude_word_by_user.txt) word that will you want exclude
+            
+            # If you cannot change the source code edit an file and write all words that will you want to exclude (see src/intenso_obfuscator/exclude_examples/exclude_words_by_user.txt template '--excludewords' parameter)
             ```
 
         - **Not recommended:**
@@ -33,6 +34,6 @@
             yourChoices = input("number :")
             print(yourChoices)
             
-            # The [-rts --replacetostr] feature will replace the 'choices', 'default' and 'help' parameters of 'add_argument' function from argparse library, because their syntaxes is -> 'parameter=', except if you have exclude their words in 'intensio/exclude/string_to_string_mixed/exclude_word_by_user.txt'
+            # The [-rts --replacetostr] feature will replace the 'choices', 'default' and 'help' parameters of 'add_argument' function from argparse library, because their syntaxes is -> 'parameter=', except if you have exclude their words in a specific file (see src/intenso_obfuscator/exclude_examples/exclude_words_by_user.txt template and '--excludewords' parameter)
             ```
-            - Edit [word exclusion](../../intensio/exclude/string_to_string_mixed/exclude_word_by_user.txt) and add `choices`, `default` and `help` parameters of add_argument function of argparse library
+            - Edit an specific file (see `src/intenso_obfuscator/exclude_examples/exclude_words_by_user.txt` template and `--excludewords` parameter) and add `choices`, `default` and `help` parameters

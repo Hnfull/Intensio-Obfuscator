@@ -1,0 +1,4 @@
+# put their file names to exclude, only file name  whitout '.py' #
+yourFileName1
+yourFileName2
+yourFileName3

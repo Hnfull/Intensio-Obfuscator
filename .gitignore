@@ -1,11 +1,5 @@
 # Dev paths for test
-intensio/examples/python/basic/input/dev
-intensio/examples/python/basic/output/dev
-intensio/examples/python/intermediate/input/dev
-intensio/examples/python/intermediate/output/dev
-intensio/examples/python/advanced/input/dev
-intensio/examples/python/advanced/output/dev
-intensio/exclude/dev
+intensio/obfuscation_examples/python/dev
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

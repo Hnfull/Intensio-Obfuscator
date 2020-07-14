@@ -17,7 +17,7 @@
         test1.get("user")
         ```
   	- Intensio-Obfuscator will detect a non compliant format (currently this type of import is not supported by tool) code for obfuscation and exclude this file name automatically
-    - You can exclude manually a file name [file name exclusion](../../intensio/exclude/file_name/exclude_file_name_by_user.txt) 
+    - You can exclude manually file names with `--excludefiles` parameter (see `src/intensio_obfuscator/exclude_examples/exclude_files_name_by_user.txt` template and `--excludefiles` parameter)
 
 - If you `import` python file and in path the file name have the same name that a folder
   - Can generate an error = **no**

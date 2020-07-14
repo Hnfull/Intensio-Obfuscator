@@ -1,0 +1,34 @@
+# Basic-Rat is an example in Intensio-Obfuscator/intensio/examples/python/* #
+
+# glob
+recursive
+
+# fileinput
+inplace
+
+# tqdm lib
+total
+
+# argparse lib
+argparse
+default
+description
+help
+action
+
+# subprocess lib
+shell
+stderr
+stdout
+stdin
+
+# platform lib
+platform
+processor
+architecture
+
+# End section basic-Rat example in Intensio-Obfuscator/intensio/examples/python/* #
+
+
+# put your vars-classes-funcs-strings to exclude and delete part of basic-RAT example above #
+yourVar1

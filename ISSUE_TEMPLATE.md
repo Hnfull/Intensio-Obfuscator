@@ -10,7 +10,7 @@
 - Output file (obfuscated file)
 - Describe the normally expected behavior (optionnal)
 
-# Functionnality
+# Feature
 ### Description
 - Description of functionality
 

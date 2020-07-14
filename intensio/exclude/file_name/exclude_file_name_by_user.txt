@@ -1,2 +1,0 @@
-# put your file name to exclude whitout '.py' #
-yourFileName1

@@ -1,5 +1,15 @@
 # CHANGELOG of Intensio-Obfuscator project
 
+## 07-14-2020
+- [upgrade] to version 1.0.10.0
+- [fix] issue #51 (release on PyPI)
+- [update] change directory name of `examples` to `obfuscation_examples`
+- [update] change directory name of `exclude` to `exclude_examples`
+- [add] core/utils/intensio_exclude.py file to store all words excluded by default
+- [add] new parameter `--excludewords` to specify a file to exclude words for `-rts, --replacetostr` feature
+- [add] new parameter `--excludefiles` to specify a file to exlude files for `-rfn, --replacefilename` feature
+- [remove] old release version directory
+
 ## 07-09-2020
 - [upgrade] to version 1.0.9.9
 - [fix] issue #53
