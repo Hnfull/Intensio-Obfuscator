@@ -69,6 +69,10 @@ except ModuleNotFoundError:
 
 #--------------------------------------------------------- [Global] ---------------------------------------------------------#
 
+__version__ = "1.0.10.4"
+
+#------------------------------------------------- [Function(s)/Class(es)] --------------------------------------------------#
+
 def main():
     if sys.version_info[0] != 3:
         print("\n" + Colors.ERROR + "[-] Intensio-Obfuscator only support Python 3.x" + Colors.DISABLE)
@@ -77,12 +81,17 @@ def main():
     args = Args()
     utils = Utils()
 
-    if len(sys.argv) > 1 and len(sys.argv) <= 19:
+    if len(sys.argv) > 1 and len(sys.argv) <= 20:
         pass
     else:
         print("\n" + Colors.ERROR + "[-] Incorrect number of arguments" + Colors.DISABLE + "\n")
         args.GetArgHelp()
         sys.exit(0)
+
+    if args.GetArgsValue().version:
+        print("\n[*] version : {}\n".format(__version__))
+        if len(sys.argv) == 2:
+            sys.exit(0)
 
     if args.GetArgsValue().input:
         if args.GetArgsValue().output:

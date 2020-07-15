@@ -74,6 +74,12 @@ class Args:
                                 help="activate 'replace string to hex' obfuscation feature (python 2 files only)"
         )
         self.parser.add_argument(
+                                "--version",
+                                action="store_true",
+                                default=False,
+                                help="check current version"
+        )
+        self.parser.add_argument(
                                 "-v", "--verbose",
                                 action="store_true",
                                 default=False,
