@@ -79,6 +79,7 @@ $ ./intensio_obfuscator --help
 | -rfn, --replacefilename | enable `replace file name` obfuscation feature |
 | --excludefiles | file to exclude file name (check documentation for the format) only for `-rfn, --replacefilename` obfuscation feature |
 | -rth, --replacetohex | enable `replace string to hex` obfuscation `(python files 2 only)`|
+| --version | check current version|
 | -v, --verbose | improve verbosity |
 
 ## Obfuscation examples 

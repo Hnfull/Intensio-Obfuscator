@@ -40,6 +40,7 @@
 --excludefiles              ->  file to exclude file name (check documentation for the format) only for 'rfn, --replacefilename' \
                                 obfuscation feature
 -rth, --replacetohex        ->  enable 'replace string to hex' obfuscation feature (python 2 target files only)
+--version                   ->  check current version
 -v, --verbose               ->  improve verbosity
 
 """

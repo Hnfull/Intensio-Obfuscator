@@ -149,7 +149,7 @@ class Delete:
                                             sys.stdout.write(eachLine)
                                             noCommentsQuotes = 1
                                         elif re.match(Reg.checkIfRegexMultipleQuotes, eachLine):
-                                            sys.write.stdout(eachLine)
+                                            sys.stdout.write(eachLine)
                                         else:
                                             sys.stdout.write(eachLine)
 

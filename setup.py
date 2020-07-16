@@ -8,7 +8,7 @@ with open("pypi_README.md", "r") as fh:
 
 setuptools.setup(
                 name="intensio_obfuscator",
-                version="1.0.10.4",
+                version="1.0.10.5",
                 author="hnfull",
                 author_email="gitland@protonmail.com",
                 keywords=["python"],
