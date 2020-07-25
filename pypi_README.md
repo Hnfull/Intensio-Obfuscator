@@ -1,5 +1,8 @@
 # Intensio-Obfuscator
 
+# Project not maintained anymore
+# Thanks to all contributors
+
 ![](https://img.shields.io/badge/Python->=3.5-green.svg)
 [![PyPI Version](https://img.shields.io/pypi/v/intensio-obfuscator.svg)](https://pypi.python.org/pypi/intensio-obfuscator/)
 ![](https://img.shields.io/badge/Licence-MIT-red.svg)

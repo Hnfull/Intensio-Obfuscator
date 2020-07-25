@@ -1,5 +1,8 @@
 # Intensio-Obfuscator
 
+# Project not maintained anymore
+# Thanks to all contributors
+
 ![](https://img.shields.io/badge/Python->=3.5-green.svg)
 [![PyPI Version](https://img.shields.io/pypi/v/intensio-obfuscator.svg)](https://pypi.python.org/pypi/intensio-obfuscator/)
 ![](https://img.shields.io/badge/Licence-MIT-red.svg)
@@ -33,8 +36,8 @@ $ python3 intensio_obfuscator.py --help
 ```
 - From python package
 ```sh
-$ pip install intensio-obfuscator
-$ ./intensio_obfuscator --help
+$ python3 -m pip install intensio-obfuscator
+$ intensio_obfuscator --help
 ```
 
 ## Features

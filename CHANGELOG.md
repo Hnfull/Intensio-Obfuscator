@@ -1,5 +1,9 @@
 # CHANGELOG of Intensio-Obfuscator project
 
+## 07-25-2020
+- [upgrade] to version 1.0.10.6
+- [update] project not maintained anymore
+
 ## 07-16-2020
 - [upgrade] to version 1.0.10.4-5
 - [fix] issue #58
